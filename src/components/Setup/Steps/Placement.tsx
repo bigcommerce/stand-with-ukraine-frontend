@@ -31,8 +31,6 @@ const SelectWrapper = styled.div`
   box-sizing: border-box;
   border-radius: 4px;
 
-  margin: 1em 0;
-
   cursor: pointer;
 
   &:hover {

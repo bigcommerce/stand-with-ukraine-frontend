@@ -27,13 +27,17 @@ const SelectWrapper = styled.div`
   box-sizing: border-box;
   border-radius: 4px;
 
-  margin: 1em 0;
-
   cursor: pointer;
 
   &:hover {
     border-color: #b4bad1;
   }
+`;
+
+const Grid = styled.div`
+  grid-template-columns: 1;
+  grid-gap: 1rem;
+  display: grid;
 `;
 
 function SelectWidgetStyle({
@@ -101,14 +105,16 @@ export default function Style() {
       <BodySmall>
         Please, select a widget style that fits your site colors the most
       </BodySmall>
-      {WIDGET_STYLES.map(({ style, image: ImageComponent }, index) => (
-        <SelectWidgetStyle
-          key={index}
-          selected={widgetStyle}
-          image={<ImageComponent />}
-          widgetStyle={style}
-        />
-      ))}
+      <Grid>
+        {WIDGET_STYLES.map(({ style, image: ImageComponent }, index) => (
+          <SelectWidgetStyle
+            key={index}
+            selected={widgetStyle}
+            image={<ImageComponent />}
+            widgetStyle={style}
+          />
+        ))}
+      </Grid>
     </Panel>
   );
 }
