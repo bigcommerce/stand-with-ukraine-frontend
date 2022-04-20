@@ -7,15 +7,18 @@ import {
   setWidgetPlacement,
   WidgetPlacement,
 } from '../setupSlice';
-import { ReactComponent as TopLeft } from '../../../assets/WidgetPlacement/TopLeft.svg';
-import { ReactComponent as TopMiddle } from '../../../assets/WidgetPlacement/TopMiddle.svg';
-import { ReactComponent as TopRight } from '../../../assets/WidgetPlacement/TopRight.svg';
-import { ReactComponent as BottomLeft } from '../../../assets/WidgetPlacement/BottomLeft.svg';
-import { ReactComponent as BottomRight } from '../../../assets/WidgetPlacement/BottomRight.svg';
-import { ReactComponent as BottomMiddle } from '../../../assets/WidgetPlacement/BottomMiddle.svg';
+
 import BodySmall from './common/BodySmall';
 import { RootState } from '../../../state/store';
 import styled from 'styled-components';
+import {
+  BottomLeft,
+  BottomMiddle,
+  BottomRight,
+  TopLeft,
+  TopMiddle,
+  TopRight,
+} from '../../../assets/WidgetPlacement';
 
 const SelectWrapper = styled.div`
   display: flex;

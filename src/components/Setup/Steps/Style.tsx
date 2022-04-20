@@ -7,12 +7,14 @@ import {
   setWidgetStyle,
   WidgetStyle,
 } from '../setupSlice';
-import { ReactComponent as BlueWidgetStyleSVG } from '../../../assets/WidgetStyles/BlueStyle.svg';
-import { ReactComponent as BlackWidgetStyleSVG } from '../../../assets/WidgetStyles/BlackStyle.svg';
-import { ReactComponent as WhiteWidgetStyleSVG } from '../../../assets/WidgetStyles/WhiteStyle.svg';
 import { RootState } from '../../../state/store';
 import BodySmall from './common/BodySmall';
 import styled from 'styled-components';
+import {
+  BlackWidgetStyleSVG,
+  BlueWidgetStyleSVG,
+  WhiteWidgetStyleSVG,
+} from '../../../assets/WidgetStyles';
 
 const SelectWrapper = styled.div`
   display: flex;
