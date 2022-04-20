@@ -41,6 +41,8 @@ const SelectWrapper = styled.div`
 
   & > svg {
     margin-top: 1rem;
+    max-width: 320px;
+    width: 100%;
   }
 `;
 
@@ -98,7 +100,32 @@ const PLACEMENT_OPTIONS: {
     placement: 'top-right',
     image: TopRight,
   },
+  {
+    label: 'Bottom Left',
+    placement: 'bottom-left',
+    image: BottomLeft,
+  },
+  {
+    label: 'Bottom Middle',
+    placement: 'bottom-middle',
+    image: BottomMiddle,
+  },
+  {
+    label: 'Bottom Right',
+    placement: 'bottom-right',
+    image: BottomRight,
+  },
 ];
+
+const Grid = styled.div`
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1rem;
+  display: grid;
+
+  @media (min-width: 1122px) {
+    grid-template-columns: repeat(3, 320px);
+  }
+`;
 
 export default function Placement() {
   const widgetPlacement = useAppSelector(selectWidgetPlacement);
@@ -116,17 +143,19 @@ export default function Placement() {
         Where should your widget appear on a page? Mobile will follow the
         desktop approach.
       </BodySmall>
-      {PLACEMENT_OPTIONS.map(
-        ({ label, placement, image: ImageComponent }, idx) => (
-          <SelectWidgetPlacement
-            key={idx}
-            label={label}
-            widgetPlacement={placement}
-            image={<ImageComponent />}
-            selected={widgetPlacement}
-          />
-        )
-      )}
+      <Grid>
+        {PLACEMENT_OPTIONS.map(
+          ({ label, placement, image: ImageComponent }, idx) => (
+            <SelectWidgetPlacement
+              key={idx}
+              label={label}
+              widgetPlacement={placement}
+              image={<ImageComponent />}
+              selected={widgetPlacement}
+            />
+          )
+        )}
+      </Grid>
     </Panel>
   );
 }
