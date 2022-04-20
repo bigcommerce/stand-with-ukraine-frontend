@@ -11,7 +11,7 @@ import {
 // import { fetchCount } from './stepsAPI';
 
 export type WidgetStyle = 'blue' | 'black' | 'white';
-export type WidgetLayout =
+export type WidgetPlacement =
   | 'top-left'
   | 'top-middle'
   | 'top-right'
@@ -22,31 +22,54 @@ export type LoadingState = 'idle' | 'loading' | 'failed';
 export const Steps = ['Style', 'Layout', 'Charity', 'Content'];
 
 export interface SetupState {
-  currentStep: number;
-  status: LoadingState;
-  showFooter: boolean;
-  showFooterBackButton: boolean;
-  showFooterContinueButton: boolean;
+  steps: {
+    currentStep: number;
+    status: LoadingState;
+  };
+  footer: {
+    show: boolean;
+    backButton: {
+      show: boolean;
+      disabled: boolean;
+    };
+    continueButton: {
+      show: boolean;
+      disabled: boolean;
+    };
+  };
 
-  widgetStyle: WidgetStyle;
-  widgetLayout: WidgetLayout;
-  widgetCharitySelections: { [charity: string]: boolean };
-  widgetModalTitle: string;
-  widgetModalBody: string;
+  widgetConfiguration: {
+    style: WidgetStyle;
+    placement: WidgetPlacement;
+    charitySelections: { [charity: string]: boolean };
+    modalTitle: string;
+    modalBody: string;
+  };
 }
 
 const initialState: SetupState = {
-  currentStep: 0,
-  status: 'idle',
-  showFooter: false,
-  showFooterBackButton: false,
-  showFooterContinueButton: false,
-
-  widgetStyle: 'blue',
-  widgetLayout: 'bottom-right',
-  widgetCharitySelections: {},
-  widgetModalTitle: `Let's support Ukraine!`,
-  widgetModalBody: `We created this project to provide urgent help and support in face of an extreme and unforeseen situation in Ukraine. Today, the sovereign nation of Ukraine has to deal with the most horrendous and catastrophic emergency – a brutal invasion. Razom is responding to this by providing critical medical supplies and amplifying the voices of Ukrainians. `,
+  steps: {
+    currentStep: 0,
+    status: 'idle',
+  },
+  footer: {
+    show: false,
+    backButton: {
+      show: false,
+      disabled: false,
+    },
+    continueButton: {
+      show: false,
+      disabled: false,
+    },
+  },
+  widgetConfiguration: {
+    style: 'blue',
+    placement: 'bottom-right',
+    charitySelections: {},
+    modalTitle: `Let's support Ukraine!`,
+    modalBody: `We created this project to provide urgent help and support in face of an extreme and unforeseen situation in Ukraine. Today, the sovereign nation of Ukraine has to deal with the most horrendous and catastrophic emergency – a brutal invasion. Razom is responding to this by providing critical medical supplies and amplifying the voices of Ukrainians. `,
+  },
 };
 
 // export const incrementAsync = createAsyncThunk(
@@ -63,34 +86,48 @@ export const setupSlice = createSlice({
   initialState,
   reducers: {
     nextStep: (state) => {
-      state.currentStep += 1;
+      state.steps.currentStep += 1;
     },
     previousStep: (state) => {
-      state.currentStep -= 1;
+      state.steps.currentStep -= 1;
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
     setWidgetStyle: (state, action: PayloadAction<WidgetStyle>) => {
-      state.widgetStyle = action.payload;
+      state.widgetConfiguration.style = action.payload;
     },
-    setLayout: (state, action: PayloadAction<WidgetLayout>) => {
-      state.widgetLayout = action.payload;
+    setWidgetPlacement: (state, action: PayloadAction<WidgetPlacement>) => {
+      state.widgetConfiguration.placement = action.payload;
     },
     toggleCharity: (state, action: PayloadAction<string>) => {
-      state.widgetCharitySelections[action.payload] = !Boolean(
-        state.widgetCharitySelections[action.payload]
+      state.widgetConfiguration.charitySelections[action.payload] = !Boolean(
+        state.widgetConfiguration.charitySelections[action.payload]
       );
     },
     setModalTitle: (state, action: PayloadAction<string>) => {
-      state.widgetModalTitle = action.payload;
+      state.widgetConfiguration.modalTitle = action.payload;
     },
     setModalBody: (state, action: PayloadAction<string>) => {
-      state.widgetModalBody = action.payload;
+      state.widgetConfiguration.modalBody = action.payload;
     },
     showFooter: (state) => {
-      state.showFooter = true;
+      state.footer.show = true;
     },
     hideFooter: (state) => {
-      state.showFooter = false;
+      state.footer.show = false;
+    },
+    configureBackButton: (
+      state,
+      action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>
+    ) => {
+      state.footer.backButton.show = Boolean(action.payload.show);
+      state.footer.backButton.disabled = Boolean(action.payload.disabled);
+    },
+    configureContinueButton: (
+      state,
+      action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>
+    ) => {
+      state.footer.continueButton.show = Boolean(action.payload.show);
+      state.footer.continueButton.disabled = Boolean(action.payload.disabled);
     },
   },
   // extraReducers: (builder) => {
@@ -109,21 +146,21 @@ export const {
   nextStep,
   previousStep,
   setWidgetStyle,
-  setLayout,
+  setWidgetPlacement,
   setModalBody,
   setModalTitle,
   showFooter,
   hideFooter,
+  configureBackButton,
+  configureContinueButton,
 } = setupSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectStep = (state: RootState) => state.setup;
-export const selectFooter = (state: RootState) => ({
-  show: state.setup.showFooter,
-  backButton: state.setup.showFooterBackButton,
-  continueButton: state.setup.showFooterContinueButton,
-});
+export const selectCurrentStep = (state: RootState) =>
+  state.setup.steps.currentStep;
+export const selectFooter = (state: RootState) => state.setup.footer;
 
 export default setupSlice.reducer;

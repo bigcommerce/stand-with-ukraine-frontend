@@ -1,19 +1,18 @@
-import { Form, FormGroup, Panel, Radio } from '@bigcommerce/big-design';
-import React, { useCallback } from 'react';
-import styled from 'styled-components';
+import { Panel, Radio } from '@bigcommerce/big-design';
+import React, { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { setWidgetStyle, WidgetStyle } from '../setupSlice';
+import {
+  configureBackButton,
+  configureContinueButton,
+  setWidgetStyle,
+  WidgetStyle,
+} from '../setupSlice';
 import { ReactComponent as BlueWidgetStyleSVG } from '../../../assets/WidgetStyles/BlueStyle.svg';
 import { ReactComponent as BlackWidgetStyleSVG } from '../../../assets/WidgetStyles/BlackStyle.svg';
 import { ReactComponent as WhiteWidgetStyleSVG } from '../../../assets/WidgetStyles/WhiteStyle.svg';
-
-const Body = styled.div`
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-`;
+import { RootState } from '../../../app/store';
+import BodySmall from './common/BodySmall';
+import styled from 'styled-components';
 
 const SelectWrapper = styled.div`
   display: flex;
@@ -21,7 +20,7 @@ const SelectWrapper = styled.div`
   align-items: center;
   padding: 16px;
 
-  width: 427px;
+  max-width: 400px;
   height: 116px;
 
   border: 1px solid #d9dce9;
@@ -48,7 +47,7 @@ function SelectWidgetStyle({
 }) {
   const dispatch = useAppDispatch();
   const handleChange = useCallback(
-    (event: React.ChangeEvent<HTMLElement>) =>
+    (_: React.ChangeEvent<HTMLElement>) =>
       dispatch(setWidgetStyle(widgetStyle)),
     [dispatch, widgetStyle]
   );
@@ -65,14 +64,26 @@ function SelectWidgetStyle({
   );
 }
 
+function selectWidgetStyle(state: RootState): WidgetStyle {
+  return state.setup.widgetConfiguration.style;
+}
+
 export default function Style() {
-  const widgetStyle = useAppSelector((state) => state.setup.widgetStyle);
+  const widgetStyle = useAppSelector(selectWidgetStyle);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(configureBackButton({ show: false }));
+    dispatch(configureContinueButton({ show: true, disabled: false }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Panel header="Select widget style">
-      <Body>
+      <BodySmall>
         Please, select a widget style that fits your site colors the most
-      </Body>
+      </BodySmall>
+      {/* <Grid gridColumns="repeat(auto-fit, minmax(400px, 1fr))"> */}
       <SelectWidgetStyle
         selected={widgetStyle}
         image={<BlueWidgetStyleSVG />}
@@ -88,6 +99,7 @@ export default function Style() {
         image={<WhiteWidgetStyleSVG />}
         widgetStyle="white"
       />
+      {/* </Grid> */}
     </Panel>
   );
 }

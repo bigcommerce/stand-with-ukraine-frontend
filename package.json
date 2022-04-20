@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@bigcommerce/big-design": "^0.30.3-alpha.2",
+    "@bigcommerce/big-design-theme": "^0.13.2-alpha.1",
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
