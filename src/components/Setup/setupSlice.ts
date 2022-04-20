@@ -7,7 +7,7 @@ import {
 import {
   RootState,
   /*,AppThunk*/
-} from '../../app/store';
+} from '../../state/store';
 // import { fetchCount } from './stepsAPI';
 
 export type WidgetStyle = 'blue' | 'black' | 'white';

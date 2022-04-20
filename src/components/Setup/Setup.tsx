@@ -1,6 +1,6 @@
 import { Stepper } from '@bigcommerce/big-design';
 import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { useAppSelector, useAppDispatch } from '../../state/hooks';
 import { Steps, showFooter, hideFooter, selectCurrentStep } from './setupSlice';
 import Charity from './Steps/Charity';
 import Placement from './Steps/Placement';

@@ -1,6 +1,6 @@
 import { Panel, Radio } from '@bigcommerce/big-design';
 import React, { useCallback, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import {
   configureBackButton,
   configureContinueButton,
@@ -10,7 +10,7 @@ import {
 import { ReactComponent as BlueWidgetStyleSVG } from '../../../assets/WidgetStyles/BlueStyle.svg';
 import { ReactComponent as BlackWidgetStyleSVG } from '../../../assets/WidgetStyles/BlackStyle.svg';
 import { ReactComponent as WhiteWidgetStyleSVG } from '../../../assets/WidgetStyles/WhiteStyle.svg';
-import { RootState } from '../../../app/store';
+import { RootState } from '../../../state/store';
 import BodySmall from './common/BodySmall';
 import styled from 'styled-components';
 

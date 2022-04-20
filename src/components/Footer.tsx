@@ -1,7 +1,7 @@
 import { Button } from '@bigcommerce/big-design';
 import { useCallback } from 'react';
 import styled from 'styled-components';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { nextStep, previousStep, selectFooter } from './Setup/setupSlice';
 
 const FooterDiv = styled.div`

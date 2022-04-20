@@ -5,7 +5,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Layout from './components/Layout';
 import Details from './pages/Details';
 import Home from './pages/Home';
-import { store } from './app/store';
+import { store } from './state/store';
 import Setup from './pages/Setup';
 import { Provider } from 'react-redux';
 

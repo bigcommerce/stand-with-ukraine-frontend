@@ -1,6 +1,6 @@
 import { Panel, Radio } from '@bigcommerce/big-design';
 import { useCallback, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import {
   configureBackButton,
   configureContinueButton,
@@ -14,7 +14,7 @@ import { ReactComponent as BottomLeft } from '../../../assets/WidgetPlacement/Bo
 import { ReactComponent as BottomRight } from '../../../assets/WidgetPlacement/BottomRight.svg';
 import { ReactComponent as BottomMiddle } from '../../../assets/WidgetPlacement/BottomMiddle.svg';
 import BodySmall from './common/BodySmall';
-import { RootState } from '../../../app/store';
+import { RootState } from '../../../state/store';
 import styled from 'styled-components';
 
 const SelectWrapper = styled.div`
