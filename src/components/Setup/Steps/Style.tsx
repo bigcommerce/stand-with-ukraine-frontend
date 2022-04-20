@@ -68,6 +68,24 @@ function selectWidgetStyle(state: RootState): WidgetStyle {
   return state.setup.widgetConfiguration.style;
 }
 
+const WIDGET_STYLES: {
+  style: WidgetStyle;
+  image: React.FunctionComponent<any>;
+}[] = [
+  {
+    style: 'blue',
+    image: BlueWidgetStyleSVG,
+  },
+  {
+    style: 'black',
+    image: BlackWidgetStyleSVG,
+  },
+  {
+    style: 'white',
+    image: WhiteWidgetStyleSVG,
+  },
+];
+
 export default function Style() {
   const widgetStyle = useAppSelector(selectWidgetStyle);
   const dispatch = useAppDispatch();
@@ -83,23 +101,14 @@ export default function Style() {
       <BodySmall>
         Please, select a widget style that fits your site colors the most
       </BodySmall>
-      {/* <Grid gridColumns="repeat(auto-fit, minmax(400px, 1fr))"> */}
-      <SelectWidgetStyle
-        selected={widgetStyle}
-        image={<BlueWidgetStyleSVG />}
-        widgetStyle="blue"
-      />
-      <SelectWidgetStyle
-        selected={widgetStyle}
-        image={<BlackWidgetStyleSVG />}
-        widgetStyle="black"
-      />
-      <SelectWidgetStyle
-        selected={widgetStyle}
-        image={<WhiteWidgetStyleSVG />}
-        widgetStyle="white"
-      />
-      {/* </Grid> */}
+      {WIDGET_STYLES.map(({ style, image: ImageComponent }, index) => (
+        <SelectWidgetStyle
+          key={index}
+          selected={widgetStyle}
+          image={<ImageComponent />}
+          widgetStyle={style}
+        />
+      ))}
     </Panel>
   );
 }
