@@ -48,6 +48,10 @@ Object {
       "disabled": false,
       "show": false,
     },
+    "cancelButton": Object {
+      "disabled": false,
+      "show": false,
+    },
     "continueButton": Object {
       "disabled": false,
       "show": false,
