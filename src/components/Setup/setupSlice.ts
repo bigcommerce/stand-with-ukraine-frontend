@@ -101,6 +101,9 @@ export const setupSlice = createSlice({
   name: 'setup',
   initialState,
   reducers: {
+    goToStep: (state, action: PayloadAction<number>) => {
+      state.steps.currentStep = action.payload;
+    },
     nextStep: (state) => {
       state.steps.currentStep += 1;
     },
@@ -225,6 +228,7 @@ export const setupSlice = createSlice({
 });
 
 export const {
+  goToStep,
   nextStep,
   previousStep,
   setWidgetStyle,

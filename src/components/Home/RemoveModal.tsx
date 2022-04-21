@@ -21,7 +21,7 @@ export default function RemoveModal() {
     () =>
       [
         { text: 'Cancel', variant: 'subtle', onClick: closeModal },
-        { text: 'Delete', actionType: 'destructive', onClick: closeModal },
+        { text: 'Remove', actionType: 'destructive', onClick: closeModal },
       ] as any,
     [closeModal]
   );
@@ -29,7 +29,7 @@ export default function RemoveModal() {
   return (
     <Modal
       actions={actions}
-      header="Remove widget"
+      header="Remove widget from your store"
       isOpen={isOpen}
       onClose={closeModal}
       closeOnEscKey={true}

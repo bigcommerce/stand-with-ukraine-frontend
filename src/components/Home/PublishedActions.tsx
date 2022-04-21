@@ -1,7 +1,8 @@
 import { Button, Link } from '@bigcommerce/big-design';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
-import RouterButton from '../RouterButton';
+import { goToStep } from '../Setup/setupSlice';
 import FAQ from './FAQ';
 import { selectHome, showRemoveDialog } from './homeSlice';
 import RemoveModal from './RemoveModal';
@@ -35,6 +36,7 @@ const ActionContainer = styled.div`
 export default function PublishedActions() {
   const { storeUrl } = useAppSelector(selectHome);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -52,14 +54,15 @@ export default function PublishedActions() {
         >
           Remove
         </Button>
-        <RouterButton
-          linkProps={{
-            to: '/setup',
+        <Button
+          onClick={() => {
+            dispatch(goToStep(0));
+            navigate('/setup');
           }}
           variant="secondary"
         >
           Edit
-        </RouterButton>
+        </Button>
         {/* {storeUrl ? ( */}
         <Link href={storeUrl || '#'} target="_blank" rel="noreferrer" external>
           View
