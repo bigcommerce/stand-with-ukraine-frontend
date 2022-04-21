@@ -21,8 +21,9 @@ function selectWidgetModal(state: RootState) {
   };
 }
 
-const tabs = [
-  { id: 'info', title: 'Info' },
+type TAB_TYPE = 'configure' | 'preview';
+const tabs: { id: TAB_TYPE; title: string }[] = [
+  { id: 'configure', title: 'Configure' },
   { id: 'preview', title: 'Preview' },
 ];
 
@@ -34,10 +35,12 @@ function InfoTab() {
     <Form>
       <FormGroup>
         <Input
-          label="Modal Title"
-          placeholder="Modal Title"
+          label="Pop Up Title"
+          description="Maximum 50 characters"
+          placeholder="Pop Up Title"
           required={true}
           type="text"
+          maxLength={50}
           value={modalTitle}
           onChange={useCallback(
             (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -48,9 +51,11 @@ function InfoTab() {
       </FormGroup>
       <FormGroup>
         <Textarea
-          label="Modal Body"
-          placeholder="Modal Body"
+          label="Pop Up Body"
+          description="Maximum 400 characters"
+          placeholder="Pop Up Body"
           required={true}
+          maxLength={400}
           rows={5}
           resize={true}
           value={modalBody}
@@ -66,7 +71,7 @@ function InfoTab() {
 }
 
 export default function Modal() {
-  const [tab, setTab] = useState<'info' | 'preview'>('info');
+  const [tab, setTab] = useState<TAB_TYPE>('configure');
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -89,7 +94,7 @@ export default function Modal() {
       </BodySmall>
       <Tabs activeTab={tab} items={tabs} onTabClick={setTab as any}></Tabs>
       <Box marginTop="large">
-        {tab === 'info' ? <InfoTab /> : null}
+        {tab === 'configure' ? <InfoTab /> : null}
         {tab === 'preview' ? <PreviewTab /> : null}
       </Box>
     </Panel>
