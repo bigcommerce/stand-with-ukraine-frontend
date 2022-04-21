@@ -5,8 +5,8 @@ import { ReactComponent as CloseSVG } from '../../../assets/Close.svg';
 import { ReactComponent as LogoSVG } from '../../../assets/logo.svg';
 
 const ModalPreviewBox = styled.div`
-  width: 756px;
-  height: 477px;
+  max-width: 756px;
+  max-height: 477px;
 
   background: #ffffff;
   border: 1px solid #f0f3ff;
