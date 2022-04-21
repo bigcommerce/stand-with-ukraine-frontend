@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { alertsManager } from '../state/store';
 import { nextStep, previousStep, selectFooter } from './Setup/setupSlice';
+import { ReactComponent as BigDesignLogoSVG } from '../assets/big-design-logo.svg';
 
 const FooterDiv = styled.div`
   display: flex;
@@ -29,6 +30,30 @@ const ButtonContainer = styled.div`
   ${({ theme }) => theme.breakpoints.tablet} {
     justify-content: flex-end;
     display: flex;
+  }
+`;
+
+const BuiltWithContainer = styled.a`
+  padding: 0 2rem;
+  flex-grow: 1;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 1rem;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 0 100%;
+  }
+
+  & svg {
+    margin-left: 1rem;
+    max-height: 50px;
+    max-width: 300px;
   }
 `;
 
@@ -61,7 +86,17 @@ export default function Footer() {
   }, [navigate]);
 
   if (!show) {
-    return null;
+    return (
+      <BuiltWithContainer
+        href="https://developer.bigcommerce.com/big-design/"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        <div>
+          Built with <BigDesignLogoSVG />
+        </div>
+      </BuiltWithContainer>
+    );
   }
 
   return (
