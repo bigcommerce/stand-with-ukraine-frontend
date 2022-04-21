@@ -1,7 +1,9 @@
 import { Button } from '@bigcommerce/big-design';
 import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
+import { alertsManager } from '../state/store';
 import { nextStep, previousStep, selectFooter } from './Setup/setupSlice';
 
 const FooterDiv = styled.div`
@@ -34,6 +36,7 @@ export default function Footer() {
   const { show, backButton, continueButton, publishButton } =
     useAppSelector(selectFooter);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleBackButton = useCallback(
     () => dispatch(previousStep()),
@@ -43,6 +46,18 @@ export default function Footer() {
     () => dispatch(nextStep()),
     [dispatch]
   );
+
+  const handlePublishButton = useCallback(() => {
+    alertsManager.add({
+      messages: [
+        {
+          text: 'Banner was published on your store',
+        },
+      ],
+      type: 'success',
+    });
+    navigate('/');
+  }, [navigate]);
 
   if (!show) {
     return null;
@@ -71,7 +86,7 @@ export default function Footer() {
         {publishButton.show ? (
           <Button
             disabled={publishButton.disabled}
-            // onClick={handleContinueButton}
+            onClick={handlePublishButton}
           >
             Publish
           </Button>

@@ -9,7 +9,7 @@ export default function RouterButton({
   ...buttonProps
 }: ButtonProps & { linkProps: RouterLinkProps }) {
   return (
-    <Link {...linkProps}>
+    <Link className="router-link" {...linkProps}>
       <BigDesignButton {...buttonProps} />
     </Link>
   );

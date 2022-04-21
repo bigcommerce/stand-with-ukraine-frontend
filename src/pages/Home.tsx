@@ -1,49 +1,20 @@
 import { Panel } from '@bigcommerce/big-design';
-import styled from 'styled-components';
-import RouterButton from '../components/RouterButton';
-
-const Content = styled.div`
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-
-  color: #5e637a;
-`;
+import Content from '../components/Home/Content';
+import Header from '../components/Home/Header';
+import { selectHome } from '../components/Home/homeSlice';
+import NotPublishedActions from '../components/Home/NotPublishedActions';
+import PublishedActions from '../components/Home/PublishedActions';
+import { useAppSelector } from '../state/hooks';
 
 export default function Home() {
+  const { published } = useAppSelector(selectHome);
+
   return (
     <>
-      <Panel header="Add widget to your store to support Ukraine">
-        <Content>
-          How it works:
-          <li>you select widget layout and style</li>
-          <li>
-            list of pages to show banner charity fund add banner to your store
-            your
-          </li>
-          <li>
-            shoppers see the banner, click on it and redirecting to the charity
-            fund
-          </li>
-          <li>
-            page shoppers donate or support Ukraine other way donation will be
-            spent
-          </li>
-          <li>
-            on medical assistance, accoutrements, and defense analysis etc. your
-          </li>
-          <li>support saves lives</li>
-        </Content>
-        <RouterButton
-          linkProps={{
-            to: '/setup',
-          }}
-          marginTop="large"
-        >
-          Add widget to your store
-        </RouterButton>
+      <Panel>
+        <Header published={published} />
+        <Content />
+        {published ? <PublishedActions /> : <NotPublishedActions />}
       </Panel>
     </>
   );

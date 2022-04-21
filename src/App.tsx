@@ -1,11 +1,10 @@
-import { GlobalStyles } from '@bigcommerce/big-design';
+import { AlertsManager, GlobalStyles } from '@bigcommerce/big-design';
 import { theme } from '@bigcommerce/big-design-theme';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Layout from './components/Layout';
-import Details from './pages/Details';
 import Home from './pages/Home';
-import { store } from './state/store';
+import { store, alertsManager } from './state/store';
 import Setup from './pages/Setup';
 import { Provider } from 'react-redux';
 
@@ -17,6 +16,10 @@ const AppGlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.secondary10};
     flex-direction: column;
    }
+
+   .router-link {
+     text-decoration: none;
+   }
 `;
 
 function App() {
@@ -25,16 +28,16 @@ function App() {
       <ThemeProvider theme={theme}>
         <>
           <GlobalStyles />
+          <AlertsManager manager={alertsManager} />
           <AppGlobalStyles />
-          <Layout>
-            <BrowserRouter>
+          <BrowserRouter>
+            <Layout>
               <Routes>
                 <Route index element={<Home />}></Route>
                 <Route path="/setup" element={<Setup />}></Route>
-                <Route path="/details" element={<Details />}></Route>
               </Routes>
-            </BrowserRouter>
-          </Layout>
+            </Layout>
+          </BrowserRouter>
         </>
       </ThemeProvider>
     </Provider>
