@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import {
   configureBackButton,
   configureContinueButton,
+  configurePublishButton,
   setWidgetPlacement,
   WidgetPlacement,
 } from '../setupSlice';
@@ -11,14 +12,7 @@ import {
 import BodySmall from './common/BodySmall';
 import { RootState } from '../../../state/store';
 import styled from 'styled-components';
-import {
-  BottomLeft,
-  BottomMiddle,
-  BottomRight,
-  TopLeft,
-  TopMiddle,
-  TopRight,
-} from '../../../assets/WidgetPlacement';
+import { PLACEMENT_OPTIONS } from './common/data';
 
 const SelectWrapper = styled.div`
   display: flex;
@@ -81,43 +75,6 @@ function selectWidgetPlacement(state: RootState): WidgetPlacement {
   return state.setup.widgetConfiguration.placement;
 }
 
-const PLACEMENT_OPTIONS: {
-  label: string;
-  placement: WidgetPlacement;
-  image: React.FunctionComponent<any>;
-}[] = [
-  {
-    label: 'Top Left',
-    placement: 'top-left',
-    image: TopLeft,
-  },
-  {
-    label: 'Top Middle',
-    placement: 'top-middle',
-    image: TopMiddle,
-  },
-  {
-    label: 'Top Right',
-    placement: 'top-right',
-    image: TopRight,
-  },
-  {
-    label: 'Bottom Left',
-    placement: 'bottom-left',
-    image: BottomLeft,
-  },
-  {
-    label: 'Bottom Middle',
-    placement: 'bottom-middle',
-    image: BottomMiddle,
-  },
-  {
-    label: 'Bottom Right',
-    placement: 'bottom-right',
-    image: BottomRight,
-  },
-];
-
 const Grid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 1rem;
@@ -135,6 +92,7 @@ export default function Placement() {
   useEffect(() => {
     dispatch(configureBackButton({ show: true, disabled: false }));
     dispatch(configureContinueButton({ show: true, disabled: false }));
+    dispatch(configurePublishButton({ show: false, disabled: false }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

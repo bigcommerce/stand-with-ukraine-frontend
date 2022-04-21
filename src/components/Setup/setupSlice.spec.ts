@@ -20,6 +20,10 @@ describe('counter reducer', () => {
         show: false,
         disabled: true,
       },
+      publishButton: {
+        show: false,
+        disabled: false,
+      },
     },
 
     widgetConfiguration: {

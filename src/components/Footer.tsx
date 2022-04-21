@@ -31,7 +31,8 @@ const ButtonContainer = styled.div`
 `;
 
 export default function Footer() {
-  const { show, backButton, continueButton } = useAppSelector(selectFooter);
+  const { show, backButton, continueButton, publishButton } =
+    useAppSelector(selectFooter);
   const dispatch = useAppDispatch();
 
   const handleBackButton = useCallback(
@@ -65,6 +66,14 @@ export default function Footer() {
             onClick={handleContinueButton}
           >
             Continue
+          </Button>
+        ) : null}
+        {publishButton.show ? (
+          <Button
+            disabled={publishButton.disabled}
+            // onClick={handleContinueButton}
+          >
+            Publish
           </Button>
         ) : null}
       </ButtonContainer>

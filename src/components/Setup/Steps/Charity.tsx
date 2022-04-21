@@ -1,66 +1,22 @@
 import { Checkbox, Collapse, Panel, Text } from '@bigcommerce/big-design';
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { ComeBackAlive, NewUkraine, Razom } from '../../../assets/CharityLogos';
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import { RootState } from '../../../state/store';
 import {
   configureBackButton,
   configureContinueButton,
+  configurePublishButton,
   toggleCharity,
 } from '../setupSlice';
 import BodySmall from './common/BodySmall';
+import { CHARITIES, MAX_SELECTION } from './common/data';
 
 const Grid = styled.div`
   grid-template-columns: 1;
   grid-gap: 1rem;
   display: grid;
 `;
-
-const MAX_SELECTION = 3;
-const CHARITIES: {
-  identifier: string;
-  name: string;
-  image: React.FunctionComponent;
-  description: string;
-}[] = [
-  {
-    identifier: 'razom',
-    name: 'Razom',
-    image: Razom,
-    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainin people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies. Learn more `,
-  },
-  {
-    identifier: 'come-back-alive',
-    name: 'Come Back Alive',
-    image: ComeBackAlive,
-    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainin people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies. Learn more `,
-  },
-  {
-    identifier: 'new-ukraine',
-    name: 'New Ukraine',
-    image: NewUkraine,
-    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainin people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies. Learn more `,
-  },
-  {
-    identifier: 'razom-1',
-    name: 'Razom',
-    image: Razom,
-    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainin people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies. Learn more `,
-  },
-  {
-    identifier: 'come-back-alive-1',
-    name: 'Come Back Alive',
-    image: ComeBackAlive,
-    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainin people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies. Learn more `,
-  },
-  {
-    identifier: 'new-ukraine-1',
-    name: 'New Ukraine',
-    image: NewUkraine,
-    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainin people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies. Learn more `,
-  },
-];
 
 const SelectWrapper = styled.div`
   display: flex;
@@ -135,8 +91,6 @@ function SelectCharity({
       <CharityLogoWrapper>{image}</CharityLogoWrapper>
       <CharityContentWrapper>
         <CharityLabel>{name}</CharityLabel>
-        {/*
-        // @ts-ignore */}
         <Collapse
           title={open ? 'Show less' : 'Show more'}
           onCollapseChange={handleCollapse}
@@ -168,6 +122,7 @@ export default function Charity() {
   useEffect(() => {
     dispatch(configureBackButton({ show: true, disabled: false }));
     dispatch(configureContinueButton({ show: true, disabled: true }));
+    dispatch(configurePublishButton({ show: false, disabled: false }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

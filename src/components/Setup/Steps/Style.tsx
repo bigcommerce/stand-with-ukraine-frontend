@@ -4,17 +4,14 @@ import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import {
   configureBackButton,
   configureContinueButton,
+  configurePublishButton,
   setWidgetStyle,
   WidgetStyle,
 } from '../setupSlice';
 import { RootState } from '../../../state/store';
 import BodySmall from './common/BodySmall';
 import styled from 'styled-components';
-import {
-  BlackWidgetStyleSVG,
-  BlueWidgetStyleSVG,
-  WhiteWidgetStyleSVG,
-} from '../../../assets/WidgetStyles';
+import { WIDGET_STYLES } from './common/data';
 
 const SelectWrapper = styled.div`
   display: flex;
@@ -74,24 +71,6 @@ function selectWidgetStyle(state: RootState): WidgetStyle {
   return state.setup.widgetConfiguration.style;
 }
 
-const WIDGET_STYLES: {
-  style: WidgetStyle;
-  image: React.FunctionComponent<any>;
-}[] = [
-  {
-    style: 'blue',
-    image: BlueWidgetStyleSVG,
-  },
-  {
-    style: 'black',
-    image: BlackWidgetStyleSVG,
-  },
-  {
-    style: 'white',
-    image: WhiteWidgetStyleSVG,
-  },
-];
-
 export default function Style() {
   const widgetStyle = useAppSelector(selectWidgetStyle);
   const dispatch = useAppDispatch();
@@ -99,6 +78,7 @@ export default function Style() {
   useEffect(() => {
     dispatch(configureBackButton({ show: false }));
     dispatch(configureContinueButton({ show: true, disabled: false }));
+    dispatch(configurePublishButton({ show: false, disabled: false }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

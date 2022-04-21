@@ -36,6 +36,10 @@ export interface SetupState {
       show: boolean;
       disabled: boolean;
     };
+    publishButton: {
+      show: boolean;
+      disabled: boolean;
+    };
   };
 
   widgetConfiguration: {
@@ -59,6 +63,10 @@ const initialState: SetupState = {
       disabled: false,
     },
     continueButton: {
+      show: false,
+      disabled: false,
+    },
+    publishButton: {
       show: false,
       disabled: false,
     },
@@ -129,6 +137,13 @@ export const setupSlice = createSlice({
       state.footer.continueButton.show = Boolean(action.payload.show);
       state.footer.continueButton.disabled = Boolean(action.payload.disabled);
     },
+    configurePublishButton: (
+      state,
+      action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>
+    ) => {
+      state.footer.publishButton.show = Boolean(action.payload.show);
+      state.footer.publishButton.disabled = Boolean(action.payload.disabled);
+    },
   },
   // extraReducers: (builder) => {
   //   builder
@@ -153,6 +168,7 @@ export const {
   hideFooter,
   configureBackButton,
   configureContinueButton,
+  configurePublishButton,
   toggleCharity,
 } = setupSlice.actions;
 
