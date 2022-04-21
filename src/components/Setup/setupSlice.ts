@@ -28,6 +28,10 @@ export interface SetupState {
   };
   footer: {
     show: boolean;
+    cancelButton: {
+      show: boolean;
+      disabled: boolean;
+    };
     backButton: {
       show: boolean;
       disabled: boolean;
@@ -58,6 +62,10 @@ const initialState: SetupState = {
   },
   footer: {
     show: false,
+    cancelButton: {
+      show: false,
+      disabled: false,
+    },
     backButton: {
       show: false,
       disabled: false,
@@ -144,6 +152,65 @@ export const setupSlice = createSlice({
       state.footer.publishButton.show = Boolean(action.payload.show);
       state.footer.publishButton.disabled = Boolean(action.payload.disabled);
     },
+    configureCancelButton: (
+      state,
+      action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>
+    ) => {
+      state.footer.cancelButton.show = Boolean(action.payload.show);
+      state.footer.cancelButton.disabled = Boolean(action.payload.disabled);
+    },
+    configureButtons: (
+      state,
+      action: PayloadAction<{
+        cancelButton?: {
+          show: boolean;
+          disabled: boolean;
+        };
+        backButton?: {
+          show: boolean;
+          disabled: boolean;
+        };
+        continueButton?: {
+          show: boolean;
+          disabled: boolean;
+        };
+        publishButton?: {
+          show: boolean;
+          disabled: boolean;
+        };
+      }>
+    ) => {
+      if (action.payload.backButton !== undefined) {
+        state.footer.backButton.show = Boolean(action.payload.backButton.show);
+        state.footer.backButton.disabled = Boolean(
+          action.payload.backButton.disabled
+        );
+      }
+      if (action.payload.continueButton !== undefined) {
+        state.footer.continueButton.show = Boolean(
+          action.payload.continueButton.show
+        );
+        state.footer.continueButton.disabled = Boolean(
+          action.payload.continueButton.disabled
+        );
+      }
+      if (action.payload.publishButton !== undefined) {
+        state.footer.publishButton.show = Boolean(
+          action.payload.publishButton.show
+        );
+        state.footer.publishButton.disabled = Boolean(
+          action.payload.publishButton.disabled
+        );
+      }
+      if (action.payload.cancelButton !== undefined) {
+        state.footer.cancelButton.show = Boolean(
+          action.payload.cancelButton.show
+        );
+        state.footer.cancelButton.disabled = Boolean(
+          action.payload.cancelButton.disabled
+        );
+      }
+    },
   },
   // extraReducers: (builder) => {
   //   builder
@@ -169,6 +236,8 @@ export const {
   configureBackButton,
   configureContinueButton,
   configurePublishButton,
+  configureCancelButton,
+  configureButtons,
   toggleCharity,
 } = setupSlice.actions;
 

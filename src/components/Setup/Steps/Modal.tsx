@@ -10,13 +10,7 @@ import {
 import React, { useCallback, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import { RootState } from '../../../state/store';
-import {
-  configureBackButton,
-  configureContinueButton,
-  configurePublishButton,
-  setModalBody,
-  setModalTitle,
-} from '../setupSlice';
+import { configureButtons, setModalBody, setModalTitle } from '../setupSlice';
 import BodySmall from './common/BodySmall';
 import PreviewTab from './Preview';
 
@@ -76,9 +70,15 @@ export default function Modal() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(configureBackButton({ show: true, disabled: false }));
-    dispatch(configureContinueButton({ show: false, disabled: false }));
-    dispatch(configurePublishButton({ show: true, disabled: false }));
+    dispatch(
+      configureButtons({
+        cancelButton: { show: false, disabled: false },
+        backButton: { show: true, disabled: false },
+        continueButton: { show: false, disabled: false },
+        publishButton: { show: true, disabled: false },
+      })
+    );
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

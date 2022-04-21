@@ -2,9 +2,7 @@ import { Panel, Radio } from '@bigcommerce/big-design';
 import { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import {
-  configureBackButton,
-  configureContinueButton,
-  configurePublishButton,
+  configureButtons,
   setWidgetPlacement,
   WidgetPlacement,
 } from '../setupSlice';
@@ -90,9 +88,14 @@ export default function Placement() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(configureBackButton({ show: true, disabled: false }));
-    dispatch(configureContinueButton({ show: true, disabled: false }));
-    dispatch(configurePublishButton({ show: false, disabled: false }));
+    dispatch(
+      configureButtons({
+        cancelButton: { show: false, disabled: false },
+        backButton: { show: true, disabled: false },
+        continueButton: { show: true, disabled: false },
+        publishButton: { show: false, disabled: false },
+      })
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

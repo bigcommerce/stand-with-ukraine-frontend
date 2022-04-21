@@ -1,13 +1,7 @@
 import { Panel, Radio } from '@bigcommerce/big-design';
 import React, { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
-import {
-  configureBackButton,
-  configureContinueButton,
-  configurePublishButton,
-  setWidgetStyle,
-  WidgetStyle,
-} from '../setupSlice';
+import { configureButtons, setWidgetStyle, WidgetStyle } from '../setupSlice';
 import { RootState } from '../../../state/store';
 import BodySmall from './common/BodySmall';
 import styled from 'styled-components';
@@ -76,9 +70,18 @@ export default function Style() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(configureBackButton({ show: false }));
-    dispatch(configureContinueButton({ show: true, disabled: false }));
-    dispatch(configurePublishButton({ show: false, disabled: false }));
+    dispatch(
+      configureButtons({
+        cancelButton: {
+          show: true,
+          disabled: false,
+        },
+        backButton: { show: false, disabled: false },
+        continueButton: { show: true, disabled: false },
+        publishButton: { show: false, disabled: false },
+      })
+    );
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

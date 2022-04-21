@@ -14,11 +14,13 @@ const LoveMessageContainer = styled.div`
 `;
 
 const ActionContainer = styled.div`
+  display: flex;
+  align-items: center;
   margin-top: 1rem;
 
   & > button,
   & > a {
-    margin-left: 0.5rem;
+    margin-left: 1rem;
   }
 
   // don't add margin left for remove button
@@ -34,7 +36,6 @@ export default function PublishedActions() {
 
   return (
     <>
-      <FAQ />
       <LoveMessageContainer>
         ❤️ The people of Ukraine very much appreciate your help!
       </LoveMessageContainer>
@@ -56,6 +57,7 @@ export default function PublishedActions() {
         </Link>
         {/* ) : null} */}
       </ActionContainer>
+      <FAQ />
     </>
   );
 }

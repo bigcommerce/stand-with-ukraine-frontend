@@ -12,6 +12,10 @@ describe('counter reducer', () => {
     },
     footer: {
       show: false,
+      cancelButton: {
+        show: false,
+        disabled: false,
+      },
       backButton: {
         show: true,
         disabled: true,
@@ -36,9 +40,8 @@ describe('counter reducer', () => {
   };
 
   it('should handle initial state', () => {
-    expect(
-counterReducer(undefined, { type: 'unknown' })).
-toMatchInlineSnapshot(`
+    expect(counterReducer(undefined, { type: 'unknown' }))
+      .toMatchInlineSnapshot(`
 Object {
   "footer": Object {
     "backButton": Object {

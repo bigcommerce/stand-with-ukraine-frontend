@@ -4,9 +4,8 @@ import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import { RootState } from '../../../state/store';
 import {
-  configureBackButton,
+  configureButtons,
   configureContinueButton,
-  configurePublishButton,
   toggleCharity,
 } from '../setupSlice';
 import BodySmall from './common/BodySmall';
@@ -18,9 +17,9 @@ const Grid = styled.div`
   display: grid;
 `;
 
-const SelectWrapper = styled.div`
+const CharityWrapper = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   padding: 16px;
 
@@ -33,18 +32,21 @@ const SelectWrapper = styled.div`
   }
 `;
 
+const CheckboxWrapper = styled.div`
+  margin-top: 21px;
+`;
+
 const CharityContentWrapper = styled.div`
   flex: 1;
   display: flex;
-  align-items: center;
   padding-left: 1rem;
   flex-direction: column;
   align-items: flex-start;
 `;
 
 const CharityLogoWrapper = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   padding: 0 1rem;
 `;
 
@@ -81,13 +83,15 @@ function SelectCharity({
   );
 
   return (
-    <SelectWrapper>
-      <Checkbox
-        label=""
-        checked={selected}
-        disabled={!selected && limitReached}
-        onChange={handleSelectChange}
-      />
+    <CharityWrapper>
+      <CheckboxWrapper>
+        <Checkbox
+          label=""
+          checked={selected}
+          disabled={!selected && limitReached}
+          onChange={handleSelectChange}
+        />
+      </CheckboxWrapper>
       <CharityLogoWrapper>{image}</CharityLogoWrapper>
       <CharityContentWrapper>
         <CharityLabel>{name}</CharityLabel>
@@ -97,7 +101,7 @@ function SelectCharity({
         ></Collapse>
         {open ? <Text>{description}</Text> : null}
       </CharityContentWrapper>
-    </SelectWrapper>
+    </CharityWrapper>
   );
 }
 
@@ -120,9 +124,14 @@ export default function Charity() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(configureBackButton({ show: true, disabled: false }));
-    dispatch(configureContinueButton({ show: true, disabled: true }));
-    dispatch(configurePublishButton({ show: false, disabled: false }));
+    dispatch(
+      configureButtons({
+        cancelButton: { show: false, disabled: false },
+        backButton: { show: true, disabled: false },
+        continueButton: { show: true, disabled: true },
+        publishButton: { show: false, disabled: false },
+      })
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

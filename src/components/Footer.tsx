@@ -33,11 +33,12 @@ const ButtonContainer = styled.div`
 `;
 
 export default function Footer() {
-  const { show, backButton, continueButton, publishButton } =
+  const { show, cancelButton, backButton, continueButton, publishButton } =
     useAppSelector(selectFooter);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  const handleCancelButton = useCallback(() => navigate('/'), [navigate]);
   const handleBackButton = useCallback(
     () => dispatch(previousStep()),
     [dispatch]
@@ -66,6 +67,15 @@ export default function Footer() {
   return (
     <FooterDiv>
       <ButtonContainer>
+        {cancelButton.show ? (
+          <Button
+            variant="subtle"
+            disabled={cancelButton.disabled}
+            onClick={handleCancelButton}
+          >
+            Cancel
+          </Button>
+        ) : null}
         {backButton.show ? (
           <Button
             variant="subtle"

@@ -1,7 +1,7 @@
 import {
-  ComeBackAlive,
-  NewUkraine,
-  Razom,
+  UnicefLogo,
+  NewUkraineLogo,
+  RazomLogo,
 } from '../../../../assets/CharityLogos';
 import {
   BottomLeft,
@@ -24,42 +24,28 @@ export const CHARITIES: {
   name: string;
   image: React.FunctionComponent;
   description: string;
+  link: string;
 }[] = [
   {
     identifier: 'razom',
     name: 'Razom',
-    image: Razom,
-    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainin people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies. Learn more `,
-  },
-  {
-    identifier: 'come-back-alive',
-    name: 'Come Back Alive',
-    image: ComeBackAlive,
-    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainin people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies. Learn more `,
+    image: RazomLogo,
+    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainin people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies.`,
+    link: 'https://razomforukraine.org/razom-emergency-response/',
   },
   {
     identifier: 'new-ukraine',
-    name: 'New Ukraine',
-    image: NewUkraine,
-    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainin people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies. Learn more `,
+    name: 'Nova Ukraine',
+    image: NewUkraineLogo,
+    description: `Nova Ukraine is a registered nonprofit organization dedicated to providing humanitarian aid to Ukraine and raising awareness about Ukraine in the United States as well as in the rest of the world. Through your generous donations, we fund a variety of efforts to help the people of Ukraine and to strengthen Ukraine's democratic society.`,
+    link: 'https://novaukraine.org/',
   },
   {
-    identifier: 'razom-1',
-    name: 'Razom',
-    image: Razom,
-    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainin people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies. Learn more `,
-  },
-  {
-    identifier: 'come-back-alive-1',
-    name: 'Come Back Alive',
-    image: ComeBackAlive,
-    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainin people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies. Learn more `,
-  },
-  {
-    identifier: 'new-ukraine-1',
-    name: 'New Ukraine',
-    image: NewUkraine,
-    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainin people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies. Learn more `,
+    identifier: 'unicef',
+    name: 'Unicef',
+    image: UnicefLogo,
+    description: `UNICEF is providing life-saving help to children inside Ukraine and in neighboring countries. This includes:- Providing lifesaving supplies such as water and hygiene kits, medicines, warm clothes and blankets- First-aid kits, surgical kits, and oxygen concentrators to those affected by the violence.`,
+    link: 'https://help.unicef.org/ukraine-emergency',
   },
 ];
 
