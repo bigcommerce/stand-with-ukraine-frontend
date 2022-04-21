@@ -1,9 +1,10 @@
 import { Button, Link } from '@bigcommerce/big-design';
 import styled from 'styled-components';
-import { useAppSelector } from '../../state/hooks';
+import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import RouterButton from '../RouterButton';
 import FAQ from './FAQ';
-import { selectHome } from './homeSlice';
+import { selectHome, showRemoveDialog } from './homeSlice';
+import RemoveModal from './RemoveModal';
 
 const LoveMessageContainer = styled.div`
   font-family: 'Source Sans Pro';
@@ -33,14 +34,22 @@ const ActionContainer = styled.div`
 
 export default function PublishedActions() {
   const { storeUrl } = useAppSelector(selectHome);
+  const dispatch = useAppDispatch();
 
   return (
     <>
+      <RemoveModal />
       <LoveMessageContainer>
         ❤️ The people of Ukraine very much appreciate your help!
       </LoveMessageContainer>
       <ActionContainer>
-        <Button variant="secondary" actionType="destructive">
+        <Button
+          onClick={() => {
+            dispatch(showRemoveDialog());
+          }}
+          variant="secondary"
+          actionType="destructive"
+        >
           Remove
         </Button>
         <RouterButton

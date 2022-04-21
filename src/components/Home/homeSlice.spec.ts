@@ -12,6 +12,7 @@ describe('counter reducer', () => {
       .toMatchInlineSnapshot(`
 Object {
   "published": false,
+  "showRemoveDialog": false,
   "status": "idle",
 }
 `);

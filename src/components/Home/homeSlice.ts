@@ -8,11 +8,15 @@ export interface HomeState {
   published: boolean;
   storeUrl?: string;
   status: LoadingState;
+
+  showRemoveDialog: boolean;
 }
 
 const initialState: HomeState = {
   published: false,
   status: 'idle',
+
+  showRemoveDialog: false,
 };
 
 export const loadStore = createAsyncThunk('home/loadStore', fetchStoreData);
@@ -20,7 +24,14 @@ export const loadStore = createAsyncThunk('home/loadStore', fetchStoreData);
 export const homeSlice = createSlice({
   name: 'home',
   initialState,
-  reducers: {},
+  reducers: {
+    showRemoveDialog: (state) => {
+      state.showRemoveDialog = true;
+    },
+    hideRemoveDialog: (state) => {
+      state.showRemoveDialog = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadStore.pending, (state) => {
@@ -36,6 +47,7 @@ export const homeSlice = createSlice({
   },
 });
 
+export const { showRemoveDialog, hideRemoveDialog } = homeSlice.actions;
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
