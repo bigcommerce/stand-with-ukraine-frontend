@@ -4,9 +4,8 @@ export function SetSessionToken(token: string) {
 export function GetSessionToken() {
   return sessionStorage.getItem('app-bearer-token') || '';
 }
-export function GetHeaders() {
+export function GetAuthHeaders() {
   return {
     Authorization: `Bearer ${GetSessionToken()}`,
-    'Content-Type': 'application/json',
   };
 }
