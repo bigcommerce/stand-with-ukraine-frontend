@@ -40,8 +40,8 @@ describe('counter reducer', () => {
   };
 
   it('should handle initial state', () => {
-    expect(counterReducer(undefined, { type: 'unknown' }))
-      .toMatchInlineSnapshot(`
+    expect(counterReducer(undefined, { type: 'unknown' })).
+toMatchInlineSnapshot(`
 Object {
   "footer": Object {
     "backButton": Object {
@@ -67,7 +67,11 @@ Object {
     "status": "idle",
   },
   "widgetConfiguration": Object {
-    "charitySelections": Object {},
+    "charitySelections": Object {
+      "new-ukraine": true,
+      "razom": true,
+      "unicef": true,
+    },
     "modalBody": "We created this project to provide urgent help and support in face of an extreme and unforeseen situation in Ukraine. Today, the sovereign nation of Ukraine has to deal with the most horrendous and catastrophic emergency – a brutal invasion. Razom is responding to this by providing critical medical supplies and amplifying the voices of Ukrainians. ",
     "modalTitle": "Let's support Ukraine!",
     "placement": "bottom-right",
