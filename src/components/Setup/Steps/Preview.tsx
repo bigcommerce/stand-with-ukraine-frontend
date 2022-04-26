@@ -60,9 +60,9 @@ export default function PreviewTab() {
     <ModalPreviewBox>
       <HeaderBlock>
         <LogoSVG />
-        <HeaderText>{configuration.modalTitle}</HeaderText>
+        <HeaderText>{configuration.modal_title}</HeaderText>
       </HeaderBlock>
-      <BodyText>{configuration.modalBody}</BodyText>
+      <BodyText>{configuration.modal_body}</BodyText>
       <CloseSVGContainer>
         <CloseSVG />
       </CloseSVGContainer>

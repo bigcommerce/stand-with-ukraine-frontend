@@ -106,9 +106,9 @@ function SelectCharity({
 }
 
 function selectWidgetCharities(state: RootState) {
-  const charities = state.setup.widgetConfiguration.charitySelections;
+  const charities = state.setup.widgetConfiguration.charity_selections;
   const numCharitiesSelected = Object.values(
-    state.setup.widgetConfiguration.charitySelections
+    state.setup.widgetConfiguration.charity_selections
   ).filter((value) => value).length;
   return {
     charities,
@@ -152,7 +152,7 @@ export default function Charity() {
           ({ identifier, name, image: ImageComponent, description }, index) => (
             <SelectCharity
               key={index}
-              selected={Boolean(charities[identifier])}
+              selected={Boolean(charities.includes(identifier))}
               limitReached={limitReached}
               identifier={identifier}
               name={name}

@@ -1,13 +1,9 @@
-import {
-  createSlice,
-  PayloadAction,
-
-  /*,createAsyncThunk*/
-} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   RootState,
   /*,AppThunk*/
 } from '../../state/store';
+import { readConfiguration, writeConfiguration } from './stepsAPI';
 // import { fetchCount } from './stepsAPI';
 
 export type WidgetStyle = 'blue' | 'black' | 'white';
@@ -20,6 +16,13 @@ export type WidgetPlacement =
   | 'bottom-right';
 export type LoadingState = 'idle' | 'loading' | 'failed';
 export const Steps = ['Style', 'Layout', 'Charity', 'Pop-Up'];
+export type WidgetConfiguration = {
+  style: WidgetStyle;
+  placement: WidgetPlacement;
+  charity_selections: string[];
+  modal_title: string;
+  modal_body: string;
+};
 
 export interface SetupState {
   steps: {
@@ -46,13 +49,7 @@ export interface SetupState {
     };
   };
 
-  widgetConfiguration: {
-    style: WidgetStyle;
-    placement: WidgetPlacement;
-    charitySelections: { [charity: string]: boolean };
-    modalTitle: string;
-    modalBody: string;
-  };
+  widgetConfiguration: WidgetConfiguration;
 }
 
 const initialState: SetupState = {
@@ -82,24 +79,21 @@ const initialState: SetupState = {
   widgetConfiguration: {
     style: 'blue',
     placement: 'bottom-right',
-    charitySelections: {
-      razom: true,
-      unicef: true,
-      'new-ukraine': true,
-    },
-    modalTitle: `Let's support Ukraine!`,
-    modalBody: `We created this project to provide urgent help and support in face of an extreme and unforeseen situation in Ukraine. Today, the sovereign nation of Ukraine has to deal with the most horrendous and catastrophic emergency – a brutal invasion. Razom is responding to this by providing critical medical supplies and amplifying the voices of Ukrainians. `,
+    charity_selections: ['razom', 'unicef', 'new-ukraine'],
+    modal_title: `Let's support Ukraine!`,
+    modal_body: `We created this project to provide urgent help and support in face of an extreme and unforeseen situation in Ukraine. Today, the sovereign nation of Ukraine has to deal with the most horrendous and catastrophic emergency – a brutal invasion. Razom is responding to this by providing critical medical supplies and amplifying the voices of Ukrainians. `,
   },
 };
 
-// export const incrementAsync = createAsyncThunk(
-//   'setup/fetchCount',
-//   async (amount: number) => {
-//     const response = await fetchCount(amount);
-//     // The value we return becomes the `fulfilled` action payload
-//     return response.data;
-//   }
-// );
+export const getConfiguration = createAsyncThunk(
+  'setup/getConfiguration',
+  readConfiguration
+);
+
+export const saveConfiguration = createAsyncThunk(
+  'setup/setConfiguration',
+  writeConfiguration
+);
 
 export const setupSlice = createSlice({
   name: 'setup',
@@ -122,15 +116,20 @@ export const setupSlice = createSlice({
       state.widgetConfiguration.placement = action.payload;
     },
     toggleCharity: (state, action: PayloadAction<string>) => {
-      state.widgetConfiguration.charitySelections[action.payload] = !Boolean(
-        state.widgetConfiguration.charitySelections[action.payload]
+      let index = state.widgetConfiguration.charity_selections.indexOf(
+        action.payload
       );
+      if (index === -1) {
+        state.widgetConfiguration.charity_selections.push(action.payload);
+      } else {
+        state.widgetConfiguration.charity_selections.splice(index, 1);
+      }
     },
     setModalTitle: (state, action: PayloadAction<string>) => {
-      state.widgetConfiguration.modalTitle = action.payload;
+      state.widgetConfiguration.modal_title = action.payload;
     },
     setModalBody: (state, action: PayloadAction<string>) => {
-      state.widgetConfiguration.modalBody = action.payload;
+      state.widgetConfiguration.modal_body = action.payload;
     },
     showFooter: (state) => {
       state.footer.show = true;
@@ -219,16 +218,22 @@ export const setupSlice = createSlice({
       }
     },
   },
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(incrementAsync.pending, (state) => {
-  //       state.status = 'loading';
-  //     })
-  //     .addCase(incrementAsync.fulfilled, (state, action) => {
-  //       state.status = 'idle';
-  //       state.step += action.payload;
-  //     });
-  // },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getConfiguration.pending, (state) => {
+        state.steps.status = 'loading';
+      })
+      .addCase(getConfiguration.fulfilled, (state, action) => {
+        state.steps.status = 'idle';
+        state.widgetConfiguration = action.payload;
+      })
+      .addCase(saveConfiguration.pending, (state) => {
+        state.steps.status = 'loading';
+      })
+      .addCase(saveConfiguration.fulfilled, (state) => {
+        state.steps.status = 'idle';
+      });
+  },
 });
 
 export const {

@@ -1,6 +1,22 @@
-// A mock function to mimic making an async request for data
-export function fetchCount(amount = 1) {
-  return new Promise<{ data: number }>((resolve) =>
-    setTimeout(() => resolve({ data: amount }), 500)
-  );
+import { GetHeaders } from '../../utils';
+import { WidgetConfiguration } from './setupSlice';
+
+export async function readConfiguration(): Promise<WidgetConfiguration> {
+  let response = await fetch('/api/v1/configuration', {
+    method: 'GET',
+    headers: GetHeaders(),
+  });
+  return response.json();
+}
+
+export async function writeConfiguration(
+  widgetConfiguration: WidgetConfiguration
+) {
+  let response = await fetch('/api/v1/configuration', {
+    method: 'GET',
+    headers: GetHeaders(),
+    body: JSON.stringify(widgetConfiguration),
+  });
+
+  return response.text();
 }

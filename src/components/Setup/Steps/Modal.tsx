@@ -16,8 +16,8 @@ import PreviewTab from './Preview';
 
 function selectWidgetModal(state: RootState) {
   return {
-    modalTitle: state.setup.widgetConfiguration.modalTitle,
-    modalBody: state.setup.widgetConfiguration.modalBody,
+    modalTitle: state.setup.widgetConfiguration.modal_title,
+    modalBody: state.setup.widgetConfiguration.modal_body,
   };
 }
 
