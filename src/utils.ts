@@ -6,6 +6,7 @@ export function GetSessionToken() {
 }
 export function GetHeaders() {
   return {
-    authorization: `Bearer ${GetSessionToken()}`,
+    Authorization: `Bearer ${GetSessionToken()}`,
+    'Content-Type': 'application/json',
   };
 }
