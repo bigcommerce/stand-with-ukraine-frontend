@@ -1,10 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {
-  RootState,
-  /*,AppThunk*/
-} from '../../state/store';
+import { RootState } from '../../state/store';
 import { readConfiguration, writeConfiguration } from './stepsAPI';
-// import { fetchCount } from './stepsAPI';
 
 export type WidgetStyle = 'blue' | 'black' | 'white';
 export type WidgetPlacement =
@@ -91,7 +87,7 @@ export const getConfiguration = createAsyncThunk(
 );
 
 export const saveConfiguration = createAsyncThunk(
-  'setup/setConfiguration',
+  'setup/saveConfiguration',
   writeConfiguration
 );
 

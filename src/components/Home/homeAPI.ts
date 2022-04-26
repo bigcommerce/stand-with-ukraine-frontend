@@ -1,6 +1,25 @@
-// A mock function to mimic making an async request for data
-export function fetchStoreData() {
-  return new Promise<{ published: boolean }>((resolve) =>
-    setTimeout(() => resolve({ published: true }), 100)
-  );
+import { GetHeaders } from '../../utils';
+
+export async function fetchStoreStatus(): Promise<{ published: boolean }> {
+  let response = await fetch('/api/v1/publish', {
+    method: 'GET',
+    headers: GetHeaders(),
+  });
+  return response.json();
+}
+
+export async function publishWidget(): Promise<string> {
+  let response = await fetch('/api/v1/publish', {
+    method: 'POST',
+    headers: GetHeaders(),
+  });
+  return response.text();
+}
+
+export async function removeWidget(): Promise<string> {
+  let response = await fetch('/api/v1/publish', {
+    method: 'DELETE',
+    headers: GetHeaders(),
+  });
+  return response.text();
 }

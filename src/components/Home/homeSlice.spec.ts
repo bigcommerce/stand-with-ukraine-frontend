@@ -1,9 +1,9 @@
 import { AsyncThunkAction, Dispatch } from '@reduxjs/toolkit';
-import counterReducer, { loadStore } from './homeSlice';
-import { fetchStoreData } from './homeAPI';
+import counterReducer, { loadStatus } from './homeSlice';
+import { fetchStoreStatus } from './homeAPI';
 
 jest.mock('./homeAPI.ts', () => ({
-  fetchStoreData: jest.fn(),
+  fetchStoreStatus: jest.fn(),
 }));
 
 describe('counter reducer', () => {
@@ -27,9 +27,9 @@ describe('loadStore async action', () => {
   beforeEach(() => {
     dispatch = jest.fn();
     getState = jest.fn();
-    action = loadStore();
-    (fetchStoreData as jest.Mock).mockClear();
-    (fetchStoreData as jest.Mock).mockResolvedValue({ published: true });
+    action = loadStatus();
+    (fetchStoreStatus as jest.Mock).mockClear();
+    (fetchStoreStatus as jest.Mock).mockResolvedValue({ published: true });
   });
 
   afterAll(() => {
@@ -38,6 +38,6 @@ describe('loadStore async action', () => {
 
   it('should handle load', async () => {
     await action(dispatch, getState, undefined);
-    expect(fetchStoreData).toHaveBeenCalled();
+    expect(fetchStoreStatus).toHaveBeenCalled();
   });
 });

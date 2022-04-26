@@ -9,6 +9,7 @@ import PublishedActions from '../components/Home/PublishedActions';
 import { useAppSelector } from '../state/hooks';
 
 export default function Home() {
+  const { published } = useAppSelector(selectHome);
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
@@ -17,7 +18,6 @@ export default function Home() {
       sessionStorage.setItem('app-bearer-token', token);
     }
   }, [searchParams]);
-  const { published } = useAppSelector(selectHome);
 
   return (
     <>

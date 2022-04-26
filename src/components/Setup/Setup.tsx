@@ -1,7 +1,13 @@
 import { Stepper } from '@bigcommerce/big-design';
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../state/hooks';
-import { Steps, showFooter, hideFooter, selectCurrentStep } from './setupSlice';
+import {
+  Steps,
+  showFooter,
+  hideFooter,
+  selectCurrentStep,
+  getConfiguration,
+} from './setupSlice';
 import Charity from './Steps/Charity';
 import Placement from './Steps/Placement';
 import Modal from './Steps/Modal';
@@ -14,6 +20,7 @@ export default function Setup() {
   useEffect(() => {
     // on mount show footer
     dispatch(showFooter());
+    dispatch(getConfiguration());
 
     // on dismount hide it
     return () => {

@@ -6,6 +6,8 @@ import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { alertsManager } from '../state/store';
 import { nextStep, previousStep, selectFooter } from './Setup/setupSlice';
 import { ReactComponent as BigDesignLogoSVG } from '../assets/big-design-logo.svg';
+import { publish } from './Home/homeSlice';
+import { writeConfiguration } from './Setup/stepsAPI';
 
 const FooterDiv = styled.div`
   display: flex;
@@ -60,6 +62,9 @@ const BuiltWithContainer = styled.a`
 export default function Footer() {
   const { show, cancelButton, backButton, continueButton, publishButton } =
     useAppSelector(selectFooter);
+  const widgetConfiguration = useAppSelector(
+    (state) => state.setup.widgetConfiguration
+  );
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -73,7 +78,9 @@ export default function Footer() {
     [dispatch]
   );
 
-  const handlePublishButton = useCallback(() => {
+  const handlePublishButton = useCallback(async () => {
+    await writeConfiguration(widgetConfiguration);
+    dispatch(publish());
     alertsManager.add({
       messages: [
         {
@@ -83,7 +90,7 @@ export default function Footer() {
       type: 'success',
     });
     navigate('/');
-  }, [navigate]);
+  }, [dispatch, navigate, widgetConfiguration]);
 
   if (!show) {
     return (
