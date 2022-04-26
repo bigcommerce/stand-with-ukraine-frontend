@@ -59,6 +59,7 @@ export const homeSlice = createSlice({
       .addCase(remove.fulfilled, (state) => {
         state.status = 'idle';
         state.published = false;
+        state.showRemoveDialog = false;
       });
   },
 });

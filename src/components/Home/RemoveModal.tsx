@@ -2,7 +2,7 @@ import { Modal } from '@bigcommerce/big-design';
 import { useCallback, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { RootState } from '../../state/store';
-import { hideRemoveDialog } from './homeSlice';
+import { remove, hideRemoveDialog } from './homeSlice';
 
 function selectModalOpenState(state: RootState) {
   return state.home.showRemoveDialog;
@@ -17,11 +17,13 @@ export default function RemoveModal() {
     [dispatch]
   );
 
+  const removeWidget = useCallback(() => dispatch(remove()), [dispatch]);
+
   const actions = useMemo(
     () =>
       [
         { text: 'Cancel', variant: 'subtle', onClick: closeModal },
-        { text: 'Remove', actionType: 'destructive', onClick: closeModal },
+        { text: 'Remove', actionType: 'destructive', onClick: removeWidget },
       ] as any,
     [closeModal]
   );
