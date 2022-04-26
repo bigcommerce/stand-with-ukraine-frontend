@@ -25,7 +25,7 @@ export default function RemoveModal() {
         { text: 'Cancel', variant: 'subtle', onClick: closeModal },
         { text: 'Remove', actionType: 'destructive', onClick: removeWidget },
       ] as any,
-    [closeModal]
+    [closeModal, removeWidget]
   );
 
   return (

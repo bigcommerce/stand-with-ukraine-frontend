@@ -13,7 +13,7 @@ export async function writeConfiguration(
   widgetConfiguration: WidgetConfiguration
 ) {
   let response = await fetch('/api/v1/configuration', {
-    method: 'GET',
+    method: 'POST',
     headers: GetHeaders(),
     body: JSON.stringify(widgetConfiguration),
   });
