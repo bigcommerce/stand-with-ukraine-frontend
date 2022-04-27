@@ -77,7 +77,8 @@ const initialState: SetupState = {
     placement: 'bottom-right',
     charity_selections: ['razom', 'unicef', 'new-ukraine'],
     modal_title: 'Help the people of Ukraine!',
-    modal_body: 'With each day, the war in Ukraine worsens at an alarming pace. Millions of civilians have lost their homes and many more are without basic necessities like food, water, and health care. Consider donating to one of the charities below and join us in showing support for Ukraine. All charities are trusted, non-profit organizations dedicated to Ukrainian relief efforts. It takes less than a minute.',
+    modal_body:
+      'With each day, the war in Ukraine worsens at an alarming pace. Millions of civilians have lost their homes and many more are without basic necessities like food, water, and health care. Consider donating to one of the charities below and join us in showing support for Ukraine. All charities are trusted, non-profit organizations dedicated to Ukrainian relief efforts. It takes less than a minute.',
   },
 };
 
@@ -95,6 +96,11 @@ export const setupSlice = createSlice({
   name: 'setup',
   initialState,
   reducers: {
+    resetSteps: (state) => {
+      state.steps = initialState.steps;
+      state.footer = initialState.footer;
+      state.widgetConfiguration = initialState.widgetConfiguration;
+    },
     goToStep: (state, action: PayloadAction<number>) => {
       state.steps.currentStep = action.payload;
     },
@@ -233,6 +239,7 @@ export const setupSlice = createSlice({
 });
 
 export const {
+  resetSteps,
   goToStep,
   nextStep,
   previousStep,

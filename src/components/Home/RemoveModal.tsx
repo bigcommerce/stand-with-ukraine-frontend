@@ -2,6 +2,7 @@ import { Modal } from '@bigcommerce/big-design';
 import { useCallback, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { alertsManager, RootState } from '../../state/store';
+import { resetSteps } from '../Setup/setupSlice';
 import { remove, hideRemoveDialog } from './homeSlice';
 
 function selectModalOpenState(state: RootState) {
@@ -19,6 +20,7 @@ export default function RemoveModal() {
 
   const removeWidget = useCallback(() => {
     dispatch(remove());
+    dispatch(resetSteps());
     alertsManager.add({
       autoDismiss: true,
       messages: [
