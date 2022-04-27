@@ -13,6 +13,7 @@ const LoveMessageContainer = styled.div`
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
+  margin: 0.5rem 0;
 `;
 
 const ActionContainer = styled.div`
