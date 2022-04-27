@@ -1,6 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../state/store';
-import { publishWidget, fetchStoreStatus, removeWidget } from './homeAPI';
+import {
+  publishWidget,
+  fetchStoreStatus,
+  removeWidget,
+  fetchStoreURL,
+} from './homeAPI';
 
 export type LoadingState = 'idle' | 'loading' | 'failed';
 
@@ -22,6 +27,7 @@ const initialState: HomeState = {
 export const loadStatus = createAsyncThunk('home/loadStatus', fetchStoreStatus);
 export const publish = createAsyncThunk('home/publish', publishWidget);
 export const remove = createAsyncThunk('home/remove', removeWidget);
+export const preview = createAsyncThunk('home/preview', fetchStoreURL);
 
 export const homeSlice = createSlice({
   name: 'home',
@@ -60,6 +66,13 @@ export const homeSlice = createSlice({
         state.status = 'idle';
         state.published = false;
         state.showRemoveDialog = false;
+      })
+      .addCase(preview.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(preview.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.storeUrl = action.payload.secure_url;
       });
   },
 });

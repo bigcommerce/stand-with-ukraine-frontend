@@ -10,11 +10,3 @@ export function GetAuthHeaders() {
     Authorization: `Bearer ${GetSessionToken()}`,
   };
 }
-
-const STORE_KEY = 'store-id';
-export function SetStoreID(storeId: string) {
-  sessionStorage.setItem(STORE_KEY, storeId);
-}
-export function GetStoreID() {
-  return sessionStorage.getItem(STORE_KEY) || '';
-}

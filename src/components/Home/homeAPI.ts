@@ -8,6 +8,14 @@ export async function fetchStoreStatus(): Promise<{ published: boolean }> {
   return response.json();
 }
 
+export async function fetchStoreURL(): Promise<{ secure_url: string }> {
+  let response = await fetch('/api/v1/preview', {
+    method: 'GET',
+    headers: GetAuthHeaders(),
+  });
+  return response.json();
+}
+
 export async function publishWidget(): Promise<string> {
   let response = await fetch('/api/v1/publish', {
     method: 'POST',

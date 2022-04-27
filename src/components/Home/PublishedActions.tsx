@@ -1,10 +1,10 @@
 import { Button, Link } from '@bigcommerce/big-design';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { useAppDispatch } from '../../state/hooks';
-import { GetStoreID } from '../../utils';
+import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { goToStep } from '../Setup/setupSlice';
-import { showRemoveDialog } from './homeSlice';
+import { preview, showRemoveDialog } from './homeSlice';
 import RemoveModal from './RemoveModal';
 
 const LoveMessageContainer = styled.div`
@@ -44,12 +44,13 @@ const ActionContainer = styled.div`
 `;
 
 export default function PublishedActions() {
+  const storeUrl = useAppSelector((state) => state.home.storeUrl);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const storeUrl = `https://store-${
-    GetStoreID() || 'test-store'
-  }.mybigcommerce.com`;
+  useEffect(() => {
+    dispatch(preview());
+  }, [dispatch]);
 
   return (
     <>
@@ -76,9 +77,11 @@ export default function PublishedActions() {
         >
           Edit
         </Button>
-        <Link href={storeUrl} target="_blank" rel="noreferrer" external>
-          View
-        </Link>
+        {storeUrl ? (
+          <Link href={storeUrl} target="_blank" rel="noreferrer" external>
+            View
+          </Link>
+        ) : null}
       </ActionContainer>
     </>
   );
