@@ -76,8 +76,8 @@ const initialState: SetupState = {
     style: 'blue',
     placement: 'bottom-right',
     charity_selections: ['razom', 'unicef', 'new-ukraine'],
-    modal_title: `Let's support Ukraine!`,
-    modal_body: `We created this project to provide urgent help and support in face of an extreme and unforeseen situation in Ukraine. Today, the sovereign nation of Ukraine has to deal with the most horrendous and catastrophic emergency – a brutal invasion. Razom is responding to this by providing critical medical supplies and amplifying the voices of Ukrainians. `,
+    modal_title: 'Help the people of Ukraine!',
+    modal_body: 'With each day, the war in Ukraine worsens at an alarming pace. Millions of civilians have lost their homes and many more are without basic necessities like food, water, and health care. Consider donating to one of the charities below and join us in showing support for Ukraine. All charities are trusted, non-profit organizations dedicated to Ukrainian relief efforts. It takes less than a minute.',
   },
 };
 

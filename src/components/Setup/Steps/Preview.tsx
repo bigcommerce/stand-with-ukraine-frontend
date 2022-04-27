@@ -78,7 +78,7 @@ export default function PreviewTab() {
       <HeroImage
         src={HeroImagePNG}
         alt="Protestors standing against war in Ukraine"
-      ></HeroImage>
+      />
       {charity_list.map((item, key) =>
         item ? <PreviewItem key={key} {...item} /> : null
       )}

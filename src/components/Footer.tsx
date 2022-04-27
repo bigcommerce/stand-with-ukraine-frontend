@@ -84,7 +84,7 @@ export default function Footer() {
     alertsManager.add({
       messages: [
         {
-          text: 'Banner was published on your store',
+          text: 'Widget was published on your store',
         },
       ],
       type: 'success',

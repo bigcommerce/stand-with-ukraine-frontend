@@ -38,7 +38,7 @@ export default function Header({ published }: { published: boolean }) {
     <Wrapper>
       <Title>
         {published
-          ? 'You added a widget to your store'
+          ? 'You added the widget to your store'
           : 'Help Ukraine by adding a widget to your store'}
       </Title>
       {published ? <WidgetAdded>Widget Added</WidgetAdded> : null}

@@ -52,7 +52,7 @@ export const CHARITIES: CharityItem[] = [
     name: 'Unicef',
     image: UnicefLogo,
     imageProps: UnicefLogoProps,
-    description: `UNICEF is providing life-saving help to children inside Ukraine and in neighboring countries. This includes:- Providing lifesaving supplies such as water and hygiene kits, medicines, warm clothes and blankets- First-aid kits, surgical kits, and oxygen concentrators to those affected by the violence.`,
+    description: `UNICEF is providing life-saving help to children inside Ukraine and in neighboring countries. This includes: \n- Providing lifesaving supplies such as water and hygiene kits, medicines, warm clothes and blankets \n- First-aid kits, surgical kits, and oxygen concentrators to those affected by the violence.`,
     link: 'https://help.unicef.org/ukraine-emergency',
   },
 ];

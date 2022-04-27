@@ -1,5 +1,5 @@
-import { Checkbox, Collapse, Panel, Text } from '@bigcommerce/big-design';
-import React, { useCallback, useEffect, useState } from 'react';
+import { Checkbox, Collapse, Link, Panel, Text } from '@bigcommerce/big-design';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import { RootState } from '../../../state/store';
@@ -65,6 +65,7 @@ function SelectCharity({
   selected,
   image,
   limitReached,
+  link,
 }: {
   name: string;
   description: string;
@@ -72,6 +73,7 @@ function SelectCharity({
   selected: boolean;
   limitReached: boolean;
   image: any;
+  link: string;
 }) {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
@@ -81,6 +83,16 @@ function SelectCharity({
       dispatch(toggleCharity(identifier)),
     [dispatch, identifier]
   );
+
+  const content = useMemo(() => {
+    const paragraphs = description.split('\n');
+
+    return paragraphs.map((item, key) => (
+      <Text key={key} marginBottom="none">{item} {key === (paragraphs.length - 1)
+        && <Link href={link} target="_blank" external>Learn more</Link>}
+      </Text>
+    ));
+  }, [description, link]);
 
   return (
     <CharityWrapper>
@@ -98,8 +110,8 @@ function SelectCharity({
         <Collapse
           title={open ? 'Show less' : 'Show more'}
           onCollapseChange={handleCollapse}
-        ></Collapse>
-        {open ? <Text>{description}</Text> : null}
+        />
+        {open ? content : null}
       </CharityContentWrapper>
     </CharityWrapper>
   );
@@ -149,7 +161,7 @@ export default function Charity() {
       </BodySmall>
       <Grid>
         {CHARITIES.map(
-          ({ identifier, name, image: ImageComponent, description }, index) => (
+          ({ identifier, name, image: ImageComponent, description, link }, index) => (
             <SelectCharity
               key={index}
               selected={Boolean(charities.includes(identifier))}
@@ -158,6 +170,7 @@ export default function Charity() {
               name={name}
               image={<ImageComponent />}
               description={description}
+              link={link}
             />
           )
         )}

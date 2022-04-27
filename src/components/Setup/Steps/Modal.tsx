@@ -35,7 +35,7 @@ function InfoTab() {
     <Form>
       <FormGroup>
         <Input
-          label="Pop Up Title"
+          label="Pop-up Title"
           description="Maximum 50 characters"
           placeholder="Pop Up Title"
           required={true}
@@ -51,7 +51,7 @@ function InfoTab() {
       </FormGroup>
       <FormGroup>
         <Textarea
-          label="Pop Up Body"
+          label="Pop-up Body"
           description="Maximum 400 characters"
           placeholder="Pop Up Body"
           required={true}
@@ -93,7 +93,7 @@ export default function Modal() {
         When shoppers click or tap the widget they will be shown a pop-up with
         more info. You can customize the message or use the default text.
       </BodySmall>
-      <Tabs activeTab={tab} items={tabs} onTabClick={setTab as any}></Tabs>
+      <Tabs activeTab={tab} items={tabs} onTabClick={setTab as any} />
       <Box marginTop="large">
         {tab === 'configure' ? <InfoTab /> : null}
         {tab === 'preview' ? <PreviewTab /> : null}

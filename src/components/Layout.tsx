@@ -13,10 +13,10 @@ export default function Layout({ children }: { children: any }) {
   return (
     <>
       <Container>
-        <Header></Header>
+        <Header />
         {children}
       </Container>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 }
