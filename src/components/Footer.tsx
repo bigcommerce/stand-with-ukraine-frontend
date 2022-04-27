@@ -82,6 +82,7 @@ export default function Footer() {
     await writeConfiguration(widgetConfiguration);
     dispatch(publish());
     alertsManager.add({
+      autoDismiss: true,
       messages: [
         {
           text: 'Widget was published on your store',
