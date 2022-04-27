@@ -1,7 +1,7 @@
 import { Modal } from '@bigcommerce/big-design';
 import { useCallback, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
-import { RootState } from '../../state/store';
+import { alertsManager, RootState } from '../../state/store';
 import { remove, hideRemoveDialog } from './homeSlice';
 
 function selectModalOpenState(state: RootState) {
@@ -17,7 +17,18 @@ export default function RemoveModal() {
     [dispatch]
   );
 
-  const removeWidget = useCallback(() => dispatch(remove()), [dispatch]);
+  const removeWidget = useCallback(() => {
+    dispatch(remove());
+    alertsManager.add({
+      autoDismiss: true,
+      messages: [
+        {
+          text: 'Widget was removed from your store',
+        },
+      ],
+      type: 'success',
+    });
+  }, [dispatch]);
 
   const actions = useMemo(
     () =>
