@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { RootState } from '../../state/store';
 import { readConfiguration, writeConfiguration } from './stepsAPI';
 

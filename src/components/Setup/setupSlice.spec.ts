@@ -1,7 +1,7 @@
 import counterReducer, {
-  SetupState,
   nextStep,
   previousStep,
+  SetupState,
 } from './setupSlice';
 
 describe('counter reducer', () => {

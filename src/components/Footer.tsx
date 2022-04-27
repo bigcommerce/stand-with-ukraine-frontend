@@ -1,12 +1,14 @@
-import { Button } from '@bigcommerce/big-design';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { Button } from '@bigcommerce/big-design';
+
+import { ReactComponent as BigDesignLogoSVG } from '../assets/big-design-logo.svg';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { alertsManager } from '../state/store';
-import { nextStep, previousStep, selectFooter } from './Setup/setupSlice';
-import { ReactComponent as BigDesignLogoSVG } from '../assets/big-design-logo.svg';
 import { publish } from './Home/homeSlice';
+import { nextStep, previousStep, selectFooter } from './Setup/setupSlice';
 import { writeConfiguration } from './Setup/stepsAPI';
 
 const FooterDiv = styled.div`

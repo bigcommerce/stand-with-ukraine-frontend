@@ -1,7 +1,8 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import setupReducer from '../components/Setup/setupSlice';
-import homeReducer from '../components/Home/homeSlice';
 import { createAlertsManager } from '@bigcommerce/big-design';
+import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
+
+import homeReducer from '../components/Home/homeSlice';
+import setupReducer from '../components/Setup/setupSlice';
 
 export const store = configureStore({
   reducer: {

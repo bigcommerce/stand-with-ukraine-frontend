@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
 import { RootState } from '../../state/store';
 import {
-  publishWidget,
   fetchStoreStatus,
-  removeWidget,
   fetchStoreURL,
+  publishWidget,
+  removeWidget,
 } from './homeAPI';
 
 export type LoadingState = 'idle' | 'loading' | 'failed';

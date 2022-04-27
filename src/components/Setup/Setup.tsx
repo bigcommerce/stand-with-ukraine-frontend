@@ -1,17 +1,19 @@
-import { Stepper } from '@bigcommerce/big-design';
 import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../state/hooks';
+
+import { Stepper } from '@bigcommerce/big-design';
+
+import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import {
-  Steps,
-  showFooter,
+  getConfiguration,
   hideFooter,
   selectCurrentStep,
-  getConfiguration,
+  showFooter,
+  Steps,
 } from './setupSlice';
 import Charity from './Steps/Charity';
-import Placement from './Steps/Placement';
-import Modal from './Steps/Modal';
 import Color from './Steps/Color';
+import Modal from './Steps/Modal';
+import Placement from './Steps/Placement';
 
 export default function Setup() {
   const currentStep = useAppSelector(selectCurrentStep);

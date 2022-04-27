@@ -1,9 +1,11 @@
-import { Modal } from '@bigcommerce/big-design';
 import { useCallback, useMemo } from 'react';
+
+import { Modal } from '@bigcommerce/big-design';
+
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { alertsManager, RootState } from '../../state/store';
 import { resetSteps } from '../Setup/setupSlice';
-import { remove, hideRemoveDialog } from './homeSlice';
+import { hideRemoveDialog, remove } from './homeSlice';
 
 function selectModalOpenState(state: RootState) {
   return state.home.showRemoveDialog;

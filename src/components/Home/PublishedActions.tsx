@@ -1,7 +1,9 @@
-import { Button, Link } from '@bigcommerce/big-design';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { Button, Link } from '@bigcommerce/big-design';
+
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { goToStep } from '../Setup/setupSlice';
 import { preview, showRemoveDialog } from './homeSlice';

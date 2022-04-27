@@ -1,9 +1,11 @@
-import { Panel, Radio } from '@bigcommerce/big-design';
 import React, { useCallback, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../state/hooks';
-import { configureButtons, setWidgetStyle, WidgetStyle } from '../setupSlice';
-import { RootState } from '../../../state/store';
 import styled from 'styled-components';
+
+import { Panel, Radio } from '@bigcommerce/big-design';
+
+import { useAppDispatch, useAppSelector } from '../../../state/hooks';
+import { RootState } from '../../../state/store';
+import { configureButtons, setWidgetStyle, WidgetStyle } from '../setupSlice';
 import { WIDGET_STYLES } from './common/data';
 
 const SelectWrapper = styled.div`

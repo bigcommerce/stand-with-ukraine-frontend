@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import { useAppSelector } from '../../../state/hooks';
-import { RootState } from '../../../state/store';
+
 import { ReactComponent as CloseSVG } from '../../../assets/Close.svg';
 import { ReactComponent as LogoSVG } from '../../../assets/logo.svg';
 import HeroImagePNG from '../../../assets/Preview/background.png';
+import { useAppSelector } from '../../../state/hooks';
+import { RootState } from '../../../state/store';
 import { CHARITIES } from './common/data';
 import PreviewItem from './PreviewItem';
 

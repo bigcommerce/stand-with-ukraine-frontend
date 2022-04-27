@@ -1,6 +1,8 @@
-import { Panel } from '@bigcommerce/big-design';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+
+import { Panel } from '@bigcommerce/big-design';
+
 import Content from '../components/Home/Content';
 import FAQ from '../components/Home/FAQ';
 import Header from '../components/Home/Header';

@@ -1,3 +1,5 @@
+import React, { useCallback, useEffect, useState } from 'react';
+
 import {
   Box,
   Form,
@@ -7,7 +9,7 @@ import {
   Tabs,
   Textarea,
 } from '@bigcommerce/big-design';
-import React, { useCallback, useEffect, useState } from 'react';
+
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import { RootState } from '../../../state/store';
 import { configureButtons, setModalBody, setModalTitle } from '../setupSlice';

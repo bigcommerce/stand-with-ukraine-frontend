@@ -1,6 +1,8 @@
-import { Checkbox, Collapse, Link, Panel, Text } from '@bigcommerce/big-design';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
+
+import { Checkbox, Collapse, Link, Panel, Text } from '@bigcommerce/big-design';
+
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import { RootState } from '../../../state/store';
 import {
@@ -88,8 +90,13 @@ function SelectCharity({
     const paragraphs = description.split('\n');
 
     return paragraphs.map((item, key) => (
-      <Text key={key} marginBottom="none">{item} {key === (paragraphs.length - 1)
-        && <Link href={link} target="_blank" external>Learn more</Link>}
+      <Text key={key} marginBottom="none">
+        {item}{' '}
+        {key === paragraphs.length - 1 && (
+          <Link href={link} target="_blank" external>
+            Learn more
+          </Link>
+        )}
       </Text>
     ));
   }, [description, link]);
@@ -161,7 +168,10 @@ export default function Charity() {
       </BodySmall>
       <Grid>
         {CHARITIES.map(
-          ({ identifier, name, image: ImageComponent, description, link }, index) => (
+          (
+            { identifier, name, image: ImageComponent, description, link },
+            index
+          ) => (
             <SelectCharity
               key={index}
               selected={Boolean(charities.includes(identifier))}

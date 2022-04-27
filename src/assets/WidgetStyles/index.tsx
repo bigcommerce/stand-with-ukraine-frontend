@@ -1,5 +1,5 @@
-import BlueWidgetStyle from './BlueStyle.png';
 import BlackWidgetStyle from './BlackStyle.png';
+import BlueWidgetStyle from './BlueStyle.png';
 import WhiteWidgetStyle from './WhiteStyle.png';
 
 export function BlueWidget() {

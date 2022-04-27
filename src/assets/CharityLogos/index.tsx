@@ -1,7 +1,8 @@
-import Unicef from './Unicef.png';
+import styled from 'styled-components';
+
 import NewUkraine from './NewUkraine.png';
 import Razom from './Razom.png';
-import styled from 'styled-components';
+import Unicef from './Unicef.png';
 
 const Image = styled.img`
   height: 70px;

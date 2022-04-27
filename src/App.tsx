@@ -1,12 +1,14 @@
-import { AlertsManager, GlobalStyles } from '@bigcommerce/big-design';
-import { theme } from '@bigcommerce/big-design-theme';
+import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+
+import { AlertsManager, GlobalStyles } from '@bigcommerce/big-design';
+import { theme } from '@bigcommerce/big-design-theme';
+
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import { store, alertsManager } from './state/store';
 import Setup from './pages/Setup';
-import { Provider } from 'react-redux';
+import { alertsManager, store } from './state/store';
 
 const AppGlobalStyles = createGlobalStyle`
   #stand-with-ukraine {

@@ -1,10 +1,10 @@
 import {
-  UnicefLogo,
   NewUkraineLogo,
-  RazomLogo,
-  UnicefLogoProps,
   NewUkraineLogoProps,
+  RazomLogo,
   RazomLogoProps,
+  UnicefLogo,
+  UnicefLogoProps,
 } from '../../../../assets/CharityLogos';
 import {
   BottomLeft,

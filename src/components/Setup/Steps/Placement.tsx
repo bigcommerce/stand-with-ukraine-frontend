@@ -1,15 +1,16 @@
-import { Panel, Radio } from '@bigcommerce/big-design';
 import { useCallback, useEffect } from 'react';
+import styled from 'styled-components';
+
+import { Panel, Radio } from '@bigcommerce/big-design';
+
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
+import { RootState } from '../../../state/store';
 import {
   configureButtons,
   setWidgetPlacement,
   WidgetPlacement,
 } from '../setupSlice';
-
 import BodySmall from './common/BodySmall';
-import { RootState } from '../../../state/store';
-import styled from 'styled-components';
 import { PLACEMENT_OPTIONS } from './common/data';
 
 const SelectWrapper = styled.div`

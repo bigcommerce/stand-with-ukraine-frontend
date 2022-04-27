@@ -1,6 +1,6 @@
-import Logo from './Logo';
-
 import styled from 'styled-components';
+
+import Logo from './Logo';
 
 const HeaderGroup = styled.div`
   height: 40px;

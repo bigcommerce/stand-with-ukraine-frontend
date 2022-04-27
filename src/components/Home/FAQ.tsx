@@ -1,6 +1,7 @@
-import { Collapse, Link, LinkProps } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import { Collapse, Link, LinkProps } from '@bigcommerce/big-design';
 
 const FAQ_LIST: { question: string; answer: string; link?: LinkProps }[] = [
   {

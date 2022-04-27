@@ -1,6 +1,7 @@
 import { AsyncThunkAction, Dispatch } from '@reduxjs/toolkit';
-import counterReducer, { loadStatus } from './homeSlice';
+
 import { fetchStoreStatus } from './homeAPI';
+import counterReducer, { loadStatus } from './homeSlice';
 
 jest.mock('./homeAPI.ts', () => ({
   fetchStoreStatus: jest.fn(),
