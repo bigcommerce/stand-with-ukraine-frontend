@@ -55,8 +55,7 @@ export default function Content() {
     <ContentWrapper>
       <h4>
         By adding a widget you can show your support and give shoppers an easy
-        way to donate. Widget will not be shown at checkout pages. How does it
-        work?
+        way to donate. Widget will not be shown at checkout pages.
       </h4>
       <h5>How does it work?</h5>
       <ol>
