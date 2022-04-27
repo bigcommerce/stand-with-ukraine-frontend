@@ -88,9 +88,10 @@ export default function Modal() {
   }, []);
 
   return (
-    <Panel header="Customize modal">
+    <Panel header="Customize pop-up">
       <BodySmall>
-        Click on the widget will open the modal with detailed information.
+        When shoppers click or tap the widget they will be shown a pop-up with
+        more info. You can customize the message or use the default text.
       </BodySmall>
       <Tabs activeTab={tab} items={tabs} onTabClick={setTab as any}></Tabs>
       <Box marginTop="large">

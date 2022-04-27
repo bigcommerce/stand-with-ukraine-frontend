@@ -1,9 +1,10 @@
 import { Button, Link } from '@bigcommerce/big-design';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { useAppDispatch, useAppSelector } from '../../state/hooks';
+import { useAppDispatch } from '../../state/hooks';
+import { GetStoreID } from '../../utils';
 import { goToStep } from '../Setup/setupSlice';
-import { selectHome, showRemoveDialog } from './homeSlice';
+import { showRemoveDialog } from './homeSlice';
 import RemoveModal from './RemoveModal';
 
 const LoveMessageContainer = styled.div`
@@ -28,23 +29,26 @@ const ActionContainer = styled.div`
 
     & > button,
     & > a {
-      margin-left: 1rem;
+      margin-left: 1.5rem !important;
       margin-top: 0;
     }
 
     // don't add margin left for remove button
     > * {
       &:first-child {
-        margin-left: 0;
+        margin-left: 0 !important;
       }
     }
   }
 `;
 
 export default function PublishedActions() {
-  const { storeUrl } = useAppSelector(selectHome);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const storeUrl = `https://store-${
+    GetStoreID() || 'test-store'
+  }.mybigcommerce.com`;
 
   return (
     <>
@@ -71,11 +75,9 @@ export default function PublishedActions() {
         >
           Edit
         </Button>
-        {/* {storeUrl ? ( */}
-        <Link href={storeUrl || '#'} target="_blank" rel="noreferrer" external>
+        <Link href={storeUrl} target="_blank" rel="noreferrer" external>
           View
         </Link>
-        {/* ) : null} */}
       </ActionContainer>
     </>
   );

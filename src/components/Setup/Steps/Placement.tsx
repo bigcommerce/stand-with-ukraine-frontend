@@ -102,8 +102,8 @@ export default function Placement() {
   return (
     <Panel header="Select widget layout">
       <BodySmall>
-        Where should your widget appear on a page? Mobile will follow the
-        desktop approach.
+        This determines where the widget will appear on the page. The layout
+        will be the same for both desktop and mobile shoppers.
       </BodySmall>
       <Grid>
         {PLACEMENT_OPTIONS.map(

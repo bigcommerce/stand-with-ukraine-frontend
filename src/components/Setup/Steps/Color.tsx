@@ -3,7 +3,6 @@ import React, { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import { configureButtons, setWidgetStyle, WidgetStyle } from '../setupSlice';
 import { RootState } from '../../../state/store';
-import BodySmall from './common/BodySmall';
 import styled from 'styled-components';
 import { WIDGET_STYLES } from './common/data';
 
@@ -69,7 +68,7 @@ function selectWidgetStyle(state: RootState): WidgetStyle {
   return state.setup.widgetConfiguration.style;
 }
 
-export default function Style() {
+export default function Color() {
   const widgetStyle = useAppSelector(selectWidgetStyle);
   const dispatch = useAppDispatch();
 
@@ -90,10 +89,7 @@ export default function Style() {
   }, []);
 
   return (
-    <Panel header="Select widget style">
-      <BodySmall>
-        Please, select a widget style that fits your site colors the most
-      </BodySmall>
+    <Panel header="Select widget color">
       <Grid>
         {WIDGET_STYLES.map(({ style, image: ImageComponent }, index) => (
           <SelectWidgetStyle

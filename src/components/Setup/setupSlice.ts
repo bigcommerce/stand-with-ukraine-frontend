@@ -11,7 +11,7 @@ export type WidgetPlacement =
   | 'bottom-middle'
   | 'bottom-right';
 export type LoadingState = 'idle' | 'loading' | 'failed';
-export const Steps = ['Style', 'Layout', 'Charity', 'Pop-Up'];
+export const Steps = ['Color', 'Layout', 'Charity', 'Pop-Up'];
 export type WidgetConfiguration = {
   style: WidgetStyle;
   placement: WidgetPlacement;

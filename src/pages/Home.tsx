@@ -8,7 +8,7 @@ import { loadStatus, selectHome } from '../components/Home/homeSlice';
 import NotPublishedActions from '../components/Home/NotPublishedActions';
 import PublishedActions from '../components/Home/PublishedActions';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
-import { SetSessionToken } from '../utils';
+import { SetSessionToken, SetStoreID } from '../utils';
 
 export default function Home() {
   const { published } = useAppSelector(selectHome);
@@ -19,6 +19,10 @@ export default function Home() {
     const token = searchParams.get('token');
     if (token && token.split('.').length === 3) {
       SetSessionToken(token);
+    }
+    const storeId = searchParams.get('store-id');
+    if (storeId && storeId.length > 2) {
+      SetStoreID(storeId);
     }
 
     dispatch(loadStatus());

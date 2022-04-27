@@ -3,10 +3,12 @@ import { useAppSelector } from '../../../state/hooks';
 import { RootState } from '../../../state/store';
 import { ReactComponent as CloseSVG } from '../../../assets/Close.svg';
 import { ReactComponent as LogoSVG } from '../../../assets/logo.svg';
+import HeroImagePNG from '../../../assets/Preview/background.png';
+import { CHARITIES } from './common/data';
+import PreviewItem from './PreviewItem';
 
 const ModalPreviewBox = styled.div`
   max-width: 756px;
-  max-height: 477px;
 
   background: #ffffff;
   border: 1px solid #f0f3ff;
@@ -46,7 +48,11 @@ const BodyText = styled.p`
   font-size: 16px;
   line-height: 26px;
   color: #313440;
-  margin: 1rem 0 0 0;
+  margin: 1rem 0 1rem 0;
+`;
+
+const HeroImage = styled.img`
+  width: 696px;
 `;
 
 function selectWidgetConfiguration(state: RootState) {
@@ -55,6 +61,9 @@ function selectWidgetConfiguration(state: RootState) {
 
 export default function PreviewTab() {
   const configuration = useAppSelector(selectWidgetConfiguration);
+  const charity_list = configuration.charity_selections.map((item) =>
+    CHARITIES.find((charity) => charity.identifier === item)
+  );
 
   return (
     <ModalPreviewBox>
@@ -66,6 +75,13 @@ export default function PreviewTab() {
       <CloseSVGContainer>
         <CloseSVG />
       </CloseSVGContainer>
+      <HeroImage
+        src={HeroImagePNG}
+        alt="Protestors standing against war in Ukraine"
+      ></HeroImage>
+      {charity_list.map((item, key) =>
+        item ? <PreviewItem key={key} {...item} /> : null
+      )}
     </ModalPreviewBox>
   );
 }

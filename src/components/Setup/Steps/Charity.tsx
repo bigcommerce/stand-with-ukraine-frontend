@@ -144,8 +144,8 @@ export default function Charity() {
   return (
     <Panel header="Choose your charities">
       <BodySmall>
-        Choose up to 3 charities to be offered to shoppers. Charities listed
-        below are trustworthy and safe.
+        All charities are trusted, non-profit organizations involved with
+        Ukrainian relief efforts.
       </BodySmall>
       <Grid>
         {CHARITIES.map(

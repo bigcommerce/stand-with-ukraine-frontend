@@ -8,13 +8,26 @@ const Image = styled.img`
   width: 70px;
 `;
 
+export const UnicefLogoProps = {
+  src: Unicef,
+  alt: 'Unicef Logo',
+};
 export function UnicefLogo() {
-  return <Image src={Unicef} alt="Unicef Logo" />;
+  return <Image {...UnicefLogoProps} />;
 }
 
+export const RazomLogoProps = {
+  src: Razom,
+  alt: 'Razom Logo',
+};
 export function RazomLogo() {
-  return <Image src={Razom} alt="Razom Logo" />;
+  return <Image {...RazomLogoProps} />;
 }
+
+export const NewUkraineLogoProps = {
+  src: NewUkraine,
+  alt: 'New Ukraine Logo',
+};
 export function NewUkraineLogo() {
-  return <Image src={NewUkraine} alt="New Ukraine Logo" />;
+  return <Image {...NewUkraineLogoProps} />;
 }

@@ -11,7 +11,7 @@ import {
 import Charity from './Steps/Charity';
 import Placement from './Steps/Placement';
 import Modal from './Steps/Modal';
-import Style from './Steps/Style';
+import Color from './Steps/Color';
 
 export default function Setup() {
   const currentStep = useAppSelector(selectCurrentStep);
@@ -33,7 +33,7 @@ export default function Setup() {
   return (
     <>
       <Stepper steps={Steps} currentStep={currentStep}></Stepper>
-      {currentStep === 0 ? <Style /> : null}
+      {currentStep === 0 ? <Color /> : null}
       {currentStep === 1 ? <Placement /> : null}
       {currentStep === 2 ? <Charity /> : null}
       {currentStep === 3 ? <Modal /> : null}
