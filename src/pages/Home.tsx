@@ -2,6 +2,7 @@ import { Panel } from '@bigcommerce/big-design';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Content from '../components/Home/Content';
+import FAQ from '../components/Home/FAQ';
 import Header from '../components/Home/Header';
 import { loadStatus, selectHome } from '../components/Home/homeSlice';
 import NotPublishedActions from '../components/Home/NotPublishedActions';
@@ -29,6 +30,7 @@ export default function Home() {
         <Header published={published} />
         <Content />
         {published ? <PublishedActions /> : <NotPublishedActions />}
+        <FAQ />
       </Panel>
     </>
   );

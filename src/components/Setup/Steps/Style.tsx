@@ -25,6 +25,10 @@ const SelectWrapper = styled.div`
   &:hover {
     border-color: #b4bad1;
   }
+
+  & img {
+    width: 90%;
+  }
 `;
 
 const Grid = styled.div`

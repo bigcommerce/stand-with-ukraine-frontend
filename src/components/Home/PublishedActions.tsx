@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { goToStep } from '../Setup/setupSlice';
-import FAQ from './FAQ';
 import { selectHome, showRemoveDialog } from './homeSlice';
 import RemoveModal from './RemoveModal';
 
@@ -78,7 +77,6 @@ export default function PublishedActions() {
         </Link>
         {/* ) : null} */}
       </ActionContainer>
-      <FAQ />
     </>
   );
 }

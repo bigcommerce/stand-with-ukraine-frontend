@@ -1,7 +1,6 @@
-import { Collapse } from '@bigcommerce/big-design';
+import { Collapse, Link } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import BodySmall from '../Setup/Steps/common/BodySmall';
 
 const FAQ_LIST: { question: string; answer: string }[] = [
   {
@@ -24,27 +23,60 @@ const FAQ_LIST: { question: string; answer: string }[] = [
   },
 ];
 
-const Question = styled.h3`
-  font-style: normal;
-  font-weight: 700;
+const Question = styled.div`
   font-size: 16px;
+  font-weight: 700;
   line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-top: 1rem;
+
+  color: #5e637a;
 `;
+
+const Answer = styled.div`
+  font-family: Source Sans Pro;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin: 0.25rem 0 0.5rem 0;
+
+  color: #5e637a;
+`;
+
+const ActionContainer = styled.div`
+  display: flex;
+  margin: 1.5rem 0 0 0;
+
+  & > a {
+    margin-left: 3rem;
+  }
+`;
+
+const SUPPORT_LINK =
+  'https://docs.google.com/forms/d/e/1FAIpQLSdjibRgptwc7j_AMQ54qes93nfyxhXrzYSNnsmf2_7hs6gClw/viewform';
 
 export default function FAQ() {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <Collapse
-        title={open ? 'Hide FAQ' : 'Show FAQ'}
-        onCollapseChange={setOpen}
-      ></Collapse>
+      <ActionContainer>
+        <Collapse
+          title={open ? 'Hide FAQ' : 'Show FAQ'}
+          onCollapseChange={setOpen}
+        ></Collapse>
+        <Link href={SUPPORT_LINK} target="_blank" rel="noreferrer" external>
+          Get Support
+        </Link>
+      </ActionContainer>
       {open
         ? FAQ_LIST.map(({ question, answer }, index) => (
             <React.Fragment key={index}>
               <Question>{question}</Question>
-              <BodySmall>{answer}</BodySmall>
+              <Answer>{answer}</Answer>
             </React.Fragment>
           ))
         : null}

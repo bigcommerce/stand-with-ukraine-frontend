@@ -6,6 +6,7 @@ const Title = styled.h2`
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
+  margin: 0 0 1rem 0;
 `;
 
 const WidgetAdded = styled.div`
@@ -38,7 +39,7 @@ export default function Header({ published }: { published: boolean }) {
       <Title>
         {published
           ? 'You added a widget to your store'
-          : 'Add widget to your store to support Ukraine'}
+          : 'Help Ukraine by adding a widget to your store'}
       </Title>
       {published ? <WidgetAdded>Widget Added</WidgetAdded> : null}
     </Wrapper>

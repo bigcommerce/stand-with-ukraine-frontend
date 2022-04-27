@@ -12,9 +12,9 @@ import {
   TopRight,
 } from '../../../../assets/WidgetPlacement';
 import {
-  BlackWidgetStyleSVG,
-  BlueWidgetStyleSVG,
-  WhiteWidgetStyleSVG,
+  BlackWidget,
+  BlueWidget,
+  WhiteWidget,
 } from '../../../../assets/WidgetStyles';
 import { WidgetPlacement, WidgetStyle } from '../../setupSlice';
 
@@ -92,14 +92,14 @@ export const WIDGET_STYLES: {
 }[] = [
   {
     style: 'blue',
-    image: BlueWidgetStyleSVG,
+    image: BlueWidget,
   },
   {
     style: 'black',
-    image: BlackWidgetStyleSVG,
+    image: BlackWidget,
   },
   {
     style: 'white',
-    image: WhiteWidgetStyleSVG,
+    image: WhiteWidget,
   },
 ];
