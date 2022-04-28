@@ -69,10 +69,11 @@ Object {
     },
     "show": false,
   },
-  "steps": Object {
-    "currentStep": 0,
-    "status": "idle",
-  },
+  "published": false,
+  "showRemoveDialog": false,
+  "status": "idle",
+  "step": 0,
+  "storeUrl": undefined,
   "widgetConfiguration": Object {
     "charity_selections": Array [
       "razom",
