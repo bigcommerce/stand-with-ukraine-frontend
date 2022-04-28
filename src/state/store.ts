@@ -1,14 +1,10 @@
 import { createAlertsManager } from '@bigcommerce/big-design';
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 
-import homeReducer from '../components/Home/homeSlice';
-import setupReducer from '../components/Setup/setupSlice';
+import reducer from './mainSlice';
 
 export const store = configureStore({
-  reducer: {
-    setup: setupReducer,
-    home: homeReducer,
-  },
+  reducer,
 });
 
 export type AppDispatch = typeof store.dispatch;

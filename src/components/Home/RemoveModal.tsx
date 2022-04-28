@@ -3,16 +3,16 @@ import { useCallback, useMemo } from 'react';
 import { Modal } from '@bigcommerce/big-design';
 
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
-import { alertsManager, RootState } from '../../state/store';
-import { resetSteps } from '../Setup/setupSlice';
-import { hideRemoveDialog, remove } from './homeSlice';
-
-function selectModalOpenState(state: RootState) {
-  return state.home.showRemoveDialog;
-}
+import {
+  hideRemoveDialog,
+  remove,
+  resetSteps,
+  selectShowRemoveDialog,
+} from '../../state/mainSlice';
+import { alertsManager } from '../../state/store';
 
 export default function RemoveModal() {
-  const isOpen = useAppSelector(selectModalOpenState);
+  const isOpen = useAppSelector(selectShowRemoveDialog);
   const dispatch = useAppDispatch();
 
   const closeModal = useCallback(
@@ -20,8 +20,8 @@ export default function RemoveModal() {
     [dispatch]
   );
 
-  const removeWidget = useCallback(() => {
-    dispatch(remove());
+  const removeWidget = useCallback(async () => {
+    await dispatch(remove());
     dispatch(resetSteps());
     alertsManager.add({
       autoDismiss: true,

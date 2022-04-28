@@ -4,8 +4,12 @@ import styled from 'styled-components';
 import { Panel, Radio } from '@bigcommerce/big-design';
 
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
+import {
+  configureButtons,
+  setWidgetStyle,
+  WidgetStyle,
+} from '../../../state/mainSlice';
 import { RootState } from '../../../state/store';
-import { configureButtons, setWidgetStyle, WidgetStyle } from '../setupSlice';
 import { WIDGET_STYLES } from './common/data';
 
 const SelectWrapper = styled.div`
@@ -67,7 +71,7 @@ function SelectWidgetStyle({
 }
 
 function selectWidgetStyle(state: RootState): WidgetStyle {
-  return state.setup.widgetConfiguration.style;
+  return state.widgetConfiguration.style;
 }
 
 export default function Color() {

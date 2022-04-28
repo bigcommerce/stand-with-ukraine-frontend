@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import { Checkbox, Collapse, Link, Panel, Text } from '@bigcommerce/big-design';
 
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
-import { RootState } from '../../../state/store';
 import {
   configureButtons,
   configureContinueButton,
   toggleCharity,
-} from '../setupSlice';
+} from '../../../state/mainSlice';
+import { RootState } from '../../../state/store';
 import BodySmall from './common/BodySmall';
 import { CHARITIES, MAX_SELECTION } from './common/data';
 
@@ -125,9 +125,9 @@ function SelectCharity({
 }
 
 function selectWidgetCharities(state: RootState) {
-  const charities = state.setup.widgetConfiguration.charity_selections;
+  const charities = state.widgetConfiguration.charity_selections;
   const numCharitiesSelected = Object.values(
-    state.setup.widgetConfiguration.charity_selections
+    state.widgetConfiguration.charity_selections
   ).filter((value) => value).length;
   return {
     charities,
@@ -135,7 +135,6 @@ function selectWidgetCharities(state: RootState) {
     limitReached: numCharitiesSelected >= MAX_SELECTION,
   };
 }
-
 export default function Charity() {
   const { charities, numCharities, limitReached } = useAppSelector(
     selectWidgetCharities

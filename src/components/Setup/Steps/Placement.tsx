@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import { Panel, Radio } from '@bigcommerce/big-design';
 
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
-import { RootState } from '../../../state/store';
 import {
   configureButtons,
   setWidgetPlacement,
   WidgetPlacement,
-} from '../setupSlice';
+} from '../../../state/mainSlice';
+import { RootState } from '../../../state/store';
 import BodySmall from './common/BodySmall';
 import { PLACEMENT_OPTIONS } from './common/data';
 
@@ -71,7 +71,7 @@ function SelectWidgetPlacement({
 }
 
 function selectWidgetPlacement(state: RootState): WidgetPlacement {
-  return state.setup.widgetConfiguration.placement;
+  return state.widgetConfiguration.placement;
 }
 
 const Grid = styled.div`

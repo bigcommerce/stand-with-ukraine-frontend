@@ -6,10 +6,15 @@ import { Button } from '@bigcommerce/big-design';
 
 import { ReactComponent as BigDesignLogoSVG } from '../assets/big-design-logo.svg';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
+import { writeConfiguration } from '../state/mainApi';
+import {
+  nextStep,
+  previousStep,
+  publish,
+  selectConfiguration,
+  selectFooter,
+} from '../state/mainSlice';
 import { alertsManager } from '../state/store';
-import { publish } from './Home/homeSlice';
-import { nextStep, previousStep, selectFooter } from './Setup/setupSlice';
-import { writeConfiguration } from './Setup/stepsAPI';
 
 const FooterDiv = styled.div`
   display: flex;
@@ -64,9 +69,7 @@ const BuiltWithContainer = styled.a`
 export default function Footer() {
   const { show, cancelButton, backButton, continueButton, publishButton } =
     useAppSelector(selectFooter);
-  const widgetConfiguration = useAppSelector(
-    (state) => state.setup.widgetConfiguration
-  );
+  const widgetConfiguration = useAppSelector(selectConfiguration);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -82,7 +85,7 @@ export default function Footer() {
 
   const handlePublishButton = useCallback(async () => {
     await writeConfiguration(widgetConfiguration);
-    dispatch(publish());
+    await dispatch(publish());
     alertsManager.add({
       autoDismiss: true,
       messages: [

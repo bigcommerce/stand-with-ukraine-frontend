@@ -1,7 +1,13 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { RootState } from '../../state/store';
-import { readConfiguration, writeConfiguration } from './stepsAPI';
+import {
+  fetchStoreStatus,
+  fetchStoreURL,
+  publishWidget,
+  readConfiguration,
+  removeWidget,
+  writeConfiguration,
+} from './mainApi';
 
 export type WidgetStyle = 'blue' | 'black' | 'white';
 export type WidgetPlacement =
@@ -21,11 +27,12 @@ export type WidgetConfiguration = {
   modal_body: string;
 };
 
-export interface SetupState {
-  steps: {
-    currentStep: number;
-    status: LoadingState;
-  };
+export interface MainState {
+  status: LoadingState;
+  step: number;
+  published: boolean;
+  storeUrl?: string;
+  showRemoveDialog: boolean;
   footer: {
     show: boolean;
     cancelButton: {
@@ -45,15 +52,15 @@ export interface SetupState {
       disabled: boolean;
     };
   };
-
   widgetConfiguration: WidgetConfiguration;
 }
 
-const initialState: SetupState = {
-  steps: {
-    currentStep: 0,
-    status: 'idle',
-  },
+const initialState: MainState = {
+  published: false,
+  showRemoveDialog: false,
+  status: 'idle',
+  step: 0,
+  storeUrl: undefined,
   footer: {
     show: false,
     cancelButton: {
@@ -93,25 +100,35 @@ export const saveConfiguration = createAsyncThunk(
   writeConfiguration
 );
 
-export const setupSlice = createSlice({
-  name: 'setup',
+export const loadStatus = createAsyncThunk('home/loadStatus', fetchStoreStatus);
+export const publish = createAsyncThunk('home/publish', publishWidget);
+export const remove = createAsyncThunk('home/remove', removeWidget);
+export const preview = createAsyncThunk('home/preview', fetchStoreURL);
+
+export const mainSlice = createSlice({
+  name: 'main',
   initialState,
   reducers: {
     resetSteps: (state) => {
-      state.steps = initialState.steps;
+      state.step = initialState.step;
       state.footer = initialState.footer;
       state.widgetConfiguration = initialState.widgetConfiguration;
     },
     goToStep: (state, action: PayloadAction<number>) => {
-      state.steps.currentStep = action.payload;
+      state.step = action.payload;
     },
     nextStep: (state) => {
-      state.steps.currentStep += 1;
+      state.step += 1;
     },
     previousStep: (state) => {
-      state.steps.currentStep -= 1;
+      state.step -= 1;
     },
-    // Use the PayloadAction type to declare the contents of `action.payload`
+    showRemoveDialog: (state) => {
+      state.showRemoveDialog = true;
+    },
+    hideRemoveDialog: (state) => {
+      state.showRemoveDialog = false;
+    },
     setWidgetStyle: (state, action: PayloadAction<WidgetStyle>) => {
       state.widgetConfiguration.style = action.payload;
     },
@@ -224,17 +241,49 @@ export const setupSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getConfiguration.pending, (state) => {
-        state.steps.status = 'loading';
+        state.status = 'loading';
       })
       .addCase(getConfiguration.fulfilled, (state, action) => {
-        state.steps.status = 'idle';
+        state.status = 'idle';
         state.widgetConfiguration = action.payload;
       })
       .addCase(saveConfiguration.pending, (state) => {
-        state.steps.status = 'loading';
+        state.status = 'loading';
       })
       .addCase(saveConfiguration.fulfilled, (state) => {
-        state.steps.status = 'idle';
+        state.status = 'idle';
+      })
+      .addCase(loadStatus.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(loadStatus.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.published = action.payload.published;
+      })
+      .addCase(loadStatus.rejected, (state) => {
+        state.status = 'failed';
+      })
+      .addCase(publish.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(publish.fulfilled, (state) => {
+        state.status = 'idle';
+        state.published = true;
+      })
+      .addCase(remove.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(remove.fulfilled, (state) => {
+        state.status = 'idle';
+        state.published = false;
+        state.showRemoveDialog = false;
+      })
+      .addCase(preview.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(preview.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.storeUrl = action.payload.secure_url;
       });
   },
 });
@@ -256,14 +305,26 @@ export const {
   configureCancelButton,
   configureButtons,
   toggleCharity,
-} = setupSlice.actions;
+  showRemoveDialog,
+  hideRemoveDialog,
+} = mainSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-export const selectStep = (state: RootState) => state.setup;
-export const selectCurrentStep = (state: RootState) =>
-  state.setup.steps.currentStep;
-export const selectFooter = (state: RootState) => state.setup.footer;
-
-export default setupSlice.reducer;
+export const selectStep = (state: MainState) => state;
+export const selectCurrentStep = (state: MainState) => state.step;
+export const selectFooter = (state: MainState) => state.footer;
+export const selectConfiguration = (state: MainState) =>
+  state.widgetConfiguration;
+export const selectStoreUrl = (state: MainState) => state.storeUrl;
+export const selectShowRemoveDialog = (state: MainState) =>
+  state.showRemoveDialog;
+export const selectHome = (state: MainState) => ({
+  published: state.published,
+  showRemoveDialog: state.showRemoveDialog,
+  status: state.status,
+  storeUrl: state.storeUrl,
+});
+export const selectLoadingStatus = (state: MainState) => state.status;
+export default mainSlice.reducer;

@@ -5,8 +5,12 @@ import styled from 'styled-components';
 import { Button, Link } from '@bigcommerce/big-design';
 
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
-import { goToStep } from '../Setup/setupSlice';
-import { preview, showRemoveDialog } from './homeSlice';
+import {
+  goToStep,
+  preview,
+  selectStoreUrl,
+  showRemoveDialog,
+} from '../../state/mainSlice';
 import RemoveModal from './RemoveModal';
 
 const LoveMessageContainer = styled.div`
@@ -46,7 +50,7 @@ const ActionContainer = styled.div`
 `;
 
 export default function PublishedActions() {
-  const storeUrl = useAppSelector((state) => state.home.storeUrl);
+  const storeUrl = useAppSelector(selectStoreUrl);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

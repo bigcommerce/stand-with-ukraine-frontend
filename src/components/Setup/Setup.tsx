@@ -9,7 +9,7 @@ import {
   selectCurrentStep,
   showFooter,
   Steps,
-} from './setupSlice';
+} from '../../state/mainSlice';
 import Charity from './Steps/Charity';
 import Color from './Steps/Color';
 import Modal from './Steps/Modal';

@@ -57,7 +57,7 @@ const HeroImage = styled.img`
 `;
 
 function selectWidgetConfiguration(state: RootState) {
-  return state.setup.widgetConfiguration;
+  return state.widgetConfiguration;
 }
 
 export default function PreviewTab() {

@@ -1,15 +1,23 @@
-import counterReducer, {
+import { AsyncThunkAction, Dispatch } from '@reduxjs/toolkit';
+
+import { fetchStoreStatus } from './mainApi';
+import mainReducer, {
+  loadStatus,
+  MainState,
   nextStep,
   previousStep,
-  SetupState,
-} from './setupSlice';
+} from './mainSlice';
+
+jest.mock('./mainApi.ts', () => ({
+  fetchStoreStatus: jest.fn(),
+}));
 
 describe('counter reducer', () => {
-  const initialState: SetupState = {
-    steps: {
-      currentStep: 3,
-      status: 'idle',
-    },
+  const initialState: MainState = {
+    showRemoveDialog: false,
+    published: false,
+    status: 'idle',
+    step: 3,
     footer: {
       show: false,
       cancelButton: {
@@ -40,8 +48,7 @@ describe('counter reducer', () => {
   };
 
   it('should handle initial state', () => {
-    expect(counterReducer(undefined, { type: 'unknown' }))
-      .toMatchInlineSnapshot(`
+    expect(mainReducer(undefined, { type: 'unknown' })).toMatchInlineSnapshot(`
 Object {
   "footer": Object {
     "backButton": Object {
@@ -82,12 +89,35 @@ Object {
   });
 
   it('should handle increment', () => {
-    const actual = counterReducer(initialState, nextStep());
-    expect(actual.steps.currentStep).toEqual(4);
+    const actual = mainReducer(initialState, nextStep());
+    expect(actual.step).toEqual(4);
   });
 
   it('should handle decrement', () => {
-    const actual = counterReducer(initialState, previousStep());
-    expect(actual.steps.currentStep).toEqual(2);
+    const actual = mainReducer(initialState, previousStep());
+    expect(actual.step).toEqual(2);
+  });
+});
+
+describe('loadStore async action', () => {
+  let dispatch: Dispatch;
+  let action: AsyncThunkAction<{ published: boolean }, void, {}>;
+  let getState: () => unknown;
+
+  beforeEach(() => {
+    dispatch = jest.fn();
+    getState = jest.fn();
+    action = loadStatus();
+    (fetchStoreStatus as jest.Mock).mockClear();
+    (fetchStoreStatus as jest.Mock).mockResolvedValue({ published: true });
+  });
+
+  afterAll(() => {
+    jest.unmock('./mainApi.ts');
+  });
+
+  it('should handle load', async () => {
+    await action(dispatch, getState, undefined);
+    expect(fetchStoreStatus).toHaveBeenCalled();
   });
 });

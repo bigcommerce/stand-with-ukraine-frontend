@@ -11,15 +11,19 @@ import {
 } from '@bigcommerce/big-design';
 
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
+import {
+  configureButtons,
+  setModalBody,
+  setModalTitle,
+} from '../../../state/mainSlice';
 import { RootState } from '../../../state/store';
-import { configureButtons, setModalBody, setModalTitle } from '../setupSlice';
 import BodySmall from './common/BodySmall';
 import PreviewTab from './Preview';
 
 function selectWidgetModal(state: RootState) {
   return {
-    modalTitle: state.setup.widgetConfiguration.modal_title,
-    modalBody: state.setup.widgetConfiguration.modal_body,
+    modalTitle: state.widgetConfiguration.modal_title,
+    modalBody: state.widgetConfiguration.modal_body,
   };
 }
 

@@ -19,7 +19,7 @@ import {
   BlueWidget,
   WhiteWidget,
 } from '../../../../assets/WidgetStyles';
-import { WidgetPlacement, WidgetStyle } from '../../setupSlice';
+import { WidgetPlacement, WidgetStyle } from '../../../../state/mainSlice';
 
 export const MAX_SELECTION = 3;
 export interface CharityItem {
