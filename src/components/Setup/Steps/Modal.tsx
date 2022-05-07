@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import {
@@ -32,6 +33,11 @@ const tabs: { id: TAB_TYPE; title: string }[] = [
   { id: 'configure', title: 'Configure' },
   { id: 'preview', title: 'Preview' },
 ];
+
+const ButtonContainer = styled.div`
+  border: 1px solid #D9DCE9;
+  width: 90%;
+`;
 
 function InfoTab() {
   const dispatch = useAppDispatch();
@@ -100,6 +106,7 @@ export default function Modal() {
         more info. You can customize the message or use the default text.
       </BodySmall>
       <Tabs activeTab={tab} items={tabs} onTabClick={setTab as any} />
+      <ButtonContainer/>
       <Box marginTop="large">
         {tab === 'configure' ? <InfoTab /> : null}
         {tab === 'preview' ? <PreviewTab /> : null}

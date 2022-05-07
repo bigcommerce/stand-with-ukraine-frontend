@@ -58,10 +58,10 @@ const Answer = styled.div`
 
 const ActionContainer = styled.div`
   display: flex;
-  margin: 1.5rem 0 0 0;
+  margin: 0.5rem 0 0 0;
 
   & > a {
-    margin-left: 3rem;
+    margin-left: 1.5rem;
   }
 `;
 

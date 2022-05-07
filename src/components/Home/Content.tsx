@@ -59,14 +59,14 @@ export default function Content({ published }: { published: boolean }) {
           way to donate. Widget will not be shown at checkout pages.
         </h4>
       )}
-      <h5>How does it work?</h5>
+      <h5>How it works</h5>
       <ol>
         <li>Pick a color for your widget</li>
         <li>Pick a widget layout</li>
         <li>Choose your preferred charities</li>
         <li>Customize the messaging (optional)</li>
       </ol>
-      <h5>How does it help?</h5>
+      <h5>How it helps</h5>
       <p>
         Clicking the widget opens a pop-up, which shoppers can use to donate to
         any of your preferred charities. All charities are trusted, non-profit
