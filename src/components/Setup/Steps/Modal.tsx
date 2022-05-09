@@ -34,9 +34,12 @@ const tabs: { id: TAB_TYPE; title: string }[] = [
   { id: 'preview', title: 'Preview' },
 ];
 
-const ButtonContainer = styled.div`
-  border: 1px solid #D9DCE9;
-  width: 90%;
+const Divider = styled.hr`
+  color: #D9DCE9;
+  height: 1px
+  width: 100%;
+  max-width: 800px;
+  margin: 0px
 `;
 
 function InfoTab() {
@@ -106,7 +109,7 @@ export default function Modal() {
         more info. You can customize the message or use the default text.
       </BodySmall>
       <Tabs activeTab={tab} items={tabs} onTabClick={setTab as any} />
-      <ButtonContainer/>
+      <Divider/>
       <Box marginTop="large">
         {tab === 'configure' ? <InfoTab /> : null}
         {tab === 'preview' ? <PreviewTab /> : null}
