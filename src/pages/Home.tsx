@@ -31,8 +31,8 @@ export default function Home() {
       <Panel>
         <Header published={published} />
         <Content published={published} />
-        {published ? <PublishedActions /> : <NotPublishedActions />}
         <FAQ />
+        {published ? <PublishedActions /> : <NotPublishedActions />}
       </Panel>
     </>
   );
