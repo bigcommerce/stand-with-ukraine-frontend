@@ -35,7 +35,7 @@ const tabs: { id: TAB_TYPE; title: string }[] = [
 ];
 
 const Divider = styled.hr`
-  color: #D9DCE9;
+  color: #d9dce9;
   height: 1px;
   width: 100%;
   max-width: 800px;
@@ -109,7 +109,7 @@ export default function Modal() {
         more info. You can customize the message or use the default text.
       </BodySmall>
       <Tabs activeTab={tab} items={tabs} onTabClick={setTab as any} />
-      <Divider/>
+      <Divider />
       <Box marginTop="large">
         {tab === 'configure' ? <InfoTab /> : null}
         {tab === 'preview' ? <PreviewTab /> : null}
