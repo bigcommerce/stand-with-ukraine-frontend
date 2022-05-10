@@ -36,10 +36,10 @@ const tabs: { id: TAB_TYPE; title: string }[] = [
 
 const Divider = styled.hr`
   color: #D9DCE9;
-  height: 1px
+  height: 1px;
   width: 100%;
   max-width: 800px;
-  margin: 0px
+  margin: 0px;
 `;
 
 function InfoTab() {
