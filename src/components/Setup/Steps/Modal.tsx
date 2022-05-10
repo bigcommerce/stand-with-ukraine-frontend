@@ -35,13 +35,23 @@ const tabs: { id: TAB_TYPE; title: string }[] = [
 ];
 
 const Divider = styled.hr`
-  color: #d9dce9;
+  background-color: #d9dce9;
+  border: none;
   height: 1px;
   width: 100%;
   max-width: 800px;
   margin: 0px;
+  top: -1px;
+  position: relative;
+  z-index: 0;
 `;
 
+const TabContainer = styled.div`
+  & div[role='tablist'],
+  & button {
+    z-index: 1;
+  }
+`;
 function InfoTab() {
   const dispatch = useAppDispatch();
   const { modalTitle, modalBody } = useAppSelector(selectWidgetModal);
@@ -108,8 +118,10 @@ export default function Modal() {
         When shoppers click or tap the widget they will be shown a pop-up with
         more info. You can customize the message or use the default text.
       </BodySmall>
-      <Tabs activeTab={tab} items={tabs} onTabClick={setTab as any} />
-      <Divider />
+      <TabContainer>
+        <Tabs activeTab={tab} items={tabs} onTabClick={setTab as any} />
+        <Divider />
+      </TabContainer>
       <Box marginTop="large">
         {tab === 'configure' ? <InfoTab /> : null}
         {tab === 'preview' ? <PreviewTab /> : null}
