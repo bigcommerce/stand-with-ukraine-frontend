@@ -22,6 +22,8 @@ const FooterDiv = styled.div`
   width: 100%;
   align-items: center;
   align-self: flex-end;
+  position: sticky;
+  bottom: 0;
 
   background: #ffffff;
   box-shadow: 0px 1px 6px rgba(49, 52, 64, 0.2);
