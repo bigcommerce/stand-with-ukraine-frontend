@@ -1062,31 +1062,31 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bigcommerce/big-design-icons@^0.17.2-alpha.1":
-  version "0.17.2-alpha.1"
-  resolved "https://registry.yarnpkg.com/@bigcommerce/big-design-icons/-/big-design-icons-0.17.2-alpha.1.tgz#a0dbcdc1dbec0a56158287509d07cfd6d1fcc3c8"
-  integrity sha512-66G4priZF33qvGHdOATDTvdIwues6rkdeiAPOpCSfm1lxKl98tuRviGVsBk+tfWXxJcFBlcO6b+zFj2rFVOwzA==
+"@bigcommerce/big-design-icons@^0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@bigcommerce/big-design-icons/-/big-design-icons-0.18.0.tgz#7c4326f617407fb074d41024bc3f40a455cdbf62"
+  integrity sha512-cnieiYXnbtiR24dK2g0+tGWMiHuxkwrXQnYoEUP4SobSVXBmQcp/d0cpb0DyT01s+TROzSqIA36+TeKBb4TvEg==
   dependencies:
     "@babel/runtime" "^7.15.4"
-    "@bigcommerce/big-design-theme" "^0.13.2-alpha.1"
+    "@bigcommerce/big-design-theme" "^0.14.0"
     react-uid "^2.3.1"
 
-"@bigcommerce/big-design-theme@^0.13.2-alpha.1":
-  version "0.13.2-alpha.1"
-  resolved "https://registry.yarnpkg.com/@bigcommerce/big-design-theme/-/big-design-theme-0.13.2-alpha.1.tgz#ec719822571c84bbe95b989690961b4358471396"
-  integrity sha512-BJesd8SrObVK5F7nDS2rtXGQEyCcZ7Zh4d5aZyAVaDl6JqoB2nU4rM9gLrP4iuggcZaWDKnOoM+lwl7kLbjSSg==
+"@bigcommerce/big-design-theme@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@bigcommerce/big-design-theme/-/big-design-theme-0.14.0.tgz#5aaa563dee1cc34460d67400af18c6f846a45ba7"
+  integrity sha512-zpCUKYQtH8UbJYPm8X8diYyLgMgDaeHlBECZMXtffMygBGswXj9/zhFGz+9/eUCdbv2iccqoXpyWZ5JLf7osbQ==
   dependencies:
     "@babel/runtime" "^7.15.4"
     polished "^4.0.0"
 
-"@bigcommerce/big-design@^0.30.3-alpha.2":
-  version "0.30.3-alpha.2"
-  resolved "https://registry.yarnpkg.com/@bigcommerce/big-design/-/big-design-0.30.3-alpha.2.tgz#170276d757ca085d9716332d06520f9b1b0801c1"
-  integrity sha512-0qRMVAHn/bUiCBJLLBHwkmMNjfdGIiIZ1HuI5uqSasYCd68Z9iStBQg/l3ClREDlKGQtjilNGmxaP6PJt9Rq4w==
+"@bigcommerce/big-design@^0.31.0":
+  version "0.31.0"
+  resolved "https://registry.yarnpkg.com/@bigcommerce/big-design/-/big-design-0.31.0.tgz#9790e14353d9ce75b6bd60d03e73370ddf23f9da"
+  integrity sha512-owlHFzGIdbZ1S7TaB9HjBGiSeyGoAzO/P4RXLs7XQles/TA9vv6uvXCsBLXs33L/6P9IXRXDMrBNrme/mJXRqw==
   dependencies:
     "@babel/runtime" "^7.15.4"
-    "@bigcommerce/big-design-icons" "^0.17.2-alpha.1"
-    "@bigcommerce/big-design-theme" "^0.13.2-alpha.1"
+    "@bigcommerce/big-design-icons" "^0.18.0"
+    "@bigcommerce/big-design-theme" "^0.14.0"
     "@popperjs/core" "^2.5.4"
     "@types/react-datepicker" "^3.1.5"
     date-fns "2.28.0"

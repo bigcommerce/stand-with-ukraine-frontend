@@ -36,7 +36,7 @@ export const CHARITIES: CharityItem[] = [
     name: 'Razom',
     image: RazomLogo,
     imageProps: RazomLogoProps,
-    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainin people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies.`,
+    description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainian people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies.`,
     link: 'https://razomforukraine.org/razom-emergency-response/',
   },
   {
