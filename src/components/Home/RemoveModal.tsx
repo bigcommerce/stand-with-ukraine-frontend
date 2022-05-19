@@ -1,6 +1,6 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
-import { Modal } from '@bigcommerce/big-design';
+import { Modal, Textarea } from '@bigcommerce/big-design';
 
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import {
@@ -14,14 +14,21 @@ import { alertsManager } from '../../state/store';
 export default function RemoveModal() {
   const isOpen = useAppSelector(selectShowRemoveDialog);
   const dispatch = useAppDispatch();
+  const [reason, setReason] = useState('');
 
   const closeModal = useCallback(
     () => dispatch(hideRemoveDialog()),
     [dispatch]
   );
 
+  const handleReasonChange = useCallback(
+    (event: React.ChangeEvent<HTMLTextAreaElement>) =>
+      setReason(event.target.value),
+    [setReason]
+  );
+
   const removeWidget = useCallback(async () => {
-    await dispatch(remove());
+    await dispatch(remove(reason));
     dispatch(resetSteps());
     alertsManager.add({
       autoDismiss: true,
@@ -32,15 +39,20 @@ export default function RemoveModal() {
       ],
       type: 'success',
     });
-  }, [dispatch]);
+  }, [reason, dispatch]);
 
   const actions = useMemo(
     () =>
       [
         { text: 'Cancel', variant: 'subtle', onClick: closeModal },
-        { text: 'Remove', actionType: 'destructive', onClick: removeWidget },
+        {
+          text: 'Remove',
+          actionType: 'destructive',
+          onClick: removeWidget,
+          disabled: reason.length <= 3,
+        },
       ] as any,
-    [closeModal, removeWidget]
+    [reason.length, removeWidget, closeModal]
   );
 
   return (
@@ -51,6 +63,18 @@ export default function RemoveModal() {
       onClose={closeModal}
       closeOnEscKey={true}
       closeOnClickOutside={false}
-    />
+    >
+      <Textarea
+        label="Please tell us why did you decide to remove the widget?"
+        description="Required. Maximum 255 characters"
+        placeholder=""
+        required={true}
+        maxLength={255}
+        rows={3}
+        resize={true}
+        value={reason}
+        onChange={handleReasonChange}
+      />
+    </Modal>
   );
 }
