@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `yarn mocks`
+
+Runs the mock api server. Recommended if you do not have access to the backend server locally.
+
 ### `yarn start`
 
 Runs the app in the development mode.\

@@ -5,6 +5,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { AlertsManager, GlobalStyles } from '@bigcommerce/big-design';
 import { theme } from '@bigcommerce/big-design-theme';
 
+import AuthProvider from './components/Auth/AuthProvider';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Setup from './pages/Setup';
@@ -32,14 +33,16 @@ function App() {
           <GlobalStyles />
           <AlertsManager manager={alertsManager} />
           <AppGlobalStyles />
-          <BrowserRouter>
-            <Layout>
-              <Routes>
-                <Route index element={<Home />}></Route>
-                <Route path="/setup" element={<Setup />}></Route>
-              </Routes>
-            </Layout>
-          </BrowserRouter>
+          <AuthProvider>
+            <BrowserRouter>
+              <Layout>
+                <Routes>
+                  <Route index element={<Home />}></Route>
+                  <Route path="/setup" element={<Setup />}></Route>
+                </Routes>
+              </Layout>
+            </BrowserRouter>
+          </AuthProvider>
         </>
       </ThemeProvider>
     </Provider>

@@ -326,5 +326,6 @@ export const selectHome = (state: MainState) => ({
   status: state.status,
   storeUrl: state.storeUrl,
 });
+export const selectPublished = (state: MainState) => state.published;
 export const selectLoadingStatus = (state: MainState) => state.status;
 export default mainSlice.reducer;
