@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 
-import { Modal, Textarea } from '@bigcommerce/big-design';
+import { Modal as modal, ModalProps, Textarea } from '@bigcommerce/big-design';
 
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import {
@@ -10,6 +10,9 @@ import {
   selectShowRemoveDialog,
 } from '../../state/mainSlice';
 import { alertsManager } from '../../state/store';
+
+// fix modal type
+const Modal: React.FC<ModalProps & { children?: any }> = modal;
 
 export default function RemoveModal() {
   const isOpen = useAppSelector(selectShowRemoveDialog);
