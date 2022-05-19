@@ -1,5 +1,5 @@
 import type { WidgetConfiguration } from './mainSlice';
-import { GetAuthHeaders } from './utils'
+import { GetAuthHeaders } from './utils';
 
 export async function fetchStoreStatus(): Promise<{ published: boolean }> {
   let response = await fetch('/api/v1/publish', {
@@ -26,8 +26,11 @@ export async function publishWidget(): Promise<string> {
   return response.text();
 }
 
-export async function removeWidget(): Promise<string> {
-  let response = await fetch('/api/v1/publish', {
+export async function removeWidget(reason: string): Promise<string> {
+  const params = new URLSearchParams();
+  params.set('reason', reason);
+
+  let response = await fetch(`/api/v1/publish?${params.toString()}`, {
     method: 'DELETE',
     headers: GetAuthHeaders(),
   });
