@@ -1,12 +1,28 @@
 {
   "hosting": {
     "public": "build",
+    "cleanUrls": true,
+    "trailingSlash": false,
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
     "rewrites": [
+      {
+        "source": "/api/**",
+        "run": {
+          "serviceId": "backend",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/bigcommerce/**",
+        "run": {
+          "serviceId": "backend",
+          "region": "us-central1"
+        }
+      },
       {
         "source": "**",
         "destination": "/index.html"
