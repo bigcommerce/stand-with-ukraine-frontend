@@ -67,16 +67,9 @@ export default function AuthProvider({ children }: { children: any }) {
               <br />
             </>
           ) : null}
-          {'Your authentication token is Invalid.'}
+          {'Your authentication token is invalid or expired.'}
           <br />
           {'Please '}
-          <Link
-            target="_blank"
-            href="https://www.bigcommerce.com/apps/stand-with-ukraine/"
-          >
-            install
-          </Link>
-          {' and '}
           <Link
             target="_blank"
             href="https://apps.bigcommerce.com/details/38603"
