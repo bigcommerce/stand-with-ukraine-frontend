@@ -37,7 +37,7 @@ export const CHARITIES: CharityItem[] = [
     image: RazomLogo,
     imageProps: RazomLogoProps,
     description: `Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainian people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies.`,
-    link: 'https://razomforukraine.org/razom-emergency-response/',
+    link: 'https://razomforukraine.humanitru.com/donate?amount=100&options=1000%2C500%2C250%2C100%2C50%2C25&ach=show',
   },
   {
     identifier: 'new-ukraine',
@@ -45,7 +45,7 @@ export const CHARITIES: CharityItem[] = [
     image: NewUkraineLogo,
     imageProps: NewUkraineLogoProps,
     description: `Nova Ukraine is a registered nonprofit organization dedicated to providing humanitarian aid to Ukraine and raising awareness about Ukraine in the United States as well as in the rest of the world. Through your generous donations, we fund a variety of efforts to help the people of Ukraine and to strengthen Ukraine's democratic society.`,
-    link: 'https://novaukraine.org/',
+    link: 'https://donorbox.org/crisis-in-ukraine-donate-now-3',
   },
   {
     identifier: 'unicef',
