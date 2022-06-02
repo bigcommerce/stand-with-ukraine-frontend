@@ -31,7 +31,7 @@ export default function RemoveModal() {
   );
 
   const removeWidget = useCallback(async () => {
-    await dispatch(remove(reason));
+    await dispatch(remove(reason.trim()));
     dispatch(resetSteps());
     alertsManager.add({
       autoDismiss: true,
@@ -52,10 +52,10 @@ export default function RemoveModal() {
           text: 'Remove',
           actionType: 'destructive',
           onClick: removeWidget,
-          disabled: reason.length <= 3,
+          disabled: reason.trim().length <= 3,
         },
       ] as any,
-    [reason.length, removeWidget, closeModal]
+    [closeModal, removeWidget, reason]
   );
 
   return (
@@ -69,10 +69,10 @@ export default function RemoveModal() {
     >
       <Textarea
         label="Please tell us why did you decide to remove the widget?"
-        description="Required. Maximum 255 characters"
+        description="Required. Maximum 1000 characters"
         placeholder=""
         required={true}
-        maxLength={255}
+        maxLength={1000}
         rows={3}
         resize={true}
         value={reason}
