@@ -5,7 +5,9 @@ export function SetSessionToken(token: string) {
 }
 
 export function GetSessionToken() {
-  return sessionStorage.getItem(TOKEN_KEY);
+  return process.env.NODE_ENV === 'development'
+    ? 'test.test.test'
+    : sessionStorage.getItem(TOKEN_KEY);
 }
 
 export function GetAuthHeaders() {
