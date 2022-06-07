@@ -151,6 +151,12 @@ export const mainSlice = createSlice({
     setModalBody: (state, action: PayloadAction<string>) => {
       state.widgetConfiguration.modal_body = action.payload;
     },
+    resetModalToDefault: (state) => {
+      state.widgetConfiguration.modal_body =
+        initialState.widgetConfiguration.modal_body;
+      state.widgetConfiguration.modal_title =
+        initialState.widgetConfiguration.modal_title;
+    },
     showFooter: (state) => {
       state.footer.show = true;
     },
@@ -307,6 +313,7 @@ export const {
   toggleCharity,
   showRemoveDialog,
   hideRemoveDialog,
+  resetModalToDefault,
 } = mainSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
@@ -328,4 +335,9 @@ export const selectHome = (state: MainState) => ({
 });
 export const selectPublished = (state: MainState) => state.published;
 export const selectLoadingStatus = (state: MainState) => state.status;
+export const selectWidgetModal = (state: MainState) => ({
+  modalTitle: state.widgetConfiguration.modal_title,
+  modalBody: state.widgetConfiguration.modal_body,
+});
+
 export default mainSlice.reducer;
