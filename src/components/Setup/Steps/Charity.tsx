@@ -163,7 +163,8 @@ export default function Charity() {
     <Panel header="Choose your charities">
       <BodySmall>
         All charities are trusted, non-profit organizations involved with
-        Ukrainian relief efforts and provide only humanitarian aid.
+        Ukrainian relief efforts and provide only humanitarian aid. You can
+        choose up to 3 charities.
       </BodySmall>
       <Grid>
         {CHARITIES.map(
