@@ -3,10 +3,10 @@ import {
   NewUkraineLogoProps,
   RazomLogo,
   RazomLogoProps,
-  UnicefLogo,
-  UnicefLogoProps,
   MiraActionLogo,
   MiraActionLogoProps,
+  UnicefLogo,
+  UnicefLogoProps,
 } from '../../../../assets/CharityLogos';
 import {
   BottomLeft,
@@ -23,7 +23,7 @@ import {
 } from '../../../../assets/WidgetStyles';
 import { WidgetPlacement, WidgetStyle } from '../../../../state/mainSlice';
 
-export const MAX_SELECTION = 4;
+export const MAX_SELECTION = 3;
 export interface CharityItem {
   identifier: string;
   name: string;
@@ -50,20 +50,20 @@ export const CHARITIES: CharityItem[] = [
     link: 'https://donorbox.org/crisis-in-ukraine-donate-now-3',
   },
   {
-    identifier: 'unicef',
-    name: 'UNICEF',
-    image: UnicefLogo,
-    imageProps: UnicefLogoProps,
-    description: `UNICEF is providing life-saving help to children inside Ukraine and in neighboring countries. This includes: \n- Providing lifesaving supplies such as water and hygiene kits, medicines, warm clothes and blankets \n- First-aid kits, surgical kits, and oxygen concentrators to those affected by the violence.`,
-    link: 'https://help.unicef.org/ukraine-emergency',
-  },
-  {
     identifier: 'mira-action',
     name: 'Mira Action',
     image: MiraActionLogo,
     imageProps: MiraActionLogoProps,
     description: `Mira Action Inc. specializes in raising funds to purchase and deliver fully-equipped ambulances and medical supplies to Ukrainian hospitals and ER centers.`,
     link: 'https://miraaction.org/collections/medical-supplies',
+  },
+  {
+    identifier: 'unicef',
+    name: 'UNICEF',
+    image: UnicefLogo,
+    imageProps: UnicefLogoProps,
+    description: `UNICEF is providing life-saving help to children inside Ukraine and in neighboring countries. This includes: \n- Providing lifesaving supplies such as water and hygiene kits, medicines, warm clothes and blankets \n- First-aid kits, surgical kits, and oxygen concentrators to those affected by the violence.`,
+    link: 'https://help.unicef.org/ukraine-emergency',
   },
 ];
 
