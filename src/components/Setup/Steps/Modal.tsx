@@ -90,9 +90,7 @@ function InfoTab() {
           )}
         />
       </FormGroup>
-      <FormGroup>
-        <Link onClick={resetText}>Reset to default</Link>
-      </FormGroup>
+      <Link onClick={resetText}>Reset to default</Link>
     </Form>
   );
 }
