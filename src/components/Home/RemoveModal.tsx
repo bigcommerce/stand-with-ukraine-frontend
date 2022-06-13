@@ -14,6 +14,9 @@ import styled from 'styled-components';
 
 // fix modal type
 const Modal: React.FC<ModalProps & { children?: any }> = modal;
+const ModalContentWrapper = styled.div`
+  padding-bottom: 0.25rem;
+`;
 
 export default function RemoveModal() {
   const isOpen = useAppSelector(selectShowRemoveDialog);
@@ -59,10 +62,6 @@ export default function RemoveModal() {
     [closeModal, removeWidget, reason]
   );
 
-  const TextBox = styled.div`
-    padding-bottom: 0.5rem;
-  `;
-
   return (
     <Modal
       actions={actions}
@@ -72,7 +71,7 @@ export default function RemoveModal() {
       closeOnEscKey={true}
       closeOnClickOutside={false}
     >
-      <TextBox>
+      <ModalContentWrapper>
         <Textarea
           label="Please tell us why did you decide to remove the widget?"
           description="Required. Maximum 1000 characters"
@@ -84,7 +83,7 @@ export default function RemoveModal() {
           value={reason}
           onChange={handleReasonChange}
         />
-      </TextBox>
+      </ModalContentWrapper>
     </Modal>
   );
 }
