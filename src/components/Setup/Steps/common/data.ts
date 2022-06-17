@@ -3,6 +3,8 @@ import {
   NewUkraineLogoProps,
   RazomLogo,
   RazomLogoProps,
+  MiraActionLogo,
+  MiraActionLogoProps,
   UnicefLogo,
   UnicefLogoProps,
 } from '../../../../assets/CharityLogos';
@@ -46,6 +48,14 @@ export const CHARITIES: CharityItem[] = [
     imageProps: NewUkraineLogoProps,
     description: `Nova Ukraine is a registered nonprofit organization dedicated to providing humanitarian aid to Ukraine and raising awareness about Ukraine in the United States as well as in the rest of the world. Through your generous donations, we fund a variety of efforts to help the people of Ukraine and to strengthen Ukraine's democratic society.`,
     link: 'https://donorbox.org/crisis-in-ukraine-donate-now-3',
+  },
+  {
+    identifier: 'mira-action',
+    name: 'Mira Action',
+    image: MiraActionLogo,
+    imageProps: MiraActionLogoProps,
+    description: `Mira Action Inc. specializes in raising funds to purchase and deliver fully-equipped ambulances and medical supplies to Ukrainian hospitals and ER centers.`,
+    link: 'https://miraaction.org/collections/medical-supplies',
   },
   {
     identifier: 'unicef',

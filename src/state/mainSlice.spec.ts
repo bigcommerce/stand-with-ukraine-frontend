@@ -77,8 +77,8 @@ Object {
   "widgetConfiguration": Object {
     "charity_selections": Array [
       "razom",
-      "unicef",
       "new-ukraine",
+      "mira-action",
     ],
     "modal_body": "With each day, the war in Ukraine worsens at an alarming pace. Millions of civilians have lost their homes and many more are without basic necessities like food, water, and health care. Consider donating to one of the charities below and join us in showing support for Ukraine. All charities are trusted, non-profit organizations dedicated to Ukrainian relief efforts. It takes less than a minute.",
     "modal_title": "Help the people of Ukraine!",

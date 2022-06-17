@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import NewUkraine from './NewUkraine.png';
 import Razom from './Razom.png';
+import MiraAction from './MiraAction.png';
 import Unicef from './Unicef.png';
 
 const Image = styled.img`
@@ -23,6 +24,14 @@ export const RazomLogoProps = {
 };
 export function RazomLogo() {
   return <Image {...RazomLogoProps} />;
+}
+
+export const MiraActionLogoProps = {
+  src: MiraAction,
+  alt: 'Mira Action Logo',
+};
+export function MiraActionLogo() {
+  return <Image {...MiraActionLogoProps} />;
 }
 
 export const NewUkraineLogoProps = {
