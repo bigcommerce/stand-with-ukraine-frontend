@@ -6,6 +6,7 @@ import {
   Form,
   FormGroup,
   Input,
+  Link,
   Panel,
   Tabs,
   Textarea,
@@ -14,19 +15,13 @@ import {
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import {
   configureButtons,
+  resetModalToDefault,
+  selectWidgetModal,
   setModalBody,
   setModalTitle,
 } from '../../../state/mainSlice';
-import { RootState } from '../../../state/store';
 import BodySmall from './common/BodySmall';
 import PreviewTab from './Preview';
-
-function selectWidgetModal(state: RootState) {
-  return {
-    modalTitle: state.widgetConfiguration.modal_title,
-    modalBody: state.widgetConfiguration.modal_body,
-  };
-}
 
 type TAB_TYPE = 'configure' | 'preview';
 const tabs: { id: TAB_TYPE; title: string }[] = [
@@ -55,6 +50,10 @@ const TabContainer = styled.div`
 function InfoTab() {
   const dispatch = useAppDispatch();
   const { modalTitle, modalBody } = useAppSelector(selectWidgetModal);
+  const resetText = useCallback(
+    () => dispatch(resetModalToDefault()),
+    [dispatch]
+  );
 
   return (
     <Form>
@@ -91,6 +90,7 @@ function InfoTab() {
           )}
         />
       </FormGroup>
+      <Link onClick={resetText}>Reset to default</Link>
     </Form>
   );
 }
