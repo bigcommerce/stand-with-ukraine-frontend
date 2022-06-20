@@ -17,3 +17,5 @@ yarn-error.log*
 
 .turbo
 .firebase
+
+tsconfig.tsbuildinfo

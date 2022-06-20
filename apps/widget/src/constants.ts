@@ -22,7 +22,7 @@ export const MODAL = {
   charities: SWU_CONFIG?.charity_selections ?? DefaultData.charity_selections,
   img: {
     alt: "Ukraine photo",
-    src: `public/assets/images/background.png`,
+    src: `/assets/images/background.png`,
   },
 };
 

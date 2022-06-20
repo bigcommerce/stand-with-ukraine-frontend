@@ -1,9 +1,4 @@
-import styled from 'styled-components';
-
-import NewUkraine from './NewUkraine.png';
-import Razom from './Razom.png';
-import MiraAction from './MiraAction.png';
-import Unicef from './Unicef.png';
+import styled from "styled-components";
 
 const Image = styled.img`
   height: 70px;
@@ -11,32 +6,32 @@ const Image = styled.img`
 `;
 
 export const UnicefLogoProps = {
-  src: Unicef,
-  alt: 'Unicef Logo',
+  src: "/assets/images/unicef.png",
+  alt: "Unicef Logo",
 };
 export function UnicefLogo() {
   return <Image {...UnicefLogoProps} />;
 }
 
 export const RazomLogoProps = {
-  src: Razom,
-  alt: 'Razom Logo',
+  src: "/assets/images/razom.png",
+  alt: "Razom Logo",
 };
 export function RazomLogo() {
   return <Image {...RazomLogoProps} />;
 }
 
 export const MiraActionLogoProps = {
-  src: MiraAction,
-  alt: 'Mira Action Logo',
+  src: "/assets/images/mira-action.png",
+  alt: "Mira Action Logo",
 };
 export function MiraActionLogo() {
   return <Image {...MiraActionLogoProps} />;
 }
 
 export const NewUkraineLogoProps = {
-  src: NewUkraine,
-  alt: 'New Ukraine Logo',
+  src: "/assets/images/new-ukraine.png",
+  alt: "New Ukraine Logo",
 };
 export function NewUkraineLogo() {
   return <Image {...NewUkraineLogoProps} />;
