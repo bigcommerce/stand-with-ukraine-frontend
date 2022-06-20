@@ -1,0 +1,10 @@
+{
+  "name": "config",
+  "version": "0.0.0",
+  "main": "index.js",
+  "private": true,
+  "files": [
+    "charities.json",
+    "default.json"
+  ]
+}

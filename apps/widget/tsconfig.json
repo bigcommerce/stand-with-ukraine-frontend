@@ -1,0 +1,15 @@
+{
+  "extends": "tsconfig/vite.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src",
+    "vite.config.ts"
+  ]
+}
