@@ -83,7 +83,7 @@ const initialState: MainState = {
   widgetConfiguration: {
     style: 'blue',
     placement: 'bottom-right',
-    charity_selections: ['razom', 'unicef', 'new-ukraine'],
+    charity_selections: ['razom', 'new-ukraine', 'mira-action'],
     modal_title: 'Help the people of Ukraine!',
     modal_body:
       'With each day, the war in Ukraine worsens at an alarming pace. Millions of civilians have lost their homes and many more are without basic necessities like food, water, and health care. Consider donating to one of the charities below and join us in showing support for Ukraine. All charities are trusted, non-profit organizations dedicated to Ukrainian relief efforts. It takes less than a minute.',
@@ -150,6 +150,12 @@ export const mainSlice = createSlice({
     },
     setModalBody: (state, action: PayloadAction<string>) => {
       state.widgetConfiguration.modal_body = action.payload;
+    },
+    resetModalToDefault: (state) => {
+      state.widgetConfiguration.modal_body =
+        initialState.widgetConfiguration.modal_body;
+      state.widgetConfiguration.modal_title =
+        initialState.widgetConfiguration.modal_title;
     },
     showFooter: (state) => {
       state.footer.show = true;
@@ -307,6 +313,7 @@ export const {
   toggleCharity,
   showRemoveDialog,
   hideRemoveDialog,
+  resetModalToDefault,
 } = mainSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
@@ -328,4 +335,9 @@ export const selectHome = (state: MainState) => ({
 });
 export const selectPublished = (state: MainState) => state.published;
 export const selectLoadingStatus = (state: MainState) => state.status;
+export const selectWidgetModal = (state: MainState) => ({
+  modalTitle: state.widgetConfiguration.modal_title,
+  modalBody: state.widgetConfiguration.modal_body,
+});
+
 export default mainSlice.reducer;

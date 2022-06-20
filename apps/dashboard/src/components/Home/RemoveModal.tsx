@@ -10,9 +10,13 @@ import {
   selectShowRemoveDialog,
 } from '../../state/mainSlice';
 import { alertsManager } from '../../state/store';
+import styled from 'styled-components';
 
 // fix modal type
 const Modal: React.FC<ModalProps & { children?: any }> = modal;
+const ModalContentWrapper = styled.div`
+  padding-bottom: 0.25rem;
+`;
 
 export default function RemoveModal() {
   const isOpen = useAppSelector(selectShowRemoveDialog);
@@ -31,7 +35,7 @@ export default function RemoveModal() {
   );
 
   const removeWidget = useCallback(async () => {
-    await dispatch(remove(reason));
+    await dispatch(remove(reason.trim()));
     dispatch(resetSteps());
     alertsManager.add({
       autoDismiss: true,
@@ -52,10 +56,10 @@ export default function RemoveModal() {
           text: 'Remove',
           actionType: 'destructive',
           onClick: removeWidget,
-          disabled: reason.length <= 3,
+          disabled: reason.trim().length <= 3,
         },
       ] as any,
-    [reason.length, removeWidget, closeModal]
+    [closeModal, removeWidget, reason]
   );
 
   return (
@@ -67,17 +71,19 @@ export default function RemoveModal() {
       closeOnEscKey={true}
       closeOnClickOutside={false}
     >
-      <Textarea
-        label="Please tell us why did you decide to remove the widget?"
-        description="Required. Maximum 255 characters"
-        placeholder=""
-        required={true}
-        maxLength={255}
-        rows={3}
-        resize={true}
-        value={reason}
-        onChange={handleReasonChange}
-      />
+      <ModalContentWrapper>
+        <Textarea
+          label="Please tell us why did you decide to remove the widget?"
+          description="Required. Maximum 1000 characters"
+          placeholder=""
+          required={true}
+          maxLength={1000}
+          rows={3}
+          resize={true}
+          value={reason}
+          onChange={handleReasonChange}
+        />
+      </ModalContentWrapper>
     </Modal>
   );
 }
