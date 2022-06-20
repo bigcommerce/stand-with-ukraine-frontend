@@ -1,5 +1,6 @@
 import CharityList from "config/charities.json";
 import DefaultData from "config/default.json";
+import { getBaseURL } from "./utils/baseUrl";
 
 export const STORAGE_KEYS = {
   WIDGET: "SWU_WIDGET",
@@ -22,8 +23,11 @@ export const MODAL = {
   charities: SWU_CONFIG?.charity_selections ?? DefaultData.charity_selections,
   img: {
     alt: "Ukraine photo",
-    src: `/assets/images/background.png`,
+    src: `${getBaseURL()}assets/images/background.png`,
   },
 };
 
-export const CHARITY_LIST = CharityList;
+export const CHARITY_LIST = CharityList.map((charity) => {
+  charity.icon.src = `${getBaseURL()}${charity.icon.src}`;
+  return charity;
+});

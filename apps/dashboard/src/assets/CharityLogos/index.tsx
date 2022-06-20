@@ -6,7 +6,7 @@ const Image = styled.img`
 `;
 
 export const UnicefLogoProps = {
-  src: "/assets/images/unicef.png",
+  src: `${import.meta.env.BASE_URL}/assets/images/unicef.png`,
   alt: "Unicef Logo",
 };
 export function UnicefLogo() {
@@ -14,7 +14,7 @@ export function UnicefLogo() {
 }
 
 export const RazomLogoProps = {
-  src: "/assets/images/razom.png",
+  src: `${import.meta.env.BASE_URL}/assets/images/razom.png`,
   alt: "Razom Logo",
 };
 export function RazomLogo() {
@@ -22,7 +22,7 @@ export function RazomLogo() {
 }
 
 export const MiraActionLogoProps = {
-  src: "/assets/images/mira-action.png",
+  src: `${import.meta.env.BASE_URL}/assets/images/mira-action.png`,
   alt: "Mira Action Logo",
 };
 export function MiraActionLogo() {
@@ -30,7 +30,7 @@ export function MiraActionLogo() {
 }
 
 export const NewUkraineLogoProps = {
-  src: "/assets/images/new-ukraine.png",
+  src: `${import.meta.env.BASE_URL}/assets/images/new-ukraine.png`,
   alt: "New Ukraine Logo",
 };
 export function NewUkraineLogo() {

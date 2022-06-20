@@ -1,5 +1,6 @@
 import { render } from "preact";
 import { App } from "./App";
+import { getBaseURL } from "./utils/baseUrl";
 
 function getAppDiv() {
   if (import.meta.env.DEV) {
@@ -10,7 +11,7 @@ function getAppDiv() {
   app.setAttribute("id", "swu");
 
   const link = document.createElement("link");
-  link.href = `${import.meta.env.BASE_URL}style.css`;
+  link.href = `${getBaseURL()}style.css`;
   link.type = "text/css";
   link.rel = "stylesheet";
 
