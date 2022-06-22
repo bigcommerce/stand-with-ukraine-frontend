@@ -1,33 +1,36 @@
-import CharityList from "config/charities.json";
-import DefaultData from "config/default.json";
-import { getBaseURL } from "./utils/baseUrl";
+import { DEFAULT_CONFIG } from 'config';
+import { GetCharities } from 'config/charities';
 
+import { getBaseURL } from './utils/baseUrl';
+
+import type { WidgetConfiguration } from 'config/types';
 export const STORAGE_KEYS = {
-  WIDGET: "SWU_WIDGET",
-  WIDGET_ANIMATION: "SWU_WIDGET_ANIMATION",
+  WIDGET: 'SWU_WIDGET',
+  WIDGET_ANIMATION: 'SWU_WIDGET_ANIMATION',
 };
 
 export const STORAGE_STATUSES = {
-  ENABLED: "ENABLED",
-  DISABLED: "DISABLED",
-  COLLAPSED: "COLLAPSED",
+  ENABLED: 'ENABLED',
+  DISABLED: 'DISABLED',
+  COLLAPSED: 'COLLAPSED',
 };
 
-const SWU_CONFIG = (window as any)?.SWU_CONFIG;
+const SWU_CONFIG: WidgetConfiguration = Object.assign(
+  {},
+  DEFAULT_CONFIG,
+  (window as any)?.SWU_CONFIG ?? null
+);
 
 export const MODAL = {
-  title: SWU_CONFIG?.modal_title ?? DefaultData.modal_title,
-  description: SWU_CONFIG?.modal_body ?? DefaultData.modal_body,
-  style: SWU_CONFIG?.style ?? DefaultData.style,
-  placement: SWU_CONFIG?.placement ?? DefaultData.placement,
-  charities: SWU_CONFIG?.charity_selections ?? DefaultData.charity_selections,
+  title: SWU_CONFIG.modal_title,
+  description: SWU_CONFIG.modal_body,
+  style: SWU_CONFIG.style,
+  placement: SWU_CONFIG.placement,
+  charities: SWU_CONFIG.charity_selections,
   img: {
-    alt: "Ukraine photo",
+    alt: 'Ukraine photo',
     src: `${getBaseURL()}assets/images/background.png`,
   },
 };
 
-export const CHARITY_LIST = CharityList.map((charity) => {
-  charity.icon.src = `${getBaseURL()}${charity.icon.src}`;
-  return charity;
-});
+export const CHARITIES = GetCharities(getBaseURL());

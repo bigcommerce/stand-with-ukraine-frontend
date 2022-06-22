@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { ReactComponent as CloseSVG } from "../../../assets/Close.svg";
-import { ReactComponent as LogoSVG } from "../../../assets/logo.svg";
-import { useAppSelector } from "../../../state/hooks";
-import { RootState } from "../../../state/store";
-import { CHARITIES } from "./common/data";
-import PreviewItem from "./PreviewItem";
+import { ReactComponent as CloseSVG } from '../../../assets/Close.svg';
+import { ReactComponent as LogoSVG } from '../../../assets/logo.svg';
+import { useAppSelector } from '../../../state/hooks';
+import { RootState } from '../../../state/store';
+import { CHARITIES } from './common/data';
+import PreviewItem from './PreviewItem';
 
 const ModalPreviewBox = styled.div`
   max-width: 756px;
@@ -33,7 +33,7 @@ const HeaderBlock = styled.div`
 `;
 
 const HeaderText = styled.h1`
-  font-family: "Arial";
+  font-family: 'Arial';
   font-style: normal;
   font-weight: 700;
   font-size: 35px;
@@ -42,7 +42,7 @@ const HeaderText = styled.h1`
 `;
 
 const BodyText = styled.p`
-  font-family: "Arial";
+  font-family: 'Arial';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -62,7 +62,7 @@ function selectWidgetConfiguration(state: RootState) {
 export default function PreviewTab() {
   const configuration = useAppSelector(selectWidgetConfiguration);
   const charity_list = configuration.charity_selections.map((item) =>
-    CHARITIES.find((charity) => charity.identifier === item)
+    CHARITIES.find((charity) => charity.id === item)
   );
 
   return (
@@ -76,7 +76,7 @@ export default function PreviewTab() {
         <CloseSVG />
       </CloseSVGContainer>
       <HeroImage
-        src="/assets/images/background.png"
+        src={`${import.meta.env.BASE_URL}assets/images/background.png`}
         alt="Protestors standing against war in Ukraine"
       />
       {charity_list.map((item, key) =>

@@ -13,6 +13,11 @@ import { RootState } from '../../../state/store';
 import BodySmall from './common/BodySmall';
 import { CHARITIES, MAX_SELECTION } from './common/data';
 
+const Image = styled.img`
+  height: 70px;
+  width: 70px;
+`;
+
 const Grid = styled.div`
   grid-template-columns: 1;
   grid-gap: 1rem;
@@ -63,27 +68,26 @@ const CharityLabel = styled.h3`
 function SelectCharity({
   name,
   description,
-  identifier,
+  id,
   selected,
-  image,
+  logo,
   limitReached,
-  link,
+  donationLink,
 }: {
   name: string;
   description: string;
-  identifier: string;
+  id: string;
   selected: boolean;
   limitReached: boolean;
-  image: any;
-  link: string;
+  logo: any;
+  donationLink: string;
 }) {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
   const handleCollapse = (isOpen: boolean) => setOpen(isOpen);
   const handleSelectChange = useCallback(
-    (_: React.ChangeEvent<HTMLInputElement>) =>
-      dispatch(toggleCharity(identifier)),
-    [dispatch, identifier]
+    (_: React.ChangeEvent<HTMLInputElement>) => dispatch(toggleCharity(id)),
+    [dispatch, id]
   );
 
   const content = useMemo(() => {
@@ -93,13 +97,13 @@ function SelectCharity({
       <Text key={key} marginBottom="none">
         {item}{' '}
         {key === paragraphs.length - 1 && (
-          <Link href={link} target="_blank" external>
+          <Link href={donationLink} target="_blank" external>
             Learn more
           </Link>
         )}
       </Text>
     ));
-  }, [description, link]);
+  }, [description, donationLink]);
 
   return (
     <CharityWrapper>
@@ -111,7 +115,7 @@ function SelectCharity({
           onChange={handleSelectChange}
         />
       </CheckboxWrapper>
-      <CharityLogoWrapper>{image}</CharityLogoWrapper>
+      <CharityLogoWrapper>{logo}</CharityLogoWrapper>
       <CharityContentWrapper>
         <CharityLabel>{name}</CharityLabel>
         <Collapse
@@ -168,19 +172,16 @@ export default function Charity() {
       </BodySmall>
       <Grid>
         {CHARITIES.map(
-          (
-            { identifier, name, image: ImageComponent, description, link },
-            index
-          ) => (
+          ({ id, name, description, donationLink, logoProps }, index) => (
             <SelectCharity
               key={index}
-              selected={Boolean(charities.includes(identifier))}
+              selected={Boolean(charities.includes(id))}
               limitReached={limitReached}
-              identifier={identifier}
+              id={id}
               name={name}
-              image={<ImageComponent />}
+              logo={<Image {...logoProps} />}
               description={description}
-              link={link}
+              donationLink={donationLink}
             />
           )
         )}

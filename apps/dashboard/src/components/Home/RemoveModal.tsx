@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
+import styled from 'styled-components';
 
 import { Modal as modal, ModalProps, Textarea } from '@bigcommerce/big-design';
 
@@ -10,7 +11,6 @@ import {
   selectShowRemoveDialog,
 } from '../../state/mainSlice';
 import { alertsManager } from '../../state/store';
-import styled from 'styled-components';
 
 // fix modal type
 const Modal: React.FC<ModalProps & { children?: any }> = modal;

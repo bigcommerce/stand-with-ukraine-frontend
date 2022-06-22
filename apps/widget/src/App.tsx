@@ -1,16 +1,17 @@
-import { h } from "preact";
-import { useState } from "preact/compat";
-import { Widget } from "./components/Widget/Widget";
-import { Modal } from "./components/Modal/Modal";
+import { h } from 'preact';
+import { useState } from 'preact/compat';
 
-export const App = () => {
+import { Modal } from './components/Modal/Modal';
+import { Widget } from './components/Widget/Widget';
+
+export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModalToggle = (isOpen: boolean) => {
-    const body = document.getElementsByTagName("body")[0];
+    const body = document.getElementsByTagName('body')[0];
 
     if (body) {
-      body.style.overflow = isOpen ? "hidden" : "initial";
+      body.style.overflow = isOpen ? 'hidden' : 'initial';
     }
 
     setIsModalOpen(isOpen);
@@ -25,4 +26,4 @@ export const App = () => {
       <Modal isOpen={isModalOpen} onClose={() => handleModalToggle(false)} />
     </div>
   );
-};
+}

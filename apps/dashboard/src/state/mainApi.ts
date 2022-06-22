@@ -1,4 +1,4 @@
-import type { WidgetConfiguration } from './mainSlice';
+import type { WidgetConfiguration } from 'config/types';
 import { GetAuthHeaders } from './utils';
 
 export async function fetchStoreStatus(): Promise<{ published: boolean }> {

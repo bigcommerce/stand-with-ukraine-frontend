@@ -1,3 +1,5 @@
+import { DEFAULT_CONFIG } from 'config';
+
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import {
@@ -9,23 +11,13 @@ import {
   writeConfiguration,
 } from './mainApi';
 
-export type WidgetStyle = 'blue' | 'black' | 'white';
-export type WidgetPlacement =
-  | 'top-left'
-  | 'top-middle'
-  | 'top-right'
-  | 'bottom-left'
-  | 'bottom-middle'
-  | 'bottom-right';
-export type LoadingState = 'idle' | 'loading' | 'failed';
+import type {
+  WidgetConfiguration,
+  WidgetPlacement,
+  WidgetStyle,
+} from 'config/types';
 export const Steps = ['Color', 'Layout', 'Charity', 'Pop-Up'];
-export type WidgetConfiguration = {
-  style: WidgetStyle;
-  placement: WidgetPlacement;
-  charity_selections: string[];
-  modal_title: string;
-  modal_body: string;
-};
+export type LoadingState = 'idle' | 'loading' | 'failed';
 
 export interface MainState {
   status: LoadingState;
@@ -80,14 +72,7 @@ const initialState: MainState = {
       disabled: false,
     },
   },
-  widgetConfiguration: {
-    style: 'blue',
-    placement: 'bottom-right',
-    charity_selections: ['razom', 'new-ukraine', 'mira-action'],
-    modal_title: 'Help the people of Ukraine!',
-    modal_body:
-      'With each day, the war in Ukraine worsens at an alarming pace. Millions of civilians have lost their homes and many more are without basic necessities like food, water, and health care. Consider donating to one of the charities below and join us in showing support for Ukraine. All charities are trusted, non-profit organizations dedicated to Ukrainian relief efforts. It takes less than a minute.',
-  },
+  widgetConfiguration: DEFAULT_CONFIG,
 };
 
 export const getConfiguration = createAsyncThunk(

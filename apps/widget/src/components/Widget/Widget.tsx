@@ -1,8 +1,9 @@
-import { h } from "preact";
-import styles from "./styles.module.scss";
-import { safeSessionStorage } from "../../utils/storage";
-import { MODAL, STORAGE_KEYS, STORAGE_STATUSES } from "../../constants";
-import { useState } from "preact/compat";
+import { h } from 'preact';
+import { useState } from 'preact/compat';
+
+import { MODAL, STORAGE_KEYS, STORAGE_STATUSES } from '../../constants';
+import { safeSessionStorage } from '../../utils/storage';
+import styles from './styles.module.scss';
 
 const disableAnimation = () =>
   safeSessionStorage.setItem(
@@ -25,7 +26,7 @@ const getClassNames = () => {
 
   disableAnimation();
 
-  return classNames.join(" ");
+  return classNames.join(' ');
 };
 
 export function Widget({

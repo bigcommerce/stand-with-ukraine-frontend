@@ -1,10 +1,10 @@
 {
   "name": "config",
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "private": true,
   "files": [
-    "charities.json",
-    "default.json"
+    "charities.ts",
+    "types.ts"
   ]
 }

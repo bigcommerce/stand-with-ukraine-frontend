@@ -1,18 +1,19 @@
-import { h } from "preact";
-import styles from "./styles.module.scss";
-import { CHARITY_LIST, MODAL } from "../../constants";
-import { Item } from "../Item/Item";
+import { h } from 'preact';
 
-const getList = () => {
+import { CHARITIES, MODAL } from '../../constants';
+import { Item } from '../Item/Item';
+import styles from './styles.module.scss';
+
+const getSelectedListOfCharities = () => {
   const keys = MODAL.charities;
 
   if (keys && Array.isArray(keys)) {
-    const nextList = CHARITY_LIST.filter(({ id }) => keys.includes(id));
+    const nextList = CHARITIES.filter(({ id }) => keys.includes(id));
 
-    return nextList.length > 0 ? nextList : CHARITY_LIST;
+    return nextList.length > 0 ? nextList : CHARITIES;
   }
 
-  return CHARITY_LIST;
+  return CHARITIES;
 };
 
 export function Modal({
@@ -39,8 +40,8 @@ export function Modal({
         <div className={styles.img}>
           <img {...MODAL.img} />
         </div>
-        {getList().map((item, key) => (
-          <Item key={key} {...item} />
+        {getSelectedListOfCharities().map((charity, key) => (
+          <Item key={key} {...charity} />
         ))}
       </div>
     </div>

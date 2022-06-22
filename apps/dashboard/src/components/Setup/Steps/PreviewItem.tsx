@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { Charity } from 'config/types';
 import { useState } from 'react';
 import styled from 'styled-components';
-
-import { CharityItem } from './common/data';
 
 const Item = styled.div`
   display: flex;
@@ -78,11 +77,11 @@ const Button = styled.a`
 `;
 
 export default function PreviewItem({
-  imageProps,
+  logoProps,
   name,
   description,
-  link,
-}: CharityItem) {
+  donationLink,
+}: Charity) {
   const [isOpen, setIsOpen] = useState(false);
 
   const textPreview = description.split(' ').slice(0, 15).join(' ');
@@ -93,7 +92,7 @@ export default function PreviewItem({
 
   return (
     <Item>
-      <Img {...imageProps} />
+      <Img {...logoProps} />
       <Content>
         <Text>
           <p>
@@ -109,7 +108,7 @@ export default function PreviewItem({
             </p>
           )}
         </Text>
-        <Button href={link} target="_blank" rel="noreferrer">
+        <Button href={donationLink} target="_blank" rel="noreferrer">
           Support
         </Button>
       </Content>

@@ -4,14 +4,12 @@ import styled from 'styled-components';
 import { Panel, Radio } from '@bigcommerce/big-design';
 
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
-import {
-  configureButtons,
-  setWidgetPlacement,
-  WidgetPlacement,
-} from '../../../state/mainSlice';
+import { configureButtons, setWidgetPlacement } from '../../../state/mainSlice';
 import { RootState } from '../../../state/store';
 import BodySmall from './common/BodySmall';
 import { PLACEMENT_OPTIONS } from './common/data';
+
+import type { WidgetPlacement } from 'config/types';
 
 const SelectWrapper = styled.div`
   display: flex;
