@@ -5,7 +5,7 @@ const CHARITIES: Charity[] = [
     id: 'razom',
     logoProps: {
       alt: 'Razom logo',
-      src: '/assets/images/razom.png',
+      src: 'assets/images/razom.png',
     },
     name: 'Razom',
     description:
@@ -17,7 +17,7 @@ const CHARITIES: Charity[] = [
     id: 'new-ukraine',
     logoProps: {
       alt: 'New Ukraine logo',
-      src: '/assets/images/new-ukraine.png',
+      src: 'assets/images/new-ukraine.png',
     },
     name: 'New Ukraine',
     description:
@@ -28,7 +28,7 @@ const CHARITIES: Charity[] = [
     id: 'mira-action',
     logoProps: {
       alt: 'Mira Action logo',
-      src: '/assets/images/mira-action.png',
+      src: 'assets/images/mira-action.png',
     },
     name: 'Mira Action',
     description:
@@ -39,7 +39,7 @@ const CHARITIES: Charity[] = [
     id: 'unicef',
     logoProps: {
       alt: 'UNICEF logo',
-      src: '/assets/images/unicef.png',
+      src: 'assets/images/unicef.png',
     },
     name: 'UNICEF',
     description:
@@ -51,7 +51,7 @@ const CHARITIES: Charity[] = [
 export function GetCharities(baseURL: string): Charity[] {
   return CHARITIES.map((charity) => ({
     ...charity,
-    icon: {
+    logoProps: {
       ...charity.logoProps,
       src: `${baseURL}${charity.logoProps.src}`,
     },

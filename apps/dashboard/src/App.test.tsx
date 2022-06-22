@@ -1,12 +1,17 @@
 import React from 'react';
-import { it } from 'vitest';
+import { it, expect } from 'vitest';
 
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import App from './App';
 
-it('renders learn react link', () => {
+it('renders learn react link', async () => {
   render(<App />);
-  // const linkElement = screen.getByText(/learn react/i);
-  // expect(linkElement).toBeInTheDocument();
+
+  await waitFor(() => {
+    const linkElement = screen.getByText(
+      /Your authentication token is Invalid./i
+    );
+    expect(linkElement).toBeDefined();
+  });
 });

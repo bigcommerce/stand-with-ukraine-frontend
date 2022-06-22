@@ -9,12 +9,10 @@
       "outputs": ["build/**"]
     },
     "test": {
-      "outputs": [],
-      "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
+      "inputs": ["**/*.{ts,tsx}", "**/tsconfig.json"]
     },
     "lint": {
-      "cache": false,
-      "inputs": ["src/**/*"]
+      "inputs": ["**/*.{ts,tsx}", "**/tsconfig.json"]
     }
   }
 }

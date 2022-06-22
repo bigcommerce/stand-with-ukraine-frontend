@@ -1,12 +1,14 @@
 import { h } from 'preact';
-import { it } from 'vitest';
+import { expect, it } from 'vitest';
 
-import { render, screen } from '@testing-library/preact';
+import { render, screen, waitFor } from '@testing-library/preact';
 
 import App from './App';
 
-it('renders learn preact app', () => {
+it('renders learn preact app', async () => {
   render(<App />);
-  // const linkElement = screen.getByText(/learn react/i);
-  // expect(linkElement).toBeInTheDocument();
+
+  await waitFor(() => {
+    expect(screen.getByText('Help the people of Ukraine!')).toBeDefined();
+  });
 });
