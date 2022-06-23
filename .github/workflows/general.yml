@@ -15,9 +15,6 @@ jobs:
           node-version: 16
           cache: 'npm'
 
-      - name: Cache Yarn
-        uses: c-hive/gha-yarn-cache@v2
-
       - name: Install dependencies
         run: yarn install
 
