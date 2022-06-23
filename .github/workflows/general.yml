@@ -10,6 +10,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Cache Yarn
+        uses: c-hive/gha-yarn-cache@v2
+
       - name: Install dependencies
         run: yarn install
 
@@ -22,7 +30,7 @@ jobs:
       - name: Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_STAND_WITH_UKRAINE_BC_APP }}"
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_STAND_WITH_UKRAINE_BC_APP }}'
           channelId: live
           projectId: stand-with-ukraine-bc-app
