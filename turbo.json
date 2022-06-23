@@ -1,0 +1,18 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "dev": {
+      "cache": false
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["build/**"]
+    },
+    "test": {
+      "inputs": ["**/*.{ts,tsx}", "**/tsconfig.json"]
+    },
+    "lint": {
+      "inputs": ["**/*.{ts,tsx}", "**/tsconfig.json"]
+    }
+  }
+}

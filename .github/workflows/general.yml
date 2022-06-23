@@ -9,9 +9,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          submodules: recursive
-          token: ${{ secrets.SWU_BC_ACCESS_TOKEN }}
 
       - name: Install dependencies
         run: yarn install
@@ -22,17 +19,10 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Build Widget
-        run: |
-          cd widget/
-          npm install
-          npm run build:widget
-          cp -R dist ../build/widget
-
       - name: Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_STAND_WITH_UKRAINE_BC_APP }}'
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_STAND_WITH_UKRAINE_BC_APP }}"
           channelId: live
           projectId: stand-with-ukraine-bc-app

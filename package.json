@@ -1,58 +1,32 @@
 {
   "name": "stand-with-ukraine",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@bigcommerce/big-design": "^0.31.0",
-    "@bigcommerce/big-design-theme": "^0.14.0",
-    "@reduxjs/toolkit": "^1.5.1",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "6",
-    "react-scripts": "5.0.1",
-    "styled-components": "^5.3.5",
-    "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0"
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bc-micah/stand-with-ukraine-dashboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bc-micah/stand-with-ukraine-dashboard/issues"
+  },
+  "homepage": "https://github.com/bc-micah/stand-with-ukraine-dashboard#readme",
+  "author": "",
+  "license": "UNLICENSED",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "turbo": "^1.2.16"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "mocks": "rm -rf tmp/mocks/ && mkdir -p tmp/mocks && cp -R mocks.template/* tmp/mocks/ && node tmp/mocks/app.mjs"
+    "mocks": "rm -rf tmp/mocks/ && mkdir -p tmp/mocks && cp -R mocks.template/* tmp/mocks/ && node tmp/mocks/app.mjs",
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel --continue",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md,scss,css}\""
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/styled-components": "^5.1.25",
-    "connect-api-mocker": "^1.10.0",
-    "express": "^4.18.1"
-  },
-  "engines": {
-    "node": ">=16"
-  },
-  "proxy": "http://localhost:9000"
+  "private": true
 }

@@ -3,11 +3,7 @@
     "public": "build",
     "cleanUrls": true,
     "trailingSlash": false,
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "/api/**",
@@ -24,8 +20,12 @@
         }
       },
       {
+        "source": "robots.txt",
+        "destination": "/dashboard/robots.txt"
+      },
+      {
         "source": "**",
-        "destination": "/index.html"
+        "destination": "/dashboard/index.html"
       }
     ]
   }

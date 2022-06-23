@@ -1,50 +1,27 @@
-# Getting Started with Create React App
+# Stand with Ukraine - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a monorepo for the Stand with Ukraine BigCommerce app. There are two main frontend applications:
 
-## Available Scripts
+1. Application Dashboard - `/apps/dashboard`
+2. Storefront Widget - `/apps/widget`
 
-In the project directory, you can run:
+There is a mock api server `/apps/mocks` that uses local file system to store state for easy development.
+It will need to be kept up-to date with the backend project as changes are made there.
 
-### `yarn mocks`
+The shared packages are stored in the `/packages` folder.
 
-Runs the mock api server. Recommended if you do not have access to the backend server locally.
+## Start Local Development
 
-### `yarn start`
+1. Install NodeJS & Yarn - Recommended version NodeJS ~v16 & Yarn ~v1
+2. Install Dependencies `yarn install`
+3. Start local servers `yarn dev`
+   - dashboard available at `http://localhost:3001/dashboard/`
+   - widget available at `http://localhost:3002/widget/`
+   - api requests are routed automatically from `/api` routes on widget and dashboard servers to mock api server running at port `9000`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Helpful Commands:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. `yarn build` builds all the projects
+2. `yarn lint` checks all the projects using tslint
+3. `yarn format` auto formats all the project files
+4. `yarn clean` clears local dependencies and cache files
