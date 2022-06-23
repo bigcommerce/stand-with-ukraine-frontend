@@ -28,5 +28,6 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md,scss,css}\""
   },
-  "private": true
+  "private": true,
+  "packageManager": "yarn@3.2.1"
 }
