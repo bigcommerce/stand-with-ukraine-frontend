@@ -27,5 +27,6 @@
     "test": "turbo run test",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md,scss,css}\""
-  }
+  },
+  "packageManager": "yarn@3.2.1"
 }

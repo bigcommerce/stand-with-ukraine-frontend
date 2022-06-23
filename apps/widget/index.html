@@ -12,6 +12,15 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="swu" />
+  <script>
+    // use mock api to get current configuration and store in global variable
+    fetch("/api/v1/configuration", {
+      "method": "GET",
+      "mode": "cors"
+    }).then(resp => resp.json()).then((data) => {
+      window.SWU_CONFIG = data;
+    });
+  </script>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 

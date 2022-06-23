@@ -32,7 +32,7 @@ const CHARITIES: Charity[] = [
     },
     name: 'Mira Action',
     description:
-      'Mira Action Inc. specializes in raising funds to purchase and deliver fully-equipped ambulances and medical supplies to Ukrainian hospitals and ER centers.',
+      'Mira Action is a California-based non-profit organization buying and delivering ambulances, medicines, and humanitarian supplies to Ukraine hospitals. We are a team of 20+ volunteers located in California, Poland, and Ukraine running logistics and delivery supply routes and working with hospitals in Central and Eastern Ukraine.',
     donationLink: 'https://miraaction.org/collections/medical-supplies',
   },
   {
