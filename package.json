@@ -10,7 +10,7 @@
   },
   "homepage": "https://github.com/bc-micah/stand-with-ukraine-dashboard#readme",
   "author": "",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "workspaces": [
     "packages/*",
     "apps/*"
@@ -28,6 +28,5 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md,scss,css}\""
   },
-  "private": true,
   "packageManager": "yarn@3.2.1"
 }
