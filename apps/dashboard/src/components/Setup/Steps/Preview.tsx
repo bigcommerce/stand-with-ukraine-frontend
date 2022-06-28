@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import { ReactComponent as CloseSVG } from '../../../assets/Close.svg';
-import { ReactComponent as LogoSVG } from '../../../assets/logo.svg';
 import { useAppSelector } from '../../../state/hooks';
 import { RootState } from '../../../state/store';
 import { CHARITIES } from './common/data';
@@ -68,7 +67,6 @@ export default function PreviewTab() {
   return (
     <ModalPreviewBox>
       <HeaderBlock>
-        <LogoSVG />
         <HeaderText>{configuration.modal_title}</HeaderText>
       </HeaderBlock>
       <BodyText>{configuration.modal_body}</BodyText>
