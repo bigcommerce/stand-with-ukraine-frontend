@@ -11,7 +11,7 @@ const FAQ_LIST: { question: string; answer: string; link?: LinkProps }[] = [
   },
   {
     question:
-      'Can I add a charity organization myself instead of choosing from the predefined list?',
+      '2. Can I add a charity organization myself instead of choosing from the predefined list?',
     answer:
       'We have included the list of vetted charity organizations, confirmed with our team in Ukraine to make sure that the donation would get to the people in need. The list includes organizations that are providing only humanitarian help.',
   },
