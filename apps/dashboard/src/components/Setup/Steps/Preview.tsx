@@ -37,7 +37,6 @@ const HeaderText = styled.h1`
   font-weight: 700;
   font-size: 35px;
   line-height: 48px;
-  margin: 0 0 0 1rem;
 `;
 
 const BodyText = styled.p`
