@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import { ReactComponent as CloseSVG } from '../../../assets/Close.svg';
-import { ReactComponent as LogoSVG } from '../../../assets/logo.svg';
 import { useAppSelector } from '../../../state/hooks';
 import { RootState } from '../../../state/store';
 import { CHARITIES } from './common/data';
@@ -38,7 +37,7 @@ const HeaderText = styled.h1`
   font-weight: 700;
   font-size: 35px;
   line-height: 48px;
-  margin: 0 0 0 1rem;
+  margin: 0;
 `;
 
 const BodyText = styled.p`
@@ -68,7 +67,6 @@ export default function PreviewTab() {
   return (
     <ModalPreviewBox>
       <HeaderBlock>
-        <LogoSVG />
         <HeaderText>{configuration.modal_title}</HeaderText>
       </HeaderBlock>
       <BodyText>{configuration.modal_body}</BodyText>
