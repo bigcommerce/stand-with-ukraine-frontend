@@ -3,8 +3,9 @@ import { h } from 'preact';
 import { useState } from 'preact/compat';
 
 import styles from './styles.module.scss';
+import { analytics } from '../../utils/analytics';
 
-export function Item({ logoProps, name, description, donationLink }: Charity) {
+export function Item({ id, logoProps, name, description, donationLink }: Charity) {
   const [isOpen, setIsOpen] = useState(false);
 
   const textPreview = description
@@ -12,11 +13,19 @@ export function Item({ logoProps, name, description, donationLink }: Charity) {
     .filter((_, i) => i < 15)
     .join(' ');
 
-  const handleClick = (e: MouseEvent) => {
+  const handleSeeMoreClick = (e: MouseEvent) => {
     e.preventDefault();
 
     setIsOpen(true);
+
+    return analytics.charitySeeMore(id);
   };
+
+  const handleSupportClick = () => {
+    analytics.charityClick(id);
+
+    return true;
+  }
 
   return (
     <div className={styles.item}>
@@ -31,7 +40,7 @@ export function Item({ logoProps, name, description, donationLink }: Charity) {
           ) : (
             <p>
               {textPreview}{' '}
-              <a href="#" onClick={handleClick}>
+              <a href="#" onClick={handleSeeMoreClick}>
                 See more
               </a>
             </p>
@@ -42,6 +51,7 @@ export function Item({ logoProps, name, description, donationLink }: Charity) {
           target="_blank"
           className={styles.button}
           rel="noreferrer"
+          onClick={handleSupportClick}
         >
           Support
         </a>
