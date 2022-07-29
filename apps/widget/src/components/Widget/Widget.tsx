@@ -62,7 +62,7 @@ export function Widget({
 
     changeStatus(STORAGE_STATUSES.DISABLED);
 
-    return analytics.widgetClosed();
+    analytics.widgetClosed();
   };
 
   const handleWidgetClick = () => {
@@ -72,7 +72,7 @@ export function Widget({
 
     changeStatus(STORAGE_STATUSES.ENABLED);
 
-    return analytics.widgetOpened();
+    analytics.widgetOpened();
   };
 
   if (isModalOpen || status === STORAGE_STATUSES.DISABLED || status === null) {
