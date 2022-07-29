@@ -45,6 +45,7 @@ describe('counter reducer', () => {
       placement: 'top-left',
       modal_body: 'Test Body',
       modal_title: 'Test Title',
+      store_hash: 'test_hash',
     },
   };
 
@@ -85,6 +86,7 @@ describe('counter reducer', () => {
           "modal_title": "Help the people of Ukraine!",
           "placement": "bottom-right",
           "style": "blue",
+          store_hash: 'test_hash',
         },
       }
     `);
