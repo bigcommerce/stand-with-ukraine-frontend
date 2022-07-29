@@ -17,7 +17,11 @@ export default function App() {
 
     setIsModalOpen(isOpen);
 
-    return isOpen ? analytics.modalOpened() : analytics.modalClosed();
+    if (isOpen) {
+      analytics.modalOpened();
+    } else {
+      analytics.modalClosed();
+    }
   };
 
   return (

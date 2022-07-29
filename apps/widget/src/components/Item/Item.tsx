@@ -18,14 +18,10 @@ export function Item({ id, logoProps, name, description, donationLink }: Charity
 
     setIsOpen(true);
 
-    return analytics.charitySeeMore(id);
+    analytics.charitySeeMore(id);
   };
 
-  const handleSupportClick = () => {
-    analytics.charityClick(id);
-
-    return true;
-  }
+  const handleSupportClick = () => analytics.charityClick(id);
 
   return (
     <div className={styles.item}>
