@@ -1,4 +1,7 @@
-const valid_events = ['opened', 'collapsed', 'closed'];
+const valid_events = [
+  'widget-opened', 'widget-collapsed', 'widget-closed',
+  'modal-opened', 'modal-closed'
+];
 const valid_store = ['test-store'];
 
 module.exports = (req, res) => {
