@@ -1,4 +1,5 @@
 import { getBaseURL } from './baseUrl';
+import { SWU_CONFIG } from "../constants";
 
 const WIDGET_EVENTS = {
   OPENED: 'widget_opened',
@@ -17,12 +18,11 @@ class Analytics {
   private url = getBaseURL().replace('/widget', '/api/v2');
 
   private track(type: 'charity-event' | 'widget-event', data: Record<string, string>) {
-    // ToDo: Add real store_hash
-    const params = new URLSearchParams({ ...data, store_hash: '' });
+    const params = new URLSearchParams({ ...data, store_hash: SWU_CONFIG.store_hash });
     const url = `${this.url}${type}?${params.toString()}`;
 
     try {
-      void fetch(url, { method: 'POST' });
+      void fetch(url, { method: 'POST', mode: 'cors' });
     } catch (err) {
       console.warn('SWU ANALYTICS ERROR:', err);
     }
