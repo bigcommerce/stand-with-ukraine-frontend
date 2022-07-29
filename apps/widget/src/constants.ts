@@ -15,7 +15,7 @@ export const STORAGE_STATUSES = {
   COLLAPSED: 'COLLAPSED',
 };
 
-const SWU_CONFIG: WidgetConfiguration = Object.assign(
+export const SWU_CONFIG: WidgetConfiguration = Object.assign(
   {},
   DEFAULT_CONFIG,
   (window as any)?.SWU_CONFIG ?? null

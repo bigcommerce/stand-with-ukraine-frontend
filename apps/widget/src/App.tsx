@@ -3,6 +3,7 @@ import { useState } from 'preact/compat';
 
 import { Modal } from './components/Modal/Modal';
 import { Widget } from './components/Widget/Widget';
+import { analytics } from './utils/analytics';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,6 +16,12 @@ export default function App() {
     }
 
     setIsModalOpen(isOpen);
+
+    if (isOpen) {
+      analytics.modalOpened();
+    } else {
+      analytics.modalClosed();
+    }
   };
 
   return (

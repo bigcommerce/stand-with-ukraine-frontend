@@ -3,6 +3,8 @@ import { useState } from 'preact/compat';
 
 import { MODAL, STORAGE_KEYS, STORAGE_STATUSES } from '../../constants';
 import { safeSessionStorage } from '../../utils/storage';
+import { analytics } from '../../utils/analytics';
+
 import styles from './styles.module.scss';
 
 const disableAnimation = () =>
@@ -53,10 +55,14 @@ export function Widget({
     e.stopPropagation();
 
     if (status === STORAGE_STATUSES.ENABLED) {
-      return changeStatus(STORAGE_STATUSES.COLLAPSED);
+      changeStatus(STORAGE_STATUSES.COLLAPSED);
+
+      return analytics.widgetCollapsed();
     }
 
-    return changeStatus(STORAGE_STATUSES.DISABLED);
+    changeStatus(STORAGE_STATUSES.DISABLED);
+
+    analytics.widgetClosed();
   };
 
   const handleWidgetClick = () => {
@@ -64,7 +70,9 @@ export function Widget({
       return onClick();
     }
 
-    return changeStatus(STORAGE_STATUSES.ENABLED);
+    changeStatus(STORAGE_STATUSES.ENABLED);
+
+    analytics.widgetOpened();
   };
 
   if (isModalOpen || status === STORAGE_STATUSES.DISABLED || status === null) {
