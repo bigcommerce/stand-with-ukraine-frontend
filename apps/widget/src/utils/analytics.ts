@@ -1,24 +1,27 @@
 import { getBaseURL } from './baseUrl';
-import { SWU_CONFIG } from "../constants";
+import { STORE_HASH } from "../constants";
 
 const WIDGET_EVENTS = {
-  OPENED: 'widget_opened',
-  CLOSED: 'widget_closed',
-  COLLAPSED: 'widget_collapsed',
-  MODAL_OPENED: 'modal_opened',
-  MODAL_CLOSED: 'modal_closed',
+  OPENED: 'widget-opened',
+  CLOSED: 'widget-closed',
+  COLLAPSED: 'widget-collapsed',
+  MODAL_OPENED: 'modal-opened',
+  MODAL_CLOSED: 'modal-closed',
 };
 
 const CHARITY_EVENTS = {
-  SEE_MORE: 'see_more',
-  CLICK: 'support_click',
+  SEE_MORE: 'see-more-clicked',
+  CLICK: 'support-clicked',
 };
 
 class Analytics {
   private url = getBaseURL().replace('/widget', '/api/v2');
 
   private track(type: 'charity-event' | 'widget-event', data: Record<string, string>) {
-    const params = new URLSearchParams({ ...data, store_hash: SWU_CONFIG.store_hash });
+    const params = new URLSearchParams({
+      ...data,
+      store_hash: STORE_HASH
+    });
     const url = `${this.url}${type}?${params.toString()}`;
 
     try {
@@ -49,11 +52,11 @@ class Analytics {
   }
 
   charitySeeMore(charityId: string) {
-    this.track('charity-event', { event: CHARITY_EVENTS.SEE_MORE, id: charityId });
+    this.track('charity-event', { event: CHARITY_EVENTS.SEE_MORE, charity: charityId });
   }
 
   charityClick(charityId: string) {
-    this.track('charity-event', { event: CHARITY_EVENTS.CLICK, id: charityId });
+    this.track('charity-event', { event: CHARITY_EVENTS.CLICK, charity: charityId });
   }
 }
 

@@ -15,7 +15,7 @@ export const STORAGE_STATUSES = {
   COLLAPSED: 'COLLAPSED',
 };
 
-export const SWU_CONFIG: WidgetConfiguration = Object.assign(
+const SWU_CONFIG: WidgetConfiguration = Object.assign(
   {},
   DEFAULT_CONFIG,
   (window as any)?.SWU_CONFIG ?? null
@@ -32,5 +32,7 @@ export const MODAL = {
     src: `${getBaseURL()}assets/images/background.png`,
   },
 };
+
+export const STORE_HASH = SWU_CONFIG.store_hash;
 
 export const CHARITIES = GetCharities(getBaseURL());
