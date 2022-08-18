@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bc-micah/stand-with-ukraine-dashboard.git"
+    "url": "git+https://github.com/bigcommerce/stand-with-ukraine-frontend.git"
   },
   "bugs": {
-    "url": "https://github.com/bc-micah/stand-with-ukraine-dashboard/issues"
+    "url": "https://github.com/bigcommerce/stand-with-ukraine-frontend/issues"
   },
-  "homepage": "https://github.com/bc-micah/stand-with-ukraine-dashboard#readme",
+  "homepage": "https://github.com/bigcommerce/stand-with-ukraine-frontend#readme",
   "author": "",
   "license": "MIT",
   "workspaces": [
