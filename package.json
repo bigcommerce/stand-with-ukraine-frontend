@@ -6,9 +6,9 @@
     "url": "git+https://github.com/bc-micah/stand-with-ukraine-dashboard.git"
   },
   "bugs": {
-    "url": "https://github.com/bc-micah/stand-with-ukraine-dashboard/issues"
+    "url": "https://github.com/bigcommerce/stand-with-ukraine-frontend/issues"
   },
-  "homepage": "https://github.com/bc-micah/stand-with-ukraine-dashboard#readme",
+  "homepage": "https://github.com/bigcommerce/stand-with-ukraine-frontend#readme",
   "author": "",
   "license": "MIT",
   "workspaces": [
