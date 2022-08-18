@@ -11,7 +11,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@bigcommerce/big-design": "^0.31.0",
+    "@bigcommerce/big-design": "^0.33.0",
     "@bigcommerce/big-design-theme": "^0.14.0",
     "@reduxjs/toolkit": "^1.5.1",
     "react": "^18.0.0",
