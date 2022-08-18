@@ -4,10 +4,8 @@ import { afterAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { fetchStoreStatus } from './mainApi';
 import mainReducer, { loadStatus, MainState, nextStep, previousStep } from './mainSlice';
 
-const mockFetchStoresStatus = vi.fn();
-
 vi.mock('./mainApi.ts', () => ({
-  fetchStoreStatus: mockFetchStoresStatus,
+  fetchStoreStatus: vi.fn(),
 }));
 
 describe('counter reducer', () => {
@@ -112,8 +110,10 @@ describe('loadStore async action', () => {
     dispatch = vi.fn();
     getState = vi.fn();
     action = loadStatus();
-    mockFetchStoresStatus.mockClear();
-    mockFetchStoresStatus.mockResolvedValue({ published: true });
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    (fetchStoreStatus as jest.Mock).mockClear();
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    (fetchStoreStatus as jest.Mock).mockResolvedValue({ published: true });
   });
 
   afterAll(() => {
