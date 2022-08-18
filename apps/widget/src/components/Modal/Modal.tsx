@@ -2,6 +2,7 @@ import { h } from 'preact';
 
 import { CHARITIES, MODAL } from '../../constants';
 import { Item } from '../Item/Item';
+
 import styles from './styles.module.scss';
 
 const getSelectedListOfCharities = () => {
@@ -16,19 +17,14 @@ const getSelectedListOfCharities = () => {
   return CHARITIES;
 };
 
-export function Modal({
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-}) {
+export function Modal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const handleContentClick = (e: MouseEvent) => e.stopPropagation();
 
   if (!isOpen) {
     return null;
   }
 
+  /* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */
   return (
     <div className={styles.modal} onClick={onClose}>
       <div className={styles.content} onClick={handleContentClick}>
@@ -38,7 +34,7 @@ export function Modal({
         </div>
         <p>{MODAL.description}</p>
         <div className={styles.img}>
-          <img {...MODAL.img} />
+          <img alt={MODAL.img.alt} src={MODAL.img.src} />
         </div>
         {getSelectedListOfCharities().map((charity, key) => (
           <Item key={key} {...charity} />
@@ -46,4 +42,5 @@ export function Modal({
       </div>
     </div>
   );
+  /* eslint-enable jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */
 }

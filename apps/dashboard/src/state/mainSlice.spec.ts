@@ -1,16 +1,13 @@
 import { AsyncThunkAction, Dispatch } from '@reduxjs/toolkit';
-import { vi, describe, it, expect, beforeEach, afterAll } from 'vitest';
+import { afterAll, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { fetchStoreStatus } from './mainApi';
-import mainReducer, {
-  loadStatus,
-  MainState,
-  nextStep,
-  previousStep,
-} from './mainSlice';
+import mainReducer, { loadStatus, MainState, nextStep, previousStep } from './mainSlice';
+
+const mockFetchStoresStatus = vi.fn();
 
 vi.mock('./mainApi.ts', () => ({
-  fetchStoreStatus: vi.fn(),
+  fetchStoreStatus: mockFetchStoresStatus,
 }));
 
 describe('counter reducer', () => {
@@ -94,17 +91,20 @@ describe('counter reducer', () => {
 
   it('should handle increment', () => {
     const actual = mainReducer(initialState, nextStep());
+
     expect(actual.step).toEqual(4);
   });
 
   it('should handle decrement', () => {
     const actual = mainReducer(initialState, previousStep());
+
     expect(actual.step).toEqual(2);
   });
 });
 
 describe('loadStore async action', () => {
   let dispatch: Dispatch;
+  // eslint-disable-next-line @typescript-eslint/ban-types
   let action: AsyncThunkAction<{ published: boolean }, void, {}>;
   let getState: () => unknown;
 
@@ -112,8 +112,8 @@ describe('loadStore async action', () => {
     dispatch = vi.fn();
     getState = vi.fn();
     action = loadStatus();
-    (fetchStoreStatus as jest.Mock).mockClear();
-    (fetchStoreStatus as jest.Mock).mockResolvedValue({ published: true });
+    mockFetchStoresStatus.mockClear();
+    mockFetchStoresStatus.mockResolvedValue({ published: true });
   });
 
   afterAll(() => {

@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 import Logo from './Logo';
@@ -24,7 +25,7 @@ const HeaderText = styled.h1`
 export default function Header() {
   return (
     <HeaderGroup>
-      <Logo></Logo>
+      <Logo />
       <HeaderText>Stand with Ukraine</HeaderText>
     </HeaderGroup>
   );

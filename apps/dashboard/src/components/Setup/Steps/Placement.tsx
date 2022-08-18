@@ -1,15 +1,14 @@
-import { useCallback, useEffect } from 'react';
-import styled from 'styled-components';
-
 import { Panel, Radio } from '@bigcommerce/big-design';
+import type { WidgetPlacement } from 'config/types';
+import React, { useCallback, useEffect } from 'react';
+import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import { configureButtons, setWidgetPlacement } from '../../../state/mainSlice';
 import { RootState } from '../../../state/store';
+
 import BodySmall from './common/BodySmall';
 import { PLACEMENT_OPTIONS } from './common/data';
-
-import type { WidgetPlacement } from 'config/types';
 
 const SelectWrapper = styled.div`
   display: flex;
@@ -51,18 +50,13 @@ function SelectWidgetPlacement({
 }) {
   const dispatch = useAppDispatch();
   const handleChange = useCallback(
-    (_: React.ChangeEvent<HTMLElement>) =>
-      dispatch(setWidgetPlacement(widgetPlacement)),
-    [dispatch, widgetPlacement]
+    () => dispatch(setWidgetPlacement(widgetPlacement)),
+    [dispatch, widgetPlacement],
   );
 
   return (
-    <SelectWrapper onClick={handleChange as any}>
-      <Radio
-        label={label}
-        checked={selected === widgetPlacement}
-        onChange={handleChange}
-      />
+    <SelectWrapper onClick={handleChange}>
+      <Radio checked={selected === widgetPlacement} label={label} onChange={handleChange} />
       {image}
     </SelectWrapper>
   );
@@ -93,7 +87,7 @@ export default function Placement() {
         backButton: { show: true, disabled: false },
         continueButton: { show: true, disabled: false },
         publishButton: { show: false, disabled: false },
-      })
+      }),
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -101,21 +95,19 @@ export default function Placement() {
   return (
     <Panel header="Select widget layout">
       <BodySmall>
-        This determines where the widget will appear on the page. The layout
-        will be the same for both desktop and mobile shoppers.
+        This determines where the widget will appear on the page. The layout will be the same for
+        both desktop and mobile shoppers.
       </BodySmall>
       <Grid>
-        {PLACEMENT_OPTIONS.map(
-          ({ label, placement, image: ImageComponent }, idx) => (
-            <SelectWidgetPlacement
-              key={idx}
-              label={label}
-              widgetPlacement={placement}
-              image={<ImageComponent />}
-              selected={widgetPlacement}
-            />
-          )
-        )}
+        {PLACEMENT_OPTIONS.map(({ label, placement, image: ImageComponent }, idx) => (
+          <SelectWidgetPlacement
+            image={<ImageComponent />}
+            key={idx}
+            label={label}
+            selected={widgetPlacement}
+            widgetPlacement={placement}
+          />
+        ))}
       </Grid>
     </Panel>
   );

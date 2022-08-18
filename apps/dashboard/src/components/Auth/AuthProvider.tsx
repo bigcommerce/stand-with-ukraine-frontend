@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-
 import { Link, ProgressCircle } from '@bigcommerce/big-design';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 import { useAppDispatch } from '../../state/hooks';
 import { loadStatus } from '../../state/mainSlice';
@@ -33,7 +32,6 @@ export default function AuthProvider({ children }: { children: any }) {
 
   useEffect(() => {
     async function GetAndValidateToken() {
-      // eslint-disable-next-line no-restricted-globals
       const searchParams = new URLSearchParams(location.search);
       const token = searchParams.get('token') ?? GetSessionToken() ?? null;
 
@@ -41,8 +39,10 @@ export default function AuthProvider({ children }: { children: any }) {
         SetSessionToken(token);
 
         const { meta } = await dispatch(loadStatus());
+
         if (meta.requestStatus === 'fulfilled') {
           setStatus('authenticated');
+
           return;
         }
       }
@@ -50,7 +50,7 @@ export default function AuthProvider({ children }: { children: any }) {
       setStatus('unauthenticated');
     }
 
-    GetAndValidateToken();
+    void GetAndValidateToken();
   }, [dispatch]);
 
   if (status === 'authenticated') {
@@ -63,24 +63,18 @@ export default function AuthProvider({ children }: { children: any }) {
         <h2>
           {process.env.NODE_ENV === 'development' ? (
             <>
-              {'Start the local mock server after reading README'}
+              Start the local mock server after reading README
               <br />
             </>
           ) : null}
-          {'Your authentication token is Invalid.'}
+          Your authentication token is Invalid.
           <br />
           {'Please '}
-          <Link
-            target="_blank"
-            href="https://www.bigcommerce.com/apps/stand-with-ukraine/"
-          >
+          <Link href="https://www.bigcommerce.com/apps/stand-with-ukraine/" target="_blank">
             install
           </Link>
           {' and '}
-          <Link
-            target="_blank"
-            href="https://apps.bigcommerce.com/details/38603"
-          >
+          <Link href="https://apps.bigcommerce.com/details/38603" target="_blank">
             open the app
           </Link>
           {' from your BigCommerce admin portal.'}

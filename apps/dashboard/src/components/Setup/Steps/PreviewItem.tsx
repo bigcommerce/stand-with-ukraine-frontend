@@ -1,6 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Charity } from 'config/types';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Item = styled.div`
@@ -76,12 +75,7 @@ const Button = styled.a`
   }
 `;
 
-export default function PreviewItem({
-  logoProps,
-  name,
-  description,
-  donationLink,
-}: Charity) {
+export default function PreviewItem({ logoProps, name, description, donationLink }: Charity) {
   const [isOpen, setIsOpen] = useState(false);
 
   const textPreview = description.split(' ').slice(0, 15).join(' ');
@@ -99,16 +93,17 @@ export default function PreviewItem({
             <strong>{name}</strong>
           </p>
           {isOpen ? (
-            description
-              .split('\n')
-              .map((text: string, key: number) => <p key={key}>{text}</p>)
+            description.split('\n').map((text: string, key: number) => <p key={key}>{text}</p>)
           ) : (
             <p>
-              {textPreview} <a onClick={handleClick}>See more</a>
+              {textPreview}{' '}
+              <a href="#" onClick={handleClick}>
+                See more
+              </a>
             </p>
           )}
         </Text>
-        <Button href={donationLink} target="_blank" rel="noreferrer">
+        <Button href={donationLink} rel="noreferrer" target="_blank">
           Support
         </Button>
       </Content>

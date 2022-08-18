@@ -1,7 +1,6 @@
-import { useCallback, useMemo, useState } from 'react';
-import styled from 'styled-components';
-
 import { Modal as modal, ModalProps, Textarea } from '@bigcommerce/big-design';
+import React, { PropsWithChildren, useCallback, useMemo, useState } from 'react';
+import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import {
@@ -12,8 +11,7 @@ import {
 } from '../../state/mainSlice';
 import { alertsManager } from '../../state/store';
 
-// fix modal type
-const Modal: React.FC<ModalProps & { children?: any }> = modal;
+const Modal: React.FC<ModalProps & PropsWithChildren> = modal;
 const ModalContentWrapper = styled.div`
   padding-bottom: 0.25rem;
 `;
@@ -23,15 +21,11 @@ export default function RemoveModal() {
   const dispatch = useAppDispatch();
   const [reason, setReason] = useState('');
 
-  const closeModal = useCallback(
-    () => dispatch(hideRemoveDialog()),
-    [dispatch]
-  );
+  const closeModal = useCallback(() => dispatch(hideRemoveDialog()), [dispatch]);
 
   const handleReasonChange = useCallback(
-    (event: React.ChangeEvent<HTMLTextAreaElement>) =>
-      setReason(event.target.value),
-    [setReason]
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => setReason(event.target.value),
+    [setReason],
   );
 
   const removeWidget = useCallback(async () => {
@@ -48,40 +42,39 @@ export default function RemoveModal() {
     });
   }, [reason, dispatch]);
 
-  const actions = useMemo(
-    () =>
-      [
-        { text: 'Cancel', variant: 'subtle', onClick: closeModal },
-        {
-          text: 'Remove',
-          actionType: 'destructive',
-          onClick: removeWidget,
-          disabled: reason.trim().length <= 3,
-        },
-      ] as any,
-    [closeModal, removeWidget, reason]
+  const actions: ModalProps['actions'] = useMemo(
+    () => [
+      { text: 'Cancel', variant: 'subtle', onClick: closeModal },
+      {
+        text: 'Remove',
+        actionType: 'destructive',
+        onClick: removeWidget,
+        disabled: reason.trim().length <= 3,
+      },
+    ],
+    [closeModal, removeWidget, reason],
   );
 
   return (
     <Modal
       actions={actions}
+      closeOnClickOutside={false}
+      closeOnEscKey={true}
       header="Remove widget from your store"
       isOpen={isOpen}
       onClose={closeModal}
-      closeOnEscKey={true}
-      closeOnClickOutside={false}
     >
       <ModalContentWrapper>
         <Textarea
-          label="Please tell us why did you decide to remove the widget?"
           description="Required. Maximum 1000 characters"
+          label="Please tell us why did you decide to remove the widget?"
+          maxLength={1000}
+          onChange={handleReasonChange}
           placeholder=""
           required={true}
-          maxLength={1000}
-          rows={3}
           resize={true}
+          rows={3}
           value={reason}
-          onChange={handleReasonChange}
         />
       </ModalContentWrapper>
     </Modal>

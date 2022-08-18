@@ -1,5 +1,6 @@
+import { STORE_HASH } from '../constants';
+
 import { getBaseURL } from './baseUrl';
-import { STORE_HASH } from "../constants";
 
 const WIDGET_EVENTS = {
   OPENED: 'widget-opened',
@@ -20,13 +21,14 @@ class Analytics {
   private track(type: 'charity-event' | 'widget-event', data: Record<string, string>) {
     const params = new URLSearchParams({
       ...data,
-      store_hash: STORE_HASH
+      store_hash: STORE_HASH,
     });
     const url = `${this.url}${type}?${params.toString()}`;
 
     try {
       void fetch(url, { method: 'POST', mode: 'cors' });
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.warn('SWU ANALYTICS ERROR:', err);
     }
   }

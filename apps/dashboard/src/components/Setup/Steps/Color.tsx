@@ -1,14 +1,13 @@
+import { Panel, Radio } from '@bigcommerce/big-design';
+import type { WidgetStyle } from 'config/types';
 import React, { useCallback, useEffect } from 'react';
 import styled from 'styled-components';
-
-import { Panel, Radio } from '@bigcommerce/big-design';
 
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import { configureButtons, setWidgetStyle } from '../../../state/mainSlice';
 import { RootState } from '../../../state/store';
-import { WIDGET_STYLES } from './common/data';
 
-import type { WidgetStyle } from 'config/types';
+import { WIDGET_STYLES } from './common/data';
 
 const SelectWrapper = styled.div`
   display: flex;
@@ -51,18 +50,13 @@ function SelectWidgetStyle({
 }) {
   const dispatch = useAppDispatch();
   const handleChange = useCallback(
-    (_: React.ChangeEvent<HTMLElement>) =>
-      dispatch(setWidgetStyle(widgetStyle)),
-    [dispatch, widgetStyle]
+    () => dispatch(setWidgetStyle(widgetStyle)),
+    [dispatch, widgetStyle],
   );
 
   return (
-    <SelectWrapper onClick={handleChange as any}>
-      <Radio
-        label=""
-        checked={selected === widgetStyle}
-        onChange={handleChange}
-      />
+    <SelectWrapper onClick={handleChange}>
+      <Radio checked={selected === widgetStyle} label="" onChange={handleChange} />
       {image}
     </SelectWrapper>
   );
@@ -86,20 +80,18 @@ export default function Color() {
         backButton: { show: false, disabled: false },
         continueButton: { show: true, disabled: false },
         publishButton: { show: false, disabled: false },
-      })
+      }),
     );
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   return (
     <Panel header="Select widget color">
       <Grid>
         {WIDGET_STYLES.map(({ style, image: ImageComponent }, index) => (
           <SelectWidgetStyle
+            image={<ImageComponent />}
             key={index}
             selected={widgetStyle}
-            image={<ImageComponent />}
             widgetStyle={style}
           />
         ))}

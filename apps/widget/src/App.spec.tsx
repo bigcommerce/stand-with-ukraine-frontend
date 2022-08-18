@@ -1,7 +1,6 @@
+import { render, screen, waitFor } from '@testing-library/preact';
 import { h } from 'preact';
 import { expect, it } from 'vitest';
-
-import { render, screen, waitFor } from '@testing-library/preact';
 
 import App from './App';
 

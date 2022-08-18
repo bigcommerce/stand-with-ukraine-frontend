@@ -2,25 +2,18 @@ import { h } from 'preact';
 import { useState } from 'preact/compat';
 
 import { MODAL, STORAGE_KEYS, STORAGE_STATUSES } from '../../constants';
-import { safeSessionStorage } from '../../utils/storage';
 import { analytics } from '../../utils/analytics';
+import { safeSessionStorage } from '../../utils/storage';
 
 import styles from './styles.module.scss';
 
 const disableAnimation = () =>
-  safeSessionStorage.setItem(
-    STORAGE_KEYS.WIDGET_ANIMATION,
-    STORAGE_STATUSES.DISABLED
-  );
+  safeSessionStorage.setItem(STORAGE_KEYS.WIDGET_ANIMATION, STORAGE_STATUSES.DISABLED);
 
 const getClassNames = () => {
   const isAnimated = safeSessionStorage.getItem(STORAGE_KEYS.WIDGET_ANIMATION);
 
-  const classNames = [
-    styles.widget,
-    styles[MODAL.style],
-    styles[MODAL.placement],
-  ];
+  const classNames = [styles.widget, styles[MODAL.style], styles[MODAL.placement]];
 
   if (isAnimated === null || isAnimated !== STORAGE_STATUSES.DISABLED) {
     classNames.push(styles.animated);
@@ -31,13 +24,7 @@ const getClassNames = () => {
   return classNames.join(' ');
 };
 
-export function Widget({
-  isModalOpen,
-  onClick,
-}: {
-  isModalOpen: boolean;
-  onClick: () => void;
-}) {
+export function Widget({ isModalOpen, onClick }: { isModalOpen: boolean; onClick: () => void }) {
   const widgetValue = safeSessionStorage.getItem(STORAGE_KEYS.WIDGET);
   const [status, setStatus] = useState(widgetValue ?? STORAGE_STATUSES.ENABLED);
 
@@ -47,9 +34,7 @@ export function Widget({
   };
 
   const buttonClassNames =
-    status === STORAGE_STATUSES.ENABLED
-      ? `${styles.button} ${styles.isOpen}`
-      : styles.button;
+    status === STORAGE_STATUSES.ENABLED ? `${styles.button} ${styles.isOpen}` : styles.button;
 
   const handleCloseClick = (e: MouseEvent) => {
     e.stopPropagation();
@@ -79,13 +64,12 @@ export function Widget({
     return null;
   }
 
+  /* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */
   return (
     <div
-      style={
-        status === STORAGE_STATUSES.COLLAPSED ? { maxWidth: 86 } : undefined
-      }
       className={getClassNames()}
       onClick={handleWidgetClick}
+      style={status === STORAGE_STATUSES.COLLAPSED ? { maxWidth: 86 } : undefined}
     >
       <div className={styles.flag} />
       {status !== STORAGE_STATUSES.COLLAPSED && (
@@ -99,4 +83,5 @@ export function Widget({
       <button className={buttonClassNames} onClick={handleCloseClick} />
     </div>
   );
+  /* eslint-enable jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */
 }

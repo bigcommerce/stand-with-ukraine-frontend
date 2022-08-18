@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 const ContentWrapper = styled.div`
@@ -55,8 +56,8 @@ export default function Content({ published }: { published: boolean }) {
     <ContentWrapper>
       {!published && (
         <h4>
-          By adding a widget you can show your support and give shoppers an easy
-          way to donate. Widget will not be shown at checkout pages.
+          By adding a widget you can show your support and give shoppers an easy way to donate.
+          Widget will not be shown at checkout pages.
         </h4>
       )}
       <h5>How it works</h5>
@@ -68,9 +69,9 @@ export default function Content({ published }: { published: boolean }) {
       </ol>
       <h5>How it helps</h5>
       <p>
-        Clicking the widget opens a pop-up, which shoppers can use to donate to
-        any of your preferred charities. All charities are trusted, non-profit
-        organizations involved with Ukrainian humanitarian relief and recovery.
+        Clicking the widget opens a pop-up, which shoppers can use to donate to any of your
+        preferred charities. All charities are trusted, non-profit organizations involved with
+        Ukrainian humanitarian relief and recovery.
       </p>
     </ContentWrapper>
   );

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import Setup from '../components/Setup/Setup';
 import { useAppDispatch } from '../state/hooks';
@@ -9,8 +9,7 @@ export default function SetupPage() {
 
   useEffect(() => {
     dispatch(loadStatus());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   return <Setup />;
 }

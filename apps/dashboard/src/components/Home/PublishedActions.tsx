@@ -1,16 +1,11 @@
-import { useEffect } from 'react';
+import { Button, Link } from '@bigcommerce/big-design';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Button, Link } from '@bigcommerce/big-design';
-
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
-import {
-  goToStep,
-  preview,
-  selectStoreUrl,
-  showRemoveDialog,
-} from '../../state/mainSlice';
+import { goToStep, preview, selectStoreUrl, showRemoveDialog } from '../../state/mainSlice';
+
 import RemoveModal from './RemoveModal';
 
 const LoveMessageContainer = styled.div`
@@ -66,11 +61,11 @@ export default function PublishedActions() {
       </LoveMessageContainer>
       <ActionContainer>
         <Button
+          actionType="destructive"
           onClick={() => {
             dispatch(showRemoveDialog());
           }}
           variant="secondary"
-          actionType="destructive"
         >
           Remove
         </Button>
@@ -84,7 +79,7 @@ export default function PublishedActions() {
           Edit
         </Button>
         {storeUrl ? (
-          <Link href={storeUrl} target="_blank" rel="noreferrer" external>
+          <Link external href={storeUrl} rel="noreferrer" target="_blank">
             View
           </Link>
         ) : null}
