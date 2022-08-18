@@ -1,6 +1,10 @@
+/* eslint-disable camelcase */
 const valid_events = [
-  'widget-opened', 'widget-collapsed', 'widget-closed',
-  'modal-opened', 'modal-closed'
+  'widget-opened',
+  'widget-collapsed',
+  'widget-closed',
+  'modal-opened',
+  'modal-closed',
 ];
 const valid_store = ['test-store'];
 
@@ -15,3 +19,4 @@ module.exports = (req, res) => {
     res.status(400).end();
   }
 };
+/* eslint-enable camelcase */

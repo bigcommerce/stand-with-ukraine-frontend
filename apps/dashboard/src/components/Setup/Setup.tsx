@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
-
 import { Stepper } from '@bigcommerce/big-design';
+import React, { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import {
@@ -10,6 +9,7 @@ import {
   showFooter,
   Steps,
 } from '../../state/mainSlice';
+
 import Charity from './Steps/Charity';
 import Color from './Steps/Color';
 import Modal from './Steps/Modal';
@@ -34,7 +34,7 @@ export default function Setup() {
 
   return (
     <>
-      <Stepper steps={Steps} currentStep={currentStep}></Stepper>
+      <Stepper currentStep={currentStep} steps={Steps} />
       {currentStep === 0 ? <Color /> : null}
       {currentStep === 1 ? <Placement /> : null}
       {currentStep === 2 ? <Charity /> : null}

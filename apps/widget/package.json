@@ -18,8 +18,6 @@
     "@preact/preset-vite": "^2.1.5",
     "@testing-library/preact": "^3.2.2",
     "@types/node": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.29.0",
-    "@typescript-eslint/parser": "^5.29.0",
     "@vitejs/plugin-react": "^1.3.0",
     "jsdom": "^20.0.0",
     "sass": "^1.52.3",

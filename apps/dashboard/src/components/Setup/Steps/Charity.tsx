@@ -1,15 +1,11 @@
+import { Checkbox, Collapse, Link, Panel, Text } from '@bigcommerce/big-design';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
-import { Checkbox, Collapse, Link, Panel, Text } from '@bigcommerce/big-design';
-
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
-import {
-  configureButtons,
-  configureContinueButton,
-  toggleCharity,
-} from '../../../state/mainSlice';
+import { configureButtons, configureContinueButton, toggleCharity } from '../../../state/mainSlice';
 import { RootState } from '../../../state/store';
+
 import BodySmall from './common/BodySmall';
 import { CHARITIES, MAX_SELECTION } from './common/data';
 
@@ -85,10 +81,7 @@ function SelectCharity({
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
   const handleCollapse = (isOpen: boolean) => setOpen(isOpen);
-  const handleSelectChange = useCallback(
-    (_: React.ChangeEvent<HTMLInputElement>) => dispatch(toggleCharity(id)),
-    [dispatch, id]
-  );
+  const handleSelectChange = useCallback(() => dispatch(toggleCharity(id)), [dispatch, id]);
 
   const content = useMemo(() => {
     const paragraphs = description.split('\n');
@@ -97,7 +90,7 @@ function SelectCharity({
       <Text key={key} marginBottom="none">
         {item}{' '}
         {key === paragraphs.length - 1 && (
-          <Link href={donationLink} target="_blank" external>
+          <Link external href={donationLink} target="_blank">
             Learn more
           </Link>
         )}
@@ -109,19 +102,16 @@ function SelectCharity({
     <CharityWrapper>
       <CheckboxWrapper>
         <Checkbox
-          label=""
           checked={selected}
           disabled={!selected && limitReached}
+          label=""
           onChange={handleSelectChange}
         />
       </CheckboxWrapper>
       <CharityLogoWrapper>{logo}</CharityLogoWrapper>
       <CharityContentWrapper>
         <CharityLabel>{name}</CharityLabel>
-        <Collapse
-          title={open ? 'Show less' : 'Show more'}
-          onCollapseChange={handleCollapse}
-        />
+        <Collapse onCollapseChange={handleCollapse} title={open ? 'Show less' : 'Show more'} />
         {open ? content : null}
       </CharityContentWrapper>
     </CharityWrapper>
@@ -130,19 +120,19 @@ function SelectCharity({
 
 function selectWidgetCharities(state: RootState) {
   const charities = state.widgetConfiguration.charity_selections;
-  const numCharitiesSelected = Object.values(
-    state.widgetConfiguration.charity_selections
-  ).filter((value) => value).length;
+  const numCharitiesSelected = Object.values(state.widgetConfiguration.charity_selections).filter(
+    (value) => value,
+  ).length;
+
   return {
     charities,
     numCharities: numCharitiesSelected,
     limitReached: numCharitiesSelected >= MAX_SELECTION,
   };
 }
+
 export default function Charity() {
-  const { charities, numCharities, limitReached } = useAppSelector(
-    selectWidgetCharities
-  );
+  const { charities, numCharities, limitReached } = useAppSelector(selectWidgetCharities);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -152,39 +142,34 @@ export default function Charity() {
         backButton: { show: true, disabled: false },
         continueButton: { show: true, disabled: true },
         publishButton: { show: false, disabled: false },
-      })
+      }),
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    dispatch(
-      configureContinueButton({ show: true, disabled: numCharities === 0 })
-    );
+    dispatch(configureContinueButton({ show: true, disabled: numCharities === 0 }));
   }, [dispatch, numCharities]);
 
   return (
     <Panel header="Choose your charities">
       <BodySmall>
-        All charities are trusted, non-profit organizations involved with
-        Ukrainian relief efforts and provide only humanitarian aid. You can
-        choose up to 3 charities.
+        All charities are trusted, non-profit organizations involved with Ukrainian relief efforts
+        and provide only humanitarian aid. You can choose up to 3 charities.
       </BodySmall>
       <Grid>
-        {CHARITIES.map(
-          ({ id, name, description, donationLink, logoProps }, index) => (
-            <SelectCharity
-              key={index}
-              selected={Boolean(charities.includes(id))}
-              limitReached={limitReached}
-              id={id}
-              name={name}
-              logo={<Image {...logoProps} />}
-              description={description}
-              donationLink={donationLink}
-            />
-          )
-        )}
+        {CHARITIES.map(({ id, name, description, donationLink, logoProps }, index) => (
+          <SelectCharity
+            description={description}
+            donationLink={donationLink}
+            id={id}
+            key={index}
+            limitReached={limitReached}
+            logo={<Image {...logoProps} />}
+            name={name}
+            selected={Boolean(charities.includes(id))}
+          />
+        ))}
       </Grid>
     </Panel>
   );

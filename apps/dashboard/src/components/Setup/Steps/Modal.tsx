@@ -1,16 +1,6 @@
+import { Box, Form, FormGroup, Input, Link, Panel, Tabs, Textarea } from '@bigcommerce/big-design';
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-
-import {
-  Box,
-  Form,
-  FormGroup,
-  Input,
-  Link,
-  Panel,
-  Tabs,
-  Textarea,
-} from '@bigcommerce/big-design';
 
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import {
@@ -20,11 +10,13 @@ import {
   setModalBody,
   setModalTitle,
 } from '../../../state/mainSlice';
+
 import BodySmall from './common/BodySmall';
 import PreviewTab from './Preview';
 
 type TAB_TYPE = 'configure' | 'preview';
-const tabs: { id: TAB_TYPE; title: string }[] = [
+
+const tabs: Array<{ id: TAB_TYPE; title: string }> = [
   { id: 'configure', title: 'Configure' },
   { id: 'preview', title: 'Preview' },
 ];
@@ -47,47 +39,45 @@ const TabContainer = styled.div`
     z-index: 1;
   }
 `;
+
 function InfoTab() {
   const dispatch = useAppDispatch();
   const { modalTitle, modalBody } = useAppSelector(selectWidgetModal);
-  const resetText = useCallback(
-    () => dispatch(resetModalToDefault()),
-    [dispatch]
-  );
+  const resetText = useCallback(() => dispatch(resetModalToDefault()), [dispatch]);
 
   return (
     <Form>
       <FormGroup>
         <Input
-          label="Pop-up Title"
           description="Maximum 50 characters"
-          placeholder="Pop Up Title"
-          required={true}
-          type="text"
+          label="Pop-up Title"
           maxLength={50}
-          value={modalTitle}
           onChange={useCallback(
             (event: React.ChangeEvent<HTMLInputElement>) =>
               dispatch(setModalTitle(event.target.value)),
-            [dispatch]
+            [dispatch],
           )}
+          placeholder="Pop Up Title"
+          required={true}
+          type="text"
+          value={modalTitle}
         />
       </FormGroup>
       <FormGroup>
         <Textarea
-          label="Pop-up Body"
           description="Maximum 400 characters"
-          placeholder="Pop Up Body"
-          required={true}
+          label="Pop-up Body"
           maxLength={400}
-          rows={5}
-          resize={true}
-          value={modalBody}
           onChange={useCallback(
             (event: React.ChangeEvent<HTMLTextAreaElement>) =>
               dispatch(setModalBody(event.target.value)),
-            [dispatch]
+            [dispatch],
           )}
+          placeholder="Pop Up Body"
+          required={true}
+          resize={true}
+          rows={5}
+          value={modalBody}
         />
       </FormGroup>
       <Link onClick={resetText}>Reset to default</Link>
@@ -106,20 +96,18 @@ export default function Modal() {
         backButton: { show: true, disabled: false },
         continueButton: { show: false, disabled: false },
         publishButton: { show: true, disabled: false },
-      })
+      }),
     );
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   return (
     <Panel header="Customize pop-up">
       <BodySmall>
-        When shoppers click or tap the widget they will be shown a pop-up with
-        more info. You can customize the message or use the default text.
+        When shoppers click or tap the widget they will be shown a pop-up with more info. You can
+        customize the message or use the default text.
       </BodySmall>
       <TabContainer>
-        <Tabs activeTab={tab} items={tabs} onTabClick={setTab as any} />
+        <Tabs activeTab={tab} items={tabs} onTabClick={(id: TAB_TYPE) => setTab(id)} />
         <Divider />
       </TabContainer>
       <Box marginTop="large">

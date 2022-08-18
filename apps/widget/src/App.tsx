@@ -26,10 +26,7 @@ export default function App() {
 
   return (
     <div>
-      <Widget
-        isModalOpen={isModalOpen}
-        onClick={() => handleModalToggle(true)}
-      />
+      <Widget isModalOpen={isModalOpen} onClick={() => handleModalToggle(true)} />
       <Modal isOpen={isModalOpen} onClose={() => handleModalToggle(false)} />
     </div>
   );

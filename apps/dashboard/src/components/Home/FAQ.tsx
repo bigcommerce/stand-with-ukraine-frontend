@@ -1,12 +1,10 @@
+import { Collapse, Link, LinkProps } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Collapse, Link, LinkProps } from '@bigcommerce/big-design';
-
-const FAQ_LIST: { question: string; answer: string; link?: LinkProps }[] = [
+const FAQ_LIST: Array<{ question: string; answer: string; link?: LinkProps }> = [
   {
-    question:
-      '1. I’m not seeing a widget / changes to the widget are not applied.',
+    question: '1. I’m not seeing a widget / changes to the widget are not applied.',
     answer: `Hold shift+R to refresh the storefront page, new script often isn't loaded on a background even after a minute. If it didn’t help, please try to remove a widget and re-apply again. If it still does not work notify us via ”Get support”.`,
   },
   {
@@ -21,8 +19,7 @@ const FAQ_LIST: { question: string; answer: string; link?: LinkProps }[] = [
       'Selecting pages is not supported at this point, however you could select the location. By default widget is going to show up on the following pages: Home, Add Wishlist, Blog List, Blog Post, Brand Pages, All Brands Page, Cart, Category, Product Compare, Contact Form, Product, Search, All Wishlist, Wish List, 404 page.',
   },
   {
-    question:
-      '4. Do you have or manage other websites that are not on BigCommerce?',
+    question: '4. Do you have or manage other websites that are not on BigCommerce?',
     answer: `We'll soon allow you to generate the same widget and copy the script for installation onto any website you own or manage. In the meantime, there is a service which inspired this application to do this now. More details at: `,
     link: {
       href: 'https://helpukrainewinwidget.org/',
@@ -74,11 +71,8 @@ export default function FAQ() {
   return (
     <>
       <ActionContainer>
-        <Collapse
-          title={open ? 'Hide FAQ' : 'Show FAQ'}
-          onCollapseChange={setOpen}
-        ></Collapse>
-        <Link href={SUPPORT_LINK} target="_blank" rel="noreferrer" external>
+        <Collapse onCollapseChange={setOpen} title={open ? 'Hide FAQ' : 'Show FAQ'} />
+        <Link external href={SUPPORT_LINK} rel="noreferrer" target="_blank">
           Get Support
         </Link>
       </ActionContainer>

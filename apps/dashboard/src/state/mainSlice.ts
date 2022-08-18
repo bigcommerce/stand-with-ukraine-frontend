@@ -1,6 +1,6 @@
-import { DEFAULT_CONFIG } from 'config';
-
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { DEFAULT_CONFIG } from 'config';
+import type { WidgetConfiguration, WidgetPlacement, WidgetStyle } from 'config/types';
 
 import {
   fetchStoreStatus,
@@ -11,11 +11,6 @@ import {
   writeConfiguration,
 } from './mainApi';
 
-import type {
-  WidgetConfiguration,
-  WidgetPlacement,
-  WidgetStyle,
-} from 'config/types';
 export const Steps = ['Color', 'Layout', 'Charity', 'Pop-Up'];
 export type LoadingState = 'idle' | 'loading' | 'failed';
 
@@ -75,15 +70,9 @@ const initialState: MainState = {
   widgetConfiguration: DEFAULT_CONFIG,
 };
 
-export const getConfiguration = createAsyncThunk(
-  'setup/getConfiguration',
-  readConfiguration
-);
+export const getConfiguration = createAsyncThunk('setup/getConfiguration', readConfiguration);
 
-export const saveConfiguration = createAsyncThunk(
-  'setup/saveConfiguration',
-  writeConfiguration
-);
+export const saveConfiguration = createAsyncThunk('setup/saveConfiguration', writeConfiguration);
 
 export const loadStatus = createAsyncThunk('home/loadStatus', fetchStoreStatus);
 export const publish = createAsyncThunk('home/publish', publishWidget);
@@ -121,9 +110,8 @@ export const mainSlice = createSlice({
       state.widgetConfiguration.placement = action.payload;
     },
     toggleCharity: (state, action: PayloadAction<string>) => {
-      let index = state.widgetConfiguration.charity_selections.indexOf(
-        action.payload
-      );
+      const index = state.widgetConfiguration.charity_selections.indexOf(action.payload);
+
       if (index === -1) {
         state.widgetConfiguration.charity_selections.push(action.payload);
       } else {
@@ -137,10 +125,8 @@ export const mainSlice = createSlice({
       state.widgetConfiguration.modal_body = action.payload;
     },
     resetModalToDefault: (state) => {
-      state.widgetConfiguration.modal_body =
-        initialState.widgetConfiguration.modal_body;
-      state.widgetConfiguration.modal_title =
-        initialState.widgetConfiguration.modal_title;
+      state.widgetConfiguration.modal_body = initialState.widgetConfiguration.modal_body;
+      state.widgetConfiguration.modal_title = initialState.widgetConfiguration.modal_title;
     },
     showFooter: (state) => {
       state.footer.show = true;
@@ -150,28 +136,28 @@ export const mainSlice = createSlice({
     },
     configureBackButton: (
       state,
-      action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>
+      action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>,
     ) => {
       state.footer.backButton.show = Boolean(action.payload.show);
       state.footer.backButton.disabled = Boolean(action.payload.disabled);
     },
     configureContinueButton: (
       state,
-      action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>
+      action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>,
     ) => {
       state.footer.continueButton.show = Boolean(action.payload.show);
       state.footer.continueButton.disabled = Boolean(action.payload.disabled);
     },
     configurePublishButton: (
       state,
-      action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>
+      action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>,
     ) => {
       state.footer.publishButton.show = Boolean(action.payload.show);
       state.footer.publishButton.disabled = Boolean(action.payload.disabled);
     },
     configureCancelButton: (
       state,
-      action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>
+      action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>,
     ) => {
       state.footer.cancelButton.show = Boolean(action.payload.show);
       state.footer.cancelButton.disabled = Boolean(action.payload.disabled);
@@ -195,37 +181,26 @@ export const mainSlice = createSlice({
           show: boolean;
           disabled: boolean;
         };
-      }>
+      }>,
     ) => {
       if (action.payload.backButton !== undefined) {
         state.footer.backButton.show = Boolean(action.payload.backButton.show);
-        state.footer.backButton.disabled = Boolean(
-          action.payload.backButton.disabled
-        );
+        state.footer.backButton.disabled = Boolean(action.payload.backButton.disabled);
       }
+
       if (action.payload.continueButton !== undefined) {
-        state.footer.continueButton.show = Boolean(
-          action.payload.continueButton.show
-        );
-        state.footer.continueButton.disabled = Boolean(
-          action.payload.continueButton.disabled
-        );
+        state.footer.continueButton.show = Boolean(action.payload.continueButton.show);
+        state.footer.continueButton.disabled = Boolean(action.payload.continueButton.disabled);
       }
+
       if (action.payload.publishButton !== undefined) {
-        state.footer.publishButton.show = Boolean(
-          action.payload.publishButton.show
-        );
-        state.footer.publishButton.disabled = Boolean(
-          action.payload.publishButton.disabled
-        );
+        state.footer.publishButton.show = Boolean(action.payload.publishButton.show);
+        state.footer.publishButton.disabled = Boolean(action.payload.publishButton.disabled);
       }
+
       if (action.payload.cancelButton !== undefined) {
-        state.footer.cancelButton.show = Boolean(
-          action.payload.cancelButton.show
-        );
-        state.footer.cancelButton.disabled = Boolean(
-          action.payload.cancelButton.disabled
-        );
+        state.footer.cancelButton.show = Boolean(action.payload.cancelButton.show);
+        state.footer.cancelButton.disabled = Boolean(action.payload.cancelButton.disabled);
       }
     },
   },
@@ -290,10 +265,7 @@ export const {
   setModalTitle,
   showFooter,
   hideFooter,
-  configureBackButton,
   configureContinueButton,
-  configurePublishButton,
-  configureCancelButton,
   configureButtons,
   toggleCharity,
   showRemoveDialog,
@@ -304,20 +276,11 @@ export const {
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-export const selectStep = (state: MainState) => state;
 export const selectCurrentStep = (state: MainState) => state.step;
 export const selectFooter = (state: MainState) => state.footer;
-export const selectConfiguration = (state: MainState) =>
-  state.widgetConfiguration;
+export const selectConfiguration = (state: MainState) => state.widgetConfiguration;
 export const selectStoreUrl = (state: MainState) => state.storeUrl;
-export const selectShowRemoveDialog = (state: MainState) =>
-  state.showRemoveDialog;
-export const selectHome = (state: MainState) => ({
-  published: state.published,
-  showRemoveDialog: state.showRemoveDialog,
-  status: state.status,
-  storeUrl: state.storeUrl,
-});
+export const selectShowRemoveDialog = (state: MainState) => state.showRemoveDialog;
 export const selectPublished = (state: MainState) => state.published;
 export const selectLoadingStatus = (state: MainState) => state.status;
 export const selectWidgetModal = (state: MainState) => ({

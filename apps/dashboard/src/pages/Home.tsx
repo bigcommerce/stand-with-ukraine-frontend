@@ -1,4 +1,5 @@
 import { Panel } from '@bigcommerce/big-design';
+import React from 'react';
 
 import Content from '../components/Home/Content';
 import FAQ from '../components/Home/FAQ';

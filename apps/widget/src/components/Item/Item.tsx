@@ -2,8 +2,9 @@ import { Charity } from 'config/types';
 import { h } from 'preact';
 import { useState } from 'preact/compat';
 
-import styles from './styles.module.scss';
 import { analytics } from '../../utils/analytics';
+
+import styles from './styles.module.scss';
 
 export function Item({ id, logoProps, name, description, donationLink }: Charity) {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,7 @@ export function Item({ id, logoProps, name, description, donationLink }: Charity
 
   return (
     <div className={styles.item}>
-      <img className={styles.icon} {...logoProps} />
+      <img alt={logoProps.alt} className={styles.icon} src={logoProps.src} />
       <div className={styles.content}>
         <div className={styles.text}>
           <p>
@@ -43,11 +44,11 @@ export function Item({ id, logoProps, name, description, donationLink }: Charity
           )}
         </div>
         <a
-          href={donationLink}
-          target="_blank"
           className={styles.button}
-          rel="noreferrer"
+          href={donationLink}
           onClick={handleSupportClick}
+          rel="noreferrer"
+          target="_blank"
         >
           Support
         </a>

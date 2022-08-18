@@ -1,4 +1,6 @@
 import { GetCharities } from 'config/charities';
+import type { WidgetPlacement, WidgetStyle } from 'config/types';
+import { FC } from 'react';
 
 import {
   BottomLeft,
@@ -8,22 +10,17 @@ import {
   TopMiddle,
   TopRight,
 } from '../../../../assets/WidgetPlacement';
-import {
-  BlackWidget,
-  BlueWidget,
-  WhiteWidget,
-} from '../../../../assets/WidgetStyles';
+import { BlackWidget, BlueWidget, WhiteWidget } from '../../../../assets/WidgetStyles';
 
-import type { WidgetPlacement, WidgetStyle } from 'config/types';
 export const MAX_SELECTION = 3;
 
 export const CHARITIES = GetCharities(import.meta.env.BASE_URL);
 
-export const PLACEMENT_OPTIONS: {
+export const PLACEMENT_OPTIONS: Array<{
   label: string;
   placement: WidgetPlacement;
-  image: React.FunctionComponent<any>;
-}[] = [
+  image: FC<any>;
+}> = [
   {
     label: 'Top Left',
     placement: 'top-left',
@@ -56,10 +53,10 @@ export const PLACEMENT_OPTIONS: {
   },
 ];
 
-export const WIDGET_STYLES: {
+export const WIDGET_STYLES: Array<{
   style: WidgetStyle;
-  image: React.FunctionComponent<any>;
-}[] = [
+  image: FC<any>;
+}> = [
   {
     style: 'blue',
     image: BlueWidget,

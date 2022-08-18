@@ -1,5 +1,6 @@
+/* eslint-disable camelcase */
 const valid_charities = ['unicef', 'mira-action', 'razom', 'new-ukraine'];
-const valid_events = ['see-more-clicked', 'support-clicked']
+const valid_events = ['see-more-clicked', 'support-clicked'];
 const valid_store = ['test-store'];
 
 module.exports = (req, res) => {
@@ -14,3 +15,4 @@ module.exports = (req, res) => {
     res.status(400).end();
   }
 };
+/* eslint-enable camelcase */

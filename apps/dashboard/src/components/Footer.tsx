@@ -1,8 +1,7 @@
-import { useCallback } from 'react';
+import { Button } from '@bigcommerce/big-design';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-
-import { Button } from '@bigcommerce/big-design';
 
 import { ReactComponent as BigDesignLogoSVG } from '../assets/big-design-logo.svg';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
@@ -76,14 +75,8 @@ export default function Footer() {
   const navigate = useNavigate();
 
   const handleCancelButton = useCallback(() => navigate('/'), [navigate]);
-  const handleBackButton = useCallback(
-    () => dispatch(previousStep()),
-    [dispatch]
-  );
-  const handleContinueButton = useCallback(
-    () => dispatch(nextStep()),
-    [dispatch]
-  );
+  const handleBackButton = useCallback(() => dispatch(previousStep()), [dispatch]);
+  const handleContinueButton = useCallback(() => dispatch(nextStep()), [dispatch]);
 
   const handlePublishButton = useCallback(async () => {
     await writeConfiguration(widgetConfiguration);
@@ -104,8 +97,8 @@ export default function Footer() {
     return (
       <BuiltWithContainer
         href="https://developer.bigcommerce.com/big-design/"
-        target="_blank"
         rel="noreferrer noopener"
+        target="_blank"
       >
         <div>
           Built with <BigDesignLogoSVG />
@@ -118,36 +111,22 @@ export default function Footer() {
     <FooterDiv>
       <ButtonContainer>
         {cancelButton.show ? (
-          <Button
-            variant="subtle"
-            disabled={cancelButton.disabled}
-            onClick={handleCancelButton}
-          >
+          <Button disabled={cancelButton.disabled} onClick={handleCancelButton} variant="subtle">
             Cancel
           </Button>
         ) : null}
         {backButton.show ? (
-          <Button
-            variant="subtle"
-            disabled={backButton.disabled}
-            onClick={handleBackButton}
-          >
+          <Button disabled={backButton.disabled} onClick={handleBackButton} variant="subtle">
             Back
           </Button>
         ) : null}
         {continueButton.show ? (
-          <Button
-            disabled={continueButton.disabled}
-            onClick={handleContinueButton}
-          >
+          <Button disabled={continueButton.disabled} onClick={handleContinueButton}>
             Continue
           </Button>
         ) : null}
         {publishButton.show ? (
-          <Button
-            disabled={publishButton.disabled}
-            onClick={handlePublishButton}
-          >
+          <Button disabled={publishButton.disabled} onClick={handlePublishButton}>
             Publish
           </Button>
         ) : null}

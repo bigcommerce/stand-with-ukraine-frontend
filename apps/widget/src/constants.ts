@@ -1,9 +1,9 @@
 import { DEFAULT_CONFIG } from 'config';
 import { GetCharities } from 'config/charities';
+import type { WidgetConfiguration } from 'config/types';
 
 import { getBaseURL } from './utils/baseUrl';
 
-import type { WidgetConfiguration } from 'config/types';
 export const STORAGE_KEYS = {
   WIDGET: 'SWU_WIDGET',
   WIDGET_ANIMATION: 'SWU_WIDGET_ANIMATION',
@@ -18,7 +18,8 @@ export const STORAGE_STATUSES = {
 const SWU_CONFIG: WidgetConfiguration = Object.assign(
   {},
   DEFAULT_CONFIG,
-  (window as any)?.SWU_CONFIG ?? null
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions,@typescript-eslint/no-unsafe-member-access
+  (window as any)?.SWU_CONFIG ?? null,
 );
 
 export const MODAL = {

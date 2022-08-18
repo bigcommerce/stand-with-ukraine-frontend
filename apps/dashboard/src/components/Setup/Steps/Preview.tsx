@@ -1,8 +1,10 @@
+import React from 'react';
 import styled from 'styled-components';
 
 import { ReactComponent as CloseSVG } from '../../../assets/Close.svg';
 import { useAppSelector } from '../../../state/hooks';
 import { RootState } from '../../../state/store';
+
 import { CHARITIES } from './common/data';
 import PreviewItem from './PreviewItem';
 
@@ -61,7 +63,7 @@ function selectWidgetConfiguration(state: RootState) {
 export default function PreviewTab() {
   const configuration = useAppSelector(selectWidgetConfiguration);
   const charity_list = configuration.charity_selections.map((item) =>
-    CHARITIES.find((charity) => charity.id === item)
+    CHARITIES.find((charity) => charity.id === item),
   );
 
   return (
@@ -74,12 +76,10 @@ export default function PreviewTab() {
         <CloseSVG />
       </CloseSVGContainer>
       <HeroImage
-        src={`${import.meta.env.BASE_URL}assets/images/background.png`}
         alt="Protestors standing against war in Ukraine"
+        src={`${import.meta.env.BASE_URL}assets/images/background.png`}
       />
-      {charity_list.map((item, key) =>
-        item ? <PreviewItem key={key} {...item} /> : null
-      )}
+      {charity_list.map((item, key) => (item ? <PreviewItem key={key} {...item} /> : null))}
     </ModalPreviewBox>
   );
 }

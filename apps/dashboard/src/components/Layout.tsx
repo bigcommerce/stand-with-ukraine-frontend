@@ -1,9 +1,10 @@
-import styled from 'styled-components';
-
 import { ProgressBar } from '@bigcommerce/big-design';
+import React from 'react';
+import styled from 'styled-components';
 
 import { useAppSelector } from '../state/hooks';
 import { selectLoadingStatus } from '../state/mainSlice';
+
 import Footer from './Footer';
 import Header from './Header';
 
@@ -22,11 +23,10 @@ const LoadingBar = styled.div`
 
 export default function Layout({ children }: { children: any }) {
   const loadingStatus = useAppSelector(selectLoadingStatus);
+
   return (
     <>
-      <LoadingBar>
-        {loadingStatus === 'loading' ? <ProgressBar /> : null}
-      </LoadingBar>
+      <LoadingBar>{loadingStatus === 'loading' ? <ProgressBar /> : null}</LoadingBar>
       <Container>
         <Header />
         {children}

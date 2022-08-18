@@ -1,11 +1,11 @@
-export type WidgetConfiguration = {
+export interface WidgetConfiguration {
   style: WidgetStyle;
   placement: WidgetPlacement;
   charity_selections: string[];
   modal_title: string;
   modal_body: string;
   store_hash: string;
-};
+}
 
 export type WidgetStyle = 'blue' | 'black' | 'white';
 export type WidgetPlacement =
@@ -16,7 +16,7 @@ export type WidgetPlacement =
   | 'bottom-middle'
   | 'bottom-right';
 
-export type Charity = {
+export interface Charity {
   id: string;
   logoProps: {
     alt: string;
@@ -25,4 +25,4 @@ export type Charity = {
   name: string;
   description: string;
   donationLink: string;
-};
+}
