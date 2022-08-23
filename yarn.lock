@@ -830,9 +830,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@preact/preset-vite@npm:^2.1.5":
-  version: 2.2.0
-  resolution: "@preact/preset-vite@npm:2.2.0"
+"@preact/preset-vite@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "@preact/preset-vite@npm:2.3.0"
   dependencies:
     "@babel/plugin-transform-react-jsx": ^7.14.9
     "@babel/plugin-transform-react-jsx-development": ^7.16.7
@@ -844,8 +844,8 @@ __metadata:
     resolve: ^1.20.0
   peerDependencies:
     "@babel/core": 7.x
-    vite: 2.x
-  checksum: 6353cae32f33dc76ea216c29329fbae65cb04ce737e629ea02a10ec374584e1d76e2e2135ce4fd79ff1ebe3d90e2d7d9992b088767228194ccd597c6d7cc380c
+    vite: 2.x || 3.x
+  checksum: 1041b4714750e6f46aed84d510ec64611af370a1b0777fb73c998eb53268a76c72bcbfe284b83c5338537eb045163afe16eac8debdd7747b2efdad29fc72abfa
   languageName: node
   linkType: hard
 
@@ -7489,7 +7489,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "widget@workspace:apps/widget"
   dependencies:
-    "@preact/preset-vite": ^2.1.5
+    "@preact/preset-vite": ^2.3.0
     "@testing-library/preact": ^3.2.2
     "@types/node": ^18.0.0
     "@vitejs/plugin-react": ^1.3.0
