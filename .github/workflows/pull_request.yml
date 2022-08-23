@@ -18,6 +18,9 @@ jobs:
       - name: Install dependencies and check cache
         run: yarn install --check-cache
 
+      - name: Check for duplicate dependencies
+        run: yarn dedupe --check
+
       - name: Test
         run: yarn test
 

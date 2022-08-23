@@ -32,9 +32,6 @@ jobs:
         # restore yarn.lock from the previous commit
         git checkout HEAD^ -- yarn.lock
 
-        # install yarn-plugin-deduplicate
-        yarn plugin import https://raw.githubusercontent.com/eps1lon/yarn-plugin-deduplicate/latest/bin/%40yarnpkg/plugin-deduplicate.js
-
         # if package.json was not updated, upgrade the dependency
         # assuming Angular commit style (build: bump XXX from ...)
         # use $2 for default commit message style (Bump XXX from ...)
@@ -46,7 +43,7 @@ jobs:
         yarn install
 
         # deduplicate lockfile
-        yarn deduplicate
+        yarn dedupe
       env:
         YARN_ENABLE_SCRIPTS: 0 # disable postinstall scripts
     - name: Config Git
