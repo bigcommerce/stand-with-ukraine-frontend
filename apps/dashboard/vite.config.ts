@@ -16,7 +16,4 @@ export default defineConfig({
     outDir: '../../build/dashboard',
     emptyOutDir: true,
   },
-  test: {
-    environment: 'jsdom',
-  },
 });
