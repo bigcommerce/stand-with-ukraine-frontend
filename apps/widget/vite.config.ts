@@ -22,7 +22,4 @@ export default defineConfig({
     outDir: '../../build/widget',
     emptyOutDir: true,
   },
-  test: {
-    environment: 'jsdom',
-  },
 });
