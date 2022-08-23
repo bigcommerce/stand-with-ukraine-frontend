@@ -20,7 +20,7 @@
     "@types/node": "^18.0.0",
     "@vitejs/plugin-react": "^1.3.0",
     "jsdom": "^20.0.0",
-    "sass": "^1.52.3",
+    "sass": "^1.54.5",
     "tsconfig": "*",
     "typescript": "^4.5.4",
     "vite": "^3.0.9",
