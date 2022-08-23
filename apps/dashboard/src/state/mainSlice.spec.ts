@@ -1,5 +1,5 @@
 import { AsyncThunkAction, Dispatch } from '@reduxjs/toolkit';
-import { afterAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterAll, beforeEach, describe, expect, it, SpyInstance, vi } from 'vitest';
 
 import { fetchStoreStatus } from './mainApi';
 import mainReducer, { loadStatus, MainState, nextStep, previousStep } from './mainSlice';
@@ -111,9 +111,9 @@ describe('loadStore async action', () => {
     getState = vi.fn();
     action = loadStatus();
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    (fetchStoreStatus as jest.Mock).mockClear();
+    (fetchStoreStatus as unknown as SpyInstance).mockClear();
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    (fetchStoreStatus as jest.Mock).mockResolvedValue({ published: true });
+    (fetchStoreStatus as unknown as SpyInstance).mockResolvedValue({ published: true });
   });
 
   afterAll(() => {
