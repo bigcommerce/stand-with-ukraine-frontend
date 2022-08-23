@@ -22,29 +22,11 @@ jobs:
         node-version: '16'
         cache: 'yarn'
     - name: Autofix lockfile
-      run: |
-        # change directory
-        # assuming Angular commit style (build: bump XXX from AAA to BBB in YYY)
-        # use $8 for default commit message style (Bump XXX from AAA to BBB in YYY)
-        cd .`git log -1 --pretty=%s | awk '{ print $9 }'`
-
-        # restore yarn.lock from the previous commit
-        git checkout HEAD^ -- yarn.lock
-
-        # if package.json was not updated, upgrade the dependency
-        # assuming Angular commit style (build: bump XXX from ...)
-        # use $2 for default commit message style (Bump XXX from ...)
-        git diff --name-only HEAD^ HEAD | grep -q 'package.json' || yarn up `git log -1 --pretty=%s | awk '{ print $3 }'`
-
-        # restore package.json from the last commit
-        git checkout HEAD -- package.json
-
-        yarn install
-
-        # deduplicate lockfile
-        yarn dedupe
       env:
         YARN_ENABLE_SCRIPTS: 0 # disable postinstall scripts
+      run: |
+        yarn install
+        yarn dedupe
     - name: Config Git
       run: |
         # use personal access token to allow triggering new workflow
@@ -55,7 +37,6 @@ jobs:
         git config --local http.$GITHUB_SERVER_URL/.extraheader "AUTHORIZATION: basic $BASIC_AUTH"
     - name: Commit changes
       run: |
-        cd .`git log -1 --pretty=%s | awk '{ print $9 }'` # ditto
         git add yarn.lock .yarn/cache
         git commit -m "[dependabot skip] autofix yarn cache" # [dependabot skip] is required so that dependabot will fix conflicts automatically
         git push
