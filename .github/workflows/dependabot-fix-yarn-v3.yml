@@ -1,62 +1,49 @@
 name: Dependabot
-description: Fix yarn v2 cache files from dependabot PRs
+# Fix yarn v2 cache files from dependabot PRs
 # source: https://github.com/dependabot/dependabot-core/issues/1297#issuecomment-671131912
-# modified to meet our requirements
 
 on:
   - pull_request_target
 
 jobs:
-  build:
+  fix-lockfile:
     runs-on: ubuntu-latest
     if: |
       github.actor == 'dependabot[bot]' &&
       contains(github.event.pull_request.head.ref, 'dependabot/npm_and_yarn/')
 
+    env:
+      YARN_ENABLE_SCRIPTS: false
+      YARN_ENABLE_IMMUTABLE_INSTALLS: false
+
     steps:
     - uses: actions/checkout@v3
       with:
-        persist-credentials: false # minimize exposure
+        token: ${{ secrets.DEPENDABOT_GITHUB_TOKEN }}
+        ref: ${{ github.event.pull_request.head.ref }}
+        fetch-depth: 2
     - name: Use Node.js 16.x
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
-        cache: 'yarn'
+        node-version: 16.x
+        cache: yarn
     - name: Autofix lockfile
       run: |
-        # change directory
-        # assuming Angular commit style (build: bump XXX from AAA to BBB in YYY)
-        # use $8 for default commit message style (Bump XXX from AAA to BBB in YYY)
-        cd .`git log -1 --pretty=%s | awk '{ print $9 }'`
-
         # restore yarn.lock from the previous commit
-        git checkout HEAD^ -- yarn.lock
+        git checkout HEAD^1 -- yarn.lock
 
-        # if package.json was not updated, upgrade the dependency
-        # assuming Angular commit style (build: bump XXX from ...)
-        # use $2 for default commit message style (Bump XXX from ...)
-        git diff --name-only HEAD^ HEAD | grep -q 'package.json' || yarn up `git log -1 --pretty=%s | awk '{ print $3 }'`
-
-        # restore package.json from the last commit
-        git checkout HEAD -- package.json
-
-        yarn install
+        # install dependencies
+        yarn install --mode=skip-build
 
         # deduplicate lockfile
         yarn dedupe
-      env:
-        YARN_ENABLE_SCRIPTS: 0 # disable postinstall scripts
-    - name: Config Git
-      run: |
-        # use personal access token to allow triggering new workflow
-        BASIC_AUTH=$(echo -n "x-access-token:${{ secrets.DEPENDABOT_GITHUB_TOKEN }}" | base64)
-        echo "::add-mask::$BASIC_AUTH"
-        git config --global user.name '${{ github.event.commits[0].author.name }}'
-        git config --global user.email '${{ github.event.commits[0].author.email }}'
-        git config --local http.$GITHUB_SERVER_URL/.extraheader "AUTHORIZATION: basic $BASIC_AUTH"
     - name: Commit changes
       run: |
-        cd .`git log -1 --pretty=%s | awk '{ print $9 }'` # ditto
+        # configure the github user
+        git config --global user.name 'bc-dependabot'
+        git config --global user.email 'dependabot@bigcommerce.com'
+
         git add yarn.lock .yarn/cache
-        git commit -m "[dependabot skip] autofix yarn cache" # [dependabot skip] is required so that dependabot will fix conflicts automatically
+        # [dependabot skip] is required so that dependabot will fix conflicts automatically
+        git commit -m "[dependabot skip] autofix yarn cache"
         git push
