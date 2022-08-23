@@ -1,7 +1,6 @@
 name: Dependabot
-description: Fix yarn v2 cache files from dependabot PRs
+# Fix yarn v2 cache files from dependabot PRs
 # source: https://github.com/dependabot/dependabot-core/issues/1297#issuecomment-671131912
-# modified to meet our requirements
 
 on:
   - pull_request_target
