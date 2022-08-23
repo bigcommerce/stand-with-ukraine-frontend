@@ -31,7 +31,6 @@
     "turbo": "^1.2.16"
   },
   "scripts": {
-    "mocks": "rm -rf tmp/mocks/ && mkdir -p tmp/mocks && cp -R mocks.template/* tmp/mocks/ && node tmp/mocks/app.mjs",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel --continue",
     "lint": "turbo run lint",
