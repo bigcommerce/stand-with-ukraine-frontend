@@ -13,7 +13,7 @@
   "dependencies": {
     "@bigcommerce/big-design": "^0.33.0",
     "@bigcommerce/big-design-theme": "^0.16.0",
-    "@reduxjs/toolkit": "^1.8.4",
+    "@reduxjs/toolkit": "^1.8.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "6",
