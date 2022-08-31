@@ -1204,10 +1204,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=12, @types/node@npm:^18.7.13":
-  version: 18.7.13
-  resolution: "@types/node@npm:18.7.13"
-  checksum: 45431e7e89ecaf85c7d2c180d801c132a7c59e2f8ad578726b6d71cc74e3267c18f9ccdcad738bc0479790c078f0c79efb0e58da2c6be535c15995dbb19050c9
+"@types/node@npm:*, @types/node@npm:>=12, @types/node@npm:^18.7.14":
+  version: 18.7.14
+  resolution: "@types/node@npm:18.7.14"
+  checksum: 99cf28ff854100158de875cca23c7acc3cc01dfee526a52b90b7f36767c821bcbaf2be0a98a70f06f3b78f3c60639168ff949d725b61e2e124f9f71f1fb8043d
   languageName: node
   linkType: hard
 
@@ -2453,7 +2453,7 @@ __metadata:
     "@reduxjs/toolkit": ^1.8.5
     "@testing-library/react": ^13.0.0
     "@testing-library/user-event": ^14.4.3
-    "@types/node": ^18.7.13
+    "@types/node": ^18.7.14
     "@types/react": ^18.0.17
     "@types/react-dom": ^18.0.6
     "@types/styled-components": ^5.1.26
@@ -7468,7 +7468,7 @@ __metadata:
   dependencies:
     "@preact/preset-vite": ^2.3.0
     "@testing-library/preact": ^3.2.2
-    "@types/node": ^18.7.13
+    "@types/node": ^18.7.14
     "@vitejs/plugin-react": ^2.0.1
     images: "*"
     jsdom: ^20.0.0
