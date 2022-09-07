@@ -2467,7 +2467,7 @@ __metadata:
     typescript: ^4.6.3
     vite: ^3.0.9
     vite-plugin-svgr: ^2.2.1
-    vitest: ^0.22.1
+    vitest: ^0.23.1
   languageName: unknown
   linkType: soft
 
@@ -6680,6 +6680,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"strip-literal@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "strip-literal@npm:0.4.0"
+  dependencies:
+    acorn: ^8.7.1
+  checksum: f764939203f24bc948dd22319de780e50b6ffa1a20915207090ddc851475a8ed7d99c94c446b75686e2f9f7fcb343dc99bc721a43ae2857f7848e79fc73b8200
+  languageName: node
+  linkType: hard
+
 "styled-components@npm:^5.3.5":
   version: 5.3.5
   resolution: "styled-components@npm:5.3.5"
@@ -6796,6 +6805,13 @@ __metadata:
   version: 1.2.0
   resolution: "tiny-invariant@npm:1.2.0"
   checksum: e09a718a7c4a499ba592cdac61f015d87427a0867ca07f50c11fd9b623f90cdba18937b515d4a5e4f43dac92370498d7bdaee0d0e7a377a61095e02c4a92eade
+  languageName: node
+  linkType: hard
+
+"tinybench@npm:^2.1.3":
+  version: 2.1.5
+  resolution: "tinybench@npm:2.1.5"
+  checksum: 5a6d378271a00ace6fa6970404eb1efd539d3e9b9908a9cb6d66ad78acfd873762734f3fc69fe10d86217318871367997d2a8b9566039fd224c518493466aa96
   languageName: node
   linkType: hard
 
@@ -7333,9 +7349,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:^0.22.1":
-  version: 0.22.1
-  resolution: "vitest@npm:0.22.1"
+"vitest@npm:^0.23.1":
+  version: 0.23.1
+  resolution: "vitest@npm:0.23.1"
   dependencies:
     "@types/chai": ^4.3.3
     "@types/chai-subset": ^1.3.3
@@ -7343,6 +7359,8 @@ __metadata:
     chai: ^4.3.6
     debug: ^4.3.4
     local-pkg: ^0.4.2
+    strip-literal: ^0.4.0
+    tinybench: ^2.1.3
     tinypool: ^0.2.4
     tinyspy: ^1.0.2
     vite: ^2.9.12 || ^3.0.0-0
@@ -7365,7 +7383,7 @@ __metadata:
       optional: true
   bin:
     vitest: vitest.mjs
-  checksum: 7abe50ceb51181e77cd62eb3a07c2da17f13078f09be34cc2e98f1f94a77eba33a56c644d48ae16bb474945ffc1cfc8664b1f4976c3de495c5e474057420c4ca
+  checksum: 26ca78dc0979c435f2b2f265fc94d13d4e2da5e72680812471cd0b802e5727784c1c05b7dff945bb6638da0ae50ada06dfea5c28cec318575cad95d8a769c131
   languageName: node
   linkType: hard
 
@@ -7477,7 +7495,7 @@ __metadata:
     tsconfig: "*"
     typescript: ^4.5.4
     vite: ^3.0.9
-    vitest: ^0.22.1
+    vitest: ^0.23.1
   languageName: unknown
   linkType: soft
 
