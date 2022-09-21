@@ -1,10 +1,20 @@
-# Stand with Ukraine - Frontend
+# Stand with Ukraine App
 
-This is a monorepo that contains all the frontend components used in the [Stand with Ukraine BigCommerce app](app-store-link).
+[![ci][action_badge]][action]
+
+
+## Overview
+
+[Stand With Ukraine is a BigCommerce application][app_store_link]. It allows merchants to easily add a widget to their storefront with a customized message and list of Charities that the merchant would like their shoppers to visit and support.
+
+## Repositories
+
+- [Frontend Components][frontend_repo]
+- [Backend Components][backend_repo]
 
 ## Usage
 
-If you have a BigCommerce store and would like to use the widget - please install it via the [BigCommerce app store](app-store-link).
+If you have a BigCommerce store and would like to use the widget - please install it via the [BigCommerce app store][app_store_link].
 If you have a website on any other platform - you can use the following html to embed the widget. Feel free to edit the title and body text shown in the modal. You can configure some of the variables by reading the allowed values in [`/packages/config/types.ts`](/packages/config/types.ts).
 
 ```html
@@ -67,4 +77,8 @@ WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEM
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-[app-store-link]: https://www.bigcommerce.com/apps/stand-with-ukraine/ "BigCommerce App Store - Stand with Ukraine"
+[app_store_link]: https://www.bigcommerce.com/apps/stand-with-ukraine/ "BigCommerce App Store - Stand with Ukraine"
+[frontend_repo]: https://github.com/bigcommerce/stand-with-ukraine-frontend
+[backend_repo]: https://github.com/bigcommerce/stand-with-ukraine-backend
+[action]: https://github.com/bigcommerce/stand-with-ukraine-frontend/actions/workflows/general.yml
+[action_badge]: https://github.com/bigcommerce/stand-with-ukraine-frontend/actions/workflows/general.yml/badge.svg
