@@ -1,6 +1,24 @@
 # Stand with Ukraine - Frontend
 
-This is a monorepo for the Stand with Ukraine BigCommerce app.
+This is a monorepo that contains all the frontend components used in the [Stand with Ukraine BigCommerce app](app-store-link).
+
+## Usage
+
+If you have a BigCommerce store and would like to use the widget - please install it via the [BigCommerce app store](app-store-link).
+If you have a website on any other platform - you can use the following html to embed the widget. Feel free to edit the title and body text shown in the modal. You can configure some of the variables by reading the allowed values in [`/packages/config/types.ts`](/packages/config/types.ts).
+
+```html
+<script>
+  window.SWU_CONFIG = {
+    "style": "black",
+    "placement": "bottom-right",
+    "charity_selections": ["razom", "mira-action", "new-ukraine"],
+    "modal_title": "Help the people of Ukraine!",
+    "modal_body": "With each day, the war in Ukraine worsens at an alarming pace. Millions of civilians have lost their homes and many more are without basic necessities like food, water, and health care. Consider donating to one of the charities below and join us in showing support for Ukraine. All charities are trusted, non-profit organizations dedicated to Ukrainian relief efforts. It takes less than a minute."
+  };
+</script>
+<script src="https://stand-with-ukraine-bc-app.web.app/widget/index.js"></script>
+```
 
 ## Project Structure
 
@@ -48,3 +66,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[app-store-link]: https://www.bigcommerce.com/apps/stand-with-ukraine/ "BigCommerce App Store - Stand with Ukraine"
