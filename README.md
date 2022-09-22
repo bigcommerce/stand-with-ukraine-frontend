@@ -27,7 +27,7 @@ If you have a website on any other platform - you can use the following html to 
     "modal_body": "With each day, the war in Ukraine worsens at an alarming pace. Millions of civilians have lost their homes and many more are without basic necessities like food, water, and health care. Consider donating to one of the charities below and join us in showing support for Ukraine. All charities are trusted, non-profit organizations dedicated to Ukrainian relief efforts. It takes less than a minute."
   };
 </script>
-<script src="https://stand-with-ukraine-bc-app.web.app/widget/index.js"></script>
+<script defer src="https://stand-with-ukraine-bc-app.web.app/widget/index.js"></script>
 ```
 
 ## Project Structure
