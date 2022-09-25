@@ -1,18 +1,14 @@
-import { Button } from '@bigcommerce/big-design';
+import { Button, ButtonProps } from '@bigcommerce/big-design';
 import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { ReactComponent as BigDesignLogoSVG } from '../assets/big-design-logo.svg';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
-import { writeConfiguration } from '../state/mainApi';
-import {
-  nextStep,
-  previousStep,
-  publish,
-  selectConfiguration,
-  selectFooter,
-} from '../state/mainSlice';
+import { nextStep, previousStep } from '../state/mainSlice';
+import { writeConfiguration } from '../state/mainSlice/api';
+import { publish } from '../state/mainSlice/asyncActions';
+import { selectConfiguration, selectFooter } from '../state/mainSlice/selectors';
 import { alertsManager } from '../state/store';
 
 const FooterDiv = styled.div`
@@ -67,7 +63,38 @@ const BuiltWithContainer = styled.a`
   }
 `;
 
-export default function Footer() {
+function BuiltWithBigDesign() {
+  return (
+    <BuiltWithContainer
+      href="https://developer.bigcommerce.com/big-design/"
+      rel="noreferrer noopener"
+      target="_blank"
+    >
+      <div>
+        Built with <BigDesignLogoSVG />
+      </div>
+    </BuiltWithContainer>
+  );
+}
+
+function FooterButton({
+  buttonState,
+  onClick,
+  text,
+  ...rest
+}: {
+  buttonState: { show: boolean; disabled: boolean };
+  onClick: () => void;
+  text: string;
+} & ButtonProps) {
+  return buttonState.show ? (
+    <Button disabled={buttonState.disabled} onClick={onClick} {...rest}>
+      {text}
+    </Button>
+  ) : null;
+}
+
+function useFooter() {
   const { show, cancelButton, backButton, continueButton, publishButton } =
     useAppSelector(selectFooter);
   const widgetConfiguration = useAppSelector(selectConfiguration);
@@ -77,7 +104,6 @@ export default function Footer() {
   const handleCancelButton = useCallback(() => navigate('/'), [navigate]);
   const handleBackButton = useCallback(() => dispatch(previousStep()), [dispatch]);
   const handleContinueButton = useCallback(() => dispatch(nextStep()), [dispatch]);
-
   const handlePublishButton = useCallback(async () => {
     await writeConfiguration(widgetConfiguration);
     await dispatch(publish());
@@ -93,44 +119,58 @@ export default function Footer() {
     navigate('/');
   }, [dispatch, navigate, widgetConfiguration]);
 
-  if (!show) {
+  return {
+    show,
+    cancelButton,
+    backButton,
+    continueButton,
+    publishButton,
+    handleBackButton,
+    handleCancelButton,
+    handlePublishButton,
+    handleContinueButton,
+  };
+}
+
+export default function Footer() {
+  const {
+    show,
+    cancelButton,
+    backButton,
+    continueButton,
+    publishButton,
+    handleBackButton,
+    handleCancelButton,
+    handlePublishButton,
+    handleContinueButton,
+  } = useFooter();
+
+  if (show) {
     return (
-      <BuiltWithContainer
-        href="https://developer.bigcommerce.com/big-design/"
-        rel="noreferrer noopener"
-        target="_blank"
-      >
-        <div>
-          Built with <BigDesignLogoSVG />
-        </div>
-      </BuiltWithContainer>
+      <FooterDiv>
+        <ButtonContainer>
+          <FooterButton
+            buttonState={cancelButton}
+            onClick={handleCancelButton}
+            text="Cancel"
+            variant="subtle"
+          />
+          <FooterButton
+            buttonState={backButton}
+            onClick={handleBackButton}
+            text="Back"
+            variant="subtle"
+          />
+          <FooterButton
+            buttonState={continueButton}
+            onClick={handleContinueButton}
+            text="Continue"
+          />
+          <FooterButton buttonState={publishButton} onClick={handlePublishButton} text="Publish" />
+        </ButtonContainer>
+      </FooterDiv>
     );
   }
 
-  return (
-    <FooterDiv>
-      <ButtonContainer>
-        {cancelButton.show ? (
-          <Button disabled={cancelButton.disabled} onClick={handleCancelButton} variant="subtle">
-            Cancel
-          </Button>
-        ) : null}
-        {backButton.show ? (
-          <Button disabled={backButton.disabled} onClick={handleBackButton} variant="subtle">
-            Back
-          </Button>
-        ) : null}
-        {continueButton.show ? (
-          <Button disabled={continueButton.disabled} onClick={handleContinueButton}>
-            Continue
-          </Button>
-        ) : null}
-        {publishButton.show ? (
-          <Button disabled={publishButton.disabled} onClick={handlePublishButton}>
-            Publish
-          </Button>
-        ) : null}
-      </ButtonContainer>
-    </FooterDiv>
-  );
+  return <BuiltWithBigDesign />;
 }

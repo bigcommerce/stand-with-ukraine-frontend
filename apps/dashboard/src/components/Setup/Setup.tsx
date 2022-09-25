@@ -2,18 +2,34 @@ import { Stepper } from '@bigcommerce/big-design';
 import React, { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
-import {
-  getConfiguration,
-  hideFooter,
-  selectCurrentStep,
-  showFooter,
-  Steps,
-} from '../../state/mainSlice';
+import { hideFooter, showFooter } from '../../state/mainSlice';
+import { getConfiguration } from '../../state/mainSlice/asyncActions';
+import { Steps } from '../../state/mainSlice/common';
+import { selectCurrentStep } from '../../state/mainSlice/selectors';
 
 import Charity from './Steps/Charity';
 import Color from './Steps/Color';
 import Modal from './Steps/Modal';
 import Placement from './Steps/Placement';
+
+function StepContent({ currentStep }: { currentStep: number }) {
+  switch (currentStep) {
+    case 0:
+      return <Color />;
+
+    case 1:
+      return <Placement />;
+
+    case 2:
+      return <Charity />;
+
+    case 3:
+      return <Modal />;
+
+    default:
+      return null;
+  }
+}
 
 export default function Setup() {
   const currentStep = useAppSelector(selectCurrentStep);
@@ -28,17 +44,12 @@ export default function Setup() {
     return () => {
       dispatch(hideFooter());
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  // const dispatch = useAppDispatch();
+  }, [dispatch]);
 
   return (
     <>
       <Stepper currentStep={currentStep} steps={Steps} />
-      {currentStep === 0 ? <Color /> : null}
-      {currentStep === 1 ? <Placement /> : null}
-      {currentStep === 2 ? <Charity /> : null}
-      {currentStep === 3 ? <Modal /> : null}
+      <StepContent currentStep={currentStep} />
     </>
   );
 }

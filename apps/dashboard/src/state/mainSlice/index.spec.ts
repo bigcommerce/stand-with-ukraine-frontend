@@ -1,12 +1,11 @@
 import { AsyncThunkAction, Dispatch } from '@reduxjs/toolkit';
-import { afterAll, beforeEach, describe, expect, it, SpyInstance, vi } from 'vitest';
+import { afterAll, beforeAll, beforeEach, describe, expect, it, SpyInstance, vi } from 'vitest';
 
-import { fetchStoreStatus } from './mainApi';
-import mainReducer, { loadStatus, MainState, nextStep, previousStep } from './mainSlice';
+import { fetchStoreStatus } from './api';
+import { loadStatus } from './asyncActions';
+import type { MainState } from './types';
 
-vi.mock('./mainApi.ts', () => ({
-  fetchStoreStatus: vi.fn(),
-}));
+import mainReducer, { nextStep, previousStep } from '.';
 
 describe('counter reducer', () => {
   const initialState: MainState = {
@@ -106,18 +105,23 @@ describe('loadStore async action', () => {
   let action: AsyncThunkAction<{ published: boolean }, void, {}>;
   let getState: () => unknown;
 
+  beforeAll(() => {
+    vi.mock('./api.ts', () => ({
+      fetchStoreStatus: vi.fn(),
+    }));
+  });
+
   beforeEach(() => {
     dispatch = vi.fn();
     getState = vi.fn();
     action = loadStatus();
+
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    (fetchStoreStatus as unknown as SpyInstance).mockClear();
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    (fetchStoreStatus as unknown as SpyInstance).mockResolvedValue({ published: true });
+    (fetchStoreStatus as unknown as SpyInstance).mockClear().mockResolvedValue({ published: true });
   });
 
   afterAll(() => {
-    vi.unmock('./mainApi.ts');
+    vi.unmock('./api.ts');
   });
 
   it('should handle load', async () => {

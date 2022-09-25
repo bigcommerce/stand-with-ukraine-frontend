@@ -4,16 +4,11 @@ import type { WidgetConfiguration } from 'config/types';
 
 import { getBaseURL } from './utils/baseUrl';
 
-export const STORAGE_KEYS = {
-  WIDGET: 'SWU_WIDGET',
-  WIDGET_ANIMATION: 'SWU_WIDGET_ANIMATION',
-};
-
-export const STORAGE_STATUSES = {
-  ENABLED: 'ENABLED',
-  DISABLED: 'DISABLED',
-  COLLAPSED: 'COLLAPSED',
-};
+export enum WIDGET_STATUS {
+  ENABLED = 'ENABLED',
+  DISABLED = 'DISABLED',
+  COLLAPSED = 'COLLAPSED',
+}
 
 const SWU_CONFIG: WidgetConfiguration = Object.assign(
   {},

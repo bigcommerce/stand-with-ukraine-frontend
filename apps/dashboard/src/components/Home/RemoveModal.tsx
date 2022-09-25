@@ -3,12 +3,9 @@ import React, { PropsWithChildren, useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
-import {
-  hideRemoveDialog,
-  remove,
-  resetSteps,
-  selectShowRemoveDialog,
-} from '../../state/mainSlice';
+import { hideRemoveDialog, resetSteps } from '../../state/mainSlice';
+import { remove } from '../../state/mainSlice/asyncActions';
+import { selectShowRemoveDialog } from '../../state/mainSlice/selectors';
 import { alertsManager } from '../../state/store';
 
 const Modal: React.FC<ModalProps & PropsWithChildren> = modal;

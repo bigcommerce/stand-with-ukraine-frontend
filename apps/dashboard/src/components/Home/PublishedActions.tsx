@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
-import { goToStep, preview, selectStoreUrl, showRemoveDialog } from '../../state/mainSlice';
+import { goToStep, showRemoveDialog } from '../../state/mainSlice';
+import { preview } from '../../state/mainSlice/asyncActions';
+import { selectStoreUrl } from '../../state/mainSlice/selectors';
 
 import RemoveModal from './RemoveModal';
 

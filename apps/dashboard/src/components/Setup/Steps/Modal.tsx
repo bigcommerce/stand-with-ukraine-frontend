@@ -6,10 +6,10 @@ import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import {
   configureButtons,
   resetModalToDefault,
-  selectWidgetModal,
   setModalBody,
   setModalTitle,
 } from '../../../state/mainSlice';
+import { selectWidgetModal } from '../../../state/mainSlice/selectors';
 
 import BodySmall from './common/BodySmall';
 import PreviewTab from './Preview';
@@ -85,19 +85,19 @@ function InfoTab() {
   );
 }
 
+const MODAL_BUTTON_STATE = {
+  cancelButton: { show: false, disabled: false },
+  backButton: { show: true, disabled: false },
+  continueButton: { show: false, disabled: false },
+  publishButton: { show: true, disabled: false },
+};
+
 export default function Modal() {
   const [tab, setTab] = useState<TAB_TYPE>('configure');
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(
-      configureButtons({
-        cancelButton: { show: false, disabled: false },
-        backButton: { show: true, disabled: false },
-        continueButton: { show: false, disabled: false },
-        publishButton: { show: true, disabled: false },
-      }),
-    );
+    dispatch(configureButtons(MODAL_BUTTON_STATE));
   }, [dispatch]);
 
   return (

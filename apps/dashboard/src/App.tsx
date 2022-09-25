@@ -31,7 +31,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <>
           <GlobalStyles />
-          <AlertsManager manager={alertsManager} />
+          {/* eslint-disable-next-line @typescript-eslint/consistent-type-assertions */}
+          <AlertsManager manager={alertsManager as any} />
           <AppGlobalStyles />
           <AuthProvider>
             <HashRouter>

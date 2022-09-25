@@ -1,0 +1,7 @@
+exclude_patterns:
+  - 'apps/mocks/'
+  - 'static/'
+  - '.yarn/'
+  - '.husky/'
+  - '**/*.spec.ts'
+  - '**/*.spec.js'

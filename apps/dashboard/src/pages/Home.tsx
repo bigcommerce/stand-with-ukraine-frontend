@@ -7,7 +7,7 @@ import Header from '../components/Home/Header';
 import NotPublishedActions from '../components/Home/NotPublishedActions';
 import PublishedActions from '../components/Home/PublishedActions';
 import { useAppSelector } from '../state/hooks';
-import { selectPublished } from '../state/mainSlice';
+import { selectPublished } from '../state/mainSlice/selectors';
 
 export default function Home() {
   const published = useAppSelector(selectPublished);

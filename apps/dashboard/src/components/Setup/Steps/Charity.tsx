@@ -66,7 +66,7 @@ function SelectCharity({
   description,
   id,
   selected,
-  logo,
+  logoProps,
   limitReached,
   donationLink,
 }: {
@@ -75,7 +75,7 @@ function SelectCharity({
   id: string;
   selected: boolean;
   limitReached: boolean;
-  logo: any;
+  logoProps: any;
   donationLink: string;
 }) {
   const dispatch = useAppDispatch();
@@ -108,7 +108,9 @@ function SelectCharity({
           onChange={handleSelectChange}
         />
       </CheckboxWrapper>
-      <CharityLogoWrapper>{logo}</CharityLogoWrapper>
+      <CharityLogoWrapper>
+        <Image {...logoProps} />
+      </CharityLogoWrapper>
       <CharityContentWrapper>
         <CharityLabel>{name}</CharityLabel>
         <Collapse onCollapseChange={handleCollapse} title={open ? 'Show less' : 'Show more'} />
@@ -131,21 +133,20 @@ function selectWidgetCharities(state: RootState) {
   };
 }
 
+export const CHARITY_BUTTON_STATE = {
+  cancelButton: { show: false, disabled: false },
+  backButton: { show: true, disabled: false },
+  continueButton: { show: true, disabled: true },
+  publishButton: { show: false, disabled: false },
+};
+
 export default function Charity() {
   const { charities, numCharities, limitReached } = useAppSelector(selectWidgetCharities);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(
-      configureButtons({
-        cancelButton: { show: false, disabled: false },
-        backButton: { show: true, disabled: false },
-        continueButton: { show: true, disabled: true },
-        publishButton: { show: false, disabled: false },
-      }),
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    dispatch(configureButtons(CHARITY_BUTTON_STATE));
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(configureContinueButton({ show: true, disabled: numCharities === 0 }));
@@ -158,16 +159,13 @@ export default function Charity() {
         and provide only humanitarian aid. You can choose up to 3 charities.
       </BodySmall>
       <Grid>
-        {CHARITIES.map(({ id, name, description, donationLink, logoProps }, index) => (
+        {CHARITIES.map(({ id, ...rest }, index) => (
           <SelectCharity
-            description={description}
-            donationLink={donationLink}
             id={id}
             key={index}
             limitReached={limitReached}
-            logo={<Image {...logoProps} />}
-            name={name}
             selected={Boolean(charities.includes(id))}
+            {...rest}
           />
         ))}
       </Grid>

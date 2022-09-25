@@ -1,24 +1,28 @@
-import { STORE_HASH } from '../constants';
+import { STORE_HASH, WIDGET_STATUS } from '../constants';
 
 import { getBaseURL } from './baseUrl';
 
-const WIDGET_EVENTS = {
-  OPENED: 'widget-opened',
-  CLOSED: 'widget-closed',
-  COLLAPSED: 'widget-collapsed',
-  MODAL_OPENED: 'modal-opened',
-  MODAL_CLOSED: 'modal-closed',
-};
+enum WIDGET_EVENTS {
+  OPENED = 'widget-opened',
+  CLOSED = 'widget-closed',
+  COLLAPSED = 'widget-collapsed',
+  MODAL_OPENED = 'modal-opened',
+  MODAL_CLOSED = 'modal-closed',
+}
 
-const CHARITY_EVENTS = {
-  SEE_MORE: 'see-more-clicked',
-  CLICK: 'support-clicked',
-};
+enum CHARITY_EVENTS {
+  SEE_MORE = 'see-more-clicked',
+  CLICK = 'support-clicked',
+}
 
 class Analytics {
   private url = getBaseURL().replace('/widget', '/api/v2');
 
   private track(type: 'charity-event' | 'widget-event', data: Record<string, string>) {
+    if (!STORE_HASH) {
+      return;
+    }
+
     const params = new URLSearchParams({
       ...data,
       store_hash: STORE_HASH,
@@ -33,24 +37,32 @@ class Analytics {
     }
   }
 
-  widgetOpened() {
-    this.track('widget-event', { event: WIDGET_EVENTS.OPENED });
+  trackWidgetStatus(widgetStatus: WIDGET_STATUS) {
+    let event: WIDGET_EVENTS;
+
+    switch (widgetStatus) {
+      case WIDGET_STATUS.COLLAPSED:
+        event = WIDGET_EVENTS.COLLAPSED;
+        break;
+
+      case WIDGET_STATUS.DISABLED:
+        event = WIDGET_EVENTS.CLOSED;
+        break;
+
+      case WIDGET_STATUS.ENABLED:
+        event = WIDGET_EVENTS.OPENED;
+        break;
+    }
+
+    if (event) {
+      this.track('widget-event', { event });
+    }
   }
 
-  widgetClosed() {
-    this.track('widget-event', { event: WIDGET_EVENTS.CLOSED });
-  }
-
-  widgetCollapsed() {
-    this.track('widget-event', { event: WIDGET_EVENTS.COLLAPSED });
-  }
-
-  modalOpened() {
-    this.track('widget-event', { event: WIDGET_EVENTS.MODAL_OPENED });
-  }
-
-  modalClosed() {
-    this.track('widget-event', { event: WIDGET_EVENTS.MODAL_CLOSED });
+  trackModalStatus(isOpen: boolean) {
+    this.track('widget-event', {
+      event: isOpen ? WIDGET_EVENTS.MODAL_OPENED : WIDGET_EVENTS.MODAL_CLOSED,
+    });
   }
 
   charitySeeMore(charityId: string) {

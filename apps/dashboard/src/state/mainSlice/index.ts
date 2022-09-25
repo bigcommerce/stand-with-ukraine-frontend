@@ -1,46 +1,17 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DEFAULT_CONFIG } from 'config';
-import type { WidgetConfiguration, WidgetPlacement, WidgetStyle } from 'config/types';
+import type { WidgetPlacement, WidgetStyle } from 'config/types';
 
 import {
-  fetchStoreStatus,
-  fetchStoreURL,
-  publishWidget,
-  readConfiguration,
-  removeWidget,
-  writeConfiguration,
-} from './mainApi';
-
-export const Steps = ['Color', 'Layout', 'Charity', 'Pop-Up'];
-export type LoadingState = 'idle' | 'loading' | 'failed';
-
-export interface MainState {
-  status: LoadingState;
-  step: number;
-  published: boolean;
-  storeUrl?: string;
-  showRemoveDialog: boolean;
-  footer: {
-    show: boolean;
-    cancelButton: {
-      show: boolean;
-      disabled: boolean;
-    };
-    backButton: {
-      show: boolean;
-      disabled: boolean;
-    };
-    continueButton: {
-      show: boolean;
-      disabled: boolean;
-    };
-    publishButton: {
-      show: boolean;
-      disabled: boolean;
-    };
-  };
-  widgetConfiguration: WidgetConfiguration;
-}
+  getConfiguration,
+  loadStatus,
+  preview,
+  publish,
+  remove,
+  saveConfiguration,
+} from './asyncActions';
+import { getButtonStateFromPayload, handleLoadingState as handlePendingState } from './common';
+import type { MainState } from './types';
 
 const initialState: MainState = {
   published: false,
@@ -70,15 +41,7 @@ const initialState: MainState = {
   widgetConfiguration: DEFAULT_CONFIG,
 };
 
-export const getConfiguration = createAsyncThunk('setup/getConfiguration', readConfiguration);
-
-export const saveConfiguration = createAsyncThunk('setup/saveConfiguration', writeConfiguration);
-
-export const loadStatus = createAsyncThunk('home/loadStatus', fetchStoreStatus);
-export const publish = createAsyncThunk('home/publish', publishWidget);
-export const remove = createAsyncThunk('home/remove', removeWidget);
-export const preview = createAsyncThunk('home/preview', fetchStoreURL);
-
+/* ==== Slice ===== */
 export const mainSlice = createSlice({
   name: 'main',
   initialState,
@@ -138,29 +101,25 @@ export const mainSlice = createSlice({
       state,
       action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>,
     ) => {
-      state.footer.backButton.show = Boolean(action.payload.show);
-      state.footer.backButton.disabled = Boolean(action.payload.disabled);
+      state.footer.backButton = getButtonStateFromPayload(action.payload);
     },
     configureContinueButton: (
       state,
       action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>,
     ) => {
-      state.footer.continueButton.show = Boolean(action.payload.show);
-      state.footer.continueButton.disabled = Boolean(action.payload.disabled);
+      state.footer.continueButton = getButtonStateFromPayload(action.payload);
     },
     configurePublishButton: (
       state,
       action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>,
     ) => {
-      state.footer.publishButton.show = Boolean(action.payload.show);
-      state.footer.publishButton.disabled = Boolean(action.payload.disabled);
+      state.footer.publishButton = getButtonStateFromPayload(action.payload);
     },
     configureCancelButton: (
       state,
       action: PayloadAction<Partial<{ show: boolean; disabled: boolean }>>,
     ) => {
-      state.footer.cancelButton.show = Boolean(action.payload.show);
-      state.footer.cancelButton.disabled = Boolean(action.payload.disabled);
+      state.footer.cancelButton = getButtonStateFromPayload(action.payload);
     },
     configureButtons: (
       state,
@@ -184,44 +143,34 @@ export const mainSlice = createSlice({
       }>,
     ) => {
       if (action.payload.backButton !== undefined) {
-        state.footer.backButton.show = Boolean(action.payload.backButton.show);
-        state.footer.backButton.disabled = Boolean(action.payload.backButton.disabled);
+        state.footer.backButton = getButtonStateFromPayload(action.payload.backButton);
       }
 
       if (action.payload.continueButton !== undefined) {
-        state.footer.continueButton.show = Boolean(action.payload.continueButton.show);
-        state.footer.continueButton.disabled = Boolean(action.payload.continueButton.disabled);
+        state.footer.continueButton = getButtonStateFromPayload(action.payload.continueButton);
       }
 
       if (action.payload.publishButton !== undefined) {
-        state.footer.publishButton.show = Boolean(action.payload.publishButton.show);
-        state.footer.publishButton.disabled = Boolean(action.payload.publishButton.disabled);
+        state.footer.publishButton = getButtonStateFromPayload(action.payload.publishButton);
       }
 
       if (action.payload.cancelButton !== undefined) {
-        state.footer.cancelButton.show = Boolean(action.payload.cancelButton.show);
-        state.footer.cancelButton.disabled = Boolean(action.payload.cancelButton.disabled);
+        state.footer.cancelButton = getButtonStateFromPayload(action.payload.cancelButton);
       }
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getConfiguration.pending, (state) => {
-        state.status = 'loading';
-      })
+      .addCase(getConfiguration.pending, handlePendingState)
       .addCase(getConfiguration.fulfilled, (state, action) => {
         state.status = 'idle';
         state.widgetConfiguration = action.payload;
       })
-      .addCase(saveConfiguration.pending, (state) => {
-        state.status = 'loading';
-      })
+      .addCase(saveConfiguration.pending, handlePendingState)
       .addCase(saveConfiguration.fulfilled, (state) => {
         state.status = 'idle';
       })
-      .addCase(loadStatus.pending, (state) => {
-        state.status = 'loading';
-      })
+      .addCase(loadStatus.pending, handlePendingState)
       .addCase(loadStatus.fulfilled, (state, action) => {
         state.status = 'idle';
         state.published = action.payload.published;
@@ -229,24 +178,18 @@ export const mainSlice = createSlice({
       .addCase(loadStatus.rejected, (state) => {
         state.status = 'failed';
       })
-      .addCase(publish.pending, (state) => {
-        state.status = 'loading';
-      })
+      .addCase(publish.pending, handlePendingState)
       .addCase(publish.fulfilled, (state) => {
         state.status = 'idle';
         state.published = true;
       })
-      .addCase(remove.pending, (state) => {
-        state.status = 'loading';
-      })
+      .addCase(remove.pending, handlePendingState)
       .addCase(remove.fulfilled, (state) => {
         state.status = 'idle';
         state.published = false;
         state.showRemoveDialog = false;
       })
-      .addCase(preview.pending, (state) => {
-        state.status = 'loading';
-      })
+      .addCase(preview.pending, handlePendingState)
       .addCase(preview.fulfilled, (state, action) => {
         state.status = 'idle';
         state.storeUrl = action.payload.secure_url;
@@ -272,20 +215,5 @@ export const {
   hideRemoveDialog,
   resetModalToDefault,
 } = mainSlice.actions;
-
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-export const selectCurrentStep = (state: MainState) => state.step;
-export const selectFooter = (state: MainState) => state.footer;
-export const selectConfiguration = (state: MainState) => state.widgetConfiguration;
-export const selectStoreUrl = (state: MainState) => state.storeUrl;
-export const selectShowRemoveDialog = (state: MainState) => state.showRemoveDialog;
-export const selectPublished = (state: MainState) => state.published;
-export const selectLoadingStatus = (state: MainState) => state.status;
-export const selectWidgetModal = (state: MainState) => ({
-  modalTitle: state.widgetConfiguration.modal_title,
-  modalBody: state.widgetConfiguration.modal_body,
-});
 
 export default mainSlice.reducer;

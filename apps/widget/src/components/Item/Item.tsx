@@ -6,22 +6,32 @@ import { analytics } from '../../utils/analytics';
 
 import styles from './styles.module.scss';
 
-export function Item({ id, logoProps, name, description, donationLink }: Charity) {
+function Description({ description, id }: { description: string; id: string }) {
   const [isOpen, setIsOpen] = useState(false);
-
-  const textPreview = description
-    .split(' ')
-    .filter((_, i) => i < 15)
-    .join(' ');
 
   const handleSeeMoreClick = (e: MouseEvent) => {
     e.preventDefault();
-
     setIsOpen(true);
-
     analytics.charitySeeMore(id);
   };
 
+  return (
+    <>
+      {isOpen ? (
+        description.split('\n').map((text, key) => <p key={key}>{text}</p>)
+      ) : (
+        <p>
+          {description.split(' ').slice(0, 15).join(' ')}{' '}
+          <a href="#" onClick={handleSeeMoreClick}>
+            See more
+          </a>
+        </p>
+      )}
+    </>
+  );
+}
+
+export function Item({ id, logoProps, name, description, donationLink }: Charity) {
   const handleSupportClick = () => analytics.charityClick(id);
 
   return (
@@ -32,16 +42,7 @@ export function Item({ id, logoProps, name, description, donationLink }: Charity
           <p>
             <strong>{name}</strong>
           </p>
-          {isOpen ? (
-            description.split('\n').map((text, key) => <p key={key}>{text}</p>)
-          ) : (
-            <p>
-              {textPreview}{' '}
-              <a href="#" onClick={handleSeeMoreClick}>
-                See more
-              </a>
-            </p>
-          )}
+          <Description description={description} id={id} />
         </div>
         <a
           className={styles.button}

@@ -4,7 +4,7 @@ export interface WidgetConfiguration {
   charity_selections: string[];
   modal_title: string;
   modal_body: string;
-  store_hash: string;
+  store_hash?: string;
 }
 
 export type WidgetStyle = 'blue' | 'black' | 'white';

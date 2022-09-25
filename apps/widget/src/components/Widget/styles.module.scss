@@ -11,6 +11,10 @@
   box-sizing: border-box;
   cursor: pointer;
 
+  &.collapsed {
+    max-width: 86; 
+  }
+
   &.animated {
     transform: scale(0);
     opacity: 0;

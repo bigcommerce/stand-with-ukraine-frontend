@@ -24,17 +24,17 @@ export class SafeStorage {
     this.storage = storageAvailable(type) ? window[type] : null;
   }
 
-  getItem(key: string) {
+  getItem(key: STORAGE_KEYS) {
     return this.storage ? this.storage.getItem(key) : null;
   }
 
-  removeItem(key: string) {
+  removeItem(key: STORAGE_KEYS) {
     if (this.storage) {
       this.storage.removeItem(key);
     }
   }
 
-  setItem(key: string, value: string) {
+  setItem(key: STORAGE_KEYS, value: string) {
     if (this.storage) {
       try {
         this.storage.setItem(key, value);
@@ -47,3 +47,8 @@ export class SafeStorage {
 }
 
 export const safeSessionStorage = new SafeStorage('sessionStorage');
+
+export enum STORAGE_KEYS {
+  WIDGET = 'SWU_WIDGET',
+  WIDGET_ANIMATION = 'SWU_WIDGET_ANIMATION',
+}
