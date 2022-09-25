@@ -1,5 +1,6 @@
 # Stand with Ukraine App
 
+[![Maintainability][maintainability_badge]][maintainability]
 [![ci][action_badge]][action]
 
 
@@ -82,3 +83,5 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 [backend_repo]: https://github.com/bigcommerce/stand-with-ukraine-backend
 [action]: https://github.com/bigcommerce/stand-with-ukraine-frontend/actions/workflows/general.yml
 [action_badge]: https://github.com/bigcommerce/stand-with-ukraine-frontend/actions/workflows/general.yml/badge.svg
+[maintainability]: https://codeclimate.com/github/bigcommerce/stand-with-ukraine-frontend/maintainability
+[maintainability_badge]: https://api.codeclimate.com/v1/badges/7f119b0cec2847449450/maintainability
