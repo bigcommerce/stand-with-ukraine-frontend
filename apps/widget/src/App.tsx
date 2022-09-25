@@ -4,24 +4,15 @@ import { useState } from 'preact/compat';
 import { Modal } from './components/Modal/Modal';
 import { Widget } from './components/Widget/Widget';
 import { analytics } from './utils/analytics';
+import { hideBodyOverflow } from './utils/domHelpers';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModalToggle = (isOpen: boolean) => {
-    const body = document.getElementsByTagName('body')[0];
-
-    if (body) {
-      body.style.overflow = isOpen ? 'hidden' : 'initial';
-    }
-
+    hideBodyOverflow(isOpen);
     setIsModalOpen(isOpen);
-
-    if (isOpen) {
-      analytics.modalOpened();
-    } else {
-      analytics.modalClosed();
-    }
+    analytics.trackModalStatus(isOpen);
   };
 
   return (

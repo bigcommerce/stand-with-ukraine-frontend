@@ -1,6 +1,6 @@
 import type { WidgetConfiguration } from 'config/types';
 
-import { GetAuthHeaders } from './utils';
+import { GetAuthHeaders } from '../utils';
 
 export async function fetchStoreStatus(): Promise<{ published: boolean }> {
   const response = await fetch('/api/v1/publish', {

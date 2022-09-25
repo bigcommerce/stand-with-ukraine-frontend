@@ -66,22 +66,19 @@ function selectWidgetStyle(state: RootState): WidgetStyle {
   return state.widgetConfiguration.style;
 }
 
+const COLOR_BUTTON_STATE = {
+  cancelButton: { show: true, disabled: false },
+  backButton: { show: false, disabled: false },
+  continueButton: { show: true, disabled: false },
+  publishButton: { show: false, disabled: false },
+};
+
 export default function Color() {
   const widgetStyle = useAppSelector(selectWidgetStyle);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(
-      configureButtons({
-        cancelButton: {
-          show: true,
-          disabled: false,
-        },
-        backButton: { show: false, disabled: false },
-        continueButton: { show: true, disabled: false },
-        publishButton: { show: false, disabled: false },
-      }),
-    );
+    dispatch(configureButtons(COLOR_BUTTON_STATE));
   }, [dispatch]);
 
   return (

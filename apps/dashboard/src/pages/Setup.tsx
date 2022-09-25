@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import Setup from '../components/Setup/Setup';
 import { useAppDispatch } from '../state/hooks';
-import { loadStatus } from '../state/mainSlice';
+import { loadStatus } from '../state/mainSlice/asyncActions';
 
 export default function SetupPage() {
   const dispatch = useAppDispatch();

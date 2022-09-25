@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { useAppDispatch } from '../../state/hooks';
-import { loadStatus } from '../../state/mainSlice';
+import { loadStatus } from '../../state/mainSlice/asyncActions';
 import { GetSessionToken, SetSessionToken } from '../../state/utils';
 
 const Wrapper = styled.div`

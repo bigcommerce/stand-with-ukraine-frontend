@@ -75,22 +75,20 @@ const Grid = styled.div`
     grid-template-columns: repeat(3, 320px);
   }
 `;
+const PLACEMENT_BUTTON_STATE = {
+  cancelButton: { show: false, disabled: false },
+  backButton: { show: true, disabled: false },
+  continueButton: { show: true, disabled: false },
+  publishButton: { show: false, disabled: false },
+};
 
 export default function Placement() {
   const widgetPlacement = useAppSelector(selectWidgetPlacement);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(
-      configureButtons({
-        cancelButton: { show: false, disabled: false },
-        backButton: { show: true, disabled: false },
-        continueButton: { show: true, disabled: false },
-        publishButton: { show: false, disabled: false },
-      }),
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    dispatch(configureButtons(PLACEMENT_BUTTON_STATE));
+  }, [dispatch]);
 
   return (
     <Panel header="Select widget layout">

@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { useAppSelector } from '../state/hooks';
-import { selectLoadingStatus } from '../state/mainSlice';
+import { selectLoadingStatus } from '../state/mainSlice/selectors';
 
 import Footer from './Footer';
 import Header from './Header';
