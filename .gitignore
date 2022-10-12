@@ -27,5 +27,6 @@ tsconfig.tsbuildinfo
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+.yarn/cache/*-darwin-arm64-*.zip
 
 .vscode
