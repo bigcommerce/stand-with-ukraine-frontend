@@ -17,33 +17,36 @@ jobs:
       YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
     steps:
-    - uses: actions/checkout@v3
-      with:
-        token: ${{ secrets.DEPENDABOT_GITHUB_TOKEN }}
-        ref: ${{ github.event.pull_request.head.ref }}
-        fetch-depth: 2
-    - name: Use Node.js 16.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16.x
-        cache: yarn
-    - name: Autofix lockfile
-      run: |
-        # restore yarn.lock from the previous commit
-        git checkout HEAD^1 -- yarn.lock
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.DEPENDABOT_GITHUB_TOKEN }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 2
 
-        # install dependencies
-        yarn install --mode=skip-build
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: yarn
 
-        # deduplicate lockfile
-        yarn dedupe
-    - name: Commit changes
-      run: |
-        # configure the github user
-        git config --global user.name 'bc-dependabot'
-        git config --global user.email 'dependabot@bigcommerce.com'
+      - name: Autofix lockfile
+        run: |
+          # restore yarn.lock from the previous commit
+          git checkout HEAD^1 -- yarn.lock
 
-        git add yarn.lock .yarn/cache
-        # [dependabot skip] is required so that dependabot will fix conflicts automatically
-        git commit -m "[dependabot skip] autofix yarn cache"
-        git push
+          # install dependencies
+          yarn install --mode=skip-build
+
+          # deduplicate lockfile
+          yarn dedupe
+
+      - name: Commit changes
+        run: |
+          # configure the github user
+          git config --global user.name 'bc-dependabot'
+          git config --global user.email 'dependabot@bigcommerce.com'
+
+          git add yarn.lock .yarn/cache
+          # [dependabot skip] is required so that dependabot will fix conflicts automatically
+          git commit -m "[dependabot skip] autofix yarn cache"
+          git push

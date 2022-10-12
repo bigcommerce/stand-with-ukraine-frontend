@@ -80,7 +80,11 @@ export function Widget({ isModalOpen, onClick }: { isModalOpen: boolean; onClick
     <div className={getWidgetClassNames(status)} onClick={handleWidgetClick}>
       <div className={styles.flag} />
       <WidgetContent showText={status !== WIDGET_STATUS.COLLAPSED} />
-      <button className={getButtonClassNames(status)} onClick={handleCloseClick} />
+      <button
+        className={getButtonClassNames(status)}
+        id="close-swu-widget"
+        onClick={handleCloseClick}
+      />
     </div>
   );
   /* eslint-enable jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */

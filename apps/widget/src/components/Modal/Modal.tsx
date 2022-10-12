@@ -30,7 +30,7 @@ export function Modal({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
       <div className={styles.content} onClick={handleContentClick}>
         <div className={styles.header}>
           <h1>{MODAL.title}</h1>
-          <button className={styles.close} onClick={onClose} />
+          <button className={styles.close} id="close-swu-modal" onClick={onClose} />
         </div>
         <p>{MODAL.description}</p>
         <div className={styles.img}>

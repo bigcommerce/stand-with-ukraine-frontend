@@ -50,6 +50,7 @@ function InfoTab() {
       <FormGroup>
         <Input
           description="Maximum 50 characters"
+          id="modal-title"
           label="Pop-up Title"
           maxLength={50}
           onChange={useCallback(
@@ -66,6 +67,7 @@ function InfoTab() {
       <FormGroup>
         <Textarea
           description="Maximum 400 characters"
+          id="modal-body"
           label="Pop-up Body"
           maxLength={400}
           onChange={useCallback(
