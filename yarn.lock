@@ -1436,7 +1436,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-react@npm:^2.0.1, @vitejs/plugin-react@npm:^2.1.0":
+"@vitejs/plugin-react@npm:^2.1.0":
   version: 2.1.0
   resolution: "@vitejs/plugin-react@npm:2.1.0"
   dependencies:
@@ -6244,16 +6244,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.54.7":
-  version: 1.54.7
-  resolution: "sass@npm:1.54.7"
+"sass@npm:^1.55.0":
+  version: 1.55.0
+  resolution: "sass@npm:1.55.0"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 4b6a10e93387e65dcbad2683d46b4249453ab8777c1bafab7a73ac3900a21fa91fa31d68df7a1b982c7e332a99b5574b1adc6168eb1ac6d7ebb28e18a65c4198
+  checksum: 7d769ed08efce4e6134e0f3dc11c4f07e32c413ac8eb43c5855f2686890fdcbd80da34165c91fb4ba407f478ca108e171574b5a60cb9814a5ed09d80f6014f96
   languageName: node
   linkType: hard
 
@@ -7497,11 +7497,11 @@ __metadata:
     "@preact/preset-vite": ^2.3.0
     "@testing-library/preact": ^3.2.2
     "@types/node": ^18.7.14
-    "@vitejs/plugin-react": ^2.0.1
+    "@vitejs/plugin-react": ^2.1.0
     images: "*"
     jsdom: ^20.0.0
     preact: ^10.10.6
-    sass: ^1.54.7
+    sass: ^1.55.0
     tsconfig: "*"
     typescript: ^4.5.4
     vite: ^3.0.9
