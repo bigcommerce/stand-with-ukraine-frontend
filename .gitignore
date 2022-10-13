@@ -30,3 +30,7 @@ tsconfig.tsbuildinfo
 .yarn/cache/*-darwin-arm64-*.zip
 
 .vscode
+
+cypress/videos
+coverage
+.nyc_output

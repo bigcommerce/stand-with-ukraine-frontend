@@ -104,6 +104,7 @@ function SelectCharity({
         <Checkbox
           checked={selected}
           disabled={!selected && limitReached}
+          id={id}
           label=""
           onChange={handleSelectChange}
         />

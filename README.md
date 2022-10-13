@@ -1,8 +1,8 @@
 # Stand with Ukraine App
 
+[![Coverage Status][coverage_badge]][coverage]
 [![Maintainability][maintainability_badge]][maintainability]
 [![ci][action_badge]][action]
-
 
 ## Overview
 
@@ -21,11 +21,12 @@ If you have a website on any other platform - you can use the following html to 
 ```html
 <script>
   window.SWU_CONFIG = {
-    "style": "black",
-    "placement": "bottom-right",
-    "charity_selections": ["razom", "mira-action", "new-ukraine"],
-    "modal_title": "Help the people of Ukraine!",
-    "modal_body": "With each day, the war in Ukraine worsens at an alarming pace. Millions of civilians have lost their homes and many more are without basic necessities like food, water, and health care. Consider donating to one of the charities below and join us in showing support for Ukraine. All charities are trusted, non-profit organizations dedicated to Ukrainian relief efforts. It takes less than a minute."
+    style: 'black',
+    placement: 'bottom-right',
+    charity_selections: ['razom', 'mira-action', 'new-ukraine'],
+    modal_title: 'Help the people of Ukraine!',
+    modal_body:
+      'With each day, the war in Ukraine worsens at an alarming pace. Millions of civilians have lost their homes and many more are without basic necessities like food, water, and health care. Consider donating to one of the charities below and join us in showing support for Ukraine. All charities are trusted, non-profit organizations dedicated to Ukrainian relief efforts. It takes less than a minute.',
   };
 </script>
 <script defer src="https://stand-with-ukraine-bc-app.web.app/widget/index.js"></script>
@@ -78,10 +79,12 @@ WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEM
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-[app_store_link]: https://www.bigcommerce.com/apps/stand-with-ukraine/ "BigCommerce App Store - Stand with Ukraine"
+[app_store_link]: https://www.bigcommerce.com/apps/stand-with-ukraine/ 'BigCommerce App Store - Stand with Ukraine'
 [frontend_repo]: https://github.com/bigcommerce/stand-with-ukraine-frontend
 [backend_repo]: https://github.com/bigcommerce/stand-with-ukraine-backend
-[action]: https://github.com/bigcommerce/stand-with-ukraine-frontend/actions/workflows/general.yml
-[action_badge]: https://github.com/bigcommerce/stand-with-ukraine-frontend/actions/workflows/general.yml/badge.svg
+[action]: https://github.com/bigcommerce/stand-with-ukraine-frontend/actions/workflows/main.yml
+[action_badge]: https://github.com/bigcommerce/stand-with-ukraine-frontend/actions/workflows/main.yml/badge.svg
 [maintainability]: https://codeclimate.com/github/bigcommerce/stand-with-ukraine-frontend/maintainability
 [maintainability_badge]: https://api.codeclimate.com/v1/badges/7f119b0cec2847449450/maintainability
+[coverage_badge]: https://coveralls.io/repos/github/bigcommerce/stand-with-ukraine-frontend/badge.svg?branch=main
+[coverage]: https://coveralls.io/github/bigcommerce/stand-with-ukraine-frontend?branch=main

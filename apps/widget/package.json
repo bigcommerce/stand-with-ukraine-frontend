@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --port 3002 --clearScreen false",
+    "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "tsc --noEmit",
@@ -24,6 +24,7 @@
     "tsconfig": "*",
     "typescript": "^4.5.4",
     "vite": "^3.1.7",
+    "vite-plugin-istanbul": "^3.0.1",
     "vitest": "^0.22.1"
   }
 }

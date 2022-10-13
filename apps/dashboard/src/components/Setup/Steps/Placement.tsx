@@ -55,7 +55,7 @@ function SelectWidgetPlacement({
   );
 
   return (
-    <SelectWrapper onClick={handleChange}>
+    <SelectWrapper id={`placement-${widgetPlacement}`} onClick={handleChange}>
       <Radio checked={selected === widgetPlacement} label={label} onChange={handleChange} />
       {image}
     </SelectWrapper>

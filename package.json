@@ -24,6 +24,8 @@
     "@bigcommerce/eslint-config": "^2.6.1",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "@cypress/code-coverage": "^3.10.0",
+    "cypress": "^10.10.0",
     "eslint": "^8.22.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
@@ -32,11 +34,13 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel --continue",
-    "lint": "turbo run lint",
+    "dev": "CYPRESS_COVERAGE='true' turbo run dev --parallel --continue",
+    "lint": "turbo run lint && yarn prettier-cmd --check && yarn eslint-cmd",
     "test": "turbo run test",
     "clean": "turbo run clean && rm -rf node_modules",
-    "format": "prettier --write \"**/*.{ts,tsx,md,scss,css}\""
+    "prettier-cmd": "prettier \"**/*.{ts,tsx,md,scss,css,yml,yaml}\"",
+    "eslint-cmd": "eslint \"**/*.{ts,tsx}\"",
+    "format": "yarn prettier-cmd --write && yarn eslint-cmd --fix"
   },
   "prettier": "@bigcommerce/eslint-config/prettier",
   "packageManager": "yarn@3.2.1"
