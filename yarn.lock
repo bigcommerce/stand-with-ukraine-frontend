@@ -349,20 +349,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bigcommerce/big-design-theme@npm:^0.16.0":
-  version: 0.16.0
-  resolution: "@bigcommerce/big-design-theme@npm:0.16.0"
-  dependencies:
-    "@babel/runtime": ^7.15.4
-    polished: ^4.0.0
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-    styled-components: ^5.3.0
-  checksum: a19db9f6feb1f1dd3006ec0d7957f759a8f65f37f4a9b0cb323f3f4e1e0073f841c49dd72dbbceb78a7a7172c04b2a1f0d47f714b23d73a109a17a8fb0de5b9a
-  languageName: node
-  linkType: hard
-
 "@bigcommerce/big-design-theme@npm:^0.17.0":
   version: 0.17.0
   resolution: "@bigcommerce/big-design-theme@npm:0.17.0"
@@ -2903,7 +2889,7 @@ __metadata:
   resolution: "dashboard@workspace:apps/dashboard"
   dependencies:
     "@bigcommerce/big-design": ^0.34.1
-    "@bigcommerce/big-design-theme": ^0.16.0
+    "@bigcommerce/big-design-theme": ^0.17.0
     "@reduxjs/toolkit": ^1.8.5
     "@testing-library/react": ^13.4.0
     "@testing-library/user-event": ^14.4.3
