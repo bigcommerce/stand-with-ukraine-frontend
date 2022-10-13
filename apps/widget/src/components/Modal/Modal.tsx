@@ -18,7 +18,7 @@ const getSelectedListOfCharities = () => {
 };
 
 export function Modal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  const handleContentClick = (e: MouseEvent) => e.stopPropagation();
+  const handleContentClick = (e: h.JSX.TargetedMouseEvent<HTMLDivElement>) => e.stopPropagation();
 
   if (!isOpen) {
     return null;

@@ -9,7 +9,7 @@ import styles from './styles.module.scss';
 function Description({ description, id }: { description: string; id: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSeeMoreClick = (e: MouseEvent) => {
+  const handleSeeMoreClick = (e: h.JSX.TargetedMouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setIsOpen(true);
     analytics.charitySeeMore(id);

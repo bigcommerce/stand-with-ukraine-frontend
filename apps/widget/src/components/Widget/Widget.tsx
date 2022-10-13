@@ -56,7 +56,7 @@ export function Widget({ isModalOpen, onClick }: { isModalOpen: boolean; onClick
     analytics.trackWidgetStatus(newStatus);
   };
 
-  const handleCloseClick = (e: MouseEvent) => {
+  const handleCloseClick = (e: h.JSX.TargetedMouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     changeStatus(
       status === WIDGET_STATUS.COLLAPSED ? WIDGET_STATUS.DISABLED : WIDGET_STATUS.COLLAPSED,
