@@ -33,13 +33,14 @@ jobs:
           yarn lint
 
       - name: Unit Tests
-        run: yarn test
+        run: yarn coverage
 
       - name: E2E Tests
         uses: cypress-io/github-action@v4.2.0
         with:
           start: yarn dev
           wait-on: 'http://localhost:3002/widget/, http://localhost:3001/dashboard/'
+          timeout-minutes: 5
 
       - name: Build
         run: yarn build
@@ -64,6 +65,9 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
+
+      - name: Merge coverage
+        run: yarn merge-coverage
 
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@1.1.3

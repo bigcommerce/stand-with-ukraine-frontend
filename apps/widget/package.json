@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "lint": "tsc --noEmit",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "test": "vitest run"
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "images": "*",
@@ -19,12 +20,14 @@
     "@testing-library/preact": "^3.2.2",
     "@types/node": "^18.8.5",
     "@vitejs/plugin-react": "^2.1.0",
+    "@vitest/coverage-istanbul": "^0.24.3",
     "jsdom": "^20.0.0",
     "sass": "^1.55.0",
     "tsconfig": "*",
     "typescript": "^4.8.4",
     "vite": "^3.1.7",
     "vite-plugin-istanbul": "^3.0.1",
-    "vitest": "^0.24.1"
+    "vitest": "^0.24.1",
+    "vitest-fetch-mock": "^0.2.1"
   }
 }

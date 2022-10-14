@@ -1,7 +1,6 @@
-describe('configure and publish widget', () => {
-  before(() => {
-    Cypress.config('baseUrl', 'http://localhost:3002/widget/');
-  });
+describe('widget and modal', () => {
+  before(() => cy.setBaseUrl('widget'));
+
   it('should be able to see the widget', () => {
     // use cy.session to have fresh sessionStorage
     cy.session('widgetSession', () => {
@@ -14,16 +13,34 @@ describe('configure and publish widget', () => {
       // Check the modal text
       cy.contains('Help the people of Ukraine!').should('be.visible');
 
-      cy.get('a').contains('See more').scrollIntoView();
-      cy.contains('Razom').should('be.visible');
-      cy.contains('See more').should('be.visible').click();
-      cy.contains('Support')
-        .should('be.visible')
-        .should('have.attr', 'href')
-        .and('include', 'razomforukraine');
+      // Interact with charity
+      cy.get('div#charity-mira-action')
+        .scrollIntoView()
+        .within(() => {
+          cy.contains('Mira Action').should('be.visible');
+          cy.contains('See more').should('be.visible').click();
+
+          // Verify the charity support button works
+          cy.contains('Support')
+            .should('be.visible')
+            .should('have.attr', 'href')
+            .and('include', 'miraaction')
+            .then((link) => {
+              cy.request(link).its('status').should('eq', 200);
+            });
+          cy.contains('Support').click();
+        });
 
       // Close the modal
       cy.get('button#close-swu-modal').scrollIntoView().click();
+
+      // Collapse the widget
+      cy.get('button#close-swu-widget').should('be.visible').click();
+      cy.contains('Help the people of Ukraine!').should('not.exist');
+
+      // Expand the widget
+      cy.get('div#swu-widget-flag').should('be.visible').click();
+      cy.contains('Help the people of Ukraine!').should('be.visible');
 
       // Collapse the widget
       cy.get('button#close-swu-widget').should('be.visible').click();

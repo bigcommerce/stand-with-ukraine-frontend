@@ -6,6 +6,10 @@ export default mergeConfig(
   viteConfig,
   defineConfig({
     test: {
+      coverage: {
+        provider: 'istanbul',
+        reporter: ['lcov', 'json', 'json-summary'],
+      },
       environment: 'jsdom',
     },
   }),

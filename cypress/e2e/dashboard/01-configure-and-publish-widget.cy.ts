@@ -1,4 +1,6 @@
 describe('configure and publish widget', () => {
+  before(() => cy.setBaseUrl('dashboard'));
+
   it('should be able configure and publish', () => {
     cy.visit('/');
 
@@ -26,7 +28,7 @@ describe('configure and publish widget', () => {
     cy.get('#preview').click();
     cy.get('img[alt="Protestors standing against war in Ukraine"]').should('be.visible');
 
-    // Modal Preview
+    // Modal Configuration
     cy.get('#configure').click();
     cy.get('#modal-title').should('be.visible').type(' And Show More <3');
     cy.get('#modal-body').should('be.visible');

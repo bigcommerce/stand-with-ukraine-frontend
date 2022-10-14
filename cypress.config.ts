@@ -6,7 +6,7 @@ export default defineConfig({
       require('@cypress/code-coverage/task')(on, config);
       return config;
     },
-    baseUrl: 'http://localhost:3001/dashboard/',
     experimentalSessionAndOrigin: true,
+    chromeWebSecurity: false,
   },
 });

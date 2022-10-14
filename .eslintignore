@@ -10,6 +10,7 @@
 /.nyc_output
 cypress/
 cypress.config.ts
+apps/*/coverage
 
 # production
 /build

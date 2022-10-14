@@ -11,6 +11,10 @@
     "test": {
       "inputs": ["**/**.{ts,tsx}", "**/tsconfig.json"]
     },
+    "coverage": {
+      "inputs": ["**/**.{ts,tsx}", "**/tsconfig.json"],
+      "cache": false
+    },
     "lint": {
       "inputs": ["**/**.{ts,tsx}", "**/tsconfig.json"]
     }

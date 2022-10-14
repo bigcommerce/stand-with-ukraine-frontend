@@ -32,5 +32,6 @@ tsconfig.tsbuildinfo
 .vscode
 
 cypress/videos
+cypress/coverage
 coverage
 .nyc_output

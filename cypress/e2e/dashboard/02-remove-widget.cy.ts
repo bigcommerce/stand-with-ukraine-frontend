@@ -1,4 +1,6 @@
 describe('unpublish widget', () => {
+  before(() => cy.setBaseUrl('dashboard'));
+
   it('should be able to unpublish widget', () => {
     cy.visit('/');
 
