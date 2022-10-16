@@ -1,0 +1,4 @@
+{
+  "widget": "http://localhost:3002/widget/",
+  "dashboard": "http://localhost:3001/dashboard/"
+}

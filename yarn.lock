@@ -1578,6 +1578,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vitest/coverage-istanbul@npm:^0.24.3":
+  version: 0.24.3
+  resolution: "@vitest/coverage-istanbul@npm:0.24.3"
+  dependencies:
+    istanbul-lib-coverage: ^3.2.0
+    istanbul-lib-instrument: ^5.2.1
+    istanbul-lib-report: ^3.0.0
+    istanbul-lib-source-maps: ^4.0.1
+    istanbul-reports: ^3.1.5
+    test-exclude: ^6.0.0
+    vitest: 0.24.3
+  checksum: 289b5d55ee815a941fbabf29de10d39b32af92741a6539f323dc8bbb308d1a4dfeddebb48b0db897acf89dd3ccd214362b6c4db1d7f5640add8096e424d99a8e
+  languageName: node
+  linkType: hard
+
 "JSONStream@npm:^1.0.4":
   version: 1.3.5
   resolution: "JSONStream@npm:1.3.5"
@@ -2743,6 +2758,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cross-fetch@npm:^3.0.6":
+  version: 3.1.5
+  resolution: "cross-fetch@npm:3.1.5"
+  dependencies:
+    node-fetch: 2.6.7
+  checksum: f6b8c6ee3ef993ace6277fd789c71b6acf1b504fd5f5c7128df4ef2f125a429e29cd62dc8c127523f04a5f2fa4771ed80e3f3d9695617f441425045f505cf3bb
+  languageName: node
+  linkType: hard
+
 "cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.2, cross-spawn@npm:^7.0.3":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
@@ -2898,6 +2922,7 @@ __metadata:
     "@types/react-dom": ^18.0.6
     "@types/styled-components": ^5.1.26
     "@vitejs/plugin-react": ^2.1.0
+    "@vitest/coverage-istanbul": ^0.24.3
     jsdom: ^20.0.0
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -5336,7 +5361,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"istanbul-lib-instrument@npm:^5.1.0":
+"istanbul-lib-instrument@npm:^5.1.0, istanbul-lib-instrument@npm:^5.2.1":
   version: 5.2.1
   resolution: "istanbul-lib-instrument@npm:5.2.1"
   dependencies:
@@ -5374,7 +5399,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"istanbul-lib-source-maps@npm:^4.0.0":
+"istanbul-lib-source-maps@npm:^4.0.0, istanbul-lib-source-maps@npm:^4.0.1":
   version: 4.0.1
   resolution: "istanbul-lib-source-maps@npm:4.0.1"
   dependencies:
@@ -5385,7 +5410,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"istanbul-reports@npm:^3.0.2":
+"istanbul-reports@npm:^3.0.2, istanbul-reports@npm:^3.1.5":
   version: 3.1.5
   resolution: "istanbul-reports@npm:3.1.5"
   dependencies:
@@ -6236,6 +6261,20 @@ __metadata:
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
   checksum: b8ffeb1e262eff7968fc90a2b6767b04cfd9842582a9d0ece0af7049537266e7b2506dfb1d107a32f06dd849ab2aea834d5830f7f4d0e5cb7d36e1ae55d021d9
+  languageName: node
+  linkType: hard
+
+"node-fetch@npm:2.6.7":
+  version: 2.6.7
+  resolution: "node-fetch@npm:2.6.7"
+  dependencies:
+    whatwg-url: ^5.0.0
+  peerDependencies:
+    encoding: ^0.1.0
+  peerDependenciesMeta:
+    encoding:
+      optional: true
+  checksum: 8d816ffd1ee22cab8301c7756ef04f3437f18dace86a1dae22cf81db8ef29c0bf6655f3215cb0cdb22b420b6fe141e64b26905e7f33f9377a7fa59135ea3e10b
   languageName: node
   linkType: hard
 
@@ -8203,6 +8242,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tr46@npm:~0.0.3":
+  version: 0.0.3
+  resolution: "tr46@npm:0.0.3"
+  checksum: 726321c5eaf41b5002e17ffbd1fb7245999a073e8979085dacd47c4b4e8068ff5777142fc6726d6ca1fd2ff16921b48788b87225cbc57c72636f6efa8efbffe3
+  languageName: node
+  linkType: hard
+
 "trim-newlines@npm:^3.0.0":
   version: 3.0.1
   resolution: "trim-newlines@npm:3.0.1"
@@ -8690,9 +8736,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:^0.24.1":
-  version: 0.24.1
-  resolution: "vitest@npm:0.24.1"
+"vitest-fetch-mock@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "vitest-fetch-mock@npm:0.2.1"
+  dependencies:
+    cross-fetch: ^3.0.6
+  peerDependencies:
+    vitest: ">=0.16.0"
+  checksum: e5f876686ae7579e38f41498d71769502cda481d46d2e979f202740255855ae1420497bdddeb1b0bdb13b6636172c39b750a85eeb7f7351948a12d529189bf18
+  languageName: node
+  linkType: hard
+
+"vitest@npm:0.24.3, vitest@npm:^0.24.1":
+  version: 0.24.3
+  resolution: "vitest@npm:0.24.3"
   dependencies:
     "@types/chai": ^4.3.3
     "@types/chai-subset": ^1.3.3
@@ -8724,7 +8781,7 @@ __metadata:
       optional: true
   bin:
     vitest: vitest.mjs
-  checksum: 52e87aec70351eade4f0fd4c240046cedf68fba8b2bb2d8a592036c69b8a1501a9ad0a790d5d7f8927faf27dd3cafb3609174e7bd3602a2c4dd26fb28e922337
+  checksum: dd954f57396b81df466dd4346aa6c95709a1b3c2409d5526d3172fa34ec684f756a855f885778929a6b903a22b2517ff79d22f936fb3e4d7d54ff24e8e577459
   languageName: node
   linkType: hard
 
@@ -8752,6 +8809,13 @@ __metadata:
   dependencies:
     loose-envify: ^1.0.0
   checksum: 4f2cb6a9575e4faf71ddad9ad1ae7a00d0a75d24521c193fa464f30e6b04027bd97aa5d9546b0e13d3a150ab402eda216d59c1d0f2d6ca60124d96cd40dfa35c
+  languageName: node
+  linkType: hard
+
+"webidl-conversions@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "webidl-conversions@npm:3.0.1"
+  checksum: c92a0a6ab95314bde9c32e1d0a6dfac83b578f8fa5f21e675bc2706ed6981bc26b7eb7e6a1fab158e5ce4adf9caa4a0aee49a52505d4d13c7be545f15021b17c
   languageName: node
   linkType: hard
 
@@ -8792,6 +8856,16 @@ __metadata:
     tr46: ^3.0.0
     webidl-conversions: ^7.0.0
   checksum: ed4826aaa57e66bb3488a4b25c9cd476c46ba96052747388b5801f137dd740b73fde91ad207d96baf9f17fbcc80fc1a477ad65181b5eb5fa718d27c69501d7af
+  languageName: node
+  linkType: hard
+
+"whatwg-url@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "whatwg-url@npm:5.0.0"
+  dependencies:
+    tr46: ~0.0.3
+    webidl-conversions: ^3.0.0
+  checksum: b8daed4ad3356cc4899048a15b2c143a9aed0dfae1f611ebd55073310c7b910f522ad75d727346ad64203d7e6c79ef25eafd465f4d12775ca44b90fa82ed9e2c
   languageName: node
   linkType: hard
 
@@ -8843,6 +8917,7 @@ __metadata:
     "@testing-library/preact": ^3.2.2
     "@types/node": ^18.8.5
     "@vitejs/plugin-react": ^2.1.0
+    "@vitest/coverage-istanbul": ^0.24.3
     images: "*"
     jsdom: ^20.0.0
     preact: ^10.10.6
@@ -8852,6 +8927,7 @@ __metadata:
     vite: ^3.1.7
     vite-plugin-istanbul: ^3.0.1
     vitest: ^0.24.1
+    vitest-fetch-mock: ^0.2.1
   languageName: unknown
   linkType: soft
 

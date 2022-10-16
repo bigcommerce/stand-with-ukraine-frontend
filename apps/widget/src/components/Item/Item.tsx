@@ -35,7 +35,7 @@ export function Item({ id, logoProps, name, description, donationLink }: Charity
   const handleSupportClick = () => analytics.charityClick(id);
 
   return (
-    <div className={styles.item}>
+    <div className={styles.item} id={`charity-${id}`}>
       <img alt={logoProps.alt} className={styles.icon} src={logoProps.src} />
       <div className={styles.content}>
         <div className={styles.text}>
