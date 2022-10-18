@@ -35,12 +35,8 @@ jobs:
       - name: Unit Tests
         run: yarn coverage
 
-      - name: E2E Tests
-        uses: cypress-io/github-action@v4.2.0
-        with:
-          start: yarn dev
-          wait-on: 'http://localhost:3002/widget/, http://localhost:3001/dashboard/'
-          timeout-minutes: 5
+      - name: Run E2E Tests
+        run: yarn e2e
 
       - name: Build
         run: yarn build
@@ -55,16 +51,11 @@ jobs:
           projectId: stand-with-ukraine-bc-app
 
       - uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-
-      - uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: cypress-videos
-          path: cypress/videos
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
 
       - name: Merge coverage
         run: yarn merge-coverage

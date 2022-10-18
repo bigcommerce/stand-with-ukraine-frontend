@@ -3,7 +3,7 @@
 COVERAGE_DIR="coverage"
 COVERAGE_INPUT_DIR="${COVERAGE_DIR}/input"
 INTERESTED_COVERAGE_DIRS=(
-    "cypress"
+    "e2e"
     "apps/dashboard"
     "apps/widget"
 )
@@ -19,5 +19,4 @@ for dir in ${INTERESTED_COVERAGE_DIRS[@]}; do
     cp $dir/coverage/coverage-final.json $COVERAGE_INPUT_DIR/$file_name.json
 done
 
-# Generate combined report
 npx nyc report --temp-dir $COVERAGE_INPUT_DIR --report-dir $COVERAGE_DIR --reporter lcov
