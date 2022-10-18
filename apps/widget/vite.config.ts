@@ -21,7 +21,7 @@ export default defineConfig({
       '/api': 'http://localhost:9000',
     },
     host: true,
-    port: 3002,
+    port: 3001,
   },
   build: {
     lib: {

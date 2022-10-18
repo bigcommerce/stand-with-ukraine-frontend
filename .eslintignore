@@ -8,8 +8,8 @@
 # testing
 /coverage
 /.nyc_output
-cypress/
-cypress.config.ts
+e2e/
+playwright.config.ts
 apps/*/coverage
 
 # production

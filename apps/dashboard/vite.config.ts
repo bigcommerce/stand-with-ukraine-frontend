@@ -20,9 +20,10 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': 'http://localhost:9000',
+      '/widget': 'http://localhost:3001',
     },
     host: true,
-    port: 3001,
+    port: 3000,
   },
   build: {
     outDir: '../../build/dashboard',
