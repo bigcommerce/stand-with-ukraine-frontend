@@ -1,8 +1,28 @@
-# Stand with Ukraine App
+<p align="center">
+  <a href="https://www.bigcommerce.com/apps/stand-with-ukraine/">
+    <picture aria-label="Stand with Ukraine App logo">
+      <img src="https://s3.amazonaws.com/integrated-apps/nbxgitdu/mvcrlqjk.png" height="128">
+    </picture>
+    <h1 align="center">Stand with Ukraine App</h1>
+    <h3 align="center">Frontend Components</h3>
+  </a>
+</p>
 
-[![Coverage Status][coverage_badge]][coverage]
-[![Maintainability][maintainability_badge]][maintainability]
-[![ci][action_badge]][action]
+<p align="center">
+  <a aria-label="Coverage" href="https://coveralls.io/github/bigcommerce/stand-with-ukraine-frontend?branch=main">
+    <img src="https://img.shields.io/coveralls/github/bigcommerce/stand-with-ukraine-frontend/main?style=for-the-badge&labelColor=005BBB">
+  </a>
+  <a aria-label="Maintainability" href="https://codeclimate.com/github/bigcommerce/stand-with-ukraine-frontend/maintainability">
+    <img alt="" src="https://img.shields.io/codeclimate/maintainability/bigcommerce/stand-with-ukraine-frontend?style=for-the-badge&labelColor=005BBB">
+  </a>
+  <a aria-label="Build Status" href="https://github.com/bigcommerce/stand-with-ukraine-frontend/actions/workflows/main.yml">
+    <img alt="" src="https://img.shields.io/github/workflow/status/bigcommerce/stand-with-ukraine-frontend/NodeJS?style=for-the-badge&labelColor=005BBB&logo=nodedotjs&logoColor=white">
+  </a>
+  <a aria-label="License" href="https://github.com/bigcommerce/stand-with-ukraine-frontend/blob/main/LICENSE.md">
+    <img alt="" src="https://img.shields.io/github/license/bigcommerce/stand-with-ukraine-frontend?style=for-the-badge&labelColor=005BBB">
+  </a>
+  <hr/>
+</p>
 
 ## Overview
 
@@ -82,9 +102,3 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 [app_store_link]: https://www.bigcommerce.com/apps/stand-with-ukraine/ 'BigCommerce App Store - Stand with Ukraine'
 [frontend_repo]: https://github.com/bigcommerce/stand-with-ukraine-frontend
 [backend_repo]: https://github.com/bigcommerce/stand-with-ukraine-backend
-[action]: https://github.com/bigcommerce/stand-with-ukraine-frontend/actions/workflows/main.yml
-[action_badge]: https://github.com/bigcommerce/stand-with-ukraine-frontend/actions/workflows/main.yml/badge.svg
-[maintainability]: https://codeclimate.com/github/bigcommerce/stand-with-ukraine-frontend/maintainability
-[maintainability_badge]: https://api.codeclimate.com/v1/badges/7f119b0cec2847449450/maintainability
-[coverage_badge]: https://coveralls.io/repos/github/bigcommerce/stand-with-ukraine-frontend/badge.svg?branch=main
-[coverage]: https://coveralls.io/github/bigcommerce/stand-with-ukraine-frontend?branch=main
