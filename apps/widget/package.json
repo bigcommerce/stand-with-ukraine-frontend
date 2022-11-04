@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "images": "*",
-    "preact": "^10.10.6"
+    "preact": "^10.11.2"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.3.0",
