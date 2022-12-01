@@ -363,9 +363,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bigcommerce/big-design@npm:^0.34.1":
-  version: 0.34.1
-  resolution: "@bigcommerce/big-design@npm:0.34.1"
+"@bigcommerce/big-design@npm:^0.34.3":
+  version: 0.34.3
+  resolution: "@bigcommerce/big-design@npm:0.34.3"
   dependencies:
     "@babel/runtime": ^7.15.4
     "@bigcommerce/big-design-icons": ^0.21.0
@@ -373,7 +373,7 @@ __metadata:
     "@popperjs/core": ^2.11.6
     "@types/react-datepicker": ^4.4.2
     date-fns: 2.29.2
-    downshift: 6.1.9
+    downshift: 6.1.12
     focus-trap: ^7.0.0
     polished: ^4.0.0
     react-beautiful-dnd: ^13.1.1
@@ -385,7 +385,7 @@ __metadata:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     styled-components: ^5.3.5
-  checksum: 401c9febe704cac672fbb5155ed89e1850f09496a825f7dbddaf797c8bd0736692061472846ecbb6e756c7f318f71154326a9936766a0492a4812050c14e0cb3
+  checksum: 51e019530fa0885255abbf9d6d5c4bb6ca13a4c79677625b521d866717c04ec1e47c9755a8229f1e0f10f38537a5115edf0e55aa29cf74e1751dd757b10a0f4a
   languageName: node
   linkType: hard
 
@@ -2496,7 +2496,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dashboard@workspace:apps/dashboard"
   dependencies:
-    "@bigcommerce/big-design": ^0.34.1
+    "@bigcommerce/big-design": ^0.34.3
     "@bigcommerce/big-design-theme": ^0.17.0
     "@reduxjs/toolkit": ^1.8.5
     "@testing-library/react": ^13.4.0
@@ -2713,9 +2713,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"downshift@npm:6.1.9":
-  version: 6.1.9
-  resolution: "downshift@npm:6.1.9"
+"downshift@npm:6.1.12":
+  version: 6.1.12
+  resolution: "downshift@npm:6.1.12"
   dependencies:
     "@babel/runtime": ^7.14.8
     compute-scroll-into-view: ^1.0.17
@@ -2724,7 +2724,7 @@ __metadata:
     tslib: ^2.3.0
   peerDependencies:
     react: ">=16.12.0"
-  checksum: 5b888b6ebd2083334758d49e9e7b669eb8d0475273cdb5af2aa5f8c363b62f56c79aeca43758c99642056e94f68cbd8086f79a0a96726b3e8b8726cb24fd1d1b
+  checksum: c623dc436f332fefddc332b42ca4a267b3f5b47aaf1372a61212678d7ecbe22698fdb63f61373bcbd3773fa526eb4f210cf7f044cd5642b689dbd37ba27e9aaf
   languageName: node
   linkType: hard
 
