@@ -4,7 +4,11 @@ module.exports = {
   root: true,
   extends: ['@bigcommerce/eslint-config'],
   parserOptions: {
-    project: ['./apps/dashboard/tsconfig.json', './apps/widget/tsconfig.json'],
+    project: [
+      './apps/dashboard/tsconfig.json',
+      './apps/widget/tsconfig.json',
+      './apps/landing/tsconfig.ts',
+    ],
     tsconfigRootDir: __dirname,
   },
   settings: {
