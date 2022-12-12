@@ -12,7 +12,7 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@bigcommerce/big-design": "^0.34.1",
+    "@bigcommerce/big-design": "^0.34.3",
     "@bigcommerce/big-design-theme": "^0.17.0",
     "@reduxjs/toolkit": "^1.8.5",
     "react": "^18.2.0",
