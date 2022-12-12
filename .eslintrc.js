@@ -7,7 +7,7 @@ module.exports = {
     project: [
       './apps/dashboard/tsconfig.json',
       './apps/widget/tsconfig.json',
-      './apps/landing/tsconfig.ts',
+      './apps/landing/tsconfig.json',
     ],
     tsconfigRootDir: __dirname,
   },
