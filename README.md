@@ -16,7 +16,7 @@
     <img alt="" src="https://img.shields.io/codeclimate/maintainability/bigcommerce/stand-with-ukraine-frontend?style=for-the-badge&labelColor=005BBB">
   </a>
   <a aria-label="Build Status" href="https://github.com/bigcommerce/stand-with-ukraine-frontend/actions/workflows/main.yml">
-    <img alt="" src="https://img.shields.io/github/workflow/status/bigcommerce/stand-with-ukraine-frontend/NodeJS?style=for-the-badge&labelColor=005BBB&logo=nodedotjs&logoColor=white">
+    <img alt="" src="https://img.shields.io/github/actions/workflow/status/bigcommerce/stand-with-ukraine-frontend/main.yml?branch=main&style=for-the-badge&labelColor=005BBB&logo=nodedotjs&logoColor=white">
   </a>
   <a aria-label="License" href="https://github.com/bigcommerce/stand-with-ukraine-frontend/blob/main/LICENSE.md">
     <img alt="" src="https://img.shields.io/github/license/bigcommerce/stand-with-ukraine-frontend?style=for-the-badge&labelColor=005BBB">
