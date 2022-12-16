@@ -4,10 +4,7 @@ import svgLoader from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    svgLoader(),
-  ],
+  plugins: [react(), svgLoader()],
   base: '/landing/',
   server: {
     proxy: {
