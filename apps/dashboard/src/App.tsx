@@ -7,6 +7,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import AuthProvider from './components/Auth/AuthProvider';
 import Layout from './components/Layout';
+import Code from './pages/Code';
 import Home from './pages/Home';
 import Setup from './pages/Setup';
 import { alertsManager, store } from './state/store';
@@ -34,16 +35,17 @@ function App() {
           {/* eslint-disable-next-line @typescript-eslint/consistent-type-assertions */}
           <AlertsManager manager={alertsManager as any} />
           <AppGlobalStyles />
-          <AuthProvider>
-            <HashRouter>
+          <HashRouter>
+            <AuthProvider>
               <Layout>
                 <Routes>
                   <Route element={<Home />} index />
                   <Route element={<Setup />} path="/setup" />
+                  <Route element={<Code />} path="/code" />
                 </Routes>
               </Layout>
-            </HashRouter>
-          </AuthProvider>
+            </AuthProvider>
+          </HashRouter>
         </>
       </ThemeProvider>
     </Provider>

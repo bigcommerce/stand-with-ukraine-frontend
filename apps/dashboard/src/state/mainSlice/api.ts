@@ -1,8 +1,15 @@
+import { DEFAULT_CONFIG } from 'config';
 import type { WidgetConfiguration } from 'config/types';
 
-import { GetAuthHeaders } from '../utils';
+import { GetAuthHeaders, IsUniversalInstaller } from '../utils';
 
 export async function fetchStoreStatus(): Promise<{ published: boolean }> {
+  if (IsUniversalInstaller()) {
+    return {
+      published: false,
+    };
+  }
+
   const response = await fetch('/api/v1/publish', {
     method: 'GET',
     headers: GetAuthHeaders(),
@@ -12,6 +19,12 @@ export async function fetchStoreStatus(): Promise<{ published: boolean }> {
 }
 
 export async function fetchStoreURL(): Promise<{ secure_url: string }> {
+  if (IsUniversalInstaller()) {
+    return {
+      secure_url: '',
+    };
+  }
+
   const response = await fetch('/api/v1/preview', {
     method: 'GET',
     headers: GetAuthHeaders(),
@@ -21,6 +34,10 @@ export async function fetchStoreURL(): Promise<{ secure_url: string }> {
 }
 
 export async function publishWidget(): Promise<string> {
+  if (IsUniversalInstaller()) {
+    return 'success';
+  }
+
   const response = await fetch('/api/v1/publish', {
     method: 'POST',
     headers: GetAuthHeaders(),
@@ -30,6 +47,10 @@ export async function publishWidget(): Promise<string> {
 }
 
 export async function removeWidget(reason: string): Promise<string> {
+  if (IsUniversalInstaller()) {
+    return 'success';
+  }
+
   const params = new URLSearchParams();
 
   params.set('reason', reason);
@@ -43,6 +64,10 @@ export async function removeWidget(reason: string): Promise<string> {
 }
 
 export async function readConfiguration(): Promise<WidgetConfiguration> {
+  if (IsUniversalInstaller()) {
+    return DEFAULT_CONFIG;
+  }
+
   const response = await fetch('/api/v1/configuration', {
     method: 'GET',
     headers: GetAuthHeaders(),
@@ -52,6 +77,13 @@ export async function readConfiguration(): Promise<WidgetConfiguration> {
 }
 
 export async function writeConfiguration(widgetConfiguration: WidgetConfiguration) {
+  if (IsUniversalInstaller()) {
+    return {
+      DEFAULT_CONFIG,
+      ...widgetConfiguration,
+    };
+  }
+
   const response = await fetch('/api/v1/configuration', {
     method: 'POST',
     headers: {

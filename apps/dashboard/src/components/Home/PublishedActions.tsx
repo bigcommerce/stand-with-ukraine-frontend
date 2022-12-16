@@ -8,6 +8,7 @@ import { goToStep, showRemoveDialog } from '../../state/mainSlice';
 import { preview } from '../../state/mainSlice/asyncActions';
 import { selectStoreUrl } from '../../state/mainSlice/selectors';
 
+import ActionContainer from './ActionContainer';
 import RemoveModal from './RemoveModal';
 
 const LoveMessageContainer = styled.div`
@@ -17,33 +18,6 @@ const LoveMessageContainer = styled.div`
   font-size: 14px;
   line-height: 20px;
   margin: 0.5rem 0;
-`;
-
-const ActionContainer = styled.div`
-  & > button,
-  & > a {
-    margin-top: 1rem;
-  }
-
-  ${({ theme }) => theme.breakpoints.tablet} {
-    flex: 0 0 4rem;
-    display: flex;
-    align-items: center;
-    margin-top: 1rem;
-
-    & > button,
-    & > a {
-      margin-left: 1.5rem !important;
-      margin-top: 0;
-    }
-
-    // don't add margin left for remove button
-    > * {
-      &:first-child {
-        margin-left: 0 !important;
-      }
-    }
-  }
 `;
 
 export default function PublishedActions() {
