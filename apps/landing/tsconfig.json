@@ -2,9 +2,6 @@
   "extends": "tsconfig/vite.json",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "paths": {
-      "@components": ["src/components/*"],
-    }
   },
   "exclude": [
     "node_modules"
