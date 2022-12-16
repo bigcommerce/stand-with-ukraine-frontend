@@ -95,6 +95,7 @@ test('configure and publish widget - universal', async ({ page }) => {
 
   // Expect to be on code page
   await expect(page).toHaveURL('http://localhost:3000/dashboard/#/code');
+  await page.getByRole('button', { name: 'Show FAQ Show FAQ' }).click();
 
   // Expect to copy code and confirmation
   await page.locator('pre').click();

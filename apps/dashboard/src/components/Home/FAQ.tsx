@@ -30,27 +30,26 @@ const FAQ_LIST: Array<{ question: string; answer: string; link?: LinkProps }> = 
   },
 ];
 
-const Question = styled.div`
+const List = styled.ol`
+  font-family: Source Sans Pro;
   font-size: 16px;
   font-weight: 700;
   line-height: 24px;
   letter-spacing: 0em;
   text-align: left;
-  margin-top: 1rem;
-
   color: #5e637a;
+  margin: 0;
 `;
 
-const Answer = styled.div`
-  font-family: Source Sans Pro;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0em;
-  text-align: left;
-  margin: 0.25rem 0 0.5rem 0;
+const Item = styled.li`
+  & .question {
+    margin: 1rem 0 0 0;
+  }
 
-  color: #5e637a;
+  & .answer {
+    margin: 0.25rem 0 0.5rem 0;
+    font-weight: 400;
+  }
 `;
 
 const ActionContainer = styled.div`
@@ -76,20 +75,20 @@ export default function FAQ({ listType }: { listType: 'bigcommerce' | 'universal
           Get Support
         </Link>
       </ActionContainer>
-      {open
-        ? (listType === 'bigcommerce' ? FAQ_LIST : FAQ_LIST.slice(0, 1)).map(
+      {open ? (
+        <List>
+          {(listType === 'bigcommerce' ? FAQ_LIST : FAQ_LIST.slice(0, 1)).map(
             ({ question, answer, link }, index) => (
-              <React.Fragment key={index}>
-                <Question>
-                  {index + 1}. {question}
-                </Question>
-                <Answer>
+              <Item key={index}>
+                <p className="question">{question}</p>
+                <p className="answer">
                   {answer} {link !== undefined ? <Link {...link} /> : null}
-                </Answer>
-              </React.Fragment>
+                </p>
+              </Item>
             ),
-          )
-        : null}
+          )}
+        </List>
+      ) : null}
     </>
   );
 }

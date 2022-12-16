@@ -19,12 +19,6 @@ export async function fetchStoreStatus(): Promise<{ published: boolean }> {
 }
 
 export async function fetchStoreURL(): Promise<{ secure_url: string }> {
-  if (IsUniversalInstaller()) {
-    return {
-      secure_url: '',
-    };
-  }
-
   const response = await fetch('/api/v1/preview', {
     method: 'GET',
     headers: GetAuthHeaders(),
@@ -34,10 +28,6 @@ export async function fetchStoreURL(): Promise<{ secure_url: string }> {
 }
 
 export async function publishWidget(): Promise<string> {
-  if (IsUniversalInstaller()) {
-    return 'success';
-  }
-
   const response = await fetch('/api/v1/publish', {
     method: 'POST',
     headers: GetAuthHeaders(),
@@ -47,10 +37,6 @@ export async function publishWidget(): Promise<string> {
 }
 
 export async function removeWidget(reason: string): Promise<string> {
-  if (IsUniversalInstaller()) {
-    return 'success';
-  }
-
   const params = new URLSearchParams();
 
   params.set('reason', reason);
@@ -77,13 +63,6 @@ export async function readConfiguration(): Promise<WidgetConfiguration> {
 }
 
 export async function writeConfiguration(widgetConfiguration: WidgetConfiguration) {
-  if (IsUniversalInstaller()) {
-    return {
-      DEFAULT_CONFIG,
-      ...widgetConfiguration,
-    };
-  }
-
   const response = await fetch('/api/v1/configuration', {
     method: 'POST',
     headers: {
