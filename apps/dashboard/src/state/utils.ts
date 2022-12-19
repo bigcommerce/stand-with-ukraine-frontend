@@ -26,3 +26,7 @@ export function GetAuthHeaders() {
     Authorization: `Bearer ${GetSessionToken()}`,
   };
 }
+
+export function GetBaseURL(): string {
+  return import.meta.env.PROD ? import.meta.env.VITE_PUBLIC_URL : import.meta.env.BASE_URL;
+}

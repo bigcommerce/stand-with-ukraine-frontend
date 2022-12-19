@@ -16,16 +16,23 @@ import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { resetSteps } from '../state/mainSlice';
 import { selectConfiguration } from '../state/mainSlice/selectors';
 import { alertsManager } from '../state/store';
+import { GetBaseURL } from '../state/utils';
 
 SyntaxHighlighter.registerLanguage('html', markup);
 
+// use a mask to remove fields from code for universal install
+const HIDDEN_CONFIG_FIELDS = {
+  store_hash: undefined,
+};
+const WIDGET_BASE_URL = GetBaseURL().replace('dashboard', 'widget')
+
 export function GenerateCodeString(config: WidgetConfiguration) {
-  const configJSONString = JSON.stringify(config, null, 2);
+  const configJSONString = JSON.stringify(Object.assign({}, config, HIDDEN_CONFIG_FIELDS), null, 2);
 
   return `<script>
 window.SWU_CONFIG = ${configJSONString};
 </script>
-<script defer src="https://stand-with-ukraine-bc-app.web.app/widget/index.js"></script>`;
+<script defer src="${WIDGET_BASE_URL}index.js"></script>`;
 }
 
 const CodeWrapper = styled.div`
