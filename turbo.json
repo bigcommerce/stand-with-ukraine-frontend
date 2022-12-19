@@ -8,6 +8,10 @@
       "dependsOn": ["^build"],
       "outputs": ["build/**"]
     },
+    "preview": {
+      "dependsOn": ["build"],
+      "inputs": ["build/**"]
+    },
     "test": {
       "inputs": ["**/**.{ts,tsx}", "**/tsconfig.json"]
     },

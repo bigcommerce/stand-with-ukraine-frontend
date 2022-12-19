@@ -1,10 +1,11 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import svgLoader from 'vite-plugin-svgr';
+import { ssr } from 'vite-plugin-ssr/plugin';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), svgLoader()],
+  plugins: [react(), svgLoader(), ssr({ prerender: true })],
   base: '/landing/',
   server: {
     proxy: {
@@ -14,9 +15,13 @@ export default defineConfig({
     port: 3002,
   },
   build: {
-    outDir: '../../build/landing',
+    outDir: '../../build/.landing',
     emptyOutDir: true,
     sourcemap: true,
   },
   clearScreen: false,
+  ssr: {
+    noExternal: ['styled-components', '@emotion/*'],
+  },
+  optimizeDeps: { include: ['cross-fetch', 'react/jsx-runtime'] },
 });

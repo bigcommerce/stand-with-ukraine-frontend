@@ -1,26 +1,26 @@
-import styled, { css } from 'styled-components';
+import styled, { css, CSSProperties } from 'styled-components';
 
 interface SectionProps {
-  alignItems?: 'center' | 'stretch' | 'flex-start' | 'flex-end';
+  alignItems?: CSSProperties['alignItems'];
+  justifyContent?: CSSProperties['justifyContent'];
   background?: 'light' | 'primary' | 'gray' | 'dark';
   display?: string;
-  justifyContent?: 'center' | 'stretch' | 'flex-start' | 'flex-end';
   paddingX?: number;
   paddingY?: number;
 }
 
 interface ContainerProps {
-  alignItems?: 'center' | 'stretch' | 'flex-start' | 'flex-end';
-  justifyContent?: 'center' | 'stretch' | 'flex-start' | 'flex-end';
+  alignItems?: CSSProperties['alignItems'];
+  justifyContent?: CSSProperties['justifyContent'];
   paddingX?: number;
   paddingY?: number;
   width?: number;
 }
 
 interface ItemProps {
-  alignItems?: 'center' | 'stretch' | 'flex-start' | 'flex-end';
+  alignItems?: CSSProperties['alignItems'];
+  justifyContent?: CSSProperties['justifyContent'];
   display?: string;
-  justifyContent?: 'center' | 'stretch' | 'flex-start' | 'flex-end';
   flexGrow?: string | number;
   flexShrink?: number;
   flexBasis?: string | number;

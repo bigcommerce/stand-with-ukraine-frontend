@@ -67,7 +67,7 @@ module.exports = {
       },
     },
     {
-      files: ['apps/widget/**/*.ts', 'apps/widget/**/*.tsx', 'apps/widget/**/*.js'],
+      files: ['apps/{widget,landing,dashboard}/**/*.{ts,tsx,js}'],
       rules: {
         'react/react-in-jsx-scope': 'off',
       },

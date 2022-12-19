@@ -21,11 +21,11 @@
       },
       {
         "source": "robots.txt",
-        "destination": "/dashboard/robots.txt"
+        "destination": "/landing/robots.txt"
       },
       {
         "source": "**",
-        "destination": "/dashboard/index.html"
+        "destination": "/landing/index.html"
       }
     ]
   }
