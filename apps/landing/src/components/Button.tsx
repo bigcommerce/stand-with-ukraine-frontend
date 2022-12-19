@@ -30,7 +30,7 @@ const getTransition = () => css`
 const getBaseStyles = ({ fullWidth, margin = '0', variant }: ButtonProps) => css`
   cursor: pointer;
   display: inline-block;
-  padding: 1rem 2.5rem;
+  padding: 1.4rem 2.5rem;
   width: ${fullWidth ? '100%' : 'auto'};
   border: 0;
   border-radius: 0.5rem;
@@ -38,6 +38,11 @@ const getBaseStyles = ({ fullWidth, margin = '0', variant }: ButtonProps) => css
   margin: ${margin};
   letter-spacing: 0.1rem;
   text-transform: uppercase;
+
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 
   ${getBackground(variant)}
   ${getTransition()}
