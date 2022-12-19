@@ -9,6 +9,7 @@ import mainReducer, { nextStep, previousStep } from '.';
 
 describe('counter reducer', () => {
   const initialState: MainState = {
+    installerType: 'bigcommerce',
     showRemoveDialog: false,
     published: false,
     status: 'idle',
@@ -65,6 +66,7 @@ describe('counter reducer', () => {
           },
           "show": false,
         },
+        "installerType": "bigcommerce",
         "published": false,
         "showRemoveDialog": false,
         "status": "idle",
@@ -73,8 +75,8 @@ describe('counter reducer', () => {
         "widgetConfiguration": {
           "charity_selections": [
             "razom",
-            "unicef",
             "new-ukraine",
+            "mira-action",
           ],
           "modal_body": "With each day, the war in Ukraine worsens at an alarming pace. Millions of civilians have lost their homes and many more are without basic necessities like food, water, and health care. Consider donating to one of the charities below and join us in showing support for Ukraine. All charities are trusted, non-profit organizations dedicated to Ukrainian relief efforts. It takes less than a minute.",
           "modal_title": "Help the people of Ukraine!",

@@ -76,3 +76,11 @@ export default function Content({ published }: { published: boolean }) {
     </ContentWrapper>
   );
 }
+
+export function CodeContent() {
+  return (
+    <ContentWrapper>
+      <p>Your widget is customised. Please copy code and paste in your site code</p>
+    </ContentWrapper>
+  );
+}

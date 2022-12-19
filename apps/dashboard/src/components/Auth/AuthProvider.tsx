@@ -1,10 +1,12 @@
 import { Link, ProgressCircle } from '@bigcommerce/big-design';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { useAppDispatch } from '../../state/hooks';
+import { setInstallerType } from '../../state/mainSlice';
 import { loadStatus } from '../../state/mainSlice/asyncActions';
-import { GetSessionToken, SetSessionToken } from '../../state/utils';
+import { GetSessionToken, IsUniversalInstallerToken, SetSessionToken } from '../../state/utils';
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,38 +30,58 @@ type Status = 'loading' | 'authenticated' | 'unauthenticated';
 
 export default function AuthProvider({ children }: { children: any }) {
   const dispatch = useAppDispatch();
-  const [status, setStatus] = useState<Status>('loading');
+  const navigate = useNavigate();
+  const [localStateStatus, localStateSetStatus] = useState<Status>('loading');
 
   useEffect(() => {
     async function GetAndValidateToken() {
       const searchParams = new URLSearchParams(location.search);
-      const token = searchParams.get('token') ?? GetSessionToken() ?? null;
+      const searchToken = searchParams.get('token');
+
+      if (searchToken !== null) {
+        // consume the token by clearing the search query params
+        history.replaceState({}, document.title, location.pathname);
+      } else if (localStateStatus !== 'loading') {
+        // if search token is null and status is not loading
+        // no need to do further work
+        return;
+      }
+
+      const token = searchToken ?? GetSessionToken() ?? null;
 
       if (token !== null) {
         SetSessionToken(token);
 
+        if (IsUniversalInstallerToken(token)) {
+          dispatch(setInstallerType('universal'));
+          navigate('/setup');
+
+          return localStateSetStatus('authenticated');
+        }
+
+        dispatch(setInstallerType('bigcommerce'));
+        navigate('/');
+
         const { meta } = await dispatch(loadStatus());
 
         if (meta.requestStatus === 'fulfilled') {
-          setStatus('authenticated');
-
-          return;
+          return localStateSetStatus('authenticated');
         }
       }
 
-      setStatus('unauthenticated');
+      localStateSetStatus('unauthenticated');
     }
 
     void GetAndValidateToken();
-  }, [dispatch]);
+  }, [dispatch, navigate, localStateStatus, localStateSetStatus]);
 
-  if (status === 'authenticated') {
+  if (localStateStatus === 'authenticated') {
     return children;
   }
 
   return (
     <Wrapper>
-      {status === 'unauthenticated' ? (
+      {localStateStatus === 'unauthenticated' ? (
         <h2>
           {process.env.NODE_ENV === 'development' ? (
             <>

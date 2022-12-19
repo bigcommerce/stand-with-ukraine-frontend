@@ -17,7 +17,7 @@ export default function Home() {
       <Panel>
         <Header published={published} />
         <Content published={published} />
-        <FAQ />
+        <FAQ listType="bigcommerce" />
         {published ? <PublishedActions /> : <NotPublishedActions />}
       </Panel>
     </>

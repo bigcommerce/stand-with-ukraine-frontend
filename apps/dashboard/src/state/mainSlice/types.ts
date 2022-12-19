@@ -3,6 +3,7 @@ import type { WidgetConfiguration } from 'config/types';
 export type LoadingState = 'idle' | 'loading' | 'failed';
 
 export interface MainState {
+  installerType: 'bigcommerce' | 'universal';
   status: LoadingState;
   step: number;
   published: boolean;

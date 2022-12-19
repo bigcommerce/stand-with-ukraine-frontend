@@ -1,8 +1,15 @@
+import { DEFAULT_CONFIG } from 'config';
 import type { WidgetConfiguration } from 'config/types';
 
-import { GetAuthHeaders } from '../utils';
+import { GetAuthHeaders, IsUniversalInstaller } from '../utils';
 
 export async function fetchStoreStatus(): Promise<{ published: boolean }> {
+  if (IsUniversalInstaller()) {
+    return {
+      published: false,
+    };
+  }
+
   const response = await fetch('/api/v1/publish', {
     method: 'GET',
     headers: GetAuthHeaders(),
@@ -43,6 +50,10 @@ export async function removeWidget(reason: string): Promise<string> {
 }
 
 export async function readConfiguration(): Promise<WidgetConfiguration> {
+  if (IsUniversalInstaller()) {
+    return DEFAULT_CONFIG;
+  }
+
   const response = await fetch('/api/v1/configuration', {
     method: 'GET',
     headers: GetAuthHeaders(),

@@ -2,8 +2,8 @@ import { test, expect } from 'playwright-test-coverage';
 
 test.describe.configure({ mode: 'serial' });
 
-test('configure and publish widget', async ({ page }) => {
-  await page.goto('dashboard/');
+test('configure and publish widget - bigcommerce', async ({ page }) => {
+  await page.goto('dashboard/?token=test.test.test');
 
   // Verify Home page
   await page
@@ -55,7 +55,7 @@ test('configure and publish widget', async ({ page }) => {
   await expect(page.getByText('Widget Added')).toBeVisible();
 });
 
-test('unpublish widget', async ({ page }) => {
+test('unpublish widget - bigcommerce', async ({ page }) => {
   await page.goto('dashboard/');
 
   // Verify widget has been published
@@ -79,4 +79,30 @@ test('unpublish widget', async ({ page }) => {
   await page
     .getByRole('heading', { name: 'Help Ukraine by adding a widget to your store' })
     .click();
+});
+
+test('configure and publish widget - universal', async ({ page }) => {
+  await page.goto('dashboard/?token=universal.installer.stand-with-ukraine');
+
+  // Expect to be on widget color page
+  await expect(page.getByRole('heading', { name: 'Select widget color' })).toBeVisible();
+
+  // Expect to move through configuration
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await page.getByRole('button', { name: 'Publish' }).click();
+
+  // Expect to be on code page
+  await expect(page).toHaveURL('http://localhost:3000/dashboard/#/code');
+  await page.getByRole('button', { name: 'Show FAQ Show FAQ' }).click();
+
+  // Expect to copy code and confirmation
+  await page.locator('pre').click();
+  await expect(page.getByText('Code was copied to your clipboard')).toBeVisible();
+
+  // Expect Reconfigure to navigate back to widget configuration
+  await page.getByText('Reconfigure Widget').click();
+  await expect(page).toHaveURL('http://localhost:3000/dashboard/#/setup');
+  await expect(page.getByRole('heading', { name: 'Select widget color' })).toBeVisible();
 });

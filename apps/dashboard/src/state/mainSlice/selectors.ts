@@ -12,3 +12,4 @@ export const selectWidgetModal = (state: MainState) => ({
   modalTitle: state.widgetConfiguration.modal_title,
   modalBody: state.widgetConfiguration.modal_body,
 });
+export const selectInstallerType = (state: MainState) => state.installerType;

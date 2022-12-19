@@ -46,3 +46,12 @@ export default function Header({ published }: { published: boolean }) {
     </Wrapper>
   );
 }
+
+export function CodeHeader() {
+  return (
+    <Wrapper>
+      <Title>Congrats!</Title>
+      <WidgetAdded>Widget Added</WidgetAdded>
+    </Wrapper>
+  );
+}

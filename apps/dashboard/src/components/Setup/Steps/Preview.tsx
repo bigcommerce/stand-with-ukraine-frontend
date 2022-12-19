@@ -53,7 +53,8 @@ const BodyText = styled.p`
 `;
 
 const HeroImage = styled.img`
-  width: 696px;
+  max-width: 696px;
+  width: 100%;
 `;
 
 function selectWidgetConfiguration(state: RootState) {

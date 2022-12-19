@@ -14,6 +14,7 @@ import { getButtonStateFromPayload, handleLoadingState as handlePendingState } f
 import type { MainState } from './types';
 
 const initialState: MainState = {
+  installerType: 'bigcommerce',
   published: false,
   showRemoveDialog: false,
   status: 'idle',
@@ -46,6 +47,9 @@ export const mainSlice = createSlice({
   name: 'main',
   initialState,
   reducers: {
+    setInstallerType: (state, action: PayloadAction<MainState['installerType']>) => {
+      state.installerType = action.payload;
+    },
     resetSteps: (state) => {
       state.step = initialState.step;
       state.footer = initialState.footer;
@@ -214,6 +218,7 @@ export const {
   showRemoveDialog,
   hideRemoveDialog,
   resetModalToDefault,
+  setInstallerType,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

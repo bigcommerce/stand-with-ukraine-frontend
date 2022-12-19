@@ -8,7 +8,11 @@ import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { nextStep, previousStep } from '../state/mainSlice';
 import { writeConfiguration } from '../state/mainSlice/api';
 import { publish } from '../state/mainSlice/asyncActions';
-import { selectConfiguration, selectFooter } from '../state/mainSlice/selectors';
+import {
+  selectConfiguration,
+  selectFooter,
+  selectInstallerType,
+} from '../state/mainSlice/selectors';
 import { alertsManager } from '../state/store';
 
 const FooterDiv = styled.div`
@@ -98,6 +102,7 @@ function useFooter() {
   const { show, cancelButton, backButton, continueButton, publishButton } =
     useAppSelector(selectFooter);
   const widgetConfiguration = useAppSelector(selectConfiguration);
+  const installerType = useAppSelector(selectInstallerType);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -105,19 +110,23 @@ function useFooter() {
   const handleBackButton = useCallback(() => dispatch(previousStep()), [dispatch]);
   const handleContinueButton = useCallback(() => dispatch(nextStep()), [dispatch]);
   const handlePublishButton = useCallback(async () => {
-    await writeConfiguration(widgetConfiguration);
-    await dispatch(publish());
-    alertsManager.add({
-      autoDismiss: true,
-      messages: [
-        {
-          text: 'Widget was published on your store',
-        },
-      ],
-      type: 'success',
-    });
-    navigate('/');
-  }, [dispatch, navigate, widgetConfiguration]);
+    if (installerType === 'bigcommerce') {
+      await writeConfiguration(widgetConfiguration);
+      await dispatch(publish());
+      alertsManager.add({
+        autoDismiss: true,
+        messages: [
+          {
+            text: 'Widget was published on your store',
+          },
+        ],
+        type: 'success',
+      });
+      navigate('/');
+    } else if (installerType === 'universal') {
+      navigate('/code');
+    }
+  }, [dispatch, navigate, widgetConfiguration, installerType]);
 
   return {
     show,
