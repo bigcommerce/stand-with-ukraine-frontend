@@ -28,5 +28,5 @@ export function GetAuthHeaders() {
 }
 
 export function GetBaseURL(): string {
-  return `${location.origin}${location.pathname}`;
+  return `${location.origin}${import.meta.env.BASE_URL}`;
 }
