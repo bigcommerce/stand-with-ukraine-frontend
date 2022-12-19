@@ -28,5 +28,5 @@ export function GetAuthHeaders() {
 }
 
 export function GetBaseURL(): string {
-  return import.meta.env.PROD ? import.meta.env.VITE_PUBLIC_URL : import.meta.env.BASE_URL;
+  return `${location.origin}${location.pathname}`;
 }

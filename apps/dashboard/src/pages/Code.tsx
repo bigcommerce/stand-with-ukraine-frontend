@@ -24,7 +24,7 @@ SyntaxHighlighter.registerLanguage('html', markup);
 const HIDDEN_CONFIG_FIELDS = {
   store_hash: undefined,
 };
-const WIDGET_BASE_URL = GetBaseURL().replace('dashboard', 'widget')
+const WIDGET_BASE_URL = GetBaseURL().replace('dashboard', 'widget');
 
 export function GenerateCodeString(config: WidgetConfiguration) {
   const configJSONString = JSON.stringify(Object.assign({}, config, HIDDEN_CONFIG_FIELDS), null, 2);
