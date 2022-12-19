@@ -34,6 +34,7 @@
   },
   "scripts": {
     "build": "turbo run build",
+    "preview": "turbo run preview",
     "dev": "CYPRESS_COVERAGE='true' turbo run dev --parallel --continue",
     "lint": "turbo run lint && yarn prettier-cmd --check && yarn eslint-cmd",
     "test": "turbo run test",
