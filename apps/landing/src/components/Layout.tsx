@@ -1,25 +1,48 @@
 import styled, { css } from 'styled-components';
 
 interface SectionProps {
+  alignItems?: 'center' | 'stretch' | 'flex-start' | 'flex-end';
   background?: 'light' | 'primary' | 'gray' | 'dark';
+  display?: string;
+  justifyContent?: 'center' | 'stretch' | 'flex-start' | 'flex-end';
   paddingX?: number;
   paddingY?: number;
 }
 
 interface ContainerProps {
   alignItems?: 'center' | 'stretch' | 'flex-start' | 'flex-end';
+  justifyContent?: 'center' | 'stretch' | 'flex-start' | 'flex-end';
   paddingX?: number;
   paddingY?: number;
   width?: number;
 }
 
 interface ItemProps {
+  alignItems?: 'center' | 'stretch' | 'flex-start' | 'flex-end';
+  display?: string;
+  justifyContent?: 'center' | 'stretch' | 'flex-start' | 'flex-end';
   flexGrow?: string | number;
   flexShrink?: number;
   flexBasis?: string | number;
 }
 
 export const Section = styled.section<SectionProps>`
+  ${({ display = 'block' }) => css`
+    display: ${display};
+  `}
+
+  ${({ alignItems }) =>
+    alignItems &&
+    css`
+      align-items: ${alignItems};
+    `}
+    
+    ${({ justifyContent }) =>
+    justifyContent &&
+    css`
+      justify-content: ${justifyContent};
+    `}
+
   ${({ background = 'light' }) => {
     const value = (() => {
       switch (background) {
@@ -43,7 +66,7 @@ export const Section = styled.section<SectionProps>`
     `;
   }}
 
-  ${({ paddingX = 1.5, paddingY = 5 }) => css`
+  ${({ paddingX = 1.5, paddingY = 10 }) => css`
     padding: ${paddingY}rem ${paddingX}rem;
   `}
 `;
@@ -51,22 +74,45 @@ export const Section = styled.section<SectionProps>`
 export const Container = styled.div<ContainerProps>`
   display: flex;
   gap: 3rem;
+  margin: 0 auto;
+  width: 100%;
 
   ${({ alignItems = 'stretch' }) => css`
     align-items: ${alignItems};
   `}
 
-  ${({ paddingX = 1.5, paddingY = 0 }) => css`
+  ${({ justifyContent }) =>
+    justifyContent &&
+    css`
+      justify-content: ${justifyContent};
+    `}
+
+  ${({ paddingX = 0, paddingY = 0 }) => css`
     padding: ${paddingY}rem ${paddingX}rem;
-    margin: 0 -${paddingX}rem;
   `}
   
-  ${({ width = 11.2 }) => css`
+  ${({ width = 112 }) => css`
     max-width: ${width}rem;
   `}
 `;
 
 export const Item = styled.div<ItemProps>`
+  ${({ display = 'block' }) => css`
+    display: ${display};
+  `}
+
+  ${({ alignItems }) =>
+    alignItems &&
+    css`
+      align-items: ${alignItems};
+    `}
+    
+    ${({ justifyContent }) =>
+    justifyContent &&
+    css`
+      justify-content: ${justifyContent};
+    `}
+    
   ${({ flexGrow }) =>
     flexGrow &&
     css`
