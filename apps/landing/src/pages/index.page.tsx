@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { WidgetStateProvider } from '../components/AddWidget/WidgetFrameContext';
 import {
   AddWidget,
   Cases,
@@ -18,7 +19,7 @@ export default { Page };
 
 function Page() {
   return (
-    <>
+    <WidgetStateProvider>
       <Header />
       <Home />
       <HowItWorks />
@@ -30,6 +31,6 @@ function Page() {
       <Faq />
       <Contacts />
       <Footer />
-    </>
+    </WidgetStateProvider>
   );
 }

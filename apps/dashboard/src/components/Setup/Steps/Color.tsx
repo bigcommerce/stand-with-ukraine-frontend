@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
 import { configureButtons, setWidgetStyle } from '../../../state/mainSlice';
+import { selectInstallerType } from '../../../state/mainSlice/selectors';
 import { RootState } from '../../../state/store';
 
 import { WIDGET_STYLES } from './common/data';
@@ -73,12 +74,22 @@ const COLOR_BUTTON_STATE = {
   publishButton: { show: false, disabled: false },
 };
 
+const UNIVERSAL_COLOR_BUTTON_STATE = {
+  ...COLOR_BUTTON_STATE,
+  cancelButton: { show: false, disabled: false },
+};
+
 export default function Color() {
   const widgetStyle = useAppSelector(selectWidgetStyle);
   const dispatch = useAppDispatch();
+  const installerType = useAppSelector(selectInstallerType);
 
   useEffect(() => {
-    dispatch(configureButtons(COLOR_BUTTON_STATE));
+    dispatch(
+      configureButtons(
+        installerType === 'universal' ? UNIVERSAL_COLOR_BUTTON_STATE : COLOR_BUTTON_STATE,
+      ),
+    );
   }, [dispatch]);
 
   return (

@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { ButtonLink, Container, H2, H3, Item, Paragraph, Section } from '../components';
+import WidgetFrame from '../components/AddWidget/WidgetFrame';
+import WidgetFrameButton from '../components/AddWidget/WidgetFrameButton';
 
 const StyledItem = styled.div`
   background: #000;
@@ -25,24 +27,25 @@ export const AddWidget = () => (
     <Container>
       <Item flexGrow={1}>
         <StyledItem>
-          <H3 color="light">BigCommerce merchant</H3>
+          <H3 color="light">BigCommerce Merchant</H3>
           <Paragraph color="light" margin="0 0 3rem">
             You will be redirected to Bigcommerce app store with all detailed information.
           </Paragraph>
-          <ButtonLink href="#" variant="light">
-            Select
+          <ButtonLink
+            href="https://login.bigcommerce.com/deep-links/marketplace/apps/38603"
+            variant="light"
+          >
+            Install App
           </ButtonLink>
         </StyledItem>
       </Item>
       <Item flexGrow={1}>
         <StyledItem>
-          <H3 color="light">Other</H3>
+          <H3 color="light">Others</H3>
           <Paragraph color="light" margin="0 0 3rem">
-            You will be able to design your custom widget in 2 mins. Lets do it now!
+            You will be able to design your custom widget in 2 minutes. Lets do it now!
           </Paragraph>
-          <ButtonLink href="#" variant="light">
-            Select
-          </ButtonLink>
+          <WidgetFrameButton />
         </StyledItem>
       </Item>
     </Container>
