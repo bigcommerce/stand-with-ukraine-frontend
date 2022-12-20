@@ -1,10 +1,11 @@
-import React, { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useState } from 'react';
 
 export const IframeWidgetContext = createContext<{
   widgetOpen: boolean;
   setWidgetOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }>({
   widgetOpen: false,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setWidgetOpen: () => {},
 });
 

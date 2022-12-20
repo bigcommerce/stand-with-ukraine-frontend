@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 import { Container, H1, H5, Item, Paragraph, Section } from '../components';

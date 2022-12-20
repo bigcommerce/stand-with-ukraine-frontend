@@ -1,5 +1,5 @@
 import { Modal as modal, ModalProps, Textarea } from '@bigcommerce/big-design';
-import React, { PropsWithChildren, useCallback, useMemo, useState } from 'react';
+import { PropsWithChildren, useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../state/hooks';

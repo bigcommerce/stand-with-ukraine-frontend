@@ -1,4 +1,4 @@
-import { ButtonLink, CloseButton } from '../Button';
+import { CloseButton } from '../Button';
 
 import { IframeWidgetContext } from './WidgetFrameContext';
 

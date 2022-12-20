@@ -1,5 +1,5 @@
 import { Box, Form, FormGroup, Input, Link, Panel, Tabs, Textarea } from '@bigcommerce/big-design';
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';

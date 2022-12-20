@@ -1,5 +1,4 @@
 import { ProgressBar } from '@bigcommerce/big-design';
-import React from 'react';
 import styled from 'styled-components';
 
 import { useAppSelector } from '../state/hooks';

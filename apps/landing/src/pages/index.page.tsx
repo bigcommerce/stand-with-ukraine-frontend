@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { WidgetStateProvider } from '../components/AddWidget/WidgetFrameContext';
 import {
   AddWidget,

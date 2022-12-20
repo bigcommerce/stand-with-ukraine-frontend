@@ -1,5 +1,3 @@
-import React from 'react';
-
 import BlackWidgetStyle from './BlackStyle.png';
 import BlueWidgetStyle from './BlueStyle.png';
 import WhiteWidgetStyle from './WhiteStyle.png';

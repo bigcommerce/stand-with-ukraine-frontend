@@ -1,5 +1,5 @@
 import { Button, ButtonProps } from '@bigcommerce/big-design';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 

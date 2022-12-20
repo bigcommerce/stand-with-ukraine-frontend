@@ -1,6 +1,6 @@
 import { Panel, Radio } from '@bigcommerce/big-design';
 import type { WidgetStyle } from 'config/types';
-import React, { useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';
@@ -90,7 +90,7 @@ export default function Color() {
         installerType === 'universal' ? UNIVERSAL_COLOR_BUTTON_STATE : COLOR_BUTTON_STATE,
       ),
     );
-  }, [dispatch]);
+  }, [installerType, dispatch]);
 
   return (
     <Panel header="Select widget color">

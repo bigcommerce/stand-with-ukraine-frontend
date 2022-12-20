@@ -1,8 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
 import { ButtonLink, Container, H2, H3, Item, Paragraph, Section } from '../components';
-import WidgetFrame from '../components/AddWidget/WidgetFrame';
 import WidgetFrameButton from '../components/AddWidget/WidgetFrameButton';
 
 const StyledItem = styled.div`
