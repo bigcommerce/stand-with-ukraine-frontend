@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 import { ButtonLink, Container, H2, H3, Item, Paragraph, Section } from '../components';
-import { breakpoints } from '../helpers';
 import WidgetFrameButton from '../components/AddWidget/WidgetFrameButton';
+import { breakpoints } from '../helpers';
 
 const StyledItem = styled.div`
   background: #000;
