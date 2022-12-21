@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, useState } from 'react';
+import { InputHTMLAttributes, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 interface Props {

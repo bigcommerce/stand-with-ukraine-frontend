@@ -57,3 +57,10 @@ export const ButtonLink = styled.a<ButtonProps>`
 
   ${(props) => getBaseStyles(props)}
 `;
+
+export const CloseButton = styled.a<ButtonProps>`
+  position: absolute;
+  left: 1.5rem;
+
+  ${(props) => getBaseStyles(props)}
+`;

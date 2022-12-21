@@ -10,6 +10,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': 'http://localhost:9000',
+      '/dashboard': 'http://localhost:3000',
     },
     host: true,
     port: 3002,

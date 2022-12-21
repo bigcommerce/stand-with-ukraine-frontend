@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import Setup from '../components/Setup/Setup';
 import { useAppDispatch } from '../state/hooks';
