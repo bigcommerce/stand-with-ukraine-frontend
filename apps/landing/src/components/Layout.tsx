@@ -1,5 +1,7 @@
 import styled, { css, CSSProperties } from 'styled-components';
 
+import { breakpoints } from '../helpers';
+
 interface SectionProps {
   alignItems?: CSSProperties['alignItems'];
   justifyContent?: CSSProperties['justifyContent'];
@@ -66,13 +68,20 @@ export const Section = styled.section<SectionProps>`
     `;
   }}
 
-  ${({ paddingX = 1.5, paddingY = 10 }) => css`
+  ${({ paddingX = 1.5, paddingY = 3 }) => css`
     padding: ${paddingY}rem ${paddingX}rem;
   `}
+  
+  ${breakpoints.desktop} {
+    ${({ paddingX = 1.5, paddingY = 10 }) => css`
+      padding: ${paddingY}rem ${paddingX}rem;
+    `}
+  }
 `;
 
 export const Container = styled.div<ContainerProps>`
   display: flex;
+  flex-direction: column;
   gap: 3rem;
   margin: 0 auto;
   width: 100%;
@@ -94,9 +103,15 @@ export const Container = styled.div<ContainerProps>`
   ${({ width = 112 }) => css`
     max-width: ${width}rem;
   `}
+  
+  ${breakpoints.desktop} {
+    flex-direction: row;
+  }
 `;
 
 export const Item = styled.div<ItemProps>`
+  max-width: 100%;
+
   ${({ display = 'block' }) => css`
     display: ${display};
   `}

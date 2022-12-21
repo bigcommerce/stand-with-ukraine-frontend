@@ -33,7 +33,7 @@ const StyledOl = styled.ol`
 `;
 
 export const HowItWorks = () => (
-  <Section background="gray">
+  <Section background="gray" id="how-it-works">
     <H2 margin="0 0 6rem" textAlign="center">
       How it works
     </H2>
@@ -45,7 +45,7 @@ export const HowItWorks = () => (
           <li>Copy widget code to your website</li>
           <li>Customers can donate to charities in Ukraine through your website</li>
         </StyledOl>
-        <ButtonLink href="#" variant="dark">
+        <ButtonLink href="#add-widget" variant="dark">
           Add widget
         </ButtonLink>
       </Item>

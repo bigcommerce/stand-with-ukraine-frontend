@@ -5,6 +5,7 @@ export const REM_SIZE = '10px';
 export const GlobalStyles = createGlobalStyle`
   html {
     font-size: ${REM_SIZE};
+    scroll-behavior: smooth;
   }
   
   body {

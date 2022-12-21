@@ -52,7 +52,7 @@ const StyledLink = styled.a`
 `;
 
 export const Charities = () => (
-  <Section>
+  <Section id="charities">
     <H1 margin="0 0 6rem" textAlign="center">
       Charities
     </H1>

@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-import { Container, H1, Item, Section } from '../components';
+import { Container, H2, Item, Section } from '../components';
+import { breakpoints } from '../helpers';
 
 const StyledPreview = styled.a`
   position: relative;
   display: block;
-  margin-bottom: 3em;
+  margin-bottom: 1em;
   padding-bottom: 50%;
   overflow: hidden;
 
@@ -24,6 +25,10 @@ const StyledPreview = styled.a`
       transform: scale(1.2);
     }
   }
+
+  ${breakpoints.desktop} {
+    margin-bottom: 3em;
+  }
 `;
 
 const StyledLink = styled.a`
@@ -40,10 +45,10 @@ const StyledLink = styled.a`
 `;
 
 export const Cases = () => (
-  <Section>
-    <H1 margin="0 0 6rem" textAlign="center">
+  <Section id="cases">
+    <H2 margin="0 0 6rem" textAlign="center">
       Brands already added
-    </H1>
+    </H2>
     <Container>
       <Item flexGrow={1}>
         <StyledPreview href="#" target="_blank">

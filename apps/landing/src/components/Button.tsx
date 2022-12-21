@@ -38,6 +38,7 @@ const getBaseStyles = ({ fullWidth, margin = '0', variant }: ButtonProps) => css
   margin: ${margin};
   letter-spacing: 0.1rem;
   text-transform: uppercase;
+  text-align: center;
 
   &[disabled] {
     opacity: 0.5;

@@ -19,7 +19,7 @@ const StyledPhoto = styled.img`
 `;
 
 export const Team = () => (
-  <Section background="gray">
+  <Section background="gray" id="team">
     <H1 margin="0 0 6rem" textAlign="center">
       Our team
     </H1>

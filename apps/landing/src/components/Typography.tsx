@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { breakpoints } from '../helpers';
+
 interface TextProps {
   color?: 'dark' | 'light' | 'gray' | string;
   margin?: string;
@@ -44,18 +46,31 @@ const getBaseStyles = ({ color = 'dark', margin = '0', size = 1.5 }: TextProps) 
 `;
 
 export const H1 = styled.h1<Pick<TextProps, 'color' | 'margin' | 'textAlign'>>`
-  ${({ color, margin = `0 0 2rem` }) => getBaseStyles({ color, margin, size: 4.1 })}
+  ${({ color, margin = `0 0 2rem` }) => getBaseStyles({ color, margin, size: 3.4 })}
   ${({ textAlign }) => getTextAlign(textAlign)}
+  
+  ${breakpoints.desktop} {
+    font-size: 4.1rem;
+  }
 `;
 
 export const H2 = styled.h2<Pick<TextProps, 'color' | 'margin' | 'textAlign'>>`
-  ${({ color, margin = `0 0 2rem` }) => getBaseStyles({ color, margin, size: 4.1 })}
+  ${({ color }) => getBaseStyles({ color, margin: '0 0 2rem', size: 3.4 })}
   ${({ textAlign }) => getTextAlign(textAlign)}
+  
+  ${breakpoints.desktop} {
+    font-size: 4.1rem;
+    margin: ${({ margin = `0 0 2rem` }) => `${margin}rem`};
+  }
 `;
 
 export const H3 = styled.h3<Pick<TextProps, 'color' | 'margin' | 'textAlign'>>`
-  ${({ color, margin = `0 0 1rem` }) => getBaseStyles({ color, margin, size: 3.4 })}
+  ${({ color, margin = `0 0 1rem` }) => getBaseStyles({ color, margin, size: 2.5 })}
   ${({ textAlign }) => getTextAlign(textAlign)}
+  
+  ${breakpoints.desktop} {
+    font-size: 3.4rem;
+  }
 `;
 
 export const H4 = styled.h4<Pick<TextProps, 'color' | 'margin' | 'textAlign'>>`
