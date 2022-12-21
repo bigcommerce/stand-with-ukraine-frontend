@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from 'react';
 
 import { Fonts, GlobalStyles, NormalizeStyles } from '../globalStyles';
 
@@ -15,13 +15,13 @@ function PageShell({
   children: React.ReactNode;
 }) {
   return (
-    <React.StrictMode>
+    <StrictMode>
       <PageContextProvider pageContext={pageContext}>
         <Fonts />
         <NormalizeStyles />
         <GlobalStyles />
         {children}
       </PageContextProvider>
-    </React.StrictMode>
+    </StrictMode>
   );
 }

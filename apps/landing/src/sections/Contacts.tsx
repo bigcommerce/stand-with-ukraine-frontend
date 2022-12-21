@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEventHandler, useEffect, useState } from 'react';
+import { ChangeEvent, FormEventHandler, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { Button, Container, H2, H4, Input, Item, Paragraph, Section } from '../components';

@@ -1,6 +1,5 @@
 import { AlertsManager, GlobalStyles } from '@bigcommerce/big-design';
 import { theme } from '@bigcommerce/big-design-theme';
-import React from 'react';
 import { Provider } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';

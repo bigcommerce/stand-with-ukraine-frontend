@@ -1,5 +1,5 @@
 import { Stepper } from '@bigcommerce/big-design';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { hideFooter, showFooter } from '../../state/mainSlice';

@@ -1,5 +1,5 @@
 import { Checkbox, Collapse, Link, Panel, Text } from '@bigcommerce/big-design';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';

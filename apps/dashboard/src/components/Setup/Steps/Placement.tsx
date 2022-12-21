@@ -1,6 +1,6 @@
 import { Panel, Radio } from '@bigcommerce/big-design';
 import type { WidgetPlacement } from 'config/types';
-import React, { useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../../state/hooks';

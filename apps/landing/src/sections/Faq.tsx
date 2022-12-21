@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { Container, H1, Item, Paragraph, Section } from '../components';

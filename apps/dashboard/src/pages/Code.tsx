@@ -1,6 +1,6 @@
 import { Button, Link, Panel } from '@bigcommerce/big-design';
 import type { WidgetConfiguration } from 'config/types';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import markup from 'react-syntax-highlighter/dist/esm/languages/prism/markup';

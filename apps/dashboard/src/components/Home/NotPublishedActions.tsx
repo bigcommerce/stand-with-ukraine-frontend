@@ -1,5 +1,3 @@
-import React from 'react';
-
 import RouterButton from '../RouterButton';
 
 export default function NotPublishedActions() {
