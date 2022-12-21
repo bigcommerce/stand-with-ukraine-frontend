@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { Container, H1, Item, Paragraph, Section } from '../components';
+import { breakpoints } from '../helpers';
 
 interface QuestionProps {
   question: string;
@@ -41,9 +42,10 @@ const StyledAction = styled.button<{ isActive: boolean }>`
   cursor: pointer;
   display: block;
   background-color: #fff;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 500;
-  padding: 3rem 5rem 3rem 3rem;
+  line-height: 1.5;
+  padding: 2rem 4rem 2rem 2rem;
   position: relative;
   text-align: left;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -59,7 +61,7 @@ const StyledAction = styled.button<{ isActive: boolean }>`
     border-left: 0.5rem solid transparent;
     border-right: 0.5rem solid transparent;
     top: 4rem;
-    right: 3rem;
+    right: 2rem;
     transform-origin: 50% 0.25rem;
   }
 
@@ -76,10 +78,23 @@ const StyledAction = styled.button<{ isActive: boolean }>`
   &:hover {
     background-color: #edeff3;
   }
+
+  ${breakpoints.desktop} {
+    font-size: 2rem;
+    padding: 3rem 5rem 3rem 3rem;
+
+    &::after {
+      right: 3rem;
+    }
+  }
 `;
 
 const StyledAnswer = styled.div`
-  padding: 3rem;
+  padding: 2rem;
+
+  ${breakpoints.desktop} {
+    padding: 3rem;
+  }
 `;
 
 const Question = ({ question, answer }: QuestionProps) => {
@@ -102,7 +117,7 @@ const Question = ({ question, answer }: QuestionProps) => {
 };
 
 export const Faq = () => (
-  <Section>
+  <Section id="faq">
     <H1 margin="0 0 6rem" textAlign="center">
       FAQ
     </H1>

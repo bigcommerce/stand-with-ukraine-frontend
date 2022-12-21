@@ -2,12 +2,13 @@ import React, { ChangeEvent, FormEventHandler, useEffect, useState } from 'react
 import styled from 'styled-components';
 
 import { Button, Container, H2, H4, Input, Item, Paragraph, Section } from '../components';
+import { breakpoints } from '../helpers';
 
 const StyledForm = styled(Item)`
   background-color: #fff;
   border-top: 0.5rem solid #121118;
   box-shadow: 0px 0px 50px rgba(18, 17, 24, 0.1);
-  padding: 6rem 5rem;
+  padding: 3rem 2rem;
 
   ${Button} {
     background-image: linear-gradient(to bottom right, #121118 50%, #0d52ff 0);
@@ -15,6 +16,10 @@ const StyledForm = styled(Item)`
     &:hover {
       color: #fff;
     }
+  }
+
+  ${breakpoints.desktop} {
+    padding: 6rem 5rem;
   }
 `;
 
@@ -83,7 +88,7 @@ export const Contacts = () => {
   const { errors, isDirty, isDisabled, data, handleChange, handleSubmit } = useForm();
 
   return (
-    <Section background="primary">
+    <Section background="primary" id="contacts">
       <Container>
         <Item flexBasis="50%">
           <H2 color="light">Contact us</H2>
