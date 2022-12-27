@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && cp -R ../../build/.landing/client ../../build/landing",
+    "build": "tsc && vite build && rm -rf ../../build/landing && cp -R ../../build/.landing/client ../../build/landing",
     "preview": "vite preview",
     "lint": "tsc --noEmit",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
+    "config": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

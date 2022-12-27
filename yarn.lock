@@ -2425,7 +2425,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"config@workspace:packages/config":
+"config@*, config@workspace:packages/config":
   version: 0.0.0-use.local
   resolution: "config@workspace:packages/config"
   languageName: unknown
@@ -5102,6 +5102,7 @@ __metadata:
     "@types/react-dom": ^18.0.9
     "@types/styled-components": ^5.1.26
     "@vitejs/plugin-react": ^3.0.0
+    config: "*"
     react: ^18.2.0
     react-dom: ^18.2.0
     react-streaming: ^0.3.5

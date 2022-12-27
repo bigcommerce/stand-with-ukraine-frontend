@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { ButtonLink, Container, H2, Item, Section } from '../components';
+import Video from '../components/Video';
 
 const StyledOl = styled.ol`
   margin: 0;
@@ -38,7 +39,16 @@ export const HowItWorks = () => (
       How it works
     </H2>
     <Container>
-      <Item flexBasis="67%">Video</Item>
+      <Item flexBasis="67%">
+        <Video
+          sources={[
+            {
+              url: 'assets/videos/video.webm',
+              type: 'video/webm',
+            },
+          ]}
+        />
+      </Item>
       <Item flexBasis="33%">
         <StyledOl>
           <li>Design custom widget in 2 mins</li>
