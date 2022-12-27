@@ -9,24 +9,12 @@ interface QuestionProps {
   answer: string;
 }
 
-const QUESTIONS = [
-  {
-    question:
-      'Lorem ipsum dolor sit amet, his ea ludus sadipscing voluptatibus. Lorem ipsum dolor sit amet.',
-    answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar mattis nunc sed blandit libero volutpat. Eu lobortis elementum nibh tellus molestie nunc non.',
-  },
-  {
-    question: 'Since PrestaShop is free, isn’t it cheaper than BigCommerce?',
-    answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar mattis nunc sed blandit libero volutpat. Eu lobortis elementum nibh tellus molestie nunc non.',
-  },
-  {
-    question: 'Can you edit the source code of PrestaShop and BigCommerce?',
-    answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar mattis nunc sed blandit libero volutpat. Eu lobortis elementum nibh tellus molestie nunc non.',
-  },
-];
+const QUESTIONS = Array.from({ length: 3 }, () => ({
+  question:
+    'Lorem ipsum dolor sit amet, his ea ludus sadipscing voluptatibus. Lorem ipsum dolor sit amet.',
+  answer:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar mattis nunc sed blandit libero volutpat. Eu lobortis elementum nibh tellus molestie nunc non.',
+}));
 
 const StyledQuestion = styled.div`
   border-top: 1px solid #d1d7e0;

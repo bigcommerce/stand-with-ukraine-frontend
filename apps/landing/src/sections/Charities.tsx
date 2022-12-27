@@ -1,3 +1,5 @@
+import { GetCharities } from 'config/charities';
+import { Charity } from 'config/types';
 import styled from 'styled-components';
 
 import { Container, H1, H5, Item, Paragraph, Section } from '../components';
@@ -51,63 +53,33 @@ const StyledLink = styled.a`
   }
 `;
 
+export const CharityElement = ({ logoProps, name, description, donationLink }: Charity) => (
+  <Item flexBasis="33%">
+    <StyledPreview>
+      <img alt={logoProps.alt} src={logoProps.src} />
+    </StyledPreview>
+    <StyledContent>
+      <H5 color="light">{name}</H5>
+      <Paragraph color="light" margin="0 0 3rem" weight={300}>
+        {description}
+      </Paragraph>
+      <StyledLink href={donationLink}>
+        Learn more
+        <img alt="arrow icon" src={`${import.meta.env.BASE_URL}assets/images/arrow.svg`} />
+      </StyledLink>
+    </StyledContent>
+  </Item>
+);
+
 export const Charities = () => (
   <Section id="charities">
     <H1 margin="0 0 6rem" textAlign="center">
       Charities
     </H1>
     <Container>
-      <Item flexBasis="33%">
-        <StyledPreview>
-          <img alt="razom logo" src={`${import.meta.env.BASE_URL}assets/images/razom.png`} />
-        </StyledPreview>
-        <StyledContent>
-          <H5 color="light">Razom</H5>
-          <Paragraph color="light" margin="0 0 3rem" weight={300}>
-            Nova Ukraine is a registered nonprofit organization dedicated to providing humanitarian
-            aid to Ukraine and raising awareness about Ukraine in the United States as well as in
-            the rest of the world.
-          </Paragraph>
-          <StyledLink href="#">
-            Learn more
-            <img alt="arrow icon" src={`${import.meta.env.BASE_URL}assets/images/arrow.svg`} />
-          </StyledLink>
-        </StyledContent>
-      </Item>
-      <Item flexBasis="33%">
-        <StyledPreview>
-          <img alt="razom logo" src={`${import.meta.env.BASE_URL}assets/images/razom.png`} />
-        </StyledPreview>
-        <StyledContent>
-          <H5 color="light">Razom</H5>
-          <Paragraph color="light" margin="0 0 3rem" weight={300}>
-            Nova Ukraine is a registered nonprofit organization dedicated to providing humanitarian
-            aid to Ukraine and raising awareness about Ukraine in the United States as well as in
-            the rest of the world.
-          </Paragraph>
-          <StyledLink href="#">
-            Learn more
-            <img alt="arrow icon" src={`${import.meta.env.BASE_URL}assets/images/arrow.svg`} />
-          </StyledLink>
-        </StyledContent>
-      </Item>
-      <Item flexBasis="33%">
-        <StyledPreview>
-          <img alt="razom logo" src={`${import.meta.env.BASE_URL}assets/images/razom.png`} />
-        </StyledPreview>
-        <StyledContent>
-          <H5 color="light">Razom</H5>
-          <Paragraph color="light" margin="0 0 3rem" weight={300}>
-            Nova Ukraine is a registered nonprofit organization dedicated to providing humanitarian
-            aid to Ukraine and raising awareness about Ukraine in the United States as well as in
-            the rest of the world.
-          </Paragraph>
-          <StyledLink href="#">
-            Learn more
-            <img alt="arrow icon" src={`${import.meta.env.BASE_URL}assets/images/arrow.svg`} />
-          </StyledLink>
-        </StyledContent>
-      </Item>
+      {GetCharities(import.meta.env.BASE_URL).map((charity, idx) => (
+        <CharityElement key={idx} {...charity} />
+      ))}
     </Container>
   </Section>
 );
