@@ -44,10 +44,17 @@ const StyledSection = styled(Section)`
   }
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  position: fixed;
+  z-index: 10;
+  flex-direction: column;
+  width: 100%;
+`;
+
 export const Header = () => (
-  <HeaderWrapper>
+  <Wrapper>
     <StyledSection alignItems="center" display="flex" paddingY={2}>
-      <HeaderCloseButton />
       <Item display="flex" justifyContent="flex-end">
         <a href="#" target="_blank">
           <img
@@ -65,6 +72,5 @@ export const Header = () => (
         </a>
       </Item>
     </StyledSection>
-    <WidgetFrame />
-  </HeaderWrapper>
+  </Wrapper>
 );

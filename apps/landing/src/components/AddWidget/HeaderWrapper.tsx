@@ -14,7 +14,7 @@ const Wrapper = styled.div.attrs((props: { open: boolean }) => props)`
 export default function HeaderWrapper({ children }: { children: React.ReactNode }) {
   return (
     <IframeWidgetContext.Consumer>
-      {({ widgetOpen }) => <Wrapper open={widgetOpen}>{children}</Wrapper>}
+      {({ widgetOpen }) => <Wrapper open={false}>{children}</Wrapper>}
     </IframeWidgetContext.Consumer>
   );
 }
