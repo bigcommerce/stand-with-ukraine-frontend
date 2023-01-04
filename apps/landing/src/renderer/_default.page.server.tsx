@@ -42,8 +42,8 @@ async function render(pageContext: PageContextServer) {
     <div id="page-view">${dangerouslySkipEscape(pageHtml)}</div>
     <script>
       window.SWU_CONFIG = {
-        "style": "blue",
-        "placement": "bottom-right",
+        "style": "white",
+        "placement": "top-right",
         "charity_selections": [
           "razom",
           "new-ukraine",
