@@ -9,12 +9,24 @@ interface QuestionProps {
   answer: string;
 }
 
-const QUESTIONS = Array.from({ length: 3 }, () => ({
-  question:
-    'Lorem ipsum dolor sit amet, his ea ludus sadipscing voluptatibus. Lorem ipsum dolor sit amet.',
-  answer:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar mattis nunc sed blandit libero volutpat. Eu lobortis elementum nibh tellus molestie nunc non.',
-}));
+const QUESTIONS = [
+  {
+    question: "I'm not seeing a widget / changes to the widget are not applied.",
+    answer:
+      "Hold shift+R to refresh the storefront page, new script often isn't loaded on a background even after a minute. If it didn’t help, please try to remove a widget and re-apply again. If it still does not work notify us via ”Get support”.",
+  },
+  {
+    question:
+      'Can I add a charity organization myself instead of choosing from the predefined list?',
+    answer:
+      'We have included the list of vetted charity organizations, confirmed with our team in Ukraine to make sure that the donation would get to the people in need. The list includes organizations that are providing only humanitarian help.',
+  },
+  {
+    question: 'Can I select page(s) to display the widget?',
+    answer:
+      'Selecting pages is not supported at this point, however you could select the location. By default widget is going to show up on the following pages: Home, Add Wishlist, Blog List, Blog Post, Brand Pages, All Brands Page, Cart, Category, Product Compare, Contact Form, Product, Search, All Wishlist, Wish List, 404 page.',
+  },
+];
 
 const StyledQuestion = styled.div`
   border-top: 1px solid #d1d7e0;

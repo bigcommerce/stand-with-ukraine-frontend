@@ -25,11 +25,43 @@ interface TeamMember {
   title: string;
 }
 
-const TeamList: TeamMember[] = Array.from({ length: 5 }, () => ({
-  photo: 'assets/images/photo.png',
-  name: 'Stanislav Holts',
-  title: 'Software engineer',
-}));
+const TeamList: TeamMember[] = [
+  {
+    photo: 'assets/images/team/Bohdan.png',
+    name: 'Bohdan Hodzenko',
+    title: 'Designer / chairman',
+  },
+  {
+    photo: 'assets/images/team/Micah.png',
+    name: 'Micah Thomas',
+    title: 'Full stack engineer',
+  },
+  {
+    photo: 'assets/images/team/Stanislav.png',
+    name: 'Stanislav Holts',
+    title: 'Front end engineer',
+  },
+  {
+    photo: 'assets/images/team/John.png',
+    name: 'John McCann',
+    title: 'Strategy',
+  },
+  {
+    photo: 'assets/images/team/Anastasiia.png',
+    name: 'Anastasiia Zvierieva',
+    title: 'QA Engineer',
+  },
+  {
+    photo: 'assets/images/team/Kristina.png',
+    name: 'Kristina Pototska',
+    title: 'Product manager',
+  },
+  {
+    photo: 'assets/images/team/Max.png',
+    name: 'Max Kiely',
+    title: 'Marketer',
+  },
+];
 
 export const Member = ({ photo, name, title }: TeamMember) => (
   <StyledItem>
