@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 import { Item, Section } from '../components';
-import HeaderCloseButton from '../components/AddWidget/HeaderCloseButton';
-import HeaderWrapper from '../components/AddWidget/HeaderWrapper';
-import WidgetFrame from '../components/AddWidget/WidgetFrame';
 import { breakpoints } from '../helpers';
 
 const StyledSection = styled(Section)`
@@ -44,10 +41,17 @@ const StyledSection = styled(Section)`
   }
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  position: fixed;
+  z-index: 10;
+  flex-direction: column;
+  width: 100%;
+`;
+
 export const Header = () => (
-  <HeaderWrapper>
+  <Wrapper>
     <StyledSection alignItems="center" display="flex" paddingY={2}>
-      <HeaderCloseButton />
       <Item display="flex" justifyContent="flex-end">
         <a href="#" target="_blank">
           <img
@@ -65,6 +69,5 @@ export const Header = () => (
         </a>
       </Item>
     </StyledSection>
-    <WidgetFrame />
-  </HeaderWrapper>
+  </Wrapper>
 );

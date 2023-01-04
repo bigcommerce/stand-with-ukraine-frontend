@@ -40,6 +40,20 @@ async function render(pageContext: PageContextServer) {
   
   <body>
     <div id="page-view">${dangerouslySkipEscape(pageHtml)}</div>
+    <script>
+      window.SWU_CONFIG = {
+        "style": "white",
+        "placement": "top-right",
+        "charity_selections": [
+          "razom",
+          "new-ukraine",
+          "mira-action"
+        ],
+        "modal_title": "Help the people of Ukraine!",
+        "modal_body": "With each day, the war in Ukraine worsens at an alarming pace. Millions of civilians have lost their homes and many more are without basic necessities like food, water, and health care. Consider donating to one of the charities below and join us in showing support for Ukraine. All charities are trusted, non-profit organizations dedicated to Ukrainian relief efforts. It takes less than a minute."
+      };
+    </script>
+    <script defer src="https://standwithukraineapp.com/widget/index.js"></script>
   </body>
 </html>
     `;
