@@ -6216,12 +6216,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-test-coverage@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "playwright-test-coverage@npm:1.2.0"
+"playwright-test-coverage@npm:^1.2.7":
+  version: 1.2.7
+  resolution: "playwright-test-coverage@npm:1.2.7"
   peerDependencies:
     "@playwright/test": ^1.14.1
-  checksum: 03c3abfa3b872886b3703e81359b3367215707152b27013e4b793c2eb35b268482f25f544ab165b9e979709ada467c08e2738aebf0e3e7c14126b31eee97c4a9
+  checksum: 86fd748515005fc57fb63e056721574dedeacab54020114c611928f456581c5a8d8d5cccc9ce262026290fb25e9d36bca7ad6b9f25b9a8acf17d31b452e96ff5
   languageName: node
   linkType: hard
 
@@ -7283,7 +7283,7 @@ __metadata:
     eslint: ^8.25.0
     husky: ^8.0.2
     lint-staged: ^13.0.3
-    playwright-test-coverage: ^1.2.0
+    playwright-test-coverage: ^1.2.7
     prettier: ^2.7.1
     turbo: ^1.5.6
   languageName: unknown
