@@ -475,12 +475,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/config-conventional@npm:^17.0.3":
-  version: 17.0.3
-  resolution: "@commitlint/config-conventional@npm:17.0.3"
+"@commitlint/config-conventional@npm:^17.4.0":
+  version: 17.4.0
+  resolution: "@commitlint/config-conventional@npm:17.4.0"
   dependencies:
     conventional-changelog-conventionalcommits: ^5.0.0
-  checksum: 1cd30d827cf43bc7b08604398d4104bc031a69c8b45777886572aff12de25f40761dfbe5ffc6cd1f0d5b05de850e6d3e22dee6d799288e9cdd80bf575d036d46
+  checksum: bc161a330c3cc9168798a58321b86ac05f8c28c5f6b521f4f1c43ede04ff75fbc31881700691685a308a327a05ad66397f9b41463403056fc5183eae18a0e9a2
   languageName: node
   linkType: hard
 
@@ -7278,7 +7278,7 @@ __metadata:
   dependencies:
     "@bigcommerce/eslint-config": ^2.6.2
     "@commitlint/cli": ^17.3.0
-    "@commitlint/config-conventional": ^17.0.3
+    "@commitlint/config-conventional": ^17.4.0
     "@playwright/test": ^1.29.1
     eslint: ^8.25.0
     husky: ^8.0.2
