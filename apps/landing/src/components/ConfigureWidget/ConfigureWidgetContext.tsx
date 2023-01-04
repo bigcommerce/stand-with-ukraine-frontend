@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState } from 'react';
 
-export const IframeWidgetContext = createContext<{
+export const ConfigureWidgetContext = createContext<{
   widgetOpen: boolean;
   setWidgetOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }>({
@@ -9,17 +9,17 @@ export const IframeWidgetContext = createContext<{
   setWidgetOpen: () => {},
 });
 
-export function WidgetStateProvider({ children }: { children: ReactNode }) {
+export function ConfigureWidgetProvider({ children }: { children: ReactNode }) {
   const [widgetOpen, setWidgetOpen] = useState(false);
 
   return (
-    <IframeWidgetContext.Provider
+    <ConfigureWidgetContext.Provider
       value={{
         widgetOpen,
         setWidgetOpen,
       }}
     >
       {children}
-    </IframeWidgetContext.Provider>
+    </ConfigureWidgetContext.Provider>
   );
 }

@@ -1,15 +1,15 @@
 import { ButtonLink } from '../Button';
 
-import { IframeWidgetContext } from './WidgetFrameContext';
+import { ConfigureWidgetContext } from './ConfigureWidgetContext';
 
-export default function WidgetFrameButton() {
+export default function ConfigureWidgetButton() {
   return (
-    <IframeWidgetContext.Consumer>
+    <ConfigureWidgetContext.Consumer>
       {({ setWidgetOpen }) => (
         <ButtonLink onClick={() => setWidgetOpen(true)} variant="light">
           Select
         </ButtonLink>
       )}
-    </IframeWidgetContext.Consumer>
+    </ConfigureWidgetContext.Consumer>
   );
 }

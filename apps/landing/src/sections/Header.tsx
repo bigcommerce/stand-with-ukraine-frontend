@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 import { Item, Section } from '../components';
-import HeaderCloseButton from '../components/AddWidget/HeaderCloseButton';
-import HeaderWrapper from '../components/AddWidget/HeaderWrapper';
-import WidgetFrame from '../components/AddWidget/WidgetFrame';
 import { breakpoints } from '../helpers';
 
 const StyledSection = styled(Section)`

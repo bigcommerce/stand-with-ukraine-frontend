@@ -1,8 +1,8 @@
 import { ReactNode, useEffect, useRef } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import HeaderCloseButton from './HeaderCloseButton';
 
-import { IframeWidgetContext } from './WidgetFrameContext';
+import ConfigureWidgetCloseButton from './ConfigureWidgetCloseButton';
+import { ConfigureWidgetContext } from './ConfigureWidgetContext';
 
 const IFrame = styled.iframe`
   flex: 1 0 auto;
@@ -23,11 +23,12 @@ const IframeOverlay = styled.div`
   background: rgba(0, 0, 0, 0.3);
   position: fixed;
   left: 0;
-  top: 0
+  top: 0;
 `;
 
 function WidgetWrapper() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+
   useEffect(() => {
     if (iframeRef.current !== null) {
       iframeRef.current.scrollIntoView({
@@ -41,26 +42,26 @@ function WidgetWrapper() {
   return (
     <>
       <IframeOverlay />
-      <HeaderCloseButton/>
+      <ConfigureWidgetCloseButton />
       <IFrame
-        ref={iframeRef}
         frameBorder="0"
+        ref={iframeRef}
         src="/dashboard/?token=universal.installer.stand-with-ukraine"
       />
     </>
   );
 }
 
-export default function WidgetFrame({ children }: { children: ReactNode }) {
+export default function ConfigureWidgetFrame({ children }: { children: ReactNode }) {
   return (
-    <IframeWidgetContext.Consumer>
+    <ConfigureWidgetContext.Consumer>
       {({ widgetOpen }) => (
         <>
           {widgetOpen ? <WidgetWrapper /> : children}
           <IframeGlobalStyle frameOpen={widgetOpen} />
         </>
       )}
-    </IframeWidgetContext.Consumer>
+    </ConfigureWidgetContext.Consumer>
   );
 }
 

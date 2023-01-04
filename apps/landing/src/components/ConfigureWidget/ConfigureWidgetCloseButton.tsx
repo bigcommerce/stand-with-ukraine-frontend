@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { IframeWidgetContext } from './WidgetFrameContext';
 
-import CloseSVG from './close-button.svg'
+import CloseSVG from './close-button.svg';
+import { ConfigureWidgetContext } from './ConfigureWidgetContext';
 
 const CloseButton = styled.a`
   position: fixed;
@@ -11,16 +11,16 @@ const CloseButton = styled.a`
   cursor: pointer;
 `;
 
-export default function HeaderCloseButton() {
+export default function ConfigureWidgetCloseButton() {
   return (
-    <IframeWidgetContext.Consumer>
+    <ConfigureWidgetContext.Consumer>
       {({ setWidgetOpen, widgetOpen }) =>
         widgetOpen ? (
           <CloseButton onClick={() => setWidgetOpen(false)}>
-            <img src={CloseSVG} alt="Close Button" />
+            <img alt="Close Button" src={CloseSVG} />
           </CloseButton>
         ) : null
       }
-    </IframeWidgetContext.Consumer>
+    </ConfigureWidgetContext.Consumer>
   );
 }

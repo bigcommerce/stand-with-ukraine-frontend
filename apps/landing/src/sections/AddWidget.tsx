@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 import { ButtonLink, Container, H2, H3, Item, Paragraph, Section } from '../components';
-import WidgetFrame from '../components/AddWidget/WidgetFrame';
-import WidgetFrameButton from '../components/AddWidget/WidgetFrameButton';
+import ConfigureWidgetButton from '../components/ConfigureWidget/ConfigureWidgetButton';
+import ConfigureWidgetFrame from '../components/ConfigureWidget/ConfigureWidgetFrame';
 import { breakpoints } from '../helpers';
 
 const StyledItem = styled.div`
@@ -19,7 +19,7 @@ const StyledItem = styled.div`
 `;
 
 export const AddWidget = () => (
-  <WidgetFrame>
+  <ConfigureWidgetFrame>
     <Section background="primary" id="add-widget">
       <H2 color="light" margin="0 0 3rem" textAlign="center">
         Add widget
@@ -50,10 +50,10 @@ export const AddWidget = () => (
             <Paragraph color="light" margin="0 0 3rem">
               You will be able to design your custom widget in 2 minutes. Lets do it now!
             </Paragraph>
-            <WidgetFrameButton />
+            <ConfigureWidgetButton />
           </StyledItem>
         </Item>
       </Container>
     </Section>
-  </WidgetFrame>
+  </ConfigureWidgetFrame>
 );

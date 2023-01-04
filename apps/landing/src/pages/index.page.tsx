@@ -1,4 +1,4 @@
-import { WidgetStateProvider } from '../components/AddWidget/WidgetFrameContext';
+import { ConfigureWidgetProvider } from '../components/ConfigureWidget/ConfigureWidgetContext';
 import {
   AddWidget,
   Cases,
@@ -17,7 +17,7 @@ export default { Page };
 
 function Page() {
   return (
-    <WidgetStateProvider>
+    <ConfigureWidgetProvider>
       <Header />
       <Home />
       <HowItWorks />
@@ -29,6 +29,6 @@ function Page() {
       <Faq />
       <Contacts />
       <Footer />
-    </WidgetStateProvider>
+    </ConfigureWidgetProvider>
   );
 }
