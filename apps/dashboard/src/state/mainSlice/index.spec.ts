@@ -108,9 +108,13 @@ describe('loadStore async action', () => {
   let getState: () => unknown;
 
   beforeAll(() => {
-    vi.mock('./api.ts', () => ({
-      fetchStoreStatus: vi.fn(),
-    }));
+    vi.mock('./api.ts', async () => {
+      const actual: any = await vi.importActual('./api.ts');
+      return {
+        ...actual,
+        fetchStoreStatus: vi.fn(),
+      };
+    });
   });
 
   beforeEach(() => {
