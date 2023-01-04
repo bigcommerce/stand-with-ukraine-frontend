@@ -1,7 +1,17 @@
 import { ChangeEvent, FormEventHandler, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { Button, Container, H2, H4, Input, Item, Paragraph, Section } from '../components';
+import {
+  Button,
+  Container,
+  H2,
+  H4,
+  Input,
+  Item,
+  Paragraph,
+  Section,
+  Textarea,
+} from '../components';
 import { breakpoints } from '../helpers';
 
 const StyledForm = styled(Item)`
@@ -34,11 +44,11 @@ const isCorrectEmail = (email: string) =>
 
 const useForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [data, setData] = useState({ firstNameLastName: '', companyName: '', email: '' });
+  const [data, setData] = useState({ firstNameLastName: '', question: '', email: '' });
   const [isDirty, setIsDirty] = useState<Record<string, boolean>>({
     firstNameLastName: false,
-    companyName: false,
     email: false,
+    question: false,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -47,7 +57,7 @@ const useForm = () => {
       switch (true) {
         case key === 'email' && isEmpty(value):
         case key === 'firstNameLastName' && isEmpty(value):
-        case key === 'companyName' && isEmpty(value):
+        case key === 'question' && isEmpty(value):
           setErrors((prevProps) => ({ ...prevProps, [key]: 'Field is required' }));
           break;
 
@@ -62,15 +72,16 @@ const useForm = () => {
     });
   }, [data]);
 
-  const handleChange = (name: string) => (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+  const handleChange =
+    (name: string) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      e.preventDefault();
 
-    if (!isDirty[name]) {
-      setIsDirty((prevProps) => ({ ...prevProps, [name]: true }));
-    }
+      if (!isDirty[name]) {
+        setIsDirty((prevProps) => ({ ...prevProps, [name]: true }));
+      }
 
-    setData((prevData) => ({ ...prevData, [name]: e.target.value }));
-  };
+      setData((prevData) => ({ ...prevData, [name]: e.target.value }));
+    };
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
@@ -93,16 +104,22 @@ export const Contacts = () => {
         <Item flexBasis="50%">
           <H2 color="light">Contact us</H2>
           <Paragraph color="light" size={1.7}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco.
+            Please note that this application was built by a team of employee volunteers, and is
+            provided as is.
+            <br />
+            <br />
+            With that said; we put a ton of work into building a high quality product, and if there
+            are issues, we'd love to fix them!
+            <br />
+            <br />
+            We appreciate you taking the time to help us improve the application so we are able to
+            continue raising awareness, and generating support for our comrades in Ukraine.
           </Paragraph>
         </Item>
         <StyledForm flexBasis="50%">
-          <H4>Lorem ipsum dolor</H4>
+          <H4>Contact form</H4>
           <Paragraph color="gray" margin="0 0 5rem">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore.
+            Describe your question below
           </Paragraph>
           <form onSubmit={handleSubmit}>
             <Input
@@ -113,18 +130,19 @@ export const Contacts = () => {
               value={data.firstNameLastName}
             />
             <Input
-              error={isDirty.companyName ? errors.companyName : undefined}
-              label="Company name"
-              onChange={handleChange('companyName')}
-              required
-              value={data.companyName}
-            />
-            <Input
               error={isDirty.email ? errors.email : undefined}
               label="Email"
               onChange={handleChange('email')}
               required
               value={data.email}
+            />
+            <Textarea
+              error={isDirty.question ? errors.question : undefined}
+              label="Your question or comment"
+              onChange={handleChange('question')}
+              required
+              rows={10}
+              value={data.question}
             />
             <Button disabled={isDisabled} type="submit">
               Submit

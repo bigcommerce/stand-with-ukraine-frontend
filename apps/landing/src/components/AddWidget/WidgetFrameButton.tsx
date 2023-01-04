@@ -7,7 +7,7 @@ export default function WidgetFrameButton() {
     <IframeWidgetContext.Consumer>
       {({ setWidgetOpen }) => (
         <ButtonLink onClick={() => setWidgetOpen(true)} variant="light">
-          Configure Widget
+          Select
         </ButtonLink>
       )}
     </IframeWidgetContext.Consumer>
