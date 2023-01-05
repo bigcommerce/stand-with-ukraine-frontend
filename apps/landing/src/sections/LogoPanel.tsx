@@ -1,11 +1,14 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Item, Section } from '../components';
 import { breakpoints } from '../helpers';
 
+interface Props {
+  isFixed?: boolean;
+}
+
 const StyledSection = styled(Section)`
   width: 100%;
-  z-index: 10;
   justify-content: flex-start;
   gap: 2rem;
 
@@ -41,16 +44,21 @@ const StyledSection = styled(Section)`
   }
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ isFixed: boolean }>`
   display: flex;
-  position: fixed;
   z-index: 10;
   flex-direction: column;
   width: 100%;
+
+  ${({ isFixed }) =>
+    isFixed &&
+    css`
+      position: fixed;
+    `}
 `;
 
-export const Header = () => (
-  <Wrapper>
+export const LogoPanel = ({ isFixed = false }: Props) => (
+  <Wrapper isFixed={isFixed}>
     <StyledSection alignItems="center" display="flex" paddingY={2}>
       <Item display="flex" justifyContent="flex-end">
         <a href="#" target="_blank">

@@ -60,7 +60,7 @@ export const H2 = styled.h2<Pick<TextProps, 'color' | 'margin' | 'textAlign'>>`
   
   ${breakpoints.desktop} {
     font-size: 4.1rem;
-    margin: ${({ margin = `0 0 2rem` }) => `${margin}rem`};
+    margin: ${({ margin = `0 0 2rem` }) => margin};
   }
 `;
 

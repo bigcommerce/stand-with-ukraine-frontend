@@ -1,6 +1,8 @@
 import { GetCharities } from 'config/charities';
 import { Charity } from 'config/types';
 import styled from 'styled-components';
+import { A11y, Autoplay, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Container, H1, H5, Item, Paragraph, Section } from '../components';
 
@@ -53,6 +55,10 @@ const StyledLink = styled.a`
   }
 `;
 
+const StyledParagraph = styled(Paragraph)`
+  min-height: 18rem;
+`;
+
 export const CharityElement = ({ logoProps, name, description, donationLink }: Charity) => (
   <Item flexBasis="33%">
     <StyledPreview>
@@ -60,9 +66,9 @@ export const CharityElement = ({ logoProps, name, description, donationLink }: C
     </StyledPreview>
     <StyledContent>
       <H5 color="light">{name}</H5>
-      <Paragraph color="light" margin="0 0 3rem" weight={300}>
-        {description}
-      </Paragraph>
+      <StyledParagraph color="light" margin="0 0 3rem" weight={300}>
+        {description.slice(0, 200)}...
+      </StyledParagraph>
       <StyledLink href={donationLink}>
         Learn more
         <img alt="arrow icon" src={`${import.meta.env.BASE_URL}assets/images/arrow.svg`} />
@@ -76,10 +82,32 @@ export const Charities = () => (
     <H1 margin="0 0 6rem" textAlign="center">
       Charities
     </H1>
-    <Container>
-      {GetCharities(import.meta.env.BASE_URL).map((charity, idx) => (
-        <CharityElement key={idx} {...charity} />
-      ))}
+    <Container flexDirection="row">
+      <Swiper
+        autoplay={{ delay: 5000 }}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+          },
+          720: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        }}
+        modules={[Autoplay, A11y, Pagination]}
+        pagination={{
+          clickable: true,
+        }}
+        spaceBetween={30}
+      >
+        {GetCharities(import.meta.env.BASE_URL).map((charity, idx) => (
+          <SwiperSlide key={idx}>
+            <CharityElement {...charity} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </Container>
   </Section>
 );

@@ -32,23 +32,23 @@ export const AddWidget = () => (
       <Container>
         <Item flexGrow={1}>
           <StyledItem>
-            <H3 color="light">BigCommerce Merchant</H3>
+            <H3 color="light">BigCommerce</H3>
             <Paragraph color="light" margin="0 0 3rem">
-              You will be redirected to Bigcommerce app store with all detailed information.
+              You will be redirected to BigСommerce app store with all detailed information.
             </Paragraph>
             <ButtonLink
               href="https://login.bigcommerce.com/deep-links/marketplace/apps/38603"
               variant="light"
             >
-              Install App
+              Select
             </ButtonLink>
           </StyledItem>
         </Item>
         <Item flexGrow={1}>
           <StyledItem>
-            <H3 color="light">Others</H3>
+            <H3 color="light">Other platform</H3>
             <Paragraph color="light" margin="0 0 3rem">
-              You will be able to design your custom widget in 2 minutes. Lets do it now!
+              You will design your custom widget right here. It will take 2 minutes. Let's do it now!
             </Paragraph>
             <ConfigureWidgetButton />
           </StyledItem>

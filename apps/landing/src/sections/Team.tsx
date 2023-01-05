@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { A11y, Autoplay, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Container, H1, Item, Paragraph, Section } from '../components';
 import Video from '../components/Video';
@@ -7,10 +9,6 @@ const StyledItem = styled.div`
   align-items: center;
   display: flex;
   gap: 2rem;
-
-  + div {
-    margin-top: 2rem;
-  }
 `;
 
 const StyledPhoto = styled.img`
@@ -98,9 +96,30 @@ export const Team = () => (
         />
       </Item>
       <Item flexBasis="33%">
-        {TeamList.map((member, idx) => (
-          <Member key={idx} {...member} />
-        ))}
+        <Swiper
+          autoplay={{ delay: 5000 }}
+          breakpoints={{
+            320: {
+              slidesPerView: 7,
+            },
+            960: {
+              slidesPerView: 5,
+              height: 420,
+            },
+          }}
+          direction="vertical"
+          modules={[Autoplay, A11y, Pagination]}
+          pagination={{
+            clickable: true,
+          }}
+          spaceBetween={10}
+        >
+          {TeamList.map((member, idx) => (
+            <SwiperSlide key={idx}>
+              <Member {...member} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </Item>
     </Container>
   </Section>
