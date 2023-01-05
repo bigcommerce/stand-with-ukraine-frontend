@@ -12,7 +12,7 @@
   cursor: pointer;
 
   &.collapsed {
-    max-width: 86px;
+    max-width: 86;
   }
 
   &.animated {
@@ -135,10 +135,6 @@
     overflow: hidden;
     border-radius: 50%;
     border: 3px solid #fff;
-
-    &:empty {
-      display: block !important;
-    }
 
     &::before {
       content: '';
