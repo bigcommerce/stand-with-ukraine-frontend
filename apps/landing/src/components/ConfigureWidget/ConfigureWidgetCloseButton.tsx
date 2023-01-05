@@ -7,7 +7,7 @@ const CloseButton = styled.a`
   position: fixed;
   right: 1.5rem;
   top: calc(15% + 1.5rem);
-  z-index: 9;
+  z-index: 11001;
   cursor: pointer;
 `;
 

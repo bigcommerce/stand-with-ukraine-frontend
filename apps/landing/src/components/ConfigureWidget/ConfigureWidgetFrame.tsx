@@ -9,7 +9,7 @@ const IFrame = styled.iframe`
   background: #fff;
   width: 100vw;
   height: 80vh;
-  z-index: 7;
+  z-index: 11000;
   position: fixed;
   top: 15%;
   left: 0;

@@ -4,6 +4,26 @@
     "cleanUrls": true,
     "trailingSlash": false,
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "headers": [
+      {
+        "source": "/widget/index.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "private, max-age=3600"
+          }
+        ]
+      },
+      {
+        "source": "/widget/style.css",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "private, max-age=3600"
+          }
+        ]
+      }
+    ],
     "rewrites": [
       {
         "source": "/api/**",
