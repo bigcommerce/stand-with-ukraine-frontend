@@ -56,7 +56,10 @@ const StyledLink = styled.a`
 `;
 
 const StyledParagraph = styled(Paragraph)`
-  min-height: 18rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 export const CharityElement = ({ logoProps, name, description, donationLink }: Charity) => (
@@ -67,7 +70,7 @@ export const CharityElement = ({ logoProps, name, description, donationLink }: C
     <StyledContent>
       <H5 color="light">{name}</H5>
       <StyledParagraph color="light" margin="0 0 3rem" weight={300}>
-        {description.slice(0, 200)}...
+        {description}
       </StyledParagraph>
       <StyledLink href={donationLink}>
         Learn more

@@ -48,7 +48,8 @@ export const AddWidget = () => (
           <StyledItem>
             <H3 color="light">Other platform</H3>
             <Paragraph color="light" margin="0 0 3rem">
-              You will design your custom widget right here. It will take 2 minutes. Let's do it now!
+              You will design your custom widget right here. It will take 2 minutes. Let's do it
+              now!
             </Paragraph>
             <ConfigureWidgetButton />
           </StyledItem>

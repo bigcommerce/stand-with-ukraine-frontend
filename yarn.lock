@@ -1594,6 +1594,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/swiper@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@types/swiper@npm:6.0.0"
+  dependencies:
+    swiper: "*"
+  checksum: 53688c7fd949895d24deff102679d1a1080cd876a7d493de263aff818666cfa06ccd043a8602e9ecabf581cd750815426aec544796f27d1bfa1d71b815a966e9
+  languageName: node
+  linkType: hard
+
 "@types/unist@npm:*":
   version: 2.0.6
   resolution: "@types/unist@npm:2.0.6"
@@ -7603,6 +7612,7 @@ __metadata:
     "@commitlint/cli": ^17.3.0
     "@commitlint/config-conventional": ^17.4.0
     "@playwright/test": ^1.29.1
+    "@types/swiper": ^6.0.0
     eslint: ^8.25.0
     husky: ^8.0.2
     lint-staged: ^13.0.3
@@ -7822,7 +7832,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"swiper@npm:^8.4.5":
+"swiper@npm:*, swiper@npm:^8.4.5":
   version: 8.4.5
   resolution: "swiper@npm:8.4.5"
   dependencies:
