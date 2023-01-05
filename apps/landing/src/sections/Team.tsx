@@ -104,7 +104,6 @@ export const Team = () => (
             },
             960: {
               slidesPerView: 5,
-              height: 420,
             },
           }}
           direction="vertical"
