@@ -12,4 +12,8 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 1.4rem;
     font-family: Gotham, Helvetica, Arial, sans-serif;
   }
+  
+  * {
+      box-sizing: border-box;
+  }
 `;

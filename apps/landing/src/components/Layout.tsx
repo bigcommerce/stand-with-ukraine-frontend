@@ -13,6 +13,7 @@ interface SectionProps {
 
 interface ContainerProps {
   alignItems?: CSSProperties['alignItems'];
+  flexDirection?: CSSProperties['flexDirection'];
   justifyContent?: CSSProperties['justifyContent'];
   paddingX?: number;
   paddingY?: number;
@@ -81,7 +82,6 @@ export const Section = styled.section<SectionProps>`
 
 export const Container = styled.div<ContainerProps>`
   display: flex;
-  flex-direction: column;
   gap: 3rem;
   margin: 0 auto;
   width: 100%;
@@ -104,9 +104,18 @@ export const Container = styled.div<ContainerProps>`
     max-width: ${width}rem;
   `}
   
-  ${breakpoints.desktop} {
-    flex-direction: row;
-  }
+  ${({ flexDirection }) =>
+    flexDirection
+      ? css`
+          flex-direction: ${flexDirection};
+        `
+      : css`
+          flex-direction: column;
+
+          ${breakpoints.desktop} {
+            flex-direction: row;
+          }
+        `}
 `;
 
 export const Item = styled.div<ItemProps>`

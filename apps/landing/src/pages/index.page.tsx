@@ -5,20 +5,22 @@ import {
   Charities,
   Contacts,
   Faq,
-  Footer,
-  Header,
   Home,
   HowItWorks,
+  LogoPanel,
   Stats,
   Team,
 } from '../sections';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 export default { Page };
 
 function Page() {
   return (
     <ConfigureWidgetProvider>
-      <Header />
+      <LogoPanel isFixed />
       <Home />
       <HowItWorks />
       <Stats />
@@ -28,7 +30,7 @@ function Page() {
       <Team />
       <Faq />
       <Contacts />
-      <Footer />
+      <LogoPanel />
     </ConfigureWidgetProvider>
   );
 }

@@ -110,6 +110,7 @@ describe('loadStore async action', () => {
   beforeAll(() => {
     vi.mock('./api.ts', async () => {
       const actual: any = await vi.importActual('./api.ts');
+
       return {
         ...actual,
         fetchStoreStatus: vi.fn(),
