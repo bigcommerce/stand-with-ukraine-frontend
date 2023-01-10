@@ -63,12 +63,12 @@ export const LogoPanel = ({ isFixed = false }: Props) => (
   <Wrapper isFixed={isFixed}>
     <StyledSection alignItems="center" display="flex" paddingY={2}>
       <Item display="flex" justifyContent="flex-end">
-        <a href="#" target="_blank">
+        <a href="https://www.bigcommerce.com/" rel="noreferrer" target="_blank">
           <img alt="Bigcommerce logo" src={BCLogo} />
         </a>
       </Item>
       <Item display="flex" flexGrow={1} justifyContent="flex-start">
-        <a href="#" target="_blank">
+        <a href="#">
           <img alt="Stand with ukraine logo" src={SWULogo} />
         </a>
       </Item>

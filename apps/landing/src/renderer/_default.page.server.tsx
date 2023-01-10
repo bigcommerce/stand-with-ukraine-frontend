@@ -13,7 +13,7 @@ export { passToClient };
 
 const passToClient = ['pageProps', 'documentProps', 'someAsyncProps'];
 const fontsToPreload = [
-  'GothamCond-Bold_Web.woff2',
+  'Gotham-Bold_Web.woff2',
   'Gotham-Light_Web.woff2',
   'Gotham-Book_Web.woff2',
   'GothamCond-Bold_Web.woff2',
@@ -45,15 +45,18 @@ async function render(pageContext: PageContextServer) {
     <title>${title}</title>
     <link rel="manifest" href="${import.meta.env.BASE_URL}manifest-landing.json">
     <link rel="preload" href="${HomeImage}" as="image">
-    ${fontsToPreload
-      .map(
-        (font) =>
-          `<link rel="preload" href="${
-            import.meta.env.BASE_URL
-          }fonts/gotham/woff2/${font}" as="font" type="font/woff2" crossorigin>`,
-      )
-      .join('')}
+    ${dangerouslySkipEscape(
+      fontsToPreload
+        .map(
+          (font) =>
+            `<link rel="preload" href="${
+              import.meta.env.BASE_URL
+            }fonts/gotham/woff2/${font}" as="font" type="font/woff2" crossorigin>`,
+        )
+        .join(''),
+    )}
     ${dangerouslySkipEscape(sheet.getStyleTags())}
+    <meta name="description" content="Help Ukraine by adding an easy widget to your website that allows your visitors to easily donate via verified charities.">
   </head>
   
   <body>
