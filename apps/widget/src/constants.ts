@@ -25,7 +25,7 @@ export const MODAL = {
   charities: SWU_CONFIG.charity_selections,
   img: {
     alt: 'Ukraine photo',
-    src: `${getBaseURL()}assets/images/background.png`,
+    src: `${getBaseURL()}assets/images/background.webp`,
   },
 };
 

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { A11y, Autoplay, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import ArrowSVG from '../../public/assets/images/arrow.svg';
 import { Container, H1, H5, Item, Paragraph, Section } from '../components';
 
 const StyledPreview = styled.div`
@@ -74,7 +75,7 @@ export const CharityElement = ({ logoProps, name, description, donationLink }: C
       </StyledParagraph>
       <StyledLink href={donationLink}>
         Learn more
-        <img alt="arrow icon" src={`${import.meta.env.BASE_URL}assets/images/arrow.svg`} />
+        <img alt="arrow icon" src={ArrowSVG} />
       </StyledLink>
     </StyledContent>
   </Item>

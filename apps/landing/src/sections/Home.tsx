@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import HomeImage from '../../public/assets/images/home.webp';
 import { ButtonLink, Container, H1, Item, Paragraph, Section } from '../components';
 import { breakpoints } from '../helpers';
 
@@ -50,10 +51,7 @@ export const Home = () => (
         </ButtonsContainer>
       </Item>
       <Item flexBasis="50%">
-        <StyledImage
-          alt="stand with ukraine"
-          src={`${import.meta.env.BASE_URL}assets/images/home.png`}
-        />
+        <StyledImage alt="stand with ukraine" src={HomeImage} />
       </Item>
     </Container>
   </StyledSection>

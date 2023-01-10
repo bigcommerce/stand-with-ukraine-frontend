@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { ReactComponent as CloseSVG } from '../../../assets/Close.svg';
 import { useAppSelector } from '../../../state/hooks';
 import { RootState } from '../../../state/store';
+import WidgetMainImage from '../../../../public/assets/images/home.webp'
 
 import { CHARITIES } from './common/data';
 import PreviewItem from './PreviewItem';
@@ -77,7 +78,7 @@ export default function PreviewTab() {
       </CloseSVGContainer>
       <HeroImage
         alt="Protestors standing against war in Ukraine"
-        src={`${import.meta.env.BASE_URL}assets/images/background.png`}
+        src={WidgetMainImage}
       />
       {charity_list.map((item, key) => (item ? <PreviewItem key={key} {...item} /> : null))}
     </ModalPreviewBox>

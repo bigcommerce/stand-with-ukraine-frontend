@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import BarnmansionScreenshot from '../../public/assets/images/barnmansion.webp';
+import BenchandchiselScreenshot from '../../public/assets/images/benchandchisel.webp';
+import MybeautymartScreenshot from '../../public/assets/images/mybeautymart.webp';
 import { Container, H2, Item, Section } from '../components';
 import { breakpoints } from '../helpers';
 
@@ -53,10 +56,7 @@ export const Cases = () => (
     <Container>
       <Item flexGrow={1}>
         <StyledPreview href="https://barnmansion.com/" target="_blank">
-          <img
-            alt="furniture.com screenshot"
-            src={`${import.meta.env.BASE_URL}assets/images/barnmansion.png`}
-          />
+          <img alt="barnmansion.com screenshot" src={BarnmansionScreenshot} />
         </StyledPreview>
         <StyledLink href="https://barnmansion.com/" target="_blank">
           barnmansion.com
@@ -64,10 +64,7 @@ export const Cases = () => (
       </Item>
       <Item flexGrow={1}>
         <StyledPreview href="https://mybeautymart.com/" target="_blank">
-          <img
-            alt="furniture.com screenshot"
-            src={`${import.meta.env.BASE_URL}assets/images/mybeautymart.png`}
-          />
+          <img alt="mybeautymart.com screenshot" src={MybeautymartScreenshot} />
         </StyledPreview>
         <StyledLink href="https://mybeautymart.com/" target="_blank">
           mybeautymart.com
@@ -75,10 +72,7 @@ export const Cases = () => (
       </Item>
       <Item flexGrow={1}>
         <StyledPreview href="https://benchandchisel.com/" target="_blank">
-          <img
-            alt="furniture.com screenshot"
-            src={`${import.meta.env.BASE_URL}assets/images/benchandchisel.png`}
-          />
+          <img alt="benchandchisel.com screenshot" src={BenchandchiselScreenshot} />
         </StyledPreview>
         <StyledLink href="https://benchandchisel.com/" target="_blank">
           benchandchisel.com

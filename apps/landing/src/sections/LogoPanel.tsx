@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import BCLogo from '../../public/assets/images/bc-logo.svg';
+import SWULogo from '../../public/assets/images/swu-logo.svg';
 import { Item, Section } from '../components';
 import { breakpoints } from '../helpers';
 
@@ -62,18 +64,12 @@ export const LogoPanel = ({ isFixed = false }: Props) => (
     <StyledSection alignItems="center" display="flex" paddingY={2}>
       <Item display="flex" justifyContent="flex-end">
         <a href="#" target="_blank">
-          <img
-            alt="Bigcommerce logo"
-            src={`${import.meta.env.BASE_URL}assets/images/bc-logo.svg`}
-          />
+          <img alt="Bigcommerce logo" src={BCLogo} />
         </a>
       </Item>
       <Item display="flex" flexGrow={1} justifyContent="flex-start">
         <a href="#" target="_blank">
-          <img
-            alt="Stand with ukraine logo"
-            src={`${import.meta.env.BASE_URL}assets/images/swu-logo.svg`}
-          />
+          <img alt="Stand with ukraine logo" src={SWULogo} />
         </a>
       </Item>
     </StyledSection>

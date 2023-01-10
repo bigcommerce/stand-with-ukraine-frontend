@@ -25,37 +25,37 @@ interface TeamMember {
 
 const TeamList: TeamMember[] = [
   {
-    photo: 'assets/images/team/Bohdan.png',
+    photo: 'assets/images/team/Bohdan.webp',
     name: 'Bohdan Hodzenko',
     title: 'Designer / chairman',
   },
   {
-    photo: 'assets/images/team/Micah.png',
+    photo: 'assets/images/team/Micah.webp',
     name: 'Micah Thomas',
     title: 'Full stack engineer',
   },
   {
-    photo: 'assets/images/team/Stanislav.png',
+    photo: 'assets/images/team/Stanislav.webp',
     name: 'Stanislav Holts',
     title: 'Front end engineer',
   },
   {
-    photo: 'assets/images/team/John.png',
+    photo: 'assets/images/team/John.webp',
     name: 'John McCann',
     title: 'Strategy',
   },
   {
-    photo: 'assets/images/team/Anastasiia.png',
+    photo: 'assets/images/team/Anastasiia.webp',
     name: 'Anastasiia Zvierieva',
     title: 'QA Engineer',
   },
   {
-    photo: 'assets/images/team/Kristina.png',
+    photo: 'assets/images/team/Kristina.webp',
     name: 'Kristina Pototska',
     title: 'Product manager',
   },
   {
-    photo: 'assets/images/team/Max.png',
+    photo: 'assets/images/team/Max.webp',
     name: 'Max Kiely',
     title: 'Marketer',
   },
