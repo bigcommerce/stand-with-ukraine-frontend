@@ -83,6 +83,7 @@ export const Team = () => (
     <Container>
       <Item flexBasis="67%">
         <Video
+          poster="assets/videos/team/thumbnail.webp"
           sources={[
             {
               url: 'assets/videos/team/1080p.webm',
