@@ -5,9 +5,13 @@ export default function Video({
 }) {
   return (
     /* eslint-disable-next-line jsx-a11y/media-has-caption */
-    <video controls width="100%">
+    <video controls preload="metadata" width="100%">
       {sources.map((source, idx) => (
-        <source key={idx} src={`${import.meta.env.BASE_URL}${source.url}`} type={source.type} />
+        <source
+          key={idx}
+          src={`${import.meta.env.BASE_URL}${source.url}#t=0.5`}
+          type={source.type}
+        />
       ))}
       Download the video file:
       {sources.map((source, idx) => (

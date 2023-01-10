@@ -1,6 +1,8 @@
 import { ReactNode, useEffect, useRef } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
+import { breakpoints } from '../../helpers';
+
 import ConfigureWidgetCloseButton from './ConfigureWidgetCloseButton';
 import { ConfigureWidgetContext } from './ConfigureWidgetContext';
 
@@ -8,18 +10,28 @@ const IFrame = styled.iframe`
   flex: 1 0 auto;
   background: #fff;
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   z-index: 11000;
   position: fixed;
-  top: 15%;
+  top: 0;
   left: 0;
+
+  ${breakpoints.tablet} and (orientation: portrait) {
+    height: 80vh;
+    top: 10%;
+  }
+
+  ${breakpoints.desktop} {
+    height: 80vh;
+    top: 10%;
+  }
 `;
 
 const IframeOverlay = styled.div`
   display: block;
   height: 100vh;
   width: 100vw;
-  z-index: 5;
+  z-index: 10050;
   background: rgba(0, 0, 0, 0.3);
   position: fixed;
   left: 0;
