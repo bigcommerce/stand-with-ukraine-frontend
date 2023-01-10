@@ -20,15 +20,15 @@ const CloseButton = styled.a`
   }
 
   ${breakpoints.tablet} and (orientation: portrait) {
-    top: calc(15% + 1.25rem);
-    right: 3rem;
+    top: calc(10% + 4.5rem);
+    right: 4rem;
     height: 2.5rem;
     width: 2.5rem;
   }
 
   ${breakpoints.desktop} {
-    top: calc(15% + 1.25rem);
-    right: 3rem;
+    top: calc(10% + 4.5rem);
+    right: 4rem;
     height: 2.5rem;
     width: 2.5rem;
   }
