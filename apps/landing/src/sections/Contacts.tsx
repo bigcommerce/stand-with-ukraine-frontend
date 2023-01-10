@@ -104,14 +104,6 @@ export const Contacts = () => {
         <Item flexBasis="50%">
           <H2 color="light">Contact us</H2>
           <Paragraph color="light" size={1.7}>
-            Please note that this application was built by a team of employee volunteers, and is
-            provided as is.
-            <br />
-            <br />
-            With that said; we put a ton of work into building a high quality product, and if there
-            are issues, we'd love to fix them!
-            <br />
-            <br />
             We appreciate you taking the time to help us improve the application so we are able to
             continue raising awareness, and generating support for our comrades in Ukraine.
           </Paragraph>

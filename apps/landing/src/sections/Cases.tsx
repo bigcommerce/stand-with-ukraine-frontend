@@ -22,8 +22,8 @@ const StyledPreview = styled.a`
   }
 
   &:hover {
-    img {
-      transform: scale(1.2);
+    + a {
+      color: #0d52ff;
     }
   }
 
