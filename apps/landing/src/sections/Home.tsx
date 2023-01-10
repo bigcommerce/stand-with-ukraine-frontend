@@ -17,6 +17,7 @@ const StyledSection = styled(Section)`
 const StyledImage = styled.img`
   max-height: 40rem;
   width: auto;
+  height: auto;
   max-width: 100%;
 `;
 
@@ -51,7 +52,7 @@ export const Home = () => (
         </ButtonsContainer>
       </Item>
       <Item flexBasis="50%">
-        <StyledImage alt="stand with ukraine" src={HomeImage} />
+        <StyledImage alt="stand with ukraine" height={547} src={HomeImage} width={400} />
       </Item>
     </Container>
   </StyledSection>

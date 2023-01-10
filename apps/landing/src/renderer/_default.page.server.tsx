@@ -2,6 +2,8 @@ import { renderToString } from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
 import { dangerouslySkipEscape, escapeInject } from 'vite-plugin-ssr';
 
+import HomeImage from '../../public/assets/images/home.webp';
+
 import { getPageTitle } from './getPageTitle';
 import { PageShell } from './PageShell';
 import type { PageContextServer } from './types';
@@ -35,6 +37,8 @@ async function render(pageContext: PageContextServer) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${title}</title>
     <link rel="manifest" href="${import.meta.env.BASE_URL}manifest-landing.json">
+    <link rel="preload" as="image" href="${HomeImage}">
+
     ${dangerouslySkipEscape(sheet.getStyleTags())}
   </head>
   
