@@ -12,6 +12,13 @@ export { render };
 export { passToClient };
 
 const passToClient = ['pageProps', 'documentProps', 'someAsyncProps'];
+const fontsToPreload = [
+  'GothamCond-Bold_Web.woff2',
+  'Gotham-Light_Web.woff2',
+  'Gotham-Book_Web.woff2',
+  'GothamCond-Bold_Web.woff2',
+  'Gotham-Medium_Web.woff2',
+];
 
 async function render(pageContext: PageContextServer) {
   const { Page, pageProps } = pageContext;
@@ -37,8 +44,15 @@ async function render(pageContext: PageContextServer) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${title}</title>
     <link rel="manifest" href="${import.meta.env.BASE_URL}manifest-landing.json">
-    <link rel="preload" as="image" href="${HomeImage}">
-
+    <link rel="preload" href="${HomeImage}" as="image">
+    ${fontsToPreload
+      .map(
+        (font) =>
+          `<link rel="preload" href="${
+            import.meta.env.BASE_URL
+          }fonts/gotham/woff2/${font}" as="font" type="font/woff2" crossorigin>`,
+      )
+      .join('')}
     ${dangerouslySkipEscape(sheet.getStyleTags())}
   </head>
   
