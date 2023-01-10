@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useRef } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
+
 import { breakpoints } from '../../helpers';
 
 import ConfigureWidgetCloseButton from './ConfigureWidgetCloseButton';
