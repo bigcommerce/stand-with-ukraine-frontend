@@ -10,7 +10,7 @@ const StyledItem = styled.div`
   padding: 3rem 1.5rem;
 
   ${ButtonLink} {
-    background-image: linear-gradient(to bottom right, #0d52ff 50%, #fff 0);
+    background-image: linear-gradient(to bottom right, #ffd500 50%, #fff 0);
   }
 
   ${breakpoints.desktop} {
@@ -25,9 +25,7 @@ export const AddWidget = () => (
         Add widget
       </H2>
       <Paragraph color="light" margin="0 0 6rem" size={2} textAlign="center" weight={300}>
-        Please select who you are. We have specific solutions
-        <br />
-        that fits your setup best
+        Please select your platform to quickly add widget to your site
       </Paragraph>
       <Container>
         <Item flexGrow={1}>

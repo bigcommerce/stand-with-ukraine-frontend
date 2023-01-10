@@ -13,11 +13,11 @@ const getBackground = (variant: ButtonProps['variant'] = 'dark') => css`
   background-repeat: no-repeat;
   background-size: 950px 690px;
   background-image: ${variant === 'dark'
-    ? 'linear-gradient(to bottom right,#fff 50%,#121118 0)'
-    : 'linear-gradient(to bottom right,#121118 50%,#fff 0)'};
+    ? 'linear-gradient(to bottom right,#ffd500 50%,#121118 0)'
+    : 'linear-gradient(to bottom right,#ffd500 50%,#fff 0)'};
 
   &:hover {
-    color: ${variant === 'light' ? '#fff' : '#4C4B58'};
+    color: #4c4b58;
     background-position-x: 0;
     background-position-y: 0;
   }
