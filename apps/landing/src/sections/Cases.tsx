@@ -10,7 +10,7 @@ const StyledPreview = styled.a`
   position: relative;
   display: block;
   margin-bottom: 1rem;
-  padding-bottom: 50%;
+  padding-bottom: 56.25%;
   overflow: hidden;
   box-shadow: 0 1.5rem 1.8rem rgb(27 25 34 / 13%);
 
