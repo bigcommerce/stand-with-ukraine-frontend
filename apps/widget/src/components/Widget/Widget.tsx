@@ -81,6 +81,7 @@ export function Widget({ isModalOpen, onClick }: { isModalOpen: boolean; onClick
       <div className={styles.flag} id="swu-widget-flag" />
       <WidgetContent showText={status !== WIDGET_STATUS.COLLAPSED} />
       <button
+        aria-label="close stand with ukraine widget"
         className={getButtonClassNames(status)}
         id="close-swu-widget"
         onClick={handleCloseClick}

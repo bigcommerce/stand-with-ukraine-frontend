@@ -1,6 +1,6 @@
-import BlackWidgetStyle from './BlackStyle.png';
-import BlueWidgetStyle from './BlueStyle.png';
-import WhiteWidgetStyle from './WhiteStyle.png';
+import BlackWidgetStyle from './BlackStyle.webp';
+import BlueWidgetStyle from './BlueStyle.webp';
+import WhiteWidgetStyle from './WhiteStyle.webp';
 
 export function BlueWidget() {
   return <img alt="Blue colored widget" src={BlueWidgetStyle} />;

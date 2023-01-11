@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import WidgetMainImage from '../../../../public/assets/images/home.webp';
 import { ReactComponent as CloseSVG } from '../../../assets/Close.svg';
 import { useAppSelector } from '../../../state/hooks';
 import { RootState } from '../../../state/store';
@@ -75,10 +76,7 @@ export default function PreviewTab() {
       <CloseSVGContainer>
         <CloseSVG />
       </CloseSVGContainer>
-      <HeroImage
-        alt="Protestors standing against war in Ukraine"
-        src={`${import.meta.env.BASE_URL}assets/images/background.png`}
-      />
+      <HeroImage alt="Protestors standing against war in Ukraine" src={WidgetMainImage} />
       {charity_list.map((item, key) => (item ? <PreviewItem key={key} {...item} /> : null))}
     </ModalPreviewBox>
   );
