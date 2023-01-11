@@ -7,7 +7,7 @@ export default function ConfigureWidgetButton() {
     <ConfigureWidgetContext.Consumer>
       {({ setWidgetOpen }) => (
         <Button onClick={() => setWidgetOpen(true)} variant="light">
-          Select
+          Create Widget
         </Button>
       )}
     </ConfigureWidgetContext.Consumer>

@@ -48,6 +48,11 @@ const ContentWrapper = styled.div`
     text-align: left;
     margin: 0.5rem 0;
   }
+
+  & .code {
+    font-weight: 700;
+    font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
+  }
 `;
 
 export default function Content({ published }: { published: boolean }) {
@@ -79,7 +84,11 @@ export default function Content({ published }: { published: boolean }) {
 export function CodeContent() {
   return (
     <ContentWrapper>
-      <p>Your widget is customised. Please copy code and paste in your site code</p>
+      <p>
+        Your custom widget code has been generated. Copy the code below and paste it onto every page
+        of your website. Paste this code anywhere inside the{' '}
+        <span className="code">&lt;body&gt;</span> of the html page.
+      </p>
     </ContentWrapper>
   );
 }

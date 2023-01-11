@@ -4,6 +4,7 @@ const ActionContainer = styled.div`
   & > button,
   & > a {
     margin-top: 1rem;
+    display: inline-block;
   }
 
   ${({ theme }) => theme.breakpoints.tablet} {

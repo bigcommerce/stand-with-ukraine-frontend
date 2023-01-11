@@ -50,7 +50,7 @@ export function CodeHeader() {
   return (
     <Wrapper>
       <Title>Congrats!</Title>
-      <WidgetAdded>Widget Added</WidgetAdded>
+      <WidgetAdded>Widget was created</WidgetAdded>
     </Wrapper>
   );
 }
