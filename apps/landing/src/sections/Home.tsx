@@ -1,6 +1,8 @@
+import { DetailedHTMLProps, ImgHTMLAttributes, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import HomeImage from '../../public/assets/images/home.webp';
+import HomeImagePlaceholderSrc from '../../public/assets/images/home-placeholder.webp';
+import HomeImageSrc from '../../public/assets/images/home.webp';
 import { ButtonLink, Container, H1, Item, Paragraph, Section } from '../components';
 import { breakpoints } from '../helpers';
 
@@ -14,11 +16,21 @@ const StyledSection = styled(Section)`
   }
 `;
 
-const StyledImage = styled.img`
+const HomeImage = styled.img`
   max-height: 40rem;
   width: auto;
   height: auto;
   max-width: 100%;
+
+  &.loading {
+    filter: blur(10px);
+    clip-path: inset(0);
+  }
+
+  &.loaded {
+    filter: blur(0px);
+    transition: filter 0.5s linear;
+  }
 `;
 
 const ButtonsContainer = styled.div`
@@ -36,6 +48,40 @@ const ButtonsContainer = styled.div`
   }
 `;
 
+const ProgressiveImg = ({
+  placeholderSrc,
+  src,
+  ...props
+}: { placeholderSrc?: string } & DetailedHTMLProps<
+  ImgHTMLAttributes<HTMLImageElement>,
+  HTMLImageElement
+>) => {
+  const [imgSrc, setImgSrc] = useState(placeholderSrc || src);
+
+  useEffect(() => {
+    requestIdleCallback(() => {
+      if (src) {
+        const img = new Image();
+
+        img.src = src;
+
+        img.onload = () => {
+          setImgSrc(src);
+        };
+      }
+    });
+  }, [src]);
+
+  return (
+    <HomeImage
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+      {...{ src: imgSrc, ...(props as any) }}
+      alt={props.alt || ''}
+      className={placeholderSrc && imgSrc === placeholderSrc ? 'loading' : 'loaded'}
+    />
+  );
+};
+
 export const Home = () => (
   <StyledSection background="primary" id="home">
     <Container alignItems="center" justifyContent="center">
@@ -52,7 +98,13 @@ export const Home = () => (
         </ButtonsContainer>
       </Item>
       <Item flexBasis="50%">
-        <StyledImage alt="stand with ukraine" height={547} src={HomeImage} width={400} />
+        <ProgressiveImg
+          alt="stand with ukraine"
+          height={400}
+          placeholderSrc={HomeImagePlaceholderSrc}
+          src={HomeImageSrc}
+          width={547}
+        />
       </Item>
     </Container>
   </StyledSection>

@@ -1,5 +1,6 @@
 import { Stepper } from '@bigcommerce/big-design';
 import { useEffect } from 'react';
+import styled from 'styled-components';
 
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { hideFooter, showFooter } from '../../state/mainSlice';
@@ -31,6 +32,15 @@ function StepContent({ currentStep }: { currentStep: number }) {
   }
 }
 
+const tabletBreakpoint = '720px';
+const SetupWrapper = styled.div`
+  @media (max-width: ${tabletBreakpoint}) {
+    & div[role='progressbar'] p[color='secondary70'] {
+      display: none;
+    }
+  }
+`;
+
 export default function Setup() {
   const currentStep = useAppSelector(selectCurrentStep);
   const dispatch = useAppDispatch();
@@ -47,9 +57,9 @@ export default function Setup() {
   }, [dispatch]);
 
   return (
-    <>
+    <SetupWrapper>
       <Stepper currentStep={currentStep} steps={Steps} />
       <StepContent currentStep={currentStep} />
-    </>
+    </SetupWrapper>
   );
 }

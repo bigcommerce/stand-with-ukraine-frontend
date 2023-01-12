@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEventHandler, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import styled from 'styled-components';
 
 import {
@@ -42,61 +42,93 @@ const isCorrectEmail = (email: string) =>
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     );
 
+interface FormData {
+  name: string;
+  message: string;
+  email: string;
+}
+
+const defaultFormData: FormData = { name: '', message: '', email: '' };
+const defaultIsDirty: Record<keyof FormData, boolean> = {
+  name: false,
+  email: false,
+  message: false,
+};
+const defaultErrors: Partial<Record<keyof FormData, string>> = {};
+const defaultIsSubmitted = false;
+
+const validateField = (fieldName: keyof FormData, value: string) => {
+  switch (fieldName) {
+    case 'name':
+    case 'message':
+      return isEmpty(value) ? 'Field is required' : undefined;
+
+    case 'email':
+      return !isCorrectEmail(value) ? 'Please use correct email address' : undefined;
+
+    default:
+      return undefined;
+  }
+};
+
 const useForm = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [data, setData] = useState({ firstNameLastName: '', question: '', email: '' });
-  const [isDirty, setIsDirty] = useState<Record<string, boolean>>({
-    firstNameLastName: false,
-    email: false,
-    question: false,
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitted, setIsSubmitted] = useState(defaultIsSubmitted);
+  const [data, setData] = useState(defaultFormData);
+  const [isDirty, setIsDirty] = useState(defaultIsDirty);
+  const [errors, setErrors] = useState(defaultErrors);
 
-  useEffect(() => {
-    Object.entries(data).forEach(([key, value]) => {
-      switch (true) {
-        case key === 'email' && isEmpty(value):
-        case key === 'firstNameLastName' && isEmpty(value):
-        case key === 'question' && isEmpty(value):
-          setErrors((prevProps) => ({ ...prevProps, [key]: 'Field is required' }));
-          break;
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+      const fieldName = e.target.id as keyof FormData;
+      const value = e.target.value;
 
-        case key === 'email' && !isCorrectEmail(value):
-          setErrors((prevProps) => ({ ...prevProps, [key]: 'Please use correct email address' }));
-          break;
+      setData((prevData) => ({ ...prevData, [fieldName]: value }));
+      setErrors((prevData) => ({ ...prevData, [fieldName]: validateField(fieldName, value) }));
+      setIsDirty((prevData) => ({ ...prevData, [fieldName]: true }));
+    },
+    [setData, setErrors, setIsDirty],
+  );
 
-        default:
-          setErrors(({ [key]: _, ...prevProps }) => prevProps);
-          break;
-      }
-    });
-  }, [data]);
-
-  const handleChange =
-    (name: string) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleSubmit = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      if (!isDirty[name]) {
-        setIsDirty((prevProps) => ({ ...prevProps, [name]: true }));
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+      const formSubmissionQuery = new URLSearchParams(data as any).toString();
+      const resp = await fetch(
+        `${
+          import.meta.env.DEV ? '//localhost:8000' : ''
+        }/api/v2/feedback-form?${formSubmissionQuery}`,
+        {
+          method: 'POST',
+        },
+      );
+
+      if (resp.status === 200) {
+        setIsSubmitted(true);
       }
-
-      setData((prevData) => ({ ...prevData, [name]: e.target.value }));
-    };
-
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-
-    void Promise.resolve().then(() => setIsSubmitted(true));
-  };
+    },
+    [data, setIsSubmitted],
+  );
 
   const isDisabled =
-    Object.values(data).every((value) => isEmpty(value)) || Object.keys(errors).length > 0;
+    Object.values(data).every((value) => isEmpty(value)) ||
+    Object.values(errors).some((error) => error !== undefined);
 
-  return { data, errors, isDisabled, isDirty, isSubmitted, handleChange, handleSubmit };
+  const resetForm = useCallback(() => {
+    setData(defaultFormData);
+    setErrors(defaultErrors);
+    setIsDirty(defaultIsDirty);
+    setIsSubmitted(defaultIsSubmitted);
+  }, [setData, setErrors, setIsDirty, setIsSubmitted]);
+
+  return { data, errors, isDisabled, isDirty, isSubmitted, resetForm, handleChange, handleSubmit };
 };
 
 export const Contacts = () => {
-  const { errors, isDirty, isDisabled, data, handleChange, handleSubmit } = useForm();
+  const { errors, isDirty, isSubmitted, isDisabled, data, resetForm, handleChange, handleSubmit } =
+    useForm();
 
   return (
     <Section background="primary" id="contacts">
@@ -110,36 +142,50 @@ export const Contacts = () => {
         </Item>
         <StyledForm flexBasis="50%">
           <H4>Contact form</H4>
-          <Paragraph color="gray" margin="0 0 5rem">
-            Describe your question below
-          </Paragraph>
-          <form onSubmit={handleSubmit}>
-            <Input
-              error={isDirty.firstNameLastName ? errors.firstNameLastName : undefined}
-              label="First and Last name"
-              onChange={handleChange('firstNameLastName')}
-              required
-              value={data.firstNameLastName}
-            />
-            <Input
-              error={isDirty.email ? errors.email : undefined}
-              label="Email"
-              onChange={handleChange('email')}
-              required
-              value={data.email}
-            />
-            <Textarea
-              error={isDirty.question ? errors.question : undefined}
-              label="Your question or comment"
-              onChange={handleChange('question')}
-              required
-              rows={10}
-              value={data.question}
-            />
-            <Button disabled={isDisabled} type="submit">
-              Submit
-            </Button>
-          </form>
+          {isSubmitted ? (
+            <>
+              <Paragraph color="gray" margin="0 0 3rem">
+                Thank you for your submission
+              </Paragraph>
+              <Button onClick={resetForm}>Reset</Button>
+            </>
+          ) : (
+            <>
+              <Paragraph color="gray" margin="0 0 3rem">
+                Describe your question below
+              </Paragraph>
+              <form onSubmit={handleSubmit}>
+                <Input
+                  error={isDirty.name ? errors.name : undefined}
+                  id="name"
+                  label="First and Last name"
+                  onChange={handleChange}
+                  required
+                  value={data.name}
+                />
+                <Input
+                  error={isDirty.email ? errors.email : undefined}
+                  id="email"
+                  label="Email"
+                  onChange={handleChange}
+                  required
+                  value={data.email}
+                />
+                <Textarea
+                  error={isDirty.message ? errors.message : undefined}
+                  id="message"
+                  label="Your question or comment"
+                  onChange={handleChange}
+                  required
+                  rows={10}
+                  value={data.message}
+                />
+                <Button disabled={isDisabled} type="submit">
+                  Submit
+                </Button>
+              </form>
+            </>
+          )}
         </StyledForm>
       </Container>
     </Section>

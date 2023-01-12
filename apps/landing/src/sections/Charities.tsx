@@ -66,7 +66,7 @@ const StyledParagraph = styled(Paragraph)`
 export const CharityElement = ({ logoProps, name, description, donationLink }: Charity) => (
   <Item flexBasis="33%">
     <StyledPreview>
-      <img alt={logoProps.alt} loading="lazy" src={logoProps.src} />
+      <img alt={logoProps.alt} className="lazyload" data-src={logoProps.src} />
     </StyledPreview>
     <StyledContent>
       <H5 color="light">{name}</H5>
@@ -75,7 +75,7 @@ export const CharityElement = ({ logoProps, name, description, donationLink }: C
       </StyledParagraph>
       <StyledLink href={donationLink}>
         Learn more
-        <img alt="arrow icon" loading="lazy" src={ArrowSVG} />
+        <img alt="arrow icon" className="lazyload" data-src={ArrowSVG} />
       </StyledLink>
     </StyledContent>
   </Item>

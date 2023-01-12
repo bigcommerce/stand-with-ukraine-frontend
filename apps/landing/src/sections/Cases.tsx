@@ -56,7 +56,11 @@ export const Cases = () => (
     <Container>
       <Item flexGrow={1}>
         <StyledPreview href="https://barnmansion.com/" target="_blank">
-          <img alt="barnmansion.com screenshot" loading="lazy" src={BarnmansionScreenshot} />
+          <img
+            alt="barnmansion.com screenshot"
+            className="lazyload"
+            data-src={BarnmansionScreenshot}
+          />
         </StyledPreview>
         <StyledLink href="https://barnmansion.com/" target="_blank">
           barnmansion.com
@@ -64,7 +68,11 @@ export const Cases = () => (
       </Item>
       <Item flexGrow={1}>
         <StyledPreview href="https://mybeautymart.com/" target="_blank">
-          <img alt="mybeautymart.com screenshot" loading="lazy" src={MybeautymartScreenshot} />
+          <img
+            alt="mybeautymart.com screenshot"
+            className="lazyload"
+            data-src={MybeautymartScreenshot}
+          />
         </StyledPreview>
         <StyledLink href="https://mybeautymart.com/" target="_blank">
           mybeautymart.com
@@ -72,7 +80,11 @@ export const Cases = () => (
       </Item>
       <Item flexGrow={1}>
         <StyledPreview href="https://benchandchisel.com/" target="_blank">
-          <img alt="benchandchisel.com screenshot" loading="lazy" src={BenchandchiselScreenshot} />
+          <img
+            alt="benchandchisel.com screenshot"
+            className="lazyload"
+            data-src={BenchandchiselScreenshot}
+          />
         </StyledPreview>
         <StyledLink href="https://benchandchisel.com/" target="_blank">
           benchandchisel.com

@@ -6,6 +6,7 @@ export const clientRouting = true;
 export const hydrationCanBeAborted = true;
 
 import { createRoot, hydrateRoot, Root } from 'react-dom/client';
+import 'lazysizes';
 
 import { getPageTitle } from './getPageTitle';
 import { PageShell } from './PageShell';
