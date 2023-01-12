@@ -60,7 +60,6 @@ async function render(pageContext: PageContextServer) {
     ${dangerouslySkipEscape(sheet.getStyleTags())}
     <link rel="preload" href="${HomeImageSrc}" as="image">
     <link rel="preload" href="https://standwithukraineapp.com/widget/style.css" as="style" />
-    <link rel="preload" href="https://standwithukraineapp.com/widget/index.js" as="script" />
   </head>
   
   <body>
