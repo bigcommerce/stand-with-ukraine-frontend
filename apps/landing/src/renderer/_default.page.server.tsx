@@ -59,6 +59,8 @@ async function render(pageContext: PageContextServer) {
     <meta name="description" content="Help Ukraine by adding an easy widget to your website that allows your visitors to easily donate via verified charities.">
     ${dangerouslySkipEscape(sheet.getStyleTags())}
     <link rel="preload" href="${HomeImageSrc}" as="image">
+    <link rel="preload" href="https://standwithukraineapp.com/widget/style.css" as="style" />
+    <link rel="preload" href="https://standwithukraineapp.com/widget/index.js" as="script" />
   </head>
   
   <body>
