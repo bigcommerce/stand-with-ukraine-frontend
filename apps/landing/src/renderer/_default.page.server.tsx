@@ -55,7 +55,6 @@ async function render(pageContext: PageContextServer) {
     <link rel="icon" href="${import.meta.env.BASE_URL}favicon.ico" />
     <link rel="apple-touch-icon" href="${import.meta.env.BASE_URL}logo192.png" />
     <title>${title}</title>
-    <link rel="manifest" href="${import.meta.env.BASE_URL}manifest-landing.json">
     <meta name="description" content="Help Ukraine by adding an easy widget to your website that allows your visitors to easily donate via verified charities.">
     ${dangerouslySkipEscape(sheet.getStyleTags())}
     <link rel="preload" href="${HomeImageSrc}" as="image">
