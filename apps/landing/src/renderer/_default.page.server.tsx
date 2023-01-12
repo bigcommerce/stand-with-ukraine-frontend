@@ -2,7 +2,8 @@ import { renderToString } from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
 import { dangerouslySkipEscape, escapeInject } from 'vite-plugin-ssr';
 
-import HomeImage from '../../public/assets/images/home.webp';
+import HomeImagePlaceholderSrc from '../../public/assets/images/home-placeholder.webp';
+import HomeImageSrc from '../../public/assets/images/home.webp';
 
 import { getPageTitle } from './getPageTitle';
 import { PageShell } from './PageShell';
@@ -13,11 +14,11 @@ export { passToClient };
 
 const passToClient = ['pageProps', 'documentProps', 'someAsyncProps'];
 const fontsToPreload = [
-  'Gotham-Bold_Web.woff2',
   'Gotham-Light_Web.woff2',
   'Gotham-Book_Web.woff2',
-  'GothamCond-Bold_Web.woff2',
+  'Gotham-Bold_Web.woff2',
   'Gotham-Medium_Web.woff2',
+  'GothamCond-Bold_Web.woff2',
 ];
 
 async function render(pageContext: PageContextServer) {
@@ -39,12 +40,7 @@ async function render(pageContext: PageContextServer) {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="${import.meta.env.BASE_URL}favicon.ico" />
-    <link rel="apple-touch-icon" href="${import.meta.env.BASE_URL}logo192.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${title}</title>
-    <link rel="manifest" href="${import.meta.env.BASE_URL}manifest-landing.json">
-    <link rel="preload" href="${HomeImage}" as="image">
     ${dangerouslySkipEscape(
       fontsToPreload
         .map(
@@ -53,10 +49,16 @@ async function render(pageContext: PageContextServer) {
               import.meta.env.BASE_URL
             }fonts/gotham/woff2/${font}" as="font" type="font/woff2" crossorigin>`,
         )
-        .join(''),
+        .join('\n'),
     )}
-    ${dangerouslySkipEscape(sheet.getStyleTags())}
+    <link rel="preload" href="${HomeImagePlaceholderSrc}" as="image">
+    <link rel="icon" href="${import.meta.env.BASE_URL}favicon.ico" />
+    <link rel="apple-touch-icon" href="${import.meta.env.BASE_URL}logo192.png" />
+    <title>${title}</title>
+    <link rel="manifest" href="${import.meta.env.BASE_URL}manifest-landing.json">
     <meta name="description" content="Help Ukraine by adding an easy widget to your website that allows your visitors to easily donate via verified charities.">
+    ${dangerouslySkipEscape(sheet.getStyleTags())}
+    <link rel="preload" href="${HomeImageSrc}" as="image">
   </head>
   
   <body>
