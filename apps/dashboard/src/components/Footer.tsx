@@ -129,6 +129,7 @@ function useFooter() {
   }, [dispatch, navigate, widgetConfiguration, installerType]);
 
   return {
+    installerType,
     show,
     cancelButton,
     backButton,
@@ -143,6 +144,7 @@ function useFooter() {
 
 export default function Footer() {
   const {
+    installerType,
     show,
     cancelButton,
     backButton,
@@ -175,7 +177,11 @@ export default function Footer() {
             onClick={handleContinueButton}
             text="Continue"
           />
-          <FooterButton buttonState={publishButton} onClick={handlePublishButton} text="Publish" />
+          <FooterButton
+            buttonState={publishButton}
+            onClick={handlePublishButton}
+            text={installerType === 'bigcommerce' ? 'Publish' : 'Create Widget'}
+          />
         </ButtonContainer>
       </FooterDiv>
     );
