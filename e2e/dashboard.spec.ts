@@ -91,7 +91,7 @@ test('configure and publish widget - universal', async ({ page }) => {
   await page.getByRole('button', { name: 'Continue' }).click();
   await page.getByRole('button', { name: 'Continue' }).click();
   await page.getByRole('button', { name: 'Continue' }).click();
-  await page.getByRole('button', { name: 'Publish' }).click();
+  await page.getByRole('button', { name: 'Create Widget' }).click();
 
   // Expect to be on code page
   await expect(page).toHaveURL('http://localhost:3000/dashboard/#/code');
