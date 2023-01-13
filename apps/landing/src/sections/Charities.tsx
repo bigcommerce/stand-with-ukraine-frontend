@@ -4,6 +4,10 @@ import { A11y, Autoplay, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import ArrowSVG from '../../public/assets/images/arrow.svg';
+import MiraActionSrc from '../../public/assets/images/mira-action.webp';
+import NewUkraineSrc from '../../public/assets/images/new-ukraine.webp';
+import RazomSrc from '../../public/assets/images/razom.webp';
+import UnicefSrc from '../../public/assets/images/unicef.webp';
 import { Container, H1, H5, Item, Paragraph, Section } from '../components';
 
 const charities = [
@@ -11,7 +15,7 @@ const charities = [
     id: 'razom',
     logoProps: {
       alt: 'Razom logo',
-      src: 'assets/images/razom.webp',
+      src: RazomSrc,
     },
     name: 'Razom',
     description:
@@ -22,7 +26,7 @@ const charities = [
     id: 'unicef',
     logoProps: {
       alt: 'UNICEF logo',
-      src: 'assets/images/unicef.webp',
+      src: UnicefSrc,
     },
     name: 'UNICEF',
     description:
@@ -33,7 +37,7 @@ const charities = [
     id: 'mira-action',
     logoProps: {
       alt: 'Mira Action logo',
-      src: 'assets/images/mira-action.webp',
+      src: MiraActionSrc,
     },
     name: 'Mira Action',
     description:
@@ -44,7 +48,7 @@ const charities = [
     id: 'new-ukraine',
     logoProps: {
       alt: 'New Ukraine logo',
-      src: 'assets/images/new-ukraine.webp',
+      src: NewUkraineSrc,
     },
     name: 'New Ukraine',
     description:
