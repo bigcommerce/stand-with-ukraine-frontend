@@ -7,6 +7,7 @@
   border-radius: 8px;
   box-shadow: 0 10px 12px rgba(31, 38, 41, 0.16);
   font-family: 'Arial', sans-serif;
+  letter-spacing: normal;
   z-index: 10001;
   box-sizing: border-box;
   cursor: pointer;
@@ -35,6 +36,7 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 24px;
+    letter-spacing: normal;
   }
 
   .button {
@@ -89,6 +91,7 @@
     font-family: 'Arial', sans-serif;
     font-size: 16px;
     font-weight: 400;
+    letter-spacing: normal;
     cursor: pointer;
     color: currentColor;
 

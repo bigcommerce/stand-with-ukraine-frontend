@@ -43,12 +43,14 @@
     font-family: 'Arial', sans-serif;
     font-size: 16px;
     line-height: 24px;
+    letter-spacing: normal;
     color: #313440;
   }
 
   a {
     font-family: 'Arial', sans-serif;
     color: #005bbb;
+    letter-spacing: normal;
     text-decoration: none;
     transition: color 0.2s ease;
 
@@ -69,6 +71,7 @@
     text-decoration: none;
     font-family: 'Arial', sans-serif;
     font-size: 16px;
+    letter-spacing: normal;
     transition: color 0.2s ease, background-color 0.2s ease;
 
     &:hover {
