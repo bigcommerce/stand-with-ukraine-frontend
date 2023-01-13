@@ -17,7 +17,7 @@ import { breakpoints } from '../helpers';
 const StyledForm = styled(Item)`
   background-color: #fff;
   border-top: 0.5rem solid #121118;
-  box-shadow: 0px 0px 50px rgba(18, 17, 24, 0.1);
+  box-shadow: 0 0 5rem rgba(18, 17, 24, 0.1);
   padding: 3rem 2rem;
 
   ${Button} {
@@ -31,6 +31,11 @@ const StyledForm = styled(Item)`
   ${breakpoints.desktop} {
     padding: 6rem 5rem;
   }
+`;
+
+const StyledParagraph = styled(Paragraph)`
+  font-weight: 100;
+  line-height: 2.7rem;
 `;
 
 const isEmpty = (value: string) => value.length === 0;
@@ -135,10 +140,10 @@ export const Contacts = () => {
       <Container>
         <Item flexBasis="50%">
           <H2 color="light">Contact us</H2>
-          <Paragraph color="light" size={1.7}>
+          <StyledParagraph color="light" size={1.7}>
             We appreciate you taking the time to help us improve the application so we are able to
             continue raising awareness, and generating support for our comrades in Ukraine.
-          </Paragraph>
+          </StyledParagraph>
         </Item>
         <StyledForm flexBasis="50%">
           <H4>Contact form</H4>
