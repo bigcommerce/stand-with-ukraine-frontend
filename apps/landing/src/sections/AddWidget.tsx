@@ -35,7 +35,9 @@ export const AddWidget = () => (
               You will be redirected to BigСommerce app store with all detailed information.
             </Paragraph>
             <ButtonLink
-              href="https://login.bigcommerce.com/deep-links/marketplace/apps/38603"
+              href="https://www.bigcommerce.com/apps/stand-with-ukraine/"
+              rel="noreferrer"
+              target="_blank"
               variant="light"
             >
               Select

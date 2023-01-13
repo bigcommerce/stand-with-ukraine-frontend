@@ -27,7 +27,7 @@ const TeamList: TeamMember[] = [
   {
     photo: 'assets/images/team/Bohdan.webp',
     name: 'Bohdan Hodzenko',
-    title: 'Designer',
+    title: 'Product manager/designer',
   },
   {
     photo: 'assets/images/team/Micah.webp',

@@ -1,4 +1,3 @@
-import { GetCharities } from 'config/charities';
 import { Charity } from 'config/types';
 import styled from 'styled-components';
 import { A11y, Autoplay, Pagination } from 'swiper';
@@ -6,6 +5,53 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import ArrowSVG from '../../public/assets/images/arrow.svg';
 import { Container, H1, H5, Item, Paragraph, Section } from '../components';
+
+const charities = [
+  {
+    id: 'razom',
+    logoProps: {
+      alt: 'Razom logo',
+      src: 'assets/images/razom.webp',
+    },
+    name: 'Razom',
+    description:
+      'Razom, which means “together” in Ukrainian is providing critical humanitarian aid and recovery devices for Ukrainian people. We are focused on delivering medicine items, hospital supplies, and tech enabled emergency response supplies that facilitate the delivery of this aid. We send on average more than 70 pallets of aid to Ukraine each week. In the first month of the war, we shipped over 218 tons of supplies.',
+    donationLink: 'https://www.razomforukraine.org/',
+  },
+  {
+    id: 'unicef',
+    logoProps: {
+      alt: 'UNICEF logo',
+      src: 'assets/images/unicef.webp',
+    },
+    name: 'UNICEF',
+    description:
+      'UNICEF is providing life-saving help to children inside Ukraine and in neighboring countries. This includes: \n- Providing lifesaving supplies such as water and hygiene kits, medicines, warm clothes and blanket \n- First-aid kits, surgical kits, and oxygen concentrators to those affected by the violence.',
+    donationLink: 'https://help.unicef.org/ukraine-emergency',
+  },
+  {
+    id: 'mira-action',
+    logoProps: {
+      alt: 'Mira Action logo',
+      src: 'assets/images/mira-action.webp',
+    },
+    name: 'Mira Action',
+    description:
+      'Mira Action is a California-based non-profit organization buying and delivering ambulances, medicines, and humanitarian supplies to Ukraine hospitals. We are a team of 20+ volunteers located in California, Poland, and Ukraine running logistics and delivery supply routes and working with hospitals in Central and Eastern Ukraine.',
+    donationLink: 'https://miraaction.org/',
+  },
+  {
+    id: 'new-ukraine',
+    logoProps: {
+      alt: 'New Ukraine logo',
+      src: 'assets/images/new-ukraine.webp',
+    },
+    name: 'New Ukraine',
+    description:
+      "Nova Ukraine is a registered nonprofit organization dedicated to providing humanitarian aid to Ukraine and raising awareness about Ukraine in the United States as well as in the rest of the world. Through your generous donations, we fund a variety of efforts to help the people of Ukraine and to strengthen Ukraine's democratic society.",
+    donationLink: 'https://novaukraine.org/',
+  },
+];
 
 const StyledPreview = styled.div`
   align-items: center;
@@ -69,11 +115,11 @@ export const CharityElement = ({ logoProps, name, description, donationLink }: C
       <img alt={logoProps.alt} className="lazyload" data-src={logoProps.src} />
     </StyledPreview>
     <StyledContent>
-      <H5 color="light">{name}</H5>
+      x<H5 color="light">{name}</H5>
       <StyledParagraph color="light" margin="0 0 3rem" weight={300}>
         {description}
       </StyledParagraph>
-      <StyledLink href={donationLink}>
+      <StyledLink href={donationLink} rel="noreferrer" target="_blank">
         Learn more
         <img alt="arrow icon" className="lazyload" data-src={ArrowSVG} />
       </StyledLink>
@@ -106,7 +152,7 @@ export const Charities = () => (
         }}
         spaceBetween={30}
       >
-        {GetCharities(import.meta.env.BASE_URL).map((charity, idx) => (
+        {charities.map((charity, idx) => (
           <SwiperSlide key={idx}>
             <CharityElement {...charity} />
           </SwiperSlide>

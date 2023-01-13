@@ -4,7 +4,8 @@ import { ButtonLink, Container, H2, Item, Section } from '../components';
 import Video from '../components/Video';
 
 const StyledOl = styled.ol`
-  margin: 0;
+  flex-grow: 1;
+  margin: 0 0 2rem;
   padding: 0;
   counter-reset: count;
 
@@ -16,7 +17,7 @@ const StyledOl = styled.ol`
     list-style-type: none;
     line-height: 2.7rem;
     margin-bottom: 4rem;
-    padding-left: 6rem;
+    padding-left: 5rem;
     text-transform: uppercase;
 
     &::before {
@@ -30,7 +31,21 @@ const StyledOl = styled.ol`
       line-height: 7.2rem;
       vertical-align: text-top;
     }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
+`;
+
+const StyledItem = styled(Item)`
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledContainer = styled(Container)`
+  gap: 7.6rem;
 `;
 
 export const HowItWorks = () => (
@@ -38,7 +53,7 @@ export const HowItWorks = () => (
     <H2 margin="0 0 6rem" textAlign="center">
       How it works
     </H2>
-    <Container>
+    <StyledContainer>
       <Item flexBasis="67%">
         <Video
           sources={[
@@ -49,7 +64,7 @@ export const HowItWorks = () => (
           ]}
         />
       </Item>
-      <Item flexBasis="33%">
+      <StyledItem flexBasis="33%">
         <StyledOl>
           <li>Design custom widget in 2 mins</li>
           <li>Copy widget code to your website</li>
@@ -58,7 +73,7 @@ export const HowItWorks = () => (
         <ButtonLink href="#add-widget" variant="dark">
           Add widget
         </ButtonLink>
-      </Item>
-    </Container>
+      </StyledItem>
+    </StyledContainer>
   </Section>
 );
