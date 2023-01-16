@@ -55,11 +55,11 @@ export const Stats = () => (
         </li>
         <li>
           <strong>{'>90%'}</strong>
-          of Ukrainians has electricity and water outages everyday
+          of Ukrainians have electricity and water outages everyday
         </li>
         <li>
           <strong>{'>8 000 000'}</strong>
-          people had to leave their home
+          people had to leave their homes
         </li>
       </StyledList>
     </Container>
