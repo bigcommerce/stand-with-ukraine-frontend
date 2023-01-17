@@ -48,6 +48,14 @@ const ButtonsContainer = styled.div`
   }
 `;
 
+const waitForIdle = (cb: () => void) => {
+  if (window.requestIdleCallback !== undefined) {
+    requestIdleCallback(cb);
+  } else {
+    setTimeout(cb, 1);
+  }
+};
+
 const ProgressiveImg = ({
   placeholderSrc,
   src,
@@ -59,7 +67,7 @@ const ProgressiveImg = ({
   const [imgSrc, setImgSrc] = useState(placeholderSrc || src);
 
   useEffect(() => {
-    requestIdleCallback(() => {
+    waitForIdle(() => {
       if (src) {
         const img = new Image();
 
