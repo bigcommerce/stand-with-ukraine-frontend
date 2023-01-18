@@ -12,9 +12,6 @@ import {
   Team,
 } from '../sections';
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-
 export default { Page };
 
 function Page() {

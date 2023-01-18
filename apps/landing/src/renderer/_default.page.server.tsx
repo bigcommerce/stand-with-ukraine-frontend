@@ -1,10 +1,13 @@
 import { renderToString } from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
+import SwiperPaginationCss from 'swiper/css/pagination?raw';
+import SwiperCss from 'swiper/css?raw';
 import { dangerouslySkipEscape, escapeInject } from 'vite-plugin-ssr';
 
 import HomeImagePlaceholderSrc from '../../public/assets/images/home-placeholder.webp';
 import HomeImageSrc from '../../public/assets/images/home.webp';
 
+import { Fonts } from './fonts';
 import { getPageTitle } from './getPageTitle';
 import { PageShell } from './PageShell';
 import type { PageContextServer } from './types';
@@ -13,13 +16,6 @@ export { render };
 export { passToClient };
 
 const passToClient = ['pageProps', 'documentProps', 'someAsyncProps'];
-const fontsToPreload = [
-  'Gotham-Light_Web.woff2',
-  'Gotham-Book_Web.woff2',
-  'Gotham-Bold_Web.woff2',
-  'Gotham-Medium_Web.woff2',
-  'GothamCond-Bold_Web.woff2',
-];
 
 async function render(pageContext: PageContextServer) {
   const { Page, pageProps } = pageContext;
@@ -29,6 +25,7 @@ async function render(pageContext: PageContextServer) {
     sheet.collectStyles(
       <PageShell pageContext={pageContext}>
         <Page {...pageProps} />
+        <Fonts />
       </PageShell>,
     ),
   );
@@ -41,22 +38,13 @@ async function render(pageContext: PageContextServer) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    ${dangerouslySkipEscape(
-      fontsToPreload
-        .map(
-          (font) =>
-            `<link rel="preload" href="${
-              import.meta.env.BASE_URL
-            }fonts/gotham/woff2/${font}" as="font" type="font/woff2" crossorigin>`,
-        )
-        .join('\n'),
-    )}
     <link rel="preload" href="${HomeImagePlaceholderSrc}" as="image">
     <link rel="icon" href="${import.meta.env.BASE_URL}favicon.ico" />
     <link rel="apple-touch-icon" href="${import.meta.env.BASE_URL}logo192.png" />
     <title>${title}</title>
     <meta name="description" content="Help Ukraine by adding an easy widget to your website that allows your visitors to easily donate via verified charities.">
     ${dangerouslySkipEscape(sheet.getStyleTags())}
+    ${dangerouslySkipEscape(`<style>${SwiperCss}${SwiperPaginationCss}</style>`)}
     <link rel="preload" href="${HomeImageSrc}" as="image">
     <link rel="preload" href="https://standwithukraineapp.com/widget/style.css" as="style" />
   </head>

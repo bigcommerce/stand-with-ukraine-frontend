@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 
-import { Fonts, GlobalStyles, NormalizeStyles, SliderOverrides } from '../globalStyles';
+import { GlobalStyles, NormalizeStyles, SliderOverrides } from '../globalStyles';
 
 import type { PageContext } from './types';
 import { PageContextProvider } from './usePageContext';
@@ -17,7 +17,6 @@ function PageShell({
   return (
     <StrictMode>
       <PageContextProvider pageContext={pageContext}>
-        <Fonts />
         <NormalizeStyles />
         <GlobalStyles />
         <SliderOverrides />
