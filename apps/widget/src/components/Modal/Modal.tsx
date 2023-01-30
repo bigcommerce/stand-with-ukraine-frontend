@@ -1,3 +1,4 @@
+import { Charity } from 'config/types';
 import { h } from 'preact';
 
 import { CHARITIES, MODAL } from '../../constants';
@@ -9,9 +10,12 @@ const getSelectedListOfCharities = () => {
   const keys = MODAL.charities;
 
   if (keys && Array.isArray(keys)) {
-    const nextList = CHARITIES.filter(({ id }) => keys.includes(id));
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    const selectedCharities = keys
+      .map((key) => CHARITIES.find(({ id }) => key === id))
+      .filter(Boolean) as Charity[];
 
-    return nextList.length > 0 ? nextList : CHARITIES;
+    return selectedCharities.length > 0 ? selectedCharities : CHARITIES;
   }
 
   return CHARITIES;

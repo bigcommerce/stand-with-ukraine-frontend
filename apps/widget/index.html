@@ -16,7 +16,10 @@
     // use mock api to get current configuration and store in global variable
     fetch("/api/v1/configuration", {
       "method": "GET",
-      "mode": "cors"
+      "mode": "cors",
+      "headers": {
+        "authorization": "Bearer test.test.test"
+      }
     }).then(resp => resp.json()).then((data) => {
       window.SWU_CONFIG = data;
       window.SWU_CONFIG.store_hash = 'test-store'

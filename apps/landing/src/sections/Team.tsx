@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { A11y, Autoplay, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import VideoThumbnail from '../../public/assets/videos/team/thumbnail.webp';
 import { Container, H1, Item, Paragraph, Section } from '../components';
 import Video from '../components/Video';
 
@@ -83,7 +84,7 @@ export const Team = () => (
     <Container>
       <Item flexBasis="67%">
         <Video
-          poster="assets/videos/team/thumbnail.webp"
+          poster={VideoThumbnail}
           sources={[
             {
               url: 'assets/videos/team/1080p.webm',

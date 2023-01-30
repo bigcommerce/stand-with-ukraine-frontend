@@ -6,7 +6,7 @@ const hostname = 'localhost';
 const testToken = 'test.test.test';
 
 const app = express();
-app.use('/*', (req, res, next) => {
+app.use('/api/v1/*', (req, res, next) => {
   if (req.headers.authorization === `Bearer ${testToken}`) {
     next();
   } else {

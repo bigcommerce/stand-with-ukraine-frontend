@@ -7,11 +7,7 @@ export default function Video({
 }) {
   return (
     /* eslint-disable-next-line jsx-a11y/media-has-caption */
-    <video
-      controls
-      poster={poster ? `${import.meta.env.BASE_URL}${poster}` : undefined}
-      width="100%"
-    >
+    <video controls poster={poster} width="100%">
       {sources.map((source, idx) => (
         <source key={idx} src={`${import.meta.env.BASE_URL}${source.url}`} type={source.type} />
       ))}

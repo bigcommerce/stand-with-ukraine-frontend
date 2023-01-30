@@ -21,12 +21,12 @@ test('configure and publish widget - bigcommerce', async ({ page }) => {
   await page.getByRole('button', { name: 'Continue' }).click();
 
   // Charity
-  await expect(page.locator('input#unicef')).toBeDisabled();
+  await expect(page.locator('input#new-ukraine')).toBeDisabled();
   await page.locator('label[for=razom]').click();
-  await expect(page.locator('input#unicef')).not.toBeDisabled();
-  await page.locator('label[for=unicef]').click();
+  await expect(page.locator('input#new-ukraine')).not.toBeDisabled();
+  await page.locator('label[for=new-ukraine]').click();
   await expect(page.locator('input#razom')).toBeDisabled();
-  await page.locator('label[for=unicef]').click();
+  await page.locator('label[for=new-ukraine]').click();
   await page.locator('label[for=razom]').click();
   await page.getByRole('button', { name: 'Continue' }).click();
 

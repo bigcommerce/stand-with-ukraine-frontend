@@ -57,7 +57,7 @@ async function render(pageContext: PageContextServer) {
         "placement": "bottom-right",
         "charity_selections": [
           "razom",
-          "new-ukraine",
+          "unicef",
           "mira-action"
         ],
         "modal_title": "Help the people of Ukraine!",
