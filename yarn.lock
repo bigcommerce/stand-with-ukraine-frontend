@@ -1336,14 +1336,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/preact@npm:^3.2.2":
-  version: 3.2.2
-  resolution: "@testing-library/preact@npm:3.2.2"
+"@testing-library/preact@npm:^3.2.3":
+  version: 3.2.3
+  resolution: "@testing-library/preact@npm:3.2.3"
   dependencies:
     "@testing-library/dom": ^8.11.1
   peerDependencies:
     preact: ">=10 || ^10.0.0-alpha.0 || ^10.0.0-beta.0"
-  checksum: d4186388cfcaaf6c2d805bea7b5121f085063807ed765d6810f64564daf849ffeeca1be477287442a30d391e9d9f3d2ff14a9bd2c53c8c604fd4fc11a53fc594
+  checksum: 9fe7c485a2ecf6d8c0acb6074190d446ccc6468088891f592fcd1676532ec6fcd1b103bdacc22d1df215295eb5241e785c05bc011d6beaf7f80490bb274fef16
   languageName: node
   linkType: hard
 
@@ -8431,7 +8431,7 @@ __metadata:
   resolution: "widget@workspace:apps/widget"
   dependencies:
     "@preact/preset-vite": ^2.5.0
-    "@testing-library/preact": ^3.2.2
+    "@testing-library/preact": ^3.2.3
     "@types/node": ^18.11.18
     "@vitejs/plugin-react": ^3.0.1
     "@vitest/coverage-istanbul": ^0.27.0
