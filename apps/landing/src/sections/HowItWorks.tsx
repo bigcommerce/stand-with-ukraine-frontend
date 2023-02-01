@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import VideoThumbnail from '../../public/assets/videos/how-to/thumbnail.webp';
 import { ButtonLink, Container, H2, Item, Section } from '../components';
 import Video from '../components/Video';
 
@@ -56,10 +57,15 @@ export const HowItWorks = () => (
     <StyledContainer>
       <Item flexBasis="67%">
         <Video
+          poster={VideoThumbnail}
           sources={[
             {
-              url: 'assets/videos/video.webm',
+              url: 'assets/videos/how-to/1080p.webm',
               type: 'video/webm',
+            },
+            {
+              url: 'assets/videos/how-to/1080p.mp4',
+              type: 'video/mp4',
             },
           ]}
         />
