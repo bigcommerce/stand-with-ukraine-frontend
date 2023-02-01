@@ -26,7 +26,7 @@
     "tsconfig": "*",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
-    "vite-plugin-istanbul": "^3.0.4",
+    "vite-plugin-istanbul": "^4.0.0",
     "vitest": "^0.27.0",
     "vitest-fetch-mock": "^0.2.1"
   }
