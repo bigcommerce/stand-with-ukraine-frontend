@@ -18,15 +18,23 @@ const StyledItem = styled.div`
   }
 `;
 
+const StyledParagraph = styled(Paragraph)`
+  margin-bottom: 3rem;
+
+  ${breakpoints.desktop} {
+    margin-bottom: 6rem;
+  }
+`;
+
 export const AddWidget = () => (
   <ConfigureWidgetFrame>
     <Section background="primary" id="add-widget">
       <H2 color="light" margin="0 0 3rem" textAlign="center">
         Add widget
       </H2>
-      <Paragraph color="light" margin="0 0 6rem" size={2} textAlign="center" weight={300}>
+      <StyledParagraph color="light" margin="0 0 6rem" size={2} textAlign="center" weight={300}>
         Please select your platform to quickly add widget to your site
-      </Paragraph>
+      </StyledParagraph>
       <Container>
         <Item flexGrow={1}>
           <StyledItem>

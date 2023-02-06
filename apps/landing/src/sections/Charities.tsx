@@ -9,6 +9,7 @@ import NewUkraineSrc from '../../public/assets/images/new-ukraine.webp';
 import RazomSrc from '../../public/assets/images/razom.webp';
 import UnicefSrc from '../../public/assets/images/unicef.webp';
 import { Container, H1, H5, Item, Paragraph, Section } from '../components';
+import { breakpoints } from '../helpers';
 
 const charities = [
   {
@@ -113,13 +114,21 @@ const StyledParagraph = styled(Paragraph)`
   overflow: hidden;
 `;
 
+const StyledH1 = styled(H1)`
+  margin-bottom: 2rem;
+
+  ${breakpoints.desktop} {
+    margin-bottom: 6rem;
+  }
+`;
+
 export const CharityElement = ({ logoProps, name, description, donationLink }: Charity) => (
   <Item flexBasis="33%">
     <StyledPreview>
       <img alt={logoProps.alt} className="lazyload" data-src={logoProps.src} />
     </StyledPreview>
     <StyledContent>
-      x<H5 color="light">{name}</H5>
+      <H5 color="light">{name}</H5>
       <StyledParagraph color="light" margin="0 0 3rem" weight={300}>
         {description}
       </StyledParagraph>
@@ -133,9 +142,9 @@ export const CharityElement = ({ logoProps, name, description, donationLink }: C
 
 export const Charities = () => (
   <Section id="charities">
-    <H1 margin="0 0 6rem" textAlign="center">
+    <StyledH1 margin="0 0 6rem" textAlign="center">
       Charities
-    </H1>
+    </StyledH1>
     <Container flexDirection="row">
       <Swiper
         autoplay={{ delay: 5000 }}
