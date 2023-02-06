@@ -23,6 +23,15 @@ const StyledSection = styled(Section)`
 
   ${Item} {
     flex-grow: 0;
+
+    &:first-child img {
+      width: auto;
+    }
+
+    + ${Item} {
+      border-left: 1px solid #afb4be;
+      padding-left: 2rem;
+    }
   }
 
   ${breakpoints.desktop} {
@@ -38,8 +47,6 @@ const StyledSection = styled(Section)`
       padding-right: 2rem;
 
       + ${Item} {
-        border-left: 1px solid #afb4be;
-        padding-left: 2rem;
         padding-right: 2rem;
       }
     }
@@ -55,7 +62,9 @@ const Wrapper = styled.div<{ isFixed: boolean }>`
   ${({ isFixed }) =>
     isFixed &&
     css`
-      position: fixed;
+      ${breakpoints.desktop} {
+        position: fixed;
+      }
     `}
 `;
 

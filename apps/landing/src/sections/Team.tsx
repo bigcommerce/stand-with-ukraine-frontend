@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import VideoThumbnail from '../../public/assets/videos/team/thumbnail.webp';
 import { Container, H1, Item, Paragraph, Section } from '../components';
 import Video from '../components/Video';
+import { breakpoints } from '../helpers';
 
 const StyledItem = styled.div`
   align-items: center;
@@ -16,6 +17,14 @@ const StyledPhoto = styled.img`
   height: 6.7rem;
   object-fit: cover;
   width: 6.7rem;
+`;
+
+const StyledH1 = styled(H1)`
+  margin-bottom: 3rem;
+
+  ${breakpoints.desktop} {
+    margin-bottom: 6rem;
+  }
 `;
 
 interface TeamMember {
@@ -78,9 +87,9 @@ export const Member = ({ photo, name, title }: TeamMember) => (
 
 export const Team = () => (
   <Section background="gray" id="team">
-    <H1 margin="0 0 6rem" textAlign="center">
+    <StyledH1 margin="0 0 6rem" textAlign="center">
       Our team
-    </H1>
+    </StyledH1>
     <Container>
       <Item flexBasis="67%">
         <Video

@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import styled from 'styled-components';
 
+import OpenInNewWindowSVG from '../../public/assets/images/open-in-new-window.svg';
 import {
   Button,
   Container,
@@ -36,6 +37,38 @@ const StyledForm = styled(Item)`
 const StyledParagraph = styled(Paragraph)`
   font-weight: 100;
   line-height: 2.7rem;
+`;
+
+const StyledLink = styled.a`
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: 100;
+  line-height: 2.7rem;
+  text-decoration: none;
+
+  img {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.5rem;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s ease width;
+    background-color: #fff;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
 `;
 
 const isEmpty = (value: string) => value.length === 0;
@@ -144,6 +177,14 @@ export const Contacts = () => {
             We appreciate you taking the time to help us improve the application so we are able to
             continue raising awareness, and generating support for our comrades in Ukraine.
           </StyledParagraph>
+          <StyledLink
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdjibRgptwc7j_AMQ54qes93nfyxhXrzYSNnsmf2_7hs6gClw/viewform"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Get support
+            <img alt="External link icon" className="lazyload" data-src={OpenInNewWindowSVG} />
+          </StyledLink>
         </Item>
         <StyledForm flexBasis="50%">
           <H4>Contact form</H4>

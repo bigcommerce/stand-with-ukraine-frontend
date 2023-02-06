@@ -97,6 +97,14 @@ const StyledAnswer = styled.div`
   }
 `;
 
+const StyledH1 = styled(H1)`
+  margin-bottom: 3rem;
+
+  ${breakpoints.desktop} {
+    margin-bottom: 6rem;
+  }
+`;
+
 const Question = ({ question, answer }: QuestionProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -118,9 +126,9 @@ const Question = ({ question, answer }: QuestionProps) => {
 
 export const Faq = () => (
   <Section id="faq">
-    <H1 margin="0 0 6rem" textAlign="center">
+    <StyledH1 margin="0 0 6rem" textAlign="center">
       FAQ
-    </H1>
+    </StyledH1>
     <Container>
       <Item flexGrow={1}>
         {QUESTIONS.map((question, key) => (

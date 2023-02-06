@@ -7,7 +7,7 @@ import { ButtonLink, Container, H1, Item, Paragraph, Section } from '../componen
 import { breakpoints } from '../helpers';
 
 const StyledSection = styled(Section)`
-  padding-top: 10rem !important;
+  padding-top: 3rem !important;
   padding-bottom: 3rem !important;
 
   ${breakpoints.desktop} {
