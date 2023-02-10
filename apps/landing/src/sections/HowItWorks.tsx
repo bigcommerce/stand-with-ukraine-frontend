@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 import VideoThumbnail from '../../public/assets/videos/how-to/thumbnail.webp';
-import { ButtonLink, Container, H2, Item, Section } from '../components';
-import Video from '../components/Video';
+import { ButtonLink, Container, H2, Item, Section, Video } from '../components';
 
 const StyledOl = styled.ol`
   flex-grow: 1;
