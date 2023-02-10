@@ -3,8 +3,7 @@ import { A11y, Autoplay, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import VideoThumbnail from '../../public/assets/videos/team/thumbnail.webp';
-import { Container, H1, Item, Paragraph, Section } from '../components';
-import Video from '../components/Video';
+import { Container, H1, Item, Paragraph, Section, Video } from '../components';
 import { breakpoints } from '../helpers';
 
 const StyledItem = styled.div`
