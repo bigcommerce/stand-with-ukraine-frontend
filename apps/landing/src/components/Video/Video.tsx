@@ -23,6 +23,13 @@ const initialProps = {
 };
 
 const StyledOverrides = styled.div`
+  overflow: hidden;
+  max-width: 100%;
+
+  video {
+    max-width: 100%;
+  }
+
   .video-js {
     .vjs-big-play-button {
       border: 0;
