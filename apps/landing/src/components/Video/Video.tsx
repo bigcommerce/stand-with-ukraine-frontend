@@ -34,6 +34,9 @@ const StyledOverrides = styled.div`
       font-size: 5rem;
       width: 12.5rem;
       height: 8.2rem;
+      margin-top: 0;
+      margin-left: 0;
+      transform: translate(-50%, -50%);
 
       span {
         &::before {
@@ -44,6 +47,7 @@ const StyledOverrides = styled.div`
     }
 
     .vjs-control-bar {
+      display: flex;
       background-color: #376bff;
     }
 
