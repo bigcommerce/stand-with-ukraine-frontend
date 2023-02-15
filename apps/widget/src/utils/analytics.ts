@@ -19,13 +19,9 @@ class Analytics {
   private url = getBaseURL().replace('/widget', '/api/v2');
 
   private track(type: 'charity-event' | 'widget-event', data: Record<string, string>) {
-    if (!STORE_HASH) {
-      return;
-    }
-
     const params = new URLSearchParams({
       ...data,
-      store_hash: STORE_HASH,
+      store_hash: STORE_HASH || 'universal',
     });
     const url = `${this.url}${type}?${params.toString()}`;
 
