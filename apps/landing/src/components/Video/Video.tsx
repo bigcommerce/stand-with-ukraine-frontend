@@ -19,7 +19,7 @@ interface VideoProps {
 const initialProps = {
   controls: true,
   fluid: true,
-  preload: 'auto',
+  preload: 'none',
 };
 
 const StyledOverrides = styled.div`
