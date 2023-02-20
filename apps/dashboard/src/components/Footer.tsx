@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { ReactComponent as BigDesignLogoSVG } from '../assets/big-design-logo.svg';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { nextStep, previousStep } from '../state/mainSlice';
-import { writeConfiguration } from '../state/mainSlice/api';
+import { recordUniversalInstallerEvent, writeConfiguration } from '../state/mainSlice/api';
 import { publish } from '../state/mainSlice/asyncActions';
 import {
   selectConfiguration,
@@ -125,6 +125,7 @@ function useFooter() {
       navigate('/');
     } else if (installerType === 'universal') {
       navigate('/code');
+      recordUniversalInstallerEvent('generate-code');
     }
   }, [dispatch, navigate, widgetConfiguration, installerType]);
 

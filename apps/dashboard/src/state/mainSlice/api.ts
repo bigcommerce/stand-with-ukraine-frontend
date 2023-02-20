@@ -74,3 +74,17 @@ export async function writeConfiguration(widgetConfiguration: WidgetConfiguratio
 
   return response.text();
 }
+
+export async function recordUniversalInstallerEvent(
+  eventType: 'generate-code' | 'copy-code',
+): Promise<string> {
+  const query = new URLSearchParams({
+    event_type: eventType,
+  });
+  const response = await fetch(`/api/v2/universal-event?${query.toString()}`, {
+    method: 'POST',
+    headers: GetAuthHeaders(),
+  });
+
+  return response.text();
+}

@@ -14,6 +14,7 @@ import FAQ from '../components/Home/FAQ';
 import { CodeHeader } from '../components/Home/Header';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { resetSteps } from '../state/mainSlice';
+import { recordUniversalInstallerEvent } from '../state/mainSlice/api';
 import { selectConfiguration } from '../state/mainSlice/selectors';
 import { alertsManager } from '../state/store';
 import { GetBaseURL } from '../state/utils';
@@ -57,6 +58,7 @@ export default function Code() {
       ],
       type: 'success',
     });
+    recordUniversalInstallerEvent('copy-code');
   }, [codeString, clipboard]);
   const handleResetClick = useCallback(async () => {
     dispatch(resetSteps());
