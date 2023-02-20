@@ -1,8 +1,13 @@
-import { Collapse, Link, LinkProps } from '@bigcommerce/big-design';
-import { useState } from 'react';
+import { Collapse, Link } from '@bigcommerce/big-design';
+import { ReactNode, useState } from 'react';
 import styled from 'styled-components';
 
-const FAQ_LIST: Array<{ question: string; answer: string; link?: LinkProps }> = [
+interface FAQ {
+  question: string;
+  answer: string | ReactNode;
+}
+
+const BC_FAQ_LIST: FAQ[] = [
   {
     question:
       'Can I add a charity organization myself instead of choosing from the predefined list?',
@@ -19,17 +24,87 @@ const FAQ_LIST: Array<{ question: string; answer: string; link?: LinkProps }> = 
       'Selecting pages is not supported at this point, however you could select the location. By default widget is going to show up on the following pages: Home, Add Wishlist, Blog List, Blog Post, Brand Pages, All Brands Page, Cart, Category, Product Compare, Contact Form, Product, Search, All Wishlist, Wish List, 404 page.',
   },
   {
-    question: 'Do you have or manage other websites that are not on BigCommerce?',
-    answer: `We'll soon allow you to generate the same widget and copy the script for installation onto any website you own or manage. In the meantime, there is a service which inspired this application to do this now. More details at: `,
-    link: {
-      href: 'https://helpukrainewinwidget.org/',
-      children: 'https://helpukrainewinwidget.org/',
-      rel: 'noreferrer',
-      target: '_blank',
-    },
+    question: 'Can I install this on other websites that are not on BigCommerce?',
+    answer: (
+      <span>
+        Yes! you can generate the code snippet for other platforms and do the installation yourself
+        at
+        <Link href="https://standwithukraineapp.com/#add-widget" rel="noreferrer" target="_blank">
+          standwithukraineapp.com
+        </Link>
+      </span>
+    ),
   },
 ];
 
+const UNIVERSAL_FAQ_LIST: FAQ[] = [
+  BC_FAQ_LIST[0],
+  {
+    question: 'Do you have installation guides for specific platforms?',
+    answer: (
+      <span>
+        We do not have specific guides, but here are some useful links for each platform:
+        <br />
+        <ul>
+          <li>
+            <Link
+              href="https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend/edit-theme-code#edit-your-theme-code"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Shopify
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="https://help.wixanswers.com/kb/en/article/adding-custom-scripts-to-your-help-center"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Wix
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="https://wordpress.com/go/website-building/how-to-properly-add-javascript-to-wordpress-3-top-methods/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Wordpress
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="https://docs.magento.com/user-guide/v2.3/design/footer.html"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Magento
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags#footer-code"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Webflow
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="https://www.swell.is/help/metrics-and-reporting/analytics-and-global-scripts#analytics-and-global-scripts"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Swell
+            </Link>
+          </li>
+        </ul>
+      </span>
+    ),
+  },
+];
 const List = styled.ol`
   font-family: Source Sans Pro;
   font-size: 16px;
@@ -77,13 +152,11 @@ export default function FAQ({ listType }: { listType: 'bigcommerce' | 'universal
       </ActionContainer>
       {open ? (
         <List>
-          {(listType === 'bigcommerce' ? FAQ_LIST : FAQ_LIST.slice(0, 1)).map(
-            ({ question, answer, link }, index) => (
+          {(listType === 'bigcommerce' ? BC_FAQ_LIST : UNIVERSAL_FAQ_LIST).map(
+            ({ question, answer }, index) => (
               <Item key={index}>
                 <p className="question">{question}</p>
-                <p className="answer">
-                  {answer} {link !== undefined ? <Link {...link} /> : null}
-                </p>
+                <p className="answer">{answer}</p>
               </Item>
             ),
           )}

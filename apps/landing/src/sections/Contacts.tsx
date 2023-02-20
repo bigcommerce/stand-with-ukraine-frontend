@@ -134,14 +134,9 @@ const useForm = () => {
 
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       const formSubmissionQuery = new URLSearchParams(data as any).toString();
-      const resp = await fetch(
-        `${
-          import.meta.env.DEV ? '//localhost:8000' : ''
-        }/api/v2/feedback-form?${formSubmissionQuery}`,
-        {
-          method: 'POST',
-        },
-      );
+      const resp = await fetch(`/api/v2/feedback-form?${formSubmissionQuery}`, {
+        method: 'POST',
+      });
 
       if (resp.status === 200) {
         setIsSubmitted(true);
