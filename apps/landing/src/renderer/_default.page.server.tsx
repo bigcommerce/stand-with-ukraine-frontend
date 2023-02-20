@@ -17,6 +17,26 @@ export { passToClient };
 
 const passToClient = ['pageProps', 'documentProps', 'someAsyncProps'];
 
+const BASE_URL = `https://standwithukraineapp.com`;
+const metaTags = `
+    <meta name="title" content="Stand with Ukraine">
+    <meta name="description" content="Help Ukraine by adding an easy widget to your website that allows your visitors to easily donate via verified charities.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="${BASE_URL}">
+    <meta property="og:title" content="Stand with Ukraine">
+    <meta property="og:description" content="Help Ukraine by adding an easy widget to your website that allows your visitors to easily donate via verified charities.">
+    <meta property="og:image" content="${BASE_URL}/landing/assets/images/home.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="${BASE_URL}">
+    <meta property="twitter:title" content="Stand with Ukraine">
+    <meta property="twitter:description" content="Help Ukraine by adding an easy widget to your website that allows your visitors to easily donate via verified charities.">
+    <meta property="twitter:image" content="${BASE_URL}/landing/assets/images/home.png">
+`;
+
 async function render(pageContext: PageContextServer) {
   const { Page, pageProps } = pageContext;
 
@@ -41,12 +61,12 @@ async function render(pageContext: PageContextServer) {
     <link rel="preload" href="${HomeImagePlaceholderSrc}" as="image">
     <link rel="icon" href="${import.meta.env.BASE_URL}favicon.ico" />
     <link rel="apple-touch-icon" href="${import.meta.env.BASE_URL}logo192.png" />
-    <title>${title}</title>
-    <meta name="description" content="Help Ukraine by adding an easy widget to your website that allows your visitors to easily donate via verified charities.">
     ${dangerouslySkipEscape(sheet.getStyleTags())}
     ${dangerouslySkipEscape(`<style>${SwiperCss}${SwiperPaginationCss}</style>`)}
     <link rel="preload" href="${HomeImageSrc}" as="image">
-    <link rel="preload" href="https://standwithukraineapp.com/widget/style.css" as="style" />
+    <link rel="preload" href="${BASE_URL}/widget/style.css" as="style" />
+    <title>${title}</title>
+    ${dangerouslySkipEscape(metaTags)}
   </head>
   
   <body>
@@ -64,7 +84,7 @@ async function render(pageContext: PageContextServer) {
         "modal_body": "With each day, the war in Ukraine worsens at an alarming pace. Millions of civilians have lost their homes and many more are without basic necessities like food, water, and health care. Consider donating to one of the charities below and join us in showing support for Ukraine. All charities are trusted, non-profit organizations dedicated to Ukrainian relief efforts. It takes less than a minute."
       };
     </script>
-    <script defer src="https://standwithukraineapp.com/widget/index.js"></script>
+    <script defer src="${BASE_URL}/widget/index.js"></script>
   </body>
 </html>
     `;
