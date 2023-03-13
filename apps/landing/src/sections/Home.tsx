@@ -94,9 +94,9 @@ export const Home = () => (
   <StyledSection background="primary" id="home">
     <Container alignItems="center" justifyContent="center">
       <Item flexBasis="50%">
-        <H1 color="light">Help Ukraine by adding widget to your website</H1>
+        <H1 color="light">Calling all businesses: Support Ukraine with your online store</H1>
         <Paragraph color="light" margin="0 0 3rem" size={2} weight={300}>
-          Show your support and provide your site visitors verified and simple way to help Ukraine!
+          The Stand with Ukraine widget provides your site visitors verified and simple way to donate to organizations in Ukraine
         </Paragraph>
         <ButtonsContainer>
           <ButtonLink href="#add-widget" variant="light">

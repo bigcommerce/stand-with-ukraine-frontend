@@ -51,7 +51,7 @@ const StyledLink = styled.a`
 export const Cases = () => (
   <Section id="cases">
     <H2 margin="0 0 6rem" textAlign="center">
-      Brands already support
+      Brands showing their support
     </H2>
     <Container>
       <Item flexGrow={1}>
