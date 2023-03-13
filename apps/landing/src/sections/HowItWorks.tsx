@@ -71,9 +71,12 @@ export const HowItWorks = () => (
       </Item>
       <StyledItem flexBasis="33%">
         <StyledOl>
-          <li>Design custom widget in 2 mins</li>
+          <li>Quickly choose your widget design and layout</li>
           <li>Copy widget code to your website</li>
-          <li>Customers can donate to charities in Ukraine through your website</li>
+          <li>
+            Widget will appear on your storefront for customers to donate to the charity of their
+            choice
+          </li>
         </StyledOl>
         <ButtonLink href="#add-widget" variant="dark">
           Add widget

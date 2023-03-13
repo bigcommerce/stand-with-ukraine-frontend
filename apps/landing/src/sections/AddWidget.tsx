@@ -26,6 +26,10 @@ const StyledParagraph = styled(Paragraph)`
   }
 `;
 
+const StyledDescription = styled(Paragraph)`
+  min-height: 4.2rem;
+`;
+
 export const AddWidget = () => (
   <ConfigureWidgetFrame>
     <Section background="primary" id="add-widget">
@@ -36,12 +40,12 @@ export const AddWidget = () => (
         Please select your platform to quickly add widget to your site
       </StyledParagraph>
       <Container>
-        <Item flexGrow={1}>
+        <Item flexBasis="50%" flexGrow={1}>
           <StyledItem>
             <H3 color="light">BigCommerce</H3>
-            <Paragraph color="light" margin="0 0 3rem">
+            <StyledDescription color="light" margin="0 0 3rem">
               You will be redirected to BigСommerce app store with all detailed information.
-            </Paragraph>
+            </StyledDescription>
             <ButtonLink
               href="https://www.bigcommerce.com/apps/stand-with-ukraine/"
               rel="noreferrer"
@@ -52,13 +56,12 @@ export const AddWidget = () => (
             </ButtonLink>
           </StyledItem>
         </Item>
-        <Item flexGrow={1}>
+        <Item flexBasis="50%" flexGrow={1}>
           <StyledItem>
-            <H3 color="light">Other platform</H3>
-            <Paragraph color="light" margin="0 0 3rem">
-              You will design your custom widget right here. It will take 2 minutes. Let's do it
-              now!
-            </Paragraph>
+            <H3 color="light">All other platforms</H3>
+            <StyledDescription color="light" margin="0 0 3rem">
+              Design your custom widget right here in less than 2 minutes.
+            </StyledDescription>
             <ConfigureWidgetButton />
           </StyledItem>
         </Item>
