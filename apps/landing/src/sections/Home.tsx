@@ -96,7 +96,8 @@ export const Home = () => (
       <Item flexBasis="50%">
         <H1 color="light">Calling all businesses: Support Ukraine with your online store</H1>
         <Paragraph color="light" margin="0 0 3rem" size={2} weight={300}>
-          The Stand with Ukraine widget provides your site visitors verified and simple way to donate to organizations in Ukraine
+          The Stand with Ukraine widget provides your site visitors verified and simple way to
+          donate to organizations in Ukraine
         </Paragraph>
         <ButtonsContainer>
           <ButtonLink href="#add-widget" variant="light">
