@@ -1741,24 +1741,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@videojs/http-streaming@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@videojs/http-streaming@npm:3.0.0"
-  dependencies:
-    "@babel/runtime": ^7.12.5
-    "@videojs/vhs-utils": 4.0.0
-    aes-decrypter: 4.0.1
-    global: ^4.4.0
-    m3u8-parser: ^6.0.0
-    mpd-parser: ^1.0.1
-    mux.js: 6.2.0
-    video.js: ^7 || ^8
-  peerDependencies:
-    video.js: ^7 || ^8
-  checksum: e479cd981a067e9b28c9c90f41936b5587939060690f4eabdbbe5ca54adb509515e03270297a03b545087d76dfd1ab7b9461e5e1ef62a8e0ed57d80fa52bbe2c
-  languageName: node
-  linkType: hard
-
 "@videojs/http-streaming@npm:3.0.2":
   version: 3.0.2
   resolution: "@videojs/http-streaming@npm:3.0.2"
@@ -6052,19 +6034,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mux.js@npm:6.2.0, mux.js@npm:^6.2.0":
-  version: 6.2.0
-  resolution: "mux.js@npm:6.2.0"
-  dependencies:
-    "@babel/runtime": ^7.11.2
-    global: ^4.4.0
-  bin:
-    muxjs-transmux: bin/transmux.js
-  checksum: ecf54ead3480351967cbf6e54b57e38406b0ac5bc6dc194ae59e77e80ae6e6f6ab6fa42c15f0b0938cd0cce866fb7249c571be41d6cf78ee4531ecdfe65cfef9
-  languageName: node
-  linkType: hard
-
-"mux.js@npm:6.3.0":
+"mux.js@npm:6.3.0, mux.js@npm:^6.2.0":
   version: 6.3.0
   resolution: "mux.js@npm:6.3.0"
   dependencies:
@@ -8529,29 +8499,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"video.js@npm:^7 || ^8":
-  version: 8.0.4
-  resolution: "video.js@npm:8.0.4"
-  dependencies:
-    "@babel/runtime": ^7.12.5
-    "@videojs/http-streaming": 3.0.0
-    "@videojs/vhs-utils": ^4.0.0
-    "@videojs/xhr": 2.6.0
-    aes-decrypter: ^4.0.1
-    global: 4.4.0
-    keycode: 2.2.0
-    m3u8-parser: ^6.0.0
-    mpd-parser: ^1.0.1
-    mux.js: ^6.2.0
-    safe-json-parse: 4.0.0
-    videojs-contrib-quality-levels: 3.0.0
-    videojs-font: 3.2.0
-    videojs-vtt.js: 0.15.4
-  checksum: e106e7985355c8039a8534b9e506b7d3dd4685d247777e0a86af1a7396c0c11048efb3d1a954e759250c2576516c8c4099d9039c16857ed4d21f182328a71fa2
-  languageName: node
-  linkType: hard
-
-"video.js@npm:^8.3.0":
+"video.js@npm:^7 || ^8, video.js@npm:^8.3.0":
   version: 8.3.0
   resolution: "video.js@npm:8.3.0"
   dependencies:
@@ -8581,13 +8529,6 @@ __metadata:
   peerDependencies:
     video.js: ^6 || ^7 || ^8
   checksum: 06635a74f4c88d7adb7c8e55687b76306432ea5921c4a03cfb9845adc0eef671c9e043706911e761366a41e6a4046cafaa619c645f25858764500e5596ce9b41
-  languageName: node
-  linkType: hard
-
-"videojs-font@npm:3.2.0":
-  version: 3.2.0
-  resolution: "videojs-font@npm:3.2.0"
-  checksum: 3c773d4a64123c237c26029a5d04c51919e3b6e688db0a20c6f9c647198ec815425d96a62dd24989046f27aa583c96cecae715f789f8d98452b4df419c23158a
   languageName: node
   linkType: hard
 
