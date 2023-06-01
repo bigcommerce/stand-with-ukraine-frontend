@@ -5353,7 +5353,7 @@ __metadata:
     react-dom: ^18.2.0
     react-streaming: ^0.3.5
     styled-components: ^5.3.6
-    swiper: ^9.0.0
+    swiper: ^9.3.2
     tsconfig: "workspace:^"
     typescript: ^5.0.4
     video.js: ^8.3.0
@@ -7874,12 +7874,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"swiper@npm:*, swiper@npm:^9.0.0":
+"swiper@npm:*":
   version: 9.0.0
   resolution: "swiper@npm:9.0.0"
   dependencies:
     ssr-window: ^4.0.2
   checksum: b0c74ce7f3a5149ae811b2b84aa953eee2649b83f5ef6b92e131cafb6f42ce9ddc6b3dd8c666232197a217bd57d4189b21a18fbaaedfd81703064e179a53e98d
+  languageName: node
+  linkType: hard
+
+"swiper@npm:^9.3.2":
+  version: 9.3.2
+  resolution: "swiper@npm:9.3.2"
+  dependencies:
+    ssr-window: ^4.0.2
+  checksum: 9ccb6a0ef67d71ac780d7d1f3b2c2daf6f1846d3df8810aff6dcb8501c87b7769540a869cdd83eb902e5278396e5379cb32d9ed397234f7700ef55f0209f4592
   languageName: node
   linkType: hard
 
