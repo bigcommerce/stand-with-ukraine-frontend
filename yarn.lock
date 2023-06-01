@@ -335,31 +335,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bigcommerce/big-design-icons@npm:^0.22.0":
-  version: 0.22.0
-  resolution: "@bigcommerce/big-design-icons@npm:0.22.0"
+"@bigcommerce/big-design-icons@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "@bigcommerce/big-design-icons@npm:0.23.0"
   dependencies:
     "@babel/runtime": ^7.15.4
-    "@bigcommerce/big-design-theme": ^0.18.0
+    "@bigcommerce/big-design-theme": ^0.19.0
   peerDependencies:
     react: ^18.0.0
     react-dom: ^18.0.0
     styled-components: ^5.3.5
-  checksum: 4844808e336ff8aa42e349c823dfd12306b2138075f903d766a76fdfeec7591e1770e19426381cc84e0b8584b6f712a2d2db54041c96901fee710f120efd31bb
-  languageName: node
-  linkType: hard
-
-"@bigcommerce/big-design-theme@npm:^0.18.0":
-  version: 0.18.0
-  resolution: "@bigcommerce/big-design-theme@npm:0.18.0"
-  dependencies:
-    "@babel/runtime": ^7.15.4
-    polished: ^4.0.0
-  peerDependencies:
-    react: ^18.0.0
-    react-dom: ^18.0.0
-    styled-components: ^5.3.5
-  checksum: 6b6972e048fc2524abd3e9621c42b7d3330697ff81312a8a1a922cb2c91104630c04eb8a78ac3c838212a3d4fb8d631d99737062d88a99878e0904f1ac80fe83
+  checksum: 7d55881ddf6feb9add9930664aa31ce9f7524292c6bfd886d479c285862cb059d71f098a41f83e72174a3c2d6bb617a895bac0deba040955819c254e0b415c2f
   languageName: node
   linkType: hard
 
@@ -377,28 +363,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bigcommerce/big-design@npm:^0.35.0":
-  version: 0.35.0
-  resolution: "@bigcommerce/big-design@npm:0.35.0"
+"@bigcommerce/big-design@npm:^0.36.0":
+  version: 0.36.0
+  resolution: "@bigcommerce/big-design@npm:0.36.0"
   dependencies:
     "@babel/runtime": ^7.15.4
-    "@bigcommerce/big-design-icons": ^0.22.0
-    "@bigcommerce/big-design-theme": ^0.18.0
+    "@bigcommerce/big-design-icons": ^0.23.0
+    "@bigcommerce/big-design-theme": ^0.19.0
     "@popperjs/core": ^2.11.6
     "@types/react-datepicker": ^4.4.2
     date-fns: 2.29.3
-    downshift: 7.0.4
+    downshift: 7.4.1
     focus-trap: ^7.0.0
     polished: ^4.0.0
     react-beautiful-dnd: ^13.1.1
-    react-datepicker: ^4.8.0
+    react-datepicker: ^4.10.0
     react-popper: ^2.3.0
-    zustand: ^4.1.1
+    zustand: ^4.3.2
   peerDependencies:
     react: ^18.0.0
     react-dom: ^18.0.0
     styled-components: ^5.3.5
-  checksum: 80c1219f1ada6c3c43c8a4528011c3fff7f14f8371a88d2efcff6f5cd130087247bc4b5dffd2a00c11aedd49eb6bf387faec4a341163e7e5fce120dbf659ed91
+  checksum: 873a2f578e99d9782ad055cce42093c7bbe9f0fb4e3ddbf3e7ece511d146fc1555c5ce333cb3229b96640a30f4d1ef995a4fd4400c1dfd4110ffe4aa95c39453
   languageName: node
   linkType: hard
 
@@ -2746,10 +2732,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"compute-scroll-into-view@npm:^1.0.17":
-  version: 1.0.17
-  resolution: "compute-scroll-into-view@npm:1.0.17"
-  checksum: b20c05a10c37813c5a6e4bf053c00f65c88d23afed7a6bd7a2a69e05e2ffc2df3483ecfe407d36bf16b8cec8be21ae1966c9c523093a03117e567156cd79a51e
+"compute-scroll-into-view@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "compute-scroll-into-view@npm:2.0.4"
+  checksum: f3d1db9276c16af42155b572750514939cd0ab0a0f46498906f6811c5b654c5ff2b3f9bfd65958e57439e000a5e1ae092eb96b9e153d194a73e52ffd2380550c
   languageName: node
   linkType: hard
 
@@ -3005,7 +2991,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dashboard@workspace:apps/dashboard"
   dependencies:
-    "@bigcommerce/big-design": ^0.35.0
+    "@bigcommerce/big-design": ^0.36.0
     "@bigcommerce/big-design-theme": ^0.19.0
     "@reduxjs/toolkit": ^1.9.2
     "@testing-library/react": ^13.4.0
@@ -3246,18 +3232,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"downshift@npm:7.0.4":
-  version: 7.0.4
-  resolution: "downshift@npm:7.0.4"
+"downshift@npm:7.4.1":
+  version: 7.4.1
+  resolution: "downshift@npm:7.4.1"
   dependencies:
     "@babel/runtime": ^7.14.8
-    compute-scroll-into-view: ^1.0.17
+    compute-scroll-into-view: ^2.0.4
     prop-types: ^15.7.2
     react-is: ^17.0.2
     tslib: ^2.3.0
   peerDependencies:
     react: ">=16.12.0"
-  checksum: ea59a368427078d199023a299df0fefe2f4463d3207be5a769d9c2703ca61db8e72b5b64e5a12a5152385e6de705ebe3f3e2826c14f65baa69b4f8537657cc1d
+  checksum: 53b6c474e64a46b6c7a0492fa94d1e5c137ea213f1d5eac67d3769ae6a99f9200995c3dc435603ed2e79086a3dd8e5acf275d2d44c961e8df2843f909ea21ad0
   languageName: node
   linkType: hard
 
@@ -6832,20 +6818,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-datepicker@npm:^4.8.0":
-  version: 4.8.0
-  resolution: "react-datepicker@npm:4.8.0"
+"react-datepicker@npm:^4.10.0":
+  version: 4.12.0
+  resolution: "react-datepicker@npm:4.12.0"
   dependencies:
     "@popperjs/core": ^2.9.2
     classnames: ^2.2.6
     date-fns: ^2.24.0
     prop-types: ^15.7.2
-    react-onclickoutside: ^6.12.0
-    react-popper: ^2.2.5
+    react-onclickoutside: ^6.12.2
+    react-popper: ^2.3.0
   peerDependencies:
     react: ^16.9.0 || ^17 || ^18
     react-dom: ^16.9.0 || ^17 || ^18
-  checksum: d31a1002c5c6220fd8a5201f3a71015ac09b003d71f59ebc6fc0f9c452268f924f0244e69c223f64763ebb2131031ce5e792872631bfb364c34b8ea730258e6c
+  checksum: 6d637b1132a9607846defb08a9b736a1b003fd40ae33f58d643168adb5de10b37dc9e9414c586abe9981768e0f56486b849fdb3890a5417277ad142b5525a5c2
   languageName: node
   linkType: hard
 
@@ -6882,13 +6868,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-onclickoutside@npm:^6.12.0":
-  version: 6.12.2
-  resolution: "react-onclickoutside@npm:6.12.2"
+"react-onclickoutside@npm:^6.12.2":
+  version: 6.13.0
+  resolution: "react-onclickoutside@npm:6.13.0"
   peerDependencies:
     react: ^15.5.x || ^16.x || ^17.x || ^18.x
     react-dom: ^15.5.x || ^16.x || ^17.x || ^18.x
-  checksum: a0c7f4fbcf84e00d50b3fc18208e5fdc4e97b17daf910f176659e079038a560d2e299955804d20e6ca2bf375404d03fdb865dc7f5f85cab3e60b493be4375e77
+  checksum: a7cfe62e91f7f92891cda7b885d6eec7b2854850f8703ccafcea5c04bb93a210a566a70b51b9fae0cc30c3485e04eb6a3f3ae58f495cac3ec2747b4fc44d1ad2
   languageName: node
   linkType: hard
 
@@ -9089,9 +9075,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zustand@npm:^4.1.1":
-  version: 4.1.2
-  resolution: "zustand@npm:4.1.2"
+"zustand@npm:^4.3.2":
+  version: 4.3.8
+  resolution: "zustand@npm:4.3.8"
   dependencies:
     use-sync-external-store: 1.2.0
   peerDependencies:
@@ -9102,6 +9088,6 @@ __metadata:
       optional: true
     react:
       optional: true
-  checksum: e7fefc5deb232082edd2abef072b92554d5effc261594d633ee55d7d4fe0e54c5b16ee8c5e628fab2e1090946d9e493865b72ad76280a413e8ff5bea6d0ca642
+  checksum: 24db6bf063ce1fc8b2ee238f13211a88f43236541a716e5f6f706f613c671a45332465f9ed06d694f8c353da3d24c53ea668e5712a86aceda9ad74f6c433e8c0
   languageName: node
   linkType: hard
