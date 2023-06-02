@@ -24,7 +24,7 @@
     "vite-plugin-svgr": "^2.4.0"
   },
   "devDependencies": {
-    "@testing-library/react": "^13.4.0",
+    "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/node": "^18.16.3",
     "@types/react": "^18.0.27",
