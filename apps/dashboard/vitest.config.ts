@@ -11,6 +11,7 @@ export default mergeConfig(
         reporter: ['lcov', 'json', 'json-summary'],
       },
       environment: 'jsdom',
+      setupFiles: ['src/testSetup.ts'],
     },
   }),
 );
