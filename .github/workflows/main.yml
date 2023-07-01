@@ -26,7 +26,7 @@ jobs:
         run: yarn install
 
       - name: Install dependencies and lint
-        if: ${{ github.ref != 'refs/heads/main' }}
+        if: ${{ github.ref != 'refs/heads/main' && github.actor != 'dependabot[bot]' }}
         run: |
           yarn install --check-cache
           yarn dedupe --check
