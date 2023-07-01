@@ -10,7 +10,7 @@ on:
 
 jobs:
   test-and-deploy:
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main'}}
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository || github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,7 +22,7 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ github.ref == 'refs/heads/main' || github.actor == 'dependabot[bot]' }}
         run: yarn install
 
       - name: Install dependencies and lint
