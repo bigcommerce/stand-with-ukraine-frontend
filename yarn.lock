@@ -1591,7 +1591,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.0.27":
+"@types/react@npm:*":
   version: 18.0.27
   resolution: "@types/react@npm:18.0.27"
   dependencies:
@@ -1599,6 +1599,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 600fdbc39a92ea4a77047db3e12f05f67776a710f5918248c0189a59ac2a38900c9db5a5d2e433a16df528a3ecab1aa114b322cacea573bb1ca2fc0b094c52d1
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.2.14":
+  version: 18.2.14
+  resolution: "@types/react@npm:18.2.14"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: a6a5e8cc78f486b9020d1ad009aa6c56943c68c7c6376e0f8399e9cbcd950b7b8f5d73f00200f5379f5e58d31d57d8aed24357f301d8e86108cd438ce6c8b3dd
   languageName: node
   linkType: hard
 
@@ -3020,7 +3031,7 @@ __metadata:
     "@testing-library/react": ^14.0.0
     "@testing-library/user-event": ^14.4.3
     "@types/node": ^18.16.3
-    "@types/react": ^18.0.27
+    "@types/react": ^18.2.14
     "@types/react-dom": ^18.0.10
     "@types/react-syntax-highlighter": ^15.5.6
     "@types/styled-components": ^5.1.26
@@ -5366,7 +5377,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "landing@workspace:apps/landing"
   dependencies:
-    "@types/react": ^18.0.27
+    "@types/react": ^18.2.14
     "@types/react-dom": ^18.0.10
     "@types/styled-components": ^5.1.26
     "@vitejs/plugin-react": ^3.0.1
