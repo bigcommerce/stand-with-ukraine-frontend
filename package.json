@@ -24,7 +24,7 @@
     "@bigcommerce/eslint-config": "^2.6.2",
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-conventional": "^17.4.4",
-    "@playwright/test": "^1.30.0",
+    "@playwright/test": "^1.36.2",
     "@types/swiper": "^6.0.0",
     "eslint": "^8.37.0",
     "husky": "^8.0.3",
