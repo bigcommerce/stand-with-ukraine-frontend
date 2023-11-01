@@ -1628,10 +1628,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.8.0":
-  version: 20.8.0
-  resolution: "@types/node@npm:20.8.0"
-  checksum: ebad6342d54238a24bf980d7750117a5d67749c9b72cbb7a974a1e932c39034aa3a810d669e007e8a5071782a253aa069a187b614407a382403c9826e837c849
+"@types/node@npm:^20.8.10":
+  version: 20.8.10
+  resolution: "@types/node@npm:20.8.10"
+  dependencies:
+    undici-types: ~5.26.4
+  checksum: 7c61190e43e8074a1b571e52ff14c880bc67a0447f2fe5ed0e1a023eb8a23d5f815658edb98890f7578afe0f090433c4a635c7c87311762544e20dd78723e515
   languageName: node
   linkType: hard
 
@@ -3103,7 +3105,7 @@ __metadata:
     "@reduxjs/toolkit": ^1.9.5
     "@testing-library/react": ^14.0.0
     "@testing-library/user-event": ^14.4.3
-    "@types/node": ^20.8.0
+    "@types/node": ^20.8.10
     "@types/react": ^18.2.14
     "@types/react-dom": ^18.0.10
     "@types/react-syntax-highlighter": ^15.5.7
@@ -8452,6 +8454,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"undici-types@npm:~5.26.4":
+  version: 5.26.5
+  resolution: "undici-types@npm:5.26.5"
+  checksum: 3192ef6f3fd5df652f2dc1cd782b49d6ff14dc98e5dced492aa8a8c65425227da5da6aafe22523c67f035a272c599bb89cfe803c1db6311e44bed3042fc25487
+  languageName: node
+  linkType: hard
+
 "unique-filename@npm:^1.1.1":
   version: 1.1.1
   resolution: "unique-filename@npm:1.1.1"
@@ -9004,7 +9013,7 @@ __metadata:
   dependencies:
     "@preact/preset-vite": ^2.5.0
     "@testing-library/preact": ^3.2.3
-    "@types/node": ^20.8.0
+    "@types/node": ^20.8.10
     "@vitejs/plugin-react": ^3.0.1
     "@vitest/coverage-istanbul": ^0.28.3
     images: ^3.2.4
