@@ -21,17 +21,17 @@
     ]
   },
   "devDependencies": {
-    "@bigcommerce/eslint-config": "^2.6.2",
+    "@bigcommerce/eslint-config": "^2.7.0",
     "@commitlint/cli": "^18.4.3",
-    "@commitlint/config-conventional": "^17.4.4",
-    "@playwright/test": "^1.36.2",
+    "@commitlint/config-conventional": "^17.8.1",
+    "@playwright/test": "^1.40.1",
     "@types/swiper": "^6.0.0",
-    "eslint": "^8.54.0",
+    "eslint": "^8.56.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.1.2",
+    "lint-staged": "^13.3.0",
     "playwright-test-coverage": "^1.2.12",
     "prettier": "^2.8.8",
-    "turbo": "^1.10.12",
+    "turbo": "^1.11.2",
     "vitest-fetch-mock": "^0.2.2"
   },
   "scripts": {
