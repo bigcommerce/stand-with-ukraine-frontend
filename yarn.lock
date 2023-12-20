@@ -1670,12 +1670,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.0, @types/react-dom@npm:^18.0.10":
+"@types/react-dom@npm:^18.0.0":
   version: 18.0.10
   resolution: "@types/react-dom@npm:18.0.10"
   dependencies:
     "@types/react": "*"
   checksum: ff8282d5005a0b1cd95fb65bf79d3d8485e4cfe2aaf052129033a178684b940014a3f4536bc20d573f8a01cf4c6f4770c74988cef7c2b5cac3041d9f172647e3
+  languageName: node
+  linkType: hard
+
+"@types/react-dom@npm:^18.2.17":
+  version: 18.2.17
+  resolution: "@types/react-dom@npm:18.2.17"
+  dependencies:
+    "@types/react": "*"
+  checksum: 7a4e704ed4be6e0c3ccd8a22ff69386fe548304bf4db090513f42e059ff4c65f7a427790320051524d6578a2e4c9667bb7a80a4c989b72361c019fbe851d9385
   languageName: node
   linkType: hard
 
@@ -3130,7 +3139,7 @@ __metadata:
     "@testing-library/user-event": ^14.4.3
     "@types/node": ^20.8.10
     "@types/react": ^18.2.14
-    "@types/react-dom": ^18.0.10
+    "@types/react-dom": ^18.2.17
     "@types/react-syntax-highlighter": ^15.5.7
     "@types/styled-components": ^5.1.26
     "@vitejs/plugin-react": ^3.0.1
@@ -5474,7 +5483,7 @@ __metadata:
   resolution: "landing@workspace:apps/landing"
   dependencies:
     "@types/react": ^18.2.14
-    "@types/react-dom": ^18.0.10
+    "@types/react-dom": ^18.2.17
     "@types/styled-components": ^5.1.26
     "@vitejs/plugin-react": ^3.0.1
     config: "*"
