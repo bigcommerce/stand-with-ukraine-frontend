@@ -8,3 +8,4 @@ export * from './Charities';
 export * from './Team';
 export * from './Faq';
 export * from './Contacts';
+export * from './Support';

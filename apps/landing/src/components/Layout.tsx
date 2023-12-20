@@ -5,7 +5,7 @@ import { breakpoints } from '../helpers';
 interface SectionProps {
   alignItems?: CSSProperties['alignItems'];
   justifyContent?: CSSProperties['justifyContent'];
-  background?: 'light' | 'primary' | 'gray' | 'dark';
+  background?: 'light' | 'primary' | 'gray' | 'dark' | 'blue';
   display?: string;
   paddingX?: number;
   paddingY?: number;
@@ -51,6 +51,9 @@ export const Section = styled.section<SectionProps>`
       switch (background) {
         case 'primary':
           return 'linear-gradient(115.91deg, #0D52FF 8.17%, #4100A3 91.36%)';
+
+        case 'blue':
+          return 'linear-gradient(120deg, #4100A3 8.72%, #03EADA 95.4%)';
 
         case 'gray':
           return '#EDEFF3';
