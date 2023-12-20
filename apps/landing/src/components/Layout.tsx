@@ -14,6 +14,7 @@ interface SectionProps {
 interface ContainerProps {
   alignItems?: CSSProperties['alignItems'];
   flexDirection?: CSSProperties['flexDirection'];
+  flexWrap?: CSSProperties['flexWrap'];
   justifyContent?: CSSProperties['justifyContent'];
   paddingX?: number;
   paddingY?: number;
@@ -97,6 +98,12 @@ export const Container = styled.div<ContainerProps>`
     justifyContent &&
     css`
       justify-content: ${justifyContent};
+    `}
+
+  ${({ flexWrap }) =>
+    flexWrap &&
+    css`
+      flex-wrap: ${flexWrap};
     `}
 
   ${({ paddingX = 0, paddingY = 0 }) => css`

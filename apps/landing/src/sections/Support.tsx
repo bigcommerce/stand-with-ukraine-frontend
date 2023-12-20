@@ -39,10 +39,10 @@ export const Support = () => (
     <StyledParagraph color="light" margin="0 0 6rem" size={2} textAlign="center" weight={300}>
       Select option to support our colleagues that defends Ukraine!
     </StyledParagraph>
-    <Container>
-      <Item flexBasis="50%" flexGrow={1}>
+    <Container flexWrap="wrap">
+      <Item flexBasis="31%">
         <StyledItem>
-          <H3 color="light">2000</H3>
+          <H3 color="light">2000 UAH</H3>
           <ButtonLink
             href="https://pay.fondy.eu/merchants/9989e4238d2bca3292873fb855506edfa149a3c7/default/index.html?button=692f94ed19eb75fbff4622417b4c1c3bd3ba25d3"
             rel="noreferrer"
@@ -53,7 +53,31 @@ export const Support = () => (
           </ButtonLink>
         </StyledItem>
       </Item>
-      <Item flexBasis="50%" flexGrow={1}>
+      <Item flexBasis="31%">
+        <StyledItem>
+          <H3 color="light">3000 UAH</H3>
+          <ButtonLink href="#" rel="noreferrer" target="_blank" variant="light">
+            Support
+          </ButtonLink>
+        </StyledItem>
+      </Item>
+      <Item flexBasis="31%">
+        <StyledItem>
+          <H3 color="light">4000 UAH</H3>
+          <ButtonLink href="#" rel="noreferrer" target="_blank" variant="light">
+            Support
+          </ButtonLink>
+        </StyledItem>
+      </Item>
+      <Item flexBasis="31%">
+        <StyledItem>
+          <H3 color="light">5000 UAH</H3>
+          <ButtonLink href="#" rel="noreferrer" target="_blank" variant="light">
+            Support
+          </ButtonLink>
+        </StyledItem>
+      </Item>
+      <Item flexBasis="31%">
         <StyledItem>
           <H3 color="light">Custom</H3>
           <ButtonLink
