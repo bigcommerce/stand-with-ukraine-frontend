@@ -21,7 +21,7 @@
     "@types/node": "^20.8.10",
     "@vitejs/plugin-react": "^3.0.1",
     "@vitest/coverage-istanbul": "^0.28.3",
-    "jsdom": "^21.1.0",
+    "jsdom": "^23.0.1",
     "sass": "^1.64.2",
     "tsconfig": "*",
     "typescript": "^5.1.6",
