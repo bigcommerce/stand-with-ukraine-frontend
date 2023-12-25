@@ -5,6 +5,7 @@ import { breakpoints } from '../helpers';
 
 const StyledParagraph = styled(Paragraph)`
   margin-bottom: 3rem;
+  line-height: 1.6;
 
   ${breakpoints.desktop} {
     margin-bottom: 6rem;
@@ -38,6 +39,8 @@ export const Support = () => (
     </H2>
     <StyledParagraph color="light" margin="0 0 6rem" size={2} textAlign="center" weight={300}>
       Select option to support our colleagues that defends Ukraine!
+      <br />
+      To cancel your support send a message via Contract us form below.
     </StyledParagraph>
     <Container flexWrap="wrap">
       <Item flexBasis="31%">
