@@ -47,6 +47,7 @@ const StyledLink = styled.a`
   font-size: 1.7rem;
   font-weight: 100;
   line-height: 2.7rem;
+  margin-bottom: 2rem;
   text-decoration: none;
 
   img {
@@ -180,6 +181,13 @@ export const Contacts = () => {
             Get support
             <img alt="External link icon" className="lazyload" data-src={OpenInNewWindowSVG} />
           </StyledLink>
+          <StyledParagraph color="light" size={1.7}>
+            Our emails:
+            <br />
+            bohdan.hodzenko@bigcommerce.com
+            <br />
+            kristina.pototska@bigcommerce.com
+          </StyledParagraph>
         </Item>
         <StyledForm flexBasis="50%">
           <H4>Contact form</H4>
