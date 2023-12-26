@@ -47,7 +47,7 @@ export const Support = () => (
         <StyledItem>
           <H3 color="light">2000 UAH</H3>
           <ButtonLink
-            href="https://pay.fondy.eu/merchants/9989e4238d2bca3292873fb855506edfa149a3c7/default/index.html?button=692f94ed19eb75fbff4622417b4c1c3bd3ba25d3"
+            href="https://pay.fondy.eu/s/rcGjT0nI"
             rel="noreferrer"
             target="_blank"
             variant="light"
@@ -59,7 +59,12 @@ export const Support = () => (
       <Item flexBasis="31%">
         <StyledItem>
           <H3 color="light">3000 UAH</H3>
-          <ButtonLink href="#" rel="noreferrer" target="_blank" variant="light">
+          <ButtonLink
+            href="https://pay.fondy.eu/s/F2beCPBCuF"
+            rel="noreferrer"
+            target="_blank"
+            variant="light"
+          >
             Support
           </ButtonLink>
         </StyledItem>
@@ -67,7 +72,12 @@ export const Support = () => (
       <Item flexBasis="31%">
         <StyledItem>
           <H3 color="light">4000 UAH</H3>
-          <ButtonLink href="#" rel="noreferrer" target="_blank" variant="light">
+          <ButtonLink
+            href="https://pay.fondy.eu/s/wDFTuOZAUcnh"
+            rel="noreferrer"
+            target="_blank"
+            variant="light"
+          >
             Support
           </ButtonLink>
         </StyledItem>
@@ -75,7 +85,12 @@ export const Support = () => (
       <Item flexBasis="31%">
         <StyledItem>
           <H3 color="light">5000 UAH</H3>
-          <ButtonLink href="#" rel="noreferrer" target="_blank" variant="light">
+          <ButtonLink
+            href="https://pay.fondy.eu/s/BQUQW8tB6ecI9t8v"
+            rel="noreferrer"
+            target="_blank"
+            variant="light"
+          >
             Support
           </ButtonLink>
         </StyledItem>
@@ -84,7 +99,7 @@ export const Support = () => (
         <StyledItem>
           <H3 color="light">Custom</H3>
           <ButtonLink
-            href="https://pay.fondy.eu/merchants/9989e4238d2bca3292873fb855506edfa149a3c7/default/index.html?button=3d8d9d715ed9d4e4e93ff5e18f3049b10d21082b"
+            href="https://pay.fondy.eu/s/4lEyTDf3yFEC"
             rel="noreferrer"
             target="_blank"
             variant="light"
