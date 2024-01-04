@@ -18,6 +18,10 @@ const StyledItem = styled.div`
   text-align: center;
 
   ${H3} {
+    margin-bottom: 0;
+  }
+
+  ${Paragraph} {
     margin-bottom: 3rem;
   }
 
@@ -38,14 +42,15 @@ export const Support = () => (
       Support our colleagues
     </H2>
     <StyledParagraph color="light" margin="0 0 6rem" size={2} textAlign="center" weight={300}>
-      Select option to support our colleagues that defends Ukraine!
+      Select an option to support our BigCommerce colleagues defending Ukraine on a regular basis!
       <br />
-      To cancel your support send a message via Contract us form below.
+      You can cancel your support any time by sending a message via Contact us form below.
     </StyledParagraph>
     <Container flexWrap="wrap">
       <Item flexBasis="31%">
         <StyledItem>
           <H3 color="light">2000 UAH</H3>
+          <Paragraph color="light">per month</Paragraph>
           <ButtonLink
             href="https://pay.fondy.eu/s/rcGjT0nI"
             rel="noreferrer"
@@ -59,6 +64,7 @@ export const Support = () => (
       <Item flexBasis="31%">
         <StyledItem>
           <H3 color="light">3000 UAH</H3>
+          <Paragraph color="light">per month</Paragraph>
           <ButtonLink
             href="https://pay.fondy.eu/s/F2beCPBCuF"
             rel="noreferrer"
@@ -72,6 +78,7 @@ export const Support = () => (
       <Item flexBasis="31%">
         <StyledItem>
           <H3 color="light">4000 UAH</H3>
+          <Paragraph color="light">per month</Paragraph>
           <ButtonLink
             href="https://pay.fondy.eu/s/wDFTuOZAUcnh"
             rel="noreferrer"
@@ -85,6 +92,7 @@ export const Support = () => (
       <Item flexBasis="31%">
         <StyledItem>
           <H3 color="light">5000 UAH</H3>
+          <Paragraph color="light">per month</Paragraph>
           <ButtonLink
             href="https://pay.fondy.eu/s/BQUQW8tB6ecI9t8v"
             rel="noreferrer"
@@ -98,6 +106,7 @@ export const Support = () => (
       <Item flexBasis="31%">
         <StyledItem>
           <H3 color="light">Custom</H3>
+          <Paragraph color="light">per month</Paragraph>
           <ButtonLink
             href="https://pay.fondy.eu/s/4lEyTDf3yFEC"
             rel="noreferrer"
