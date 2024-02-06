@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { A11y, Autoplay, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import ArrowSVG from '../../public/assets/images/arrow.svg';
+import ArrowSVG from '../../public/assets/images/arrow.svg?react';
 import MiraActionSrc from '../../public/assets/images/mira-action.webp';
 import NewUkraineSrc from '../../public/assets/images/new-ukraine.webp';
 import RazomSrc from '../../public/assets/images/razom.webp';

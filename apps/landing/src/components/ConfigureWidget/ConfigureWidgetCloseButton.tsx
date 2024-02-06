@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { breakpoints } from '../../helpers';
 
-import CloseSVG from './close-button.svg';
+import CloseSVG from './close-button.svg?react';
 import { ConfigureWidgetContext } from './ConfigureWidgetContext';
 
 const CloseButton = styled.a`
