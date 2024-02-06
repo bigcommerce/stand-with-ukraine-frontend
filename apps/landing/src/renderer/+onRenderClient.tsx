@@ -1,9 +1,7 @@
-export { render };
+export { render as onRenderClient };
 export { onHydrationEnd };
 export { onPageTransitionStart };
 export { onPageTransitionEnd };
-export const clientRouting = true;
-export const hydrationCanBeAborted = true;
 
 import { createRoot, hydrateRoot, Root } from 'react-dom/client';
 import 'lazysizes';

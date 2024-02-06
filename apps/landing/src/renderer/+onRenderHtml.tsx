@@ -2,7 +2,7 @@ import { renderToString } from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
 import SwiperPaginationCss from 'swiper/css/pagination?raw';
 import SwiperCss from 'swiper/css?raw';
-import { dangerouslySkipEscape, escapeInject } from 'vite-plugin-ssr';
+import { dangerouslySkipEscape, escapeInject } from 'vike/server';
 
 import HomeImagePlaceholderSrc from '../../public/assets/images/home-placeholder.webp';
 import HomeImageSrc from '../../public/assets/images/home.webp';
@@ -12,10 +12,7 @@ import { getPageTitle } from './getPageTitle';
 import { PageShell } from './PageShell';
 import type { PageContextServer } from './types';
 
-export { render };
-export { passToClient };
-
-const passToClient = ['pageProps', 'documentProps', 'someAsyncProps'];
+export { render as onRenderHtml };
 
 const BASE_URL = `https://standwithukraineapp.com`;
 const metaTags = `
@@ -59,8 +56,8 @@ async function render(pageContext: PageContextServer) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preload" href="${HomeImagePlaceholderSrc}" as="image">
-    <link rel="icon" href="${import.meta.env.BASE_URL}favicon.ico" />
-    <link rel="apple-touch-icon" href="${import.meta.env.BASE_URL}logo192.png" />
+    <link rel="icon" href="${import.meta.env.BASE_URL}/favicon.ico" />
+    <link rel="apple-touch-icon" href="${import.meta.env.BASE_URL}/logo192.png" />
     ${dangerouslySkipEscape(sheet.getStyleTags())}
     ${dangerouslySkipEscape(`<style>${SwiperCss}${SwiperPaginationCss}</style>`)}
     <link rel="preload" href="${HomeImageSrc}" as="image">
@@ -91,7 +88,7 @@ async function render(pageContext: PageContextServer) {
 
   return {
     documentHtml,
-    // See https://vite-plugin-ssr.com/stream#initial-data-after-stream-end
+    // See https://vike.dev/stream#initial-data-after-stream-end
     pageContext: async () => {
       return {
         someAsyncProps: 42,

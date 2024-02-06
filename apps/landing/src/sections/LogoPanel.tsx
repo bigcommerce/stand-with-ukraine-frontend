@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import BCLogo from '../../public/assets/images/bc-logo.svg?react';
-import SWULogo from '../../public/assets/images/swu-logo.svg?react';
+import BCLogo from '../../public/assets/images/bc-logo.svg';
+import SWULogo from '../../public/assets/images/swu-logo.svg';
 import { Item, Section } from '../components';
 import { breakpoints } from '../helpers';
 

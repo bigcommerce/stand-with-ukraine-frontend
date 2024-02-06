@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import styled from 'styled-components';
 
-import OpenInNewWindowSVG from '../../public/assets/images/open-in-new-window.svg?react';
+import OpenInNewWindowSVG from '../../public/assets/images/open-in-new-window.svg';
 import {
   Button,
   Container,
