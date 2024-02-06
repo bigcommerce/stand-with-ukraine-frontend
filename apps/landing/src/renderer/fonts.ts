@@ -60,7 +60,9 @@ export const Fonts = createGlobalStyle`
   @font-face {
     font-family: 'Gotham Cond';
     src:url(${generateFontUrlFromBase64(GothamCondBase64)}) format('woff2'),
-        url('${import.meta.env.BASE_URL}/fonts/gotham/woff/GothamCond-Bold_Web.woff') format('woff');
+        url('${
+          import.meta.env.BASE_URL
+        }/fonts/gotham/woff/GothamCond-Bold_Web.woff') format('woff');
     font-display: swap;
     font-weight: 600;
     font-style: normal;

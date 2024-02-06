@@ -3,10 +3,10 @@ export type { PageContextClient };
 export type { PageContext };
 export type { PageProps };
 
-import type { PageContextServer as VKPageContextServer } from 'vike/types';
 import type {
-  PageContextClient as VKPageContextClient
-} from 'vike/types'
+  PageContextClient as VKPageContextClient,
+  PageContextServer as VKPageContextServer,
+} from 'vike/types';
 
 type Page = (pageProps: PageProps) => React.ReactElement;
 type PageProps = Record<string, unknown>;

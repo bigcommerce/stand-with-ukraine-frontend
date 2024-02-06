@@ -1,7 +1,7 @@
-import type { Config } from 'vike/types'
+import type { Config } from 'vike/types';
 
 export default {
   passToClient: ['pageProps', 'documentProps', 'someAsyncProps'],
   clientRouting: true,
-  hydrationCanBeAborted: true
+  hydrationCanBeAborted: true,
 } satisfies Config;

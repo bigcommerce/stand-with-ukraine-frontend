@@ -72,7 +72,11 @@ const TeamList: TeamMember[] = [
 
 export const Member = ({ photo, name, title }: TeamMember) => (
   <StyledItem>
-    <StyledPhoto alt={name} className="lazyload" data-src={`${import.meta.env.BASE_URL}/${photo}`} />
+    <StyledPhoto
+      alt={name}
+      className="lazyload"
+      data-src={`${import.meta.env.BASE_URL}/${photo}`}
+    />
     <Item>
       <Paragraph margin="0 0 0.5rem" size={2}>
         <strong>{name}</strong>
