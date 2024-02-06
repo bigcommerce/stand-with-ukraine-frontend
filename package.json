@@ -30,7 +30,7 @@
     "husky": "^9.0.10",
     "lint-staged": "^15.2.2",
     "playwright-test-coverage": "^1.2.12",
-    "prettier": "^3.2.5",
+    "prettier": "^2.6.2",
     "turbo": "^1.12.2",
     "vitest-fetch-mock": "^0.2.2"
   },
