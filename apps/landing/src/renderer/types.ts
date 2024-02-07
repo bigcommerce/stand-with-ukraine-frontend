@@ -3,8 +3,10 @@ export type { PageContextClient };
 export type { PageContext };
 export type { PageProps };
 
-import type { PageContextBuiltIn } from 'vite-plugin-ssr';
-import type { PageContextBuiltInClient } from 'vite-plugin-ssr/client/router';
+import type {
+  PageContextClient as VKPageContextClient,
+  PageContextServer as VKPageContextServer,
+} from 'vike/types';
 
 type Page = (pageProps: PageProps) => React.ReactElement;
 type PageProps = Record<string, unknown>;
@@ -22,7 +24,7 @@ export interface PageContextCustom {
   };
 }
 
-type PageContextServer = PageContextBuiltIn<Page> & PageContextCustom;
-type PageContextClient = PageContextBuiltInClient<Page> & PageContextCustom;
+type PageContextServer = VKPageContextServer<Page> & PageContextCustom;
+type PageContextClient = VKPageContextClient<Page> & PageContextCustom;
 
 type PageContext = PageContextClient | PageContextServer;

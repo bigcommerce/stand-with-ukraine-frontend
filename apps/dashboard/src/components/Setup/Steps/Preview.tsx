@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import WidgetMainImage from '../../../../public/assets/images/home.webp';
-import { ReactComponent as CloseSVG } from '../../../assets/Close.svg';
+import CloseSVG from '../../../assets/Close.svg?react';
 import { useAppSelector } from '../../../state/hooks';
 import { RootState } from '../../../state/store';
 

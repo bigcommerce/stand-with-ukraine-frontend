@@ -2,6 +2,7 @@
   "name": "widget",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -16,18 +17,18 @@
     "preact": "^10.19.3"
   },
   "devDependencies": {
-    "@preact/preset-vite": "^2.7.0",
+    "@preact/preset-vite": "^2.8.1",
     "@testing-library/preact": "^3.2.3",
-    "@types/node": "^20.10.5",
-    "@vitejs/plugin-react": "^3.1.0",
-    "@vitest/coverage-istanbul": "^0.28.5",
-    "jsdom": "^23.0.1",
-    "sass": "^1.69.5",
+    "@types/node": "^20.11.16",
+    "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-istanbul": "^1.2.2",
+    "jsdom": "^24.0.0",
+    "sass": "^1.70.0",
     "tsconfig": "*",
     "typescript": "^5.3.3",
     "vite": "^5.0.12",
     "vite-plugin-istanbul": "^5.0.0",
-    "vitest": "^0.29.8",
+    "vitest": "^1.2.2",
     "vitest-fetch-mock": "^0.2.2"
   }
 }

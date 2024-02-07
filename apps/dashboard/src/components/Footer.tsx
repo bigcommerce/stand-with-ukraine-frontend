@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { ReactComponent as BigDesignLogoSVG } from '../assets/big-design-logo.svg';
+import BigDesignLogoSVG from '../assets/big-design-logo.svg?react';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
 import { nextStep, previousStep } from '../state/mainSlice';
 import { recordUniversalInstallerEvent, writeConfiguration } from '../state/mainSlice/api';

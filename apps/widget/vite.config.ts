@@ -20,7 +20,6 @@ export default defineConfig({
     proxy: {
       '/api': 'http://localhost:9000',
     },
-    host: true,
     port: 3001,
   },
   build: {
