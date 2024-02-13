@@ -18,7 +18,7 @@ export { Page };
 function Page() {
   return (
     <ConfigureWidgetProvider>
-      <h1 style={{textAlign: 'center'}}>SUBSCRIPTION SITE</h1>
+      <h1 style={{ textAlign: 'center' }}>SUBSCRIPTION SITE</h1>
       <LogoPanel isFixed />
       <Home />
       <HowItWorks />
