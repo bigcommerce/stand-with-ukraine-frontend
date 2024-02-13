@@ -11,7 +11,7 @@ export default defineConfig({
       '/api': 'http://localhost:9000',
       '/dashboard': 'http://localhost:3000',
     },
-    port: 3002,
+    port: 3003,
   },
   build: {
     outDir: '../../build/.subscription',
