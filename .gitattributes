@@ -1,5 +1,4 @@
 .yarn/** linguist-vendored
-*.webm filter=lfs diff=lfs merge=lfs -text
-*.mp4 filter=lfs diff=lfs merge=lfs -text
-static/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
 static/**/*.webm filter=lfs diff=lfs merge=lfs -text
+static/**/*.mp4 filters=lfs diff=lfs merge=lfs -text
+static/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
