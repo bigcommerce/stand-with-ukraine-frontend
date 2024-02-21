@@ -1,5 +1,6 @@
 import { renderToString } from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
+import SwiperNavigationCss from 'swiper/css/navigation?raw';
 import SwiperPaginationCss from 'swiper/css/pagination?raw';
 import SwiperCss from 'swiper/css?raw';
 import { dangerouslySkipEscape, escapeInject } from 'vike/server';
@@ -60,6 +61,7 @@ async function render(pageContext: PageContextServer) {
     <link rel="apple-touch-icon" href="logo192.png" />
     ${dangerouslySkipEscape(sheet.getStyleTags())}
     ${dangerouslySkipEscape(`<style>${SwiperCss}${SwiperPaginationCss}</style>`)}
+    ${dangerouslySkipEscape(`<style>${SwiperCss}${SwiperNavigationCss}</style>`)}
     <link rel="preload" href="${HomeImageSrc}" as="image">
     <link rel="preload" href="https://standwithukraineapp.com/widget/style.css" as="style" />
     <title>${title}</title>

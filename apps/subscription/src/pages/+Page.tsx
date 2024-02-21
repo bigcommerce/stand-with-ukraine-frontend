@@ -1,5 +1,28 @@
+import {
+  Contacts,
+  HelpIsImportant,
+  Home,
+  Impact,
+  LogoPanel,
+  Needs,
+  Stats,
+  Subscriptions,
+} from '../sections';
+
 export { Page };
 
 function Page() {
-  return <h1 style={{ textAlign: 'center' }}>SUBSCRIPTION SITE</h1>;
+  return (
+    <>
+      <LogoPanel isFixed />
+      <Home />
+      <HelpIsImportant />
+      <Needs />
+      <Subscriptions />
+      <Impact />
+      <Stats />
+      <Contacts />
+      <LogoPanel />
+    </>
+  );
 }
