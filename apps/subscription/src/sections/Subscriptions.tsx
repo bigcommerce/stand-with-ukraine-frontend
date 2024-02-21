@@ -87,13 +87,13 @@ const TabButton = styled.button<{ isActive?: boolean }>`
   }
 `;
 
-const StyledItem = styled.div`
+const StyledItem = styled.div<{ hasDescription: boolean }>`
   background: #000;
   padding: 3rem 1.5rem;
   text-align: center;
 
   ${H3} {
-    margin-bottom: 0;
+    margin-bottom: ${({ hasDescription }) => (hasDescription ? '0' : '5rem')};
   }
 
   ${Paragraph} {
@@ -148,10 +148,8 @@ export const Subscriptions = () => {
       <Container flexWrap="wrap">
         {items.map(({ title, description, url }, i) => (
           <Item flexBasis="31%" key={i}>
-            <StyledItem>
-              <H3 color="light" margin={description ? undefined : '0 0 5rem'}>
-                {title}
-              </H3>
+            <StyledItem hasDescription={!!description}>
+              <H3 color="light">{title}</H3>
               {!!description && <Paragraph color="light">{description}</Paragraph>}
               <ButtonLink href={url} rel="noreferrer" target="_blank" variant="light">
                 Support

@@ -1,4 +1,3 @@
-import { ConfigureWidgetProvider } from '../components/ConfigureWidget/ConfigureWidgetContext';
 import {
   Contacts,
   HelpIsImportant,
@@ -14,7 +13,7 @@ export { Page };
 
 function Page() {
   return (
-    <ConfigureWidgetProvider>
+    <>
       <LogoPanel isFixed />
       <Home />
       <HelpIsImportant />
@@ -24,6 +23,6 @@ function Page() {
       <Stats />
       <Contacts />
       <LogoPanel />
-    </ConfigureWidgetProvider>
+    </>
   );
 }
