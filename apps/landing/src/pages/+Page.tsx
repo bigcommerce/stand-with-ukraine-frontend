@@ -15,6 +15,7 @@ import {
 
 export { Page };
 
+
 function Page() {
   return (
     <ConfigureWidgetProvider>

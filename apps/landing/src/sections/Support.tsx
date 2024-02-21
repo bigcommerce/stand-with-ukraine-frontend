@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 
-import { ButtonLink, Container, H2, H3, Item, Paragraph, Section } from '../components';
-import { breakpoints } from '../helpers';
+import {ButtonLink, Container, H2, H3, Item, Paragraph, Section} from '../components';
+import {breakpoints,} from '../helpers';
+import {Currency, Language, LiqPay} from '../payments/LiqPay'
+
+const api = new LiqPay(
+    import.meta.env.LIQPAY_PUBLIC_KEY,
+    import.meta.env.LIQPAY_PRIVATE_KEY
+);
 
 const StyledParagraph = styled(Paragraph)`
   margin-bottom: 3rem;
@@ -52,7 +58,7 @@ export const Support = () => (
           <H3 color="light">2000 UAH</H3>
           <Paragraph color="light">per month</Paragraph>
           <ButtonLink
-            href="https://pay.fondy.eu/s/rcGjT0nI"
+            href={api.create(Language.UA, 20, Currency.UAH)}
             rel="noreferrer"
             target="_blank"
             variant="light"
