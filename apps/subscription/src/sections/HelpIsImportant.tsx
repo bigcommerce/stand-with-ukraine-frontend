@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import VideoThumbnail from '../../public/assets/videos/thumb.png';
+import VideoThumbnail from '../../public/assets/subscription/videos/thumb.png';
 import { Container, H2, Item, Paragraph, Section, Video } from '../components';
 
 const StyledItem = styled(Item)`
@@ -29,11 +29,7 @@ export const HelpIsImportant = () => (
           poster={VideoThumbnail}
           sources={[
             {
-              url: 'assets/videos/how-to/1080p.webm',
-              type: 'video/webm',
-            },
-            {
-              url: 'assets/videos/how-to/1080p.mp4',
+              url: 'assets/videos/subscription/videos/EN.mp4',
               type: 'video/mp4',
             },
           ]}

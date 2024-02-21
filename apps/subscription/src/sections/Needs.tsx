@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import MedicalSuppliesSrc from '../../public/assets/images/medical-supplies.jpg';
-import RadioProtectionToolsSrc from '../../public/assets/images/radio-protection-tools.jpg';
-import TransportSrc from '../../public/assets/images/transport.jpg';
+import MedicalSuppliesSrc from '../../public/assets/subscription/images/medical-supplies.jpg';
+import RadioProtectionToolsSrc from '../../public/assets/subscription/images/radio-protection-tools.jpg';
+import TransportSrc from '../../public/assets/subscription/images/transport.jpg';
 import { Container, H2, Item, Paragraph, Section } from '../components';
 import { breakpoints } from '../helpers';
 

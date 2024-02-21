@@ -1,10 +1,10 @@
 import { DetailedHTMLProps, ImgHTMLAttributes, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import AndriiSrc from '../../public/assets/images/andrii.png';
-import DenisSrc from '../../public/assets/images/denis.png';
-import OstapSrc from '../../public/assets/images/ostap.png';
-import PetroSrc from '../../public/assets/images/petro.png';
+import AndriiSrc from '../../public/assets/subscription/images/andrii.png';
+import DenisSrc from '../../public/assets/subscription/images/denis.png';
+import OstapSrc from '../../public/assets/subscription/images/ostap.png';
+import PetroSrc from '../../public/assets/subscription/images/petro.png';
 import { ButtonLink, Container, H1, Item, Paragraph, Section } from '../components';
 import { breakpoints } from '../helpers';
 

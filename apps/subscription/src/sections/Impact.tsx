@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Container, H2, Item, Paragraph, Section } from '../components';
 import { breakpoints } from '../helpers';
 
-const images = import.meta.glob<string>('../../public/assets/images/carousel/*.jpg', {
+const images = import.meta.glob<string>('../../public/assets/subscription/images/carousel/*.jpg', {
   eager: true,
   import: 'default',
 });
