@@ -1,6 +1,6 @@
 export default onPrerenderStart;
 
-import { locales } from '../locales';
+import { defaultLocale, locales } from '../locales';
 
 import { PageContext, PrerenderContext } from './types';
 
@@ -10,9 +10,7 @@ function onPrerenderStart(prerenderContext: PrerenderContext) {
   for (const pageContext of prerenderContext.pageContexts) {
     for (const locale of Object.values(locales)) {
       const urlOriginal =
-        pageContext.urlOriginal === locale
-          ? pageContext.urlOriginal
-          : `/${locale}${pageContext.urlOriginal}`;
+        locale === defaultLocale ? pageContext.urlOriginal : `/${locale}${pageContext.urlOriginal}`;
 
       pageContexts.push({ ...pageContext, locale, urlOriginal });
     }
