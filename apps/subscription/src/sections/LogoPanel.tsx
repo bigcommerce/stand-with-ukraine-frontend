@@ -89,7 +89,7 @@ const LangLink = styled.a<{ isActive: boolean }>`
 `;
 
 const links = [
-  { href: `/${locales.en}`, locale: locales.en, content: 'EN' },
+  { href: `/`, locale: locales.en, content: 'EN' },
   { href: `/${locales.ua}`, locale: locales.ua, content: 'UA' },
 ];
 
