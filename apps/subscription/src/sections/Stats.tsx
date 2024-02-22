@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { Container, H2, Section } from '../components';
 import { breakpoints } from '../helpers';
+import { LocaleText } from '../renderer/LocaleText';
 
 const StyledList = styled.ul`
   color: #fff;
@@ -52,15 +53,15 @@ export const Stats = () => (
       <StyledList>
         <li>
           <strong>57</strong>
-          subscribers
+          <LocaleText>subscribers</LocaleText>
         </li>
         <li>
           <strong>7</strong>
-          countries
+          <LocaleText>countries</LocaleText>
         </li>
         <li>
           <strong>{'>$5000'}</strong>
-          monthly support
+          <LocaleText>monthly support</LocaleText>
         </li>
       </StyledList>
     </Container>

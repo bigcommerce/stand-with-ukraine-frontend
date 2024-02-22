@@ -1,7 +1,7 @@
 import type { Config } from 'vike/types';
 
 export default {
-  passToClient: ['pageProps', 'documentProps', 'someAsyncProps'],
+  passToClient: ['pageProps', 'documentProps', 'someAsyncProps', 'locale'],
   clientRouting: true,
   hydrationCanBeAborted: true,
 } satisfies Config;

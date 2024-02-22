@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Container, H2, Item, Paragraph, Section } from '../components';
 import { breakpoints } from '../helpers';
+import { LocaleText } from '../renderer/LocaleText';
 
 const images = import.meta.glob<string>('../../public/assets/subscription/images/carousel/*.jpg', {
   eager: true,
@@ -67,15 +68,22 @@ const StyledItem = styled(Item)`
 export const Impact = () => {
   return (
     <Section>
-      <H2 textAlign="center">Your impact</H2>
+      <H2 textAlign="center">
+        <LocaleText>Your impact</LocaleText>
+      </H2>
       <SubTitle color="#313440" margin="0 0 6rem" size={2} textAlign="center">
-        In the past 2 years, with your help we’ve handed over essential supplies at almost $100,000
+        <LocaleText>
+          In the past 2 years, with your help we've handed over essential supplies at almost
+          $100,000
+        </LocaleText>
       </SubTitle>
       <Container alignItems="center">
         <Item flexBasis="50%">
           <Tags>
             {tags.map((tag, i) => (
-              <li key={i}>{tag}</li>
+              <li key={i}>
+                <LocaleText>{tag}</LocaleText>
+              </li>
             ))}
           </Tags>
         </Item>

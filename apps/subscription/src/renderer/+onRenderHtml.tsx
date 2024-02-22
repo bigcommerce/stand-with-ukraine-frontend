@@ -7,6 +7,7 @@ import { dangerouslySkipEscape, escapeInject } from 'vike/server';
 
 import HomeImagePlaceholderSrc from '../../public/assets/images/home-placeholder.webp';
 import HomeImageSrc from '../../public/assets/images/home.webp';
+import { langs } from '../locales';
 
 import { Fonts } from './fonts';
 import { getPageTitle } from './getPageTitle';
@@ -36,7 +37,7 @@ const metaTags = `
 `;
 
 async function render(pageContext: PageContextServer) {
-  const { Page, pageProps } = pageContext;
+  const { locale, Page, pageProps } = pageContext;
 
   const sheet = new ServerStyleSheet();
   const pageHtml = renderToString(
@@ -52,7 +53,7 @@ async function render(pageContext: PageContextServer) {
 
   const documentHtml = escapeInject`
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${langs[locale] ?? 'en'}">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
