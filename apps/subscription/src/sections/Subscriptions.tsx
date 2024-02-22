@@ -4,6 +4,9 @@ import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { Container, H2, Item, Section } from '../components';
+import { locales } from '../locales';
+import { LocaleText } from '../renderer/LocaleText';
+import { usePageContext } from '../renderer/usePageContext';
 
 interface SubscriptionItem {
   title: string;
@@ -27,6 +30,15 @@ const eurItems: SubscriptionItem[] = [
   { title: '100 EUR', description: 'per month', url: '#' },
   { title: 'Custom', description: 'per month', url: '#' },
   { title: '1 time donation', url: '#' },
+];
+
+const uahItems: SubscriptionItem[] = [
+  { title: '2000 грн', description: '/ місяць', url: '#' },
+  { title: '3000 грн', description: '/ місяць', url: '#' },
+  { title: '4000 грн', description: '/ місяць', url: '#' },
+  { title: '5000 грн', description: '/ місяць', url: '#' },
+  { title: 'Інша сума', description: '/ місяць', url: '#' },
+  { title: 'Разовий донат', url: '#' },
 ];
 
 const StyledParagraph = styled(Paragraph)`
@@ -121,30 +133,34 @@ const Note = styled(Paragraph)`
 `;
 
 export const Subscriptions = () => {
+  const { locale } = usePageContext();
   const [activeTab, setActiveTab] = useState<'usd' | 'eur'>('usd');
 
-  const items = activeTab === 'usd' ? usdItems : eurItems;
+  const items = locale === locales.en ? (activeTab === 'usd' ? usdItems : eurItems) : uahItems;
 
   return (
     <Section background="blue" id="subscriptions">
       <H2 color="light" margin="0 0 3rem" textAlign="center">
-        Subscription that saves lives
+        <LocaleText>Subscription that saves lives</LocaleText>
       </H2>
       <StyledParagraph color="light" margin="0 0 6rem" size={2} textAlign="center" weight={300}>
-        Monthly support would provide the ability to help systematically
-        <br />
-        and quickly. However, we would appreciate one time donation as well
+        <LocaleText>
+          Monthly support would provide the ability to help systematically and quickly. However, we
+          would appreciate one time donation as well
+        </LocaleText>
       </StyledParagraph>
-      <Container>
-        <Tabs>
-          <TabButton isActive={activeTab === 'usd'} onClick={() => setActiveTab('usd')}>
-            usd
-          </TabButton>
-          <TabButton isActive={activeTab === 'eur'} onClick={() => setActiveTab('eur')}>
-            eur
-          </TabButton>
-        </Tabs>
-      </Container>
+      {locale === locales.en && (
+        <Container>
+          <Tabs>
+            <TabButton isActive={activeTab === 'usd'} onClick={() => setActiveTab('usd')}>
+              usd
+            </TabButton>
+            <TabButton isActive={activeTab === 'eur'} onClick={() => setActiveTab('eur')}>
+              eur
+            </TabButton>
+          </Tabs>
+        </Container>
+      )}
       <Container flexWrap="wrap">
         {items.map(({ title, description, url }, i) => (
           <Item flexBasis="31%" key={i}>
@@ -152,7 +168,7 @@ export const Subscriptions = () => {
               <H3 color="light">{title}</H3>
               {!!description && <Paragraph color="light">{description}</Paragraph>}
               <ButtonLink href={url} rel="noreferrer" target="_blank" variant="light">
-                Support
+                <LocaleText>Support</LocaleText>
               </ButtonLink>
             </StyledItem>
           </Item>
@@ -160,9 +176,9 @@ export const Subscriptions = () => {
       </Container>
       <Container>
         <Note color="light">
-          * If you are subscribed, but want to cancel subscription{' '}
+          <LocaleText>* If you are subscribed, but want to cancel subscription</LocaleText>{' '}
           <a href="#" rel="noreferrer" target="_blank">
-            click here
+            <LocaleText>click here</LocaleText>
           </a>
         </Note>
       </Container>

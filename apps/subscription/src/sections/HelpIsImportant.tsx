@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import VideoThumbnail from '../../public/assets/subscription/videos/thumb.png';
 import { Container, H2, Item, Paragraph, Section, Video } from '../components';
+import { LocaleText } from '../renderer/LocaleText';
 
 const StyledItem = styled(Item)`
   align-items: flex-start;
@@ -21,7 +22,7 @@ const StyledParagraph = styled(Paragraph)`
 export const HelpIsImportant = () => (
   <Section background="gray" id="how-it-works">
     <H2 margin="0 0 6rem" textAlign="center">
-      Why your help is important
+      <LocaleText>Why your help is important</LocaleText>
     </H2>
     <StyledContainer alignItems="center">
       <Item flexBasis="67%">
@@ -36,13 +37,17 @@ export const HelpIsImportant = () => (
         />
       </Item>
       <StyledItem flexBasis="33%">
-        <StyledParagraph>War in Ukraine is still going.</StyledParagraph>
         <StyledParagraph>
-          THE needs are growing every day. Government is unable to fulfil all of them and rely on
-          volunteers to help.
+          <LocaleText>War in Ukraine is still going.</LocaleText>
+        </StyledParagraph>
+        <StyledParagraph>
+          <LocaleText>
+            THE needs are growing every day. Government is unable to fulfil all of them and rely on
+            volunteers to help.
+          </LocaleText>
         </StyledParagraph>
         <StyledParagraph margin="0">
-          let’s help by supporting people we know and love, our colleagues.{' '}
+          <LocaleText>let's help by supporting people we know and love, our colleagues.</LocaleText>
         </StyledParagraph>
       </StyledItem>
     </StyledContainer>

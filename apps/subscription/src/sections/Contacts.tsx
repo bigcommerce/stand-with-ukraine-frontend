@@ -14,6 +14,9 @@ import {
   Textarea,
 } from '../components';
 import { breakpoints } from '../helpers';
+import { translate } from '../locales';
+import { LocaleText } from '../renderer/LocaleText';
+import { usePageContext } from '../renderer/usePageContext';
 
 const StyledForm = styled(Item)`
   background-color: #fff;
@@ -163,26 +166,23 @@ const useForm = () => {
 export const Contacts = () => {
   const { errors, isDirty, isSubmitted, isDisabled, data, resetForm, handleChange, handleSubmit } =
     useForm();
+  const { locale } = usePageContext();
 
   return (
     <Section background="primary" id="contacts">
       <Container>
         <Item flexBasis="50%">
-          <H2 color="light">Contact us</H2>
+          <H2 color="light">
+            <LocaleText>Contact us</LocaleText>
+          </H2>
           <StyledParagraph color="light" size={1.7}>
-            We appreciate you taking the time to help us improve the application so we are able to
-            continue raising awareness, and generating support for our comrades in Ukraine.
+            <LocaleText>
+              We appreciate you taking the time to help us improve the application so we are able to
+              continue raising awareness, and generating support for our comrades in Ukraine.
+            </LocaleText>
           </StyledParagraph>
-          <StyledLink
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdjibRgptwc7j_AMQ54qes93nfyxhXrzYSNnsmf2_7hs6gClw/viewform"
-            rel="noreferrer"
-            target="_blank"
-          >
-            Get support
-            <img alt="External link icon" className="lazyload" data-src={OpenInNewWindowSVG} />
-          </StyledLink>
           <StyledParagraph color="light" size={1.7}>
-            Our emails:
+            <LocaleText>Our emails:</LocaleText>
             <br />
             bohdan.hodzenko@bigcommerce.com
             <br />
@@ -190,47 +190,57 @@ export const Contacts = () => {
           </StyledParagraph>
         </Item>
         <StyledForm flexBasis="50%">
-          <H4>Contact form</H4>
+          <H4>
+            <LocaleText>Contact form</LocaleText>
+          </H4>
           {isSubmitted ? (
             <>
               <Paragraph color="gray" margin="0 0 3rem">
-                Thank you for your submission
+                <LocaleText>Thank you for your submission</LocaleText>
               </Paragraph>
-              <Button onClick={resetForm}>Reset</Button>
+              <Button onClick={resetForm}>
+                <LocaleText>Reset</LocaleText>
+              </Button>
             </>
           ) : (
             <>
               <Paragraph color="gray" margin="0 0 3rem">
-                Describe your question below
+                <LocaleText>Describe your question below</LocaleText>
               </Paragraph>
               <form onSubmit={handleSubmit}>
                 <Input
-                  error={isDirty.name ? errors.name : undefined}
+                  error={isDirty.name ? errors.name && translate(errors.name, locale) : undefined}
                   id="name"
-                  label="First and Last name"
+                  label={translate('First and Last name', locale)}
                   onChange={handleChange}
                   required
                   value={data.name}
                 />
                 <Input
-                  error={isDirty.email ? errors.email : undefined}
+                  error={
+                    isDirty.email ? errors.email && translate(errors.email, locale) : undefined
+                  }
                   id="email"
-                  label="Email"
+                  label={translate('Email', locale)}
                   onChange={handleChange}
                   required
                   value={data.email}
                 />
                 <Textarea
-                  error={isDirty.message ? errors.message : undefined}
+                  error={
+                    isDirty.message
+                      ? errors.message && translate(errors.message, locale)
+                      : undefined
+                  }
                   id="message"
-                  label="Your question or comment"
+                  label={translate('Your question or comment', locale)}
                   onChange={handleChange}
                   required
                   rows={10}
                   value={data.message}
                 />
                 <Button disabled={isDisabled} type="submit">
-                  Submit
+                  <LocaleText>Submit</LocaleText>
                 </Button>
               </form>
             </>

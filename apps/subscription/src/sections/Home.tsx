@@ -7,6 +7,7 @@ import OstapSrc from '../../public/assets/subscription/images/ostap.png';
 import PetroSrc from '../../public/assets/subscription/images/petro.png';
 import { ButtonLink, Container, H1, Item, Paragraph, Section } from '../components';
 import { breakpoints } from '../helpers';
+import { LocaleText } from '../renderer/LocaleText';
 
 const StyledSection = styled(Section)`
   padding-top: 3rem !important;
@@ -103,14 +104,18 @@ export const Home = () => (
   <StyledSection background="primary" id="home">
     <Container alignItems="center" justifyContent="center">
       <Item flexBasis="50%">
-        <H1 color="light">Support BigCommerce colleagues defending Ukraine</H1>
+        <H1 color="light">
+          <LocaleText>Support BigCommerce colleagues defending Ukraine</LocaleText>
+        </H1>
         <Paragraph color="light" margin="0 0 3rem" size={2} weight={300}>
-          Our colleagues from Kyiv office are defending Ukraine on a frontline. Let’s help them to
-          stay safe!
+          <LocaleText>
+            Our colleagues from Kyiv office are defending Ukraine on a frontline. Let's help them to
+            stay safe!
+          </LocaleText>
         </Paragraph>
         <ButtonsContainer>
           <ButtonLink href="#subscriptions" variant="light">
-            Donate
+            <LocaleText>Donate</LocaleText>
           </ButtonLink>
         </ButtonsContainer>
       </Item>
@@ -119,25 +124,33 @@ export const Home = () => (
           <StyledItem>
             <ProgressiveImg alt="Denis photo" src={DenisSrc} />
             <Small color="light">
-              Denis Matveev. Product designer (MSF, Localization), officer in Ukraine army
+              <LocaleText>
+                Denis Matveev. Product designer (MSF, Localization), officer in Ukraine army
+              </LocaleText>
             </Small>
           </StyledItem>
           <StyledItem>
             <ProgressiveImg alt="Andrii photo" src={AndriiSrc} />
             <Small color="light">
-              Andrii Hurzhiy. Senior Engineer (MSF, Catalog), officer in Ukraine army
+              <LocaleText>
+                Andrii Hurzhiy. Senior Engineer (MSF, Catalog), officer in Ukraine army
+              </LocaleText>
             </Small>
           </StyledItem>
           <StyledItem>
             <ProgressiveImg alt="Petro photo" src={PetroSrc} />
             <Small color="light">
-              Petro Donin. Senior Engineer (Inventory), officer in Ukraine army
+              <LocaleText>
+                Petro Donin. Senior Engineer (Inventory), officer in Ukraine army
+              </LocaleText>
             </Small>
           </StyledItem>
           <StyledItem>
             <ProgressiveImg alt="Ostap photo" src={OstapSrc} />
             <Small color="light">
-              Ostap Ivanishyn. Senior Engineer (Payments), officer in Ukraine army
+              <LocaleText>
+                Ostap Ivanishyn. Senior Engineer (Payments), officer in Ukraine army
+              </LocaleText>
             </Small>
           </StyledItem>
         </Container>

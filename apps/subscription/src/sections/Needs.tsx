@@ -5,6 +5,7 @@ import RadioProtectionToolsSrc from '../../public/assets/subscription/images/rad
 import TransportSrc from '../../public/assets/subscription/images/transport.jpg';
 import { Container, H2, Item, Paragraph, Section } from '../components';
 import { breakpoints } from '../helpers';
+import { LocaleText } from '../renderer/LocaleText';
 
 const SubTitle = styled(Paragraph)`
   font-weight: 300;
@@ -31,35 +32,50 @@ const StyledImage = styled.img`
 
 export const Needs = () => (
   <Section>
-    <H2 textAlign="center">What are the constant needs</H2>
+    <H2 textAlign="center">
+      <LocaleText>What are the constant needs</LocaleText>
+    </H2>
     <SubTitle color="#313440" margin="0 0 6rem" size={2} textAlign="center">
-      There’s a constant need in transport, protection and medical supplies. And
-      <br />
-      our focus is in making sure we can provide help fast.
+      <LocaleText>
+        There's a constant need in transport, protection and medical supplies. And our focus is in
+        making sure we can provide help fast.
+      </LocaleText>
     </SubTitle>
     <Container>
       <Item flexBasis="33%">
         <StyledImage alt="transport" className="lazyload" data-src={TransportSrc} />
-        <CardTitle>Transport</CardTitle>
+        <CardTitle>
+          <LocaleText>Transport</LocaleText>
+        </CardTitle>
         <Small color="#6D6E7A">
-          Transport is essential to survive and transport people and ammunition. Cars get damaged
-          every day and require either maintenance or full replacement.
+          <LocaleText>
+            Transport is essential to survive and transport people and ammunition. Cars get damaged
+            every day and require either maintenance or full replacement.
+          </LocaleText>
         </Small>
       </Item>
       <Item flexBasis="33%">
         <StyledImage alt="transport" className="lazyload" data-src={RadioProtectionToolsSrc} />
-        <CardTitle>Radio protection tools</CardTitle>
+        <CardTitle>
+          <LocaleText>Radio protection tools</LocaleText>
+        </CardTitle>
         <Small color="#6D6E7A">
-          Anti drone protection is #1 request today, in addition to body armor, night vision,
-          Starlink kits and powerstations for stable connection, drones with thermal vision.
+          <LocaleText>
+            Anti drone protection is #1 request today, in addition to body armor, night vision,
+            Starlink kits and powerstations for stable connection, drones with thermal vision.
+          </LocaleText>
         </Small>
       </Item>
       <Item flexBasis="33%">
         <StyledImage alt="transport" className="lazyload" data-src={MedicalSuppliesSrc} />
-        <CardTitle>Medical supplies</CardTitle>
+        <CardTitle>
+          <LocaleText>Medical supplies</LocaleText>
+        </CardTitle>
         <Small color="#6D6E7A">
-          Medical tourniquets, medical bandage, medical kits and medicines, body warmers and
-          sleeping bags.
+          <LocaleText>
+            Medical tourniquets, medical bandage, medical kits and medicines, body warmers and
+            sleeping bags.
+          </LocaleText>
         </Small>
       </Item>
     </Container>

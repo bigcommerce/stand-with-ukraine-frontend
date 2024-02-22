@@ -2,8 +2,10 @@ export type { PageContextServer };
 export type { PageContextClient };
 export type { PageContext };
 export type { PageProps };
+export type { PrerenderContext };
 
 import type {
+  OnPrerenderStartSync as VKOnPrerenderStartSync,
   PageContextClient as VKPageContextClient,
   PageContextServer as VKPageContextServer,
 } from 'vike/types';
@@ -13,6 +15,7 @@ type PageProps = Record<string, unknown>;
 
 export interface PageContextCustom {
   Page: Page;
+  locale: string;
   pageProps?: PageProps;
   exports: {
     documentProps?: {
@@ -28,3 +31,8 @@ type PageContextServer = VKPageContextServer<Page> & PageContextCustom;
 type PageContextClient = VKPageContextClient<Page> & PageContextCustom;
 
 type PageContext = PageContextClient | PageContextServer;
+
+type PrerenderContext = Omit<
+  ReturnType<VKOnPrerenderStartSync>['prerenderContext'],
+  'pageContexts'
+> & { pageContexts: PageContext[] };
