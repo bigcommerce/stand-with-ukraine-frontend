@@ -152,7 +152,7 @@ const SubscriptionItem = ({ type, amount, currency }: SubscriptionItem) => {
     }
 
     if (type === 'oneTime' && !!customAmount) {
-      return `/pay?language=${language}&currency=${currency.toUpperCase()}&amount=${customAmount}&action=paydonation`;
+      return `/pay?language=${language}&currency=${currency.toUpperCase()}&amount=${customAmount}&action=paydonate`;
     }
 
     if (type === 'custom' && !!customAmount) {
@@ -177,7 +177,7 @@ const SubscriptionItem = ({ type, amount, currency }: SubscriptionItem) => {
   };
 
   const handleClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
-    if (!isExpanded) {
+    if (type !== 'common' && !isExpanded) {
       e.preventDefault();
 
       setIsExpanded(true);
