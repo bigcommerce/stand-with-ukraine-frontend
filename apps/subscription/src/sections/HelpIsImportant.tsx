@@ -4,6 +4,7 @@ import ENVideo from '../../public/assets/subscription/videos/EN.mp4';
 import VideoThumbnail from '../../public/assets/subscription/videos/thumb.png';
 import UAVideo from '../../public/assets/subscription/videos/UA.mp4';
 import { Container, H2, Item, Paragraph, Section, Video } from '../components';
+import { breakpoints } from '../helpers';
 import { defaultLocale } from '../locales';
 import { LocaleText } from '../renderer/LocaleText';
 import { usePageContext } from '../renderer/usePageContext';
@@ -16,6 +17,14 @@ const StyledItem = styled(Item)`
 
 const StyledContainer = styled(Container)`
   gap: 7.6rem;
+
+  ${Item} {
+    width: 100%;
+
+    ${breakpoints.desktop} {
+      width: auto;
+    }
+  }
 `;
 
 const StyledParagraph = styled(Paragraph)`

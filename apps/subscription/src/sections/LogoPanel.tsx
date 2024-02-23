@@ -61,7 +61,15 @@ const Wrapper = styled.div<{ isFixed: boolean }>`
   z-index: 10;
   flex-direction: column;
   width: 100%;
-  position: ${({ isFixed }) => (isFixed ? 'fixed' : 'relative')};
+  position: relative;
+
+  ${({ isFixed }) =>
+    isFixed &&
+    css`
+      ${breakpoints.desktop} {
+        position: fixed;
+      }
+    `}
 `;
 
 const LangNav = styled.div`

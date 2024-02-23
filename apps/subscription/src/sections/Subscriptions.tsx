@@ -1,45 +1,26 @@
 import { ButtonLink, H3, Paragraph } from 'landing/src/components';
 import { breakpoints } from 'landing/src/helpers';
-import { useState } from 'react';
+import { ChangeEvent, MouseEventHandler, useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import { Container, H2, Item, Section } from '../components';
-import { locales } from '../locales';
+import { Container, H2, Input, Item, Section, StyledContainer } from '../components';
+import { locales, translate } from '../locales';
 import { LocaleText } from '../renderer/LocaleText';
 import { usePageContext } from '../renderer/usePageContext';
 
+type Currency = 'usd' | 'eur' | 'uah';
+
 interface SubscriptionItem {
-  title: string;
-  url: string;
-  description?: string;
+  type: 'common' | 'oneTime' | 'custom';
+  amount: SubscriptionItem['type'] extends 'common' ? number : null | number;
+  currency: Currency;
 }
 
-const usdItems: SubscriptionItem[] = [
-  { title: '25 USD', description: 'per month', url: '#' },
-  { title: '50 USD', description: 'per month', url: '#' },
-  { title: '75 USD', description: 'per month', url: '#' },
-  { title: '100 USD', description: 'per month', url: '#' },
-  { title: 'Custom', description: 'per month', url: '#' },
-  { title: '1 time donation', url: '#' },
-];
-
-const eurItems: SubscriptionItem[] = [
-  { title: '25 EUR', description: 'per month', url: '#' },
-  { title: '50 EUR', description: 'per month', url: '#' },
-  { title: '75 EUR', description: 'per month', url: '#' },
-  { title: '100 EUR', description: 'per month', url: '#' },
-  { title: 'Custom', description: 'per month', url: '#' },
-  { title: '1 time donation', url: '#' },
-];
-
-const uahItems: SubscriptionItem[] = [
-  { title: '2000 грн', description: '/ місяць', url: '#' },
-  { title: '3000 грн', description: '/ місяць', url: '#' },
-  { title: '4000 грн', description: '/ місяць', url: '#' },
-  { title: '5000 грн', description: '/ місяць', url: '#' },
-  { title: 'Інша сума', description: '/ місяць', url: '#' },
-  { title: 'Разовий донат', url: '#' },
-];
+const amountItems: Record<Currency, number[]> = {
+  usd: [25, 50, 75, 100],
+  eur: [25, 50, 75, 100],
+  uah: [2000, 3000, 4000, 5000],
+};
 
 const StyledParagraph = styled(Paragraph)`
   margin-bottom: 3rem;
@@ -104,10 +85,6 @@ const StyledItem = styled.div<{ hasDescription: boolean }>`
   padding: 3rem 1.5rem;
   text-align: center;
 
-  ${H3} {
-    margin-bottom: ${({ hasDescription }) => (hasDescription ? '0' : '5rem')};
-  }
-
   ${Paragraph} {
     margin-bottom: 3rem;
   }
@@ -121,6 +98,21 @@ const StyledItem = styled.div<{ hasDescription: boolean }>`
   ${breakpoints.desktop} {
     padding: 5rem 4rem;
   }
+
+  label {
+    color: #fff;
+  }
+
+  ${StyledContainer} {
+    margin-bottom: 2rem;
+    margin-top: -1rem;
+  }
+
+  input {
+    color: #fff;
+    background-color: transparent;
+    border-bottom-color: #fff;
+  }
 `;
 
 const Note = styled(Paragraph)`
@@ -132,11 +124,110 @@ const Note = styled(Paragraph)`
   }
 `;
 
+const StyledButtonLink = styled(ButtonLink)<{ isDisabled: boolean }>`
+  ${({ isDisabled }) =>
+    isDisabled &&
+    css`
+      pointer-events: none;
+      opacity: 0.5;
+    `}
+`;
+
+const SubscriptionItem = ({ type, amount, currency }: SubscriptionItem) => {
+  const { locale } = usePageContext();
+  const [customAmount, setCustomAmount] = useState<string | undefined>(undefined);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const description = type === 'oneTime' ? null : 'per month';
+
+  const isDisabled = isExpanded && type !== 'common' && !customAmount;
+
+  const label = type === 'oneTime' ? 'Enter donation amount' : 'Enter subscription amount';
+
+  const getHref = () => {
+    const language = currency === 'uah' ? 'ua' : 'en';
+
+    if (type === 'common') {
+      return `/pay?language=${language}&currency=${currency.toUpperCase()}&amount=${amount}&action=subscribe`;
+    }
+
+    if (type === 'oneTime' && !!customAmount) {
+      return `/pay?language=${language}&currency=${currency.toUpperCase()}&amount=${customAmount}&action=paydonation`;
+    }
+
+    if (type === 'custom' && !!customAmount) {
+      return `/pay?language=${language}&currency=${currency.toUpperCase()}&amount=${customAmount}&action=subscribe`;
+    }
+
+    return '#';
+  };
+
+  const getTitle = () => {
+    if (type === 'common') {
+      const postFix = currency === 'uah' ? 'грн' : currency;
+
+      return `${amount} ${postFix}`.toUpperCase();
+    }
+
+    if (type === 'oneTime') {
+      return '1 time donation';
+    }
+
+    return 'Custom';
+  };
+
+  const handleClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
+    if (!isExpanded) {
+      e.preventDefault();
+
+      setIsExpanded(true);
+    }
+  };
+
+  return (
+    <StyledItem hasDescription={true}>
+      <H3 color="light" margin={description ? '0' : '0 0 5rem'}>
+        <LocaleText>{getTitle()}</LocaleText>
+      </H3>
+      {!!description && (
+        <Paragraph color="light">
+          <LocaleText>{description}</LocaleText>
+        </Paragraph>
+      )}
+      {isExpanded && type !== 'common' && (
+        <Input
+          label={translate(label, locale)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setCustomAmount(e.target.value)}
+          type="number"
+          value={customAmount}
+        />
+      )}
+      <StyledButtonLink
+        href={getHref()}
+        isDisabled={isDisabled}
+        onClick={handleClick}
+        rel="noreferrer"
+        target="_blank"
+        variant="light"
+      >
+        <LocaleText>Support</LocaleText>
+      </StyledButtonLink>
+    </StyledItem>
+  );
+};
+
 export const Subscriptions = () => {
   const { locale } = usePageContext();
   const [activeTab, setActiveTab] = useState<'usd' | 'eur'>('usd');
 
-  const items = locale === locales.en ? (activeTab === 'usd' ? usdItems : eurItems) : uahItems;
+  const items =
+    locale === locales.en
+      ? activeTab === 'usd'
+        ? amountItems.usd
+        : amountItems.eur
+      : amountItems.uah;
+
+  const currency = locale === locales.en ? activeTab : 'uah';
 
   return (
     <Section background="blue" id="subscriptions">
@@ -162,17 +253,17 @@ export const Subscriptions = () => {
         </Container>
       )}
       <Container flexWrap="wrap">
-        {items.map(({ title, description, url }, i) => (
+        {items.map((amount, i) => (
           <Item flexBasis="31%" key={i}>
-            <StyledItem hasDescription={!!description}>
-              <H3 color="light">{title}</H3>
-              {!!description && <Paragraph color="light">{description}</Paragraph>}
-              <ButtonLink href={url} rel="noreferrer" target="_blank" variant="light">
-                <LocaleText>Support</LocaleText>
-              </ButtonLink>
-            </StyledItem>
+            <SubscriptionItem amount={amount} currency={currency} type="common" />
           </Item>
         ))}
+        <Item flexBasis="31%">
+          <SubscriptionItem amount={null} currency={currency} type="custom" />
+        </Item>
+        <Item flexBasis="31%">
+          <SubscriptionItem amount={null} currency={currency} type="oneTime" />
+        </Item>
       </Container>
       <Container>
         <Note color="light">
