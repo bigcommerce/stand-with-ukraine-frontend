@@ -8,6 +8,7 @@ module.exports = {
       './apps/dashboard/tsconfig.json',
       './apps/widget/tsconfig.json',
       './apps/landing/tsconfig.json',
+      './apps/subscription/tsconfig.json',
     ],
     tsconfigRootDir: __dirname,
   },
@@ -21,7 +22,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/*.ts', '**/*.tsx', '**/*.js'],
+      files: ['**/*.{ts,tsx,js}'],
       rules: {
         '@typescript-eslint/naming-convention': 'off',
         '@typescript-eslint/no-unsafe-return': 'off',
@@ -67,7 +68,7 @@ module.exports = {
       },
     },
     {
-      files: ['apps/{widget,landing,dashboard}/**/*.{ts,tsx,js}'],
+      files: ['apps/{widget,landing,dashboard,subscription}/**/*.{ts,tsx,js}'],
       rules: {
         'react/react-in-jsx-scope': 'off',
       },

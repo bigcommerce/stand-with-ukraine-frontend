@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "stand-with-ukraine-bc-app"
+  },
+  "targets": {
+    "stand-with-ukraine-bc-app": {
+      "hosting": {
+        "main": [
+          "stand-with-ukraine-bc-app"
+        ],
+        "subscription": [
+          "subscription-stand-with-ukraine-bc-app"
+        ]
+      }
+    }
   }
 }
