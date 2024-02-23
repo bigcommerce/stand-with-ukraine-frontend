@@ -64,6 +64,13 @@
           "destination": "/landing/robots.txt"
         },
         {
+          "source": "/pay",
+          "run": {
+            "serviceId": "backend",
+            "region": "us-central1"
+          }
+        },
+        {
           "source": "**",
           "destination": "/landing/index.html"
         }
@@ -105,6 +112,13 @@
         }
       ],
       "rewrites": [
+        {
+          "source": "/pay",
+          "run": {
+            "serviceId": "backend",
+            "region": "us-central1"
+          }
+        },
         {
           "source": "**",
           "destination": "/index.html"
