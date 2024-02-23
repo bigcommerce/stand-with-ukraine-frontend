@@ -109,4 +109,9 @@ export const translations: Record<string, Record<string, string>> = {
     'uk-UA': '* ви можете відмовитись від підписки в будь який момент, натиснувши',
   },
   'click here': { 'uk-UA': 'СЮДИ' },
+  '1 time donation': { 'uk-UA': 'Разовий донат' },
+  Custom: { 'uk-UA': 'Інша сума' },
+  'per month': { 'uk-UA': '/ місяць' },
+  'Enter donation amount': { 'uk-UA': 'Введіть бажану суму' },
+  'Enter subscription amount': { 'uk-UA': 'Введіть бажану суму' },
 };
