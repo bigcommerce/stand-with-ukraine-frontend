@@ -8,7 +8,8 @@ import {
   Stats,
   Subscriptions,
 } from '../sections';
-import {Faq} from "../sections/Faq";
+import { DocsPanel } from '../sections/DocsPanel';
+import { Faq } from '../sections/Faq';
 
 export { Page };
 
@@ -25,6 +26,7 @@ function Page() {
       <Faq />
       <Contacts />
       <LogoPanel />
+      <DocsPanel />
     </>
   );
 }
