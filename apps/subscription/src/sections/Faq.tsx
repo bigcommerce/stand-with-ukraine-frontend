@@ -39,7 +39,7 @@ const QUESTIONS: QUESTIONS = {
       question:
         'In case if the amount of donations is more than the needs, how those funds are going to be used?',
       answer:
-        'BigCommerce Ukraine is providing help not only to our colleagues defending Ukraine in the Armed Forces, but also to help in rebuilding civilian infrastructure damaged as a cause of russian aggression, as well as helping kids who suffered from this aggression.\n' +
+        'BigCommerce Ukraine is providing help not only to our colleagues defending Ukraine in the Armed Forces, but also to help in rebuilding civilian infrastructure damaged as a cause of russian aggression, as well as helping kids who suffered from this aggression.<br>' +
         'In case there are any funds left on top of what we need to support our colleagues, those funds would be used to help in rebuilding civilian infrastructure and helping kids and families in need.',
     },
     {
@@ -63,7 +63,7 @@ const QUESTIONS: QUESTIONS = {
   ],
   'uk-UA': [
     {
-      question: 'На кого націлений цей проект і куди підуть кошти?\n',
+      question: 'На кого націлений цей проект і куди підуть кошти?',
       answer:
         'Цей проект має на меті допомогу нашим колегам з компанії “БігКоммерс Україна”, які після 24 лютого 2022 року доєднались до захисту України в лавах Збройних Сил.',
     },
@@ -210,7 +210,7 @@ export const Faq = () => {
       </StyledH1>
       <Container>
         <Item flexGrow={1}>
-          {(QUESTIONS[locale] ?? QUESTIONS.en).map((qa, key) => (
+          {(QUESTIONS[locale] || QUESTIONS.en).map((qa, key) => (
             <Question key={key} {...qa} />
           ))}
         </Item>
