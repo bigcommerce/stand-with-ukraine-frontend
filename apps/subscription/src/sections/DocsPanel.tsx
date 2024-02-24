@@ -24,7 +24,7 @@ interface DocLinks {
 }
 
 const docLinks: DocLinks = {
- 'en-US': {
+  'en-US': {
     href: '/assets/docs/Public offer to make a voluntary charitable donation.pdf',
     content: 'Public offer to make a voluntary charitable donation',
   },

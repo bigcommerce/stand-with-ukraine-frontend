@@ -20,7 +20,7 @@ interface QUESTIONS {
 }
 
 const QUESTIONS: QUESTIONS = {
- 'en-US': [
+  'en-US': [
     {
       question: 'What this initiative is about and who are we supporting?',
       answer:
