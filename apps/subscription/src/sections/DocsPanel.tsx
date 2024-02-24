@@ -40,7 +40,9 @@ export const DocsPanel = () => {
 
   return (
     <Wrapper>
-      <a href={link.href}>{link.content}</a>
+      <a href={link.href} rel="noreferrer" target="_blank" title={link.content}>
+        {link.content}
+      </a>
     </Wrapper>
   );
 };
