@@ -73,6 +73,7 @@ export const translations: Record<string, Record<string, string>> = {
   'Medical tourniquets': { 'uk-UA': 'Турнікети' },
   'Thermal vision cameras': { 'uk-UA': 'Камери з тепловізором' },
   'Body armors': { 'uk-UA': 'Броня і плити' },
+  FAQ: { 'uk-UA': 'Запитання й відповіді' },
   'Many more...': { 'uk-UA': 'та багато іншого...' },
   'What are the constant needs': { 'uk-UA': 'Напрямки підтримки' },
   "There's a constant need in transport, protection and medical supplies. And our focus is in making sure we can provide help fast.":

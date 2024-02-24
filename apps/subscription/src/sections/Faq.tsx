@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 import { Container, H1, Item, Paragraph, Section } from '../components';
 import { breakpoints } from '../helpers';
+import { LocaleText } from '../renderer/LocaleText';
 import { usePageContext } from '../renderer/usePageContext';
 
 interface QuestionProps {
@@ -95,7 +96,7 @@ const QUESTIONS: QUESTIONS = {
     {
       question: 'Чи можу я зробити одноразовий донат на реквізити фонду?',
       answer:
-        'Так, одноразовий донат можна зробити скориставшись опцією поруч з підпискою або за реквізитами фонду:<br>БФ “ОБ’ЄДНАНА УКРАЇНСЬКА ПІДТРИМКА”<br></br>' +
+        'Так, одноразовий донат можна зробити скориставшись опцією поруч з підпискою або за реквізитами фонду:<br>БФ “ОБ’ЄДНАНА УКРАЇНСЬКА ПІДТРИМКА”<br />' +
         'р/р: UA373052990000026009036803457 <br>' +
         'АТ КБ "ПРИВАТБАНК" <br>' +
         'МФО 305299 <br>' +
@@ -206,7 +207,7 @@ export const Faq = () => {
   return (
     <Section id="faq">
       <StyledH1 margin="0 0 6rem" textAlign="center">
-        FAQ
+        <LocaleText>FAQ</LocaleText>
       </StyledH1>
       <Container>
         <Item flexGrow={1}>
