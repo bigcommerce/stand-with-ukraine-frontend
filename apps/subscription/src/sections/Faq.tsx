@@ -34,7 +34,7 @@ const QUESTIONS: QUESTIONS = {
     {
       question: 'How long do we think this initiative would last?',
       answer:
-        'We are planning to support our colleagues as long as the war is going up to the victory day. Or up to the time when they are going to discontinue their service. Subscription is 100% optional and you can unsubscribe any time by reach out to us via contact us form or by clicking <a href="https://docs.google.com/forms/d/e/1FAIpQLScF3VX6Q1GctTWHBzCdKQllsTISdutgT-8KDU3OKySgRbHzBA/viewform">here</a>.',
+        'The ability to subscribe for regular support will be active till 24.02.2025 with a possibility to be extended if needed. We are planning to support our colleagues as long as the war is going up to the victory day. Or up to the time when they are going to discontinue their service. Subscription is 100% optional and you can unsubscribe any time by reach out to us via contact us form or by clicking <a href="https://docs.google.com/forms/d/e/1FAIpQLScF3VX6Q1GctTWHBzCdKQllsTISdutgT-8KDU3OKySgRbHzBA/viewform">here</a>.',
     },
     {
       question:
@@ -76,7 +76,7 @@ const QUESTIONS: QUESTIONS = {
     {
       question: 'Скільки часу триватиме підписка на донати?',
       answer:
-        'Ми плануємо підтримувати наших колег до тих пір, допоки це буде необхідно, тобто до закінчення війни або до їх звільнення з лав Збройних Сил України. Цей проект дає змогу допомоги на добровільній основі, тому відмовитись від підтримки можна в будь який момент відправивши запит через <a href="https://forms.gle/gENoxXGFx1EPNokR6">цю форму</a>.',
+        'Можливість підписатись на регулярну підтримку буде активною до 24.02.2025 з можливістю продовження строку дії в разі потреби. Ми плануємо підтримувати наших колег до тих пір, допоки це буде необхідно, тобто до закінчення війни або до їх звільнення з лав Збройних Сил України. Цей проект дає змогу допомоги на добровільній основі, тому відмовитись від підтримки можна в будь який момент відправивши запит через <a href="https://forms.gle/gENoxXGFx1EPNokR6">цю форму</a>.',
     },
     {
       question: 'Що буде з залишками коштів, у разі якщо зібрана сума перевищує поточні потреби?',
