@@ -8,6 +8,8 @@ import {
   Stats,
   Subscriptions,
 } from '../sections';
+import { DocsPanel } from '../sections/DocsPanel';
+import { Faq } from '../sections/Faq';
 
 export { Page };
 
@@ -21,8 +23,10 @@ function Page() {
       <Subscriptions />
       <Impact />
       <Stats />
+      <Faq />
       <Contacts />
       <LogoPanel />
+      <DocsPanel />
     </>
   );
 }
