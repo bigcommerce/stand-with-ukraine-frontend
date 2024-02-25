@@ -196,7 +196,15 @@ const SubscriptionItem = ({ type, amount, currency }: SubscriptionItem) => {
       return setIsExpanded(true);
     }
 
-    openModal(getHref(), currency);
+    const href = getHref();
+
+    if (type === 'oneTime') {
+      window.open(href, '_blank');
+
+      return;
+    }
+
+    openModal(href, currency);
   };
 
   return (
