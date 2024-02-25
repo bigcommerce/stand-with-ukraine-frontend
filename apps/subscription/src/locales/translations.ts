@@ -115,4 +115,7 @@ export const translations: Record<string, Record<string, string>> = {
   'per month': { 'uk-UA': '/ місяць' },
   'Enter donation amount': { 'uk-UA': 'Введіть бажану суму' },
   'Enter subscription amount': { 'uk-UA': 'Введіть бажану суму' },
+  Proceed: {
+    'uk-UA': 'Продовжити',
+  },
 };

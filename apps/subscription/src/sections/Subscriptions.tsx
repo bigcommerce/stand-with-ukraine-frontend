@@ -1,16 +1,31 @@
-import { ButtonLink, H3, Paragraph } from 'landing/src/components';
-import { breakpoints } from 'landing/src/helpers';
 import { ChangeEvent, MouseEventHandler, useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import { Container, H2, Input, Item, Section, StyledContainer } from '../components';
+import {
+  Button,
+  Container,
+  H2,
+  H3,
+  Input,
+  Item,
+  Paragraph,
+  Section,
+  StyledContainer,
+} from '../components';
+import { breakpoints } from '../helpers';
 import { locales, translate } from '../locales';
 import { LocaleText } from '../renderer/LocaleText';
 import { usePageContext } from '../renderer/usePageContext';
 
+import {
+  SubscriptionModal,
+  SubscriptionModalProvider,
+  useSubscriptionModal,
+} from './SubscriptionModal';
+
 type Currency = 'usd' | 'eur' | 'uah';
 
-interface SubscriptionItem {
+export interface SubscriptionItem {
   type: 'common' | 'oneTime' | 'custom';
   amount: SubscriptionItem['type'] extends 'common' ? number : null | number;
   currency: Currency;
@@ -89,8 +104,7 @@ const StyledItem = styled.div<{ hasDescription: boolean }>`
     margin-bottom: 3rem;
   }
 
-  ${ButtonLink} {
-    background-image: linear-gradient(to bottom right, #ffd500 50%, #fff 0);
+  ${Button} {
     max-width: 50rem;
     width: 100%;
   }
@@ -124,7 +138,7 @@ const Note = styled(Paragraph)`
   }
 `;
 
-const StyledButtonLink = styled(ButtonLink)<{ isDisabled: boolean }>`
+const StyledButton = styled(Button)<{ isDisabled: boolean }>`
   ${({ isDisabled }) =>
     isDisabled &&
     css`
@@ -137,6 +151,7 @@ const SubscriptionItem = ({ type, amount, currency }: SubscriptionItem) => {
   const { locale } = usePageContext();
   const [customAmount, setCustomAmount] = useState<string | undefined>(undefined);
   const [isExpanded, setIsExpanded] = useState(false);
+  const { openModal } = useSubscriptionModal();
 
   const description = type === 'oneTime' ? null : 'per month';
 
@@ -176,12 +191,12 @@ const SubscriptionItem = ({ type, amount, currency }: SubscriptionItem) => {
     return 'Custom';
   };
 
-  const handleClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
+  const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
     if (type !== 'common' && !isExpanded) {
-      e.preventDefault();
-
-      setIsExpanded(true);
+      return setIsExpanded(true);
     }
+
+    openModal(getHref(), currency);
   };
 
   return (
@@ -202,16 +217,9 @@ const SubscriptionItem = ({ type, amount, currency }: SubscriptionItem) => {
           value={customAmount}
         />
       )}
-      <StyledButtonLink
-        href={getHref()}
-        isDisabled={isDisabled}
-        onClick={handleClick}
-        rel="noreferrer"
-        target="_blank"
-        variant="light"
-      >
+      <StyledButton isDisabled={isDisabled} onClick={handleClick} variant="light">
         <LocaleText>Support</LocaleText>
-      </StyledButtonLink>
+      </StyledButton>
     </StyledItem>
   );
 };
@@ -230,49 +238,56 @@ export const Subscriptions = () => {
   const currency = locale === locales.en ? activeTab : 'uah';
 
   return (
-    <Section background="blue" id="subscriptions">
-      <H2 color="light" margin="0 0 3rem" textAlign="center">
-        <LocaleText>Subscription that saves lives</LocaleText>
-      </H2>
-      <StyledParagraph color="light" margin="0 0 6rem" size={2} textAlign="center" weight={300}>
-        <LocaleText>
-          Monthly support would provide the ability to help systematically and quickly. However, we
-          would appreciate one time donation as well
-        </LocaleText>
-      </StyledParagraph>
-      {locale === locales.en && (
-        <Container>
-          <Tabs>
-            <TabButton isActive={activeTab === 'usd'} onClick={() => setActiveTab('usd')}>
-              usd
-            </TabButton>
-            <TabButton isActive={activeTab === 'eur'} onClick={() => setActiveTab('eur')}>
-              eur
-            </TabButton>
-          </Tabs>
-        </Container>
-      )}
-      <Container flexWrap="wrap">
-        {items.map((amount, i) => (
-          <Item flexBasis="31%" key={i}>
-            <SubscriptionItem amount={amount} currency={currency} type="common" />
+    <SubscriptionModalProvider>
+      <Section background="blue" id="subscriptions">
+        <H2 color="light" margin="0 0 3rem" textAlign="center">
+          <LocaleText>Subscription that saves lives</LocaleText>
+        </H2>
+        <StyledParagraph color="light" margin="0 0 6rem" size={2} textAlign="center" weight={300}>
+          <LocaleText>
+            Monthly support would provide the ability to help systematically and quickly. However,
+            we would appreciate one time donation as well
+          </LocaleText>
+        </StyledParagraph>
+        {locale === locales.en && (
+          <Container>
+            <Tabs>
+              <TabButton isActive={activeTab === 'usd'} onClick={() => setActiveTab('usd')}>
+                usd
+              </TabButton>
+              <TabButton isActive={activeTab === 'eur'} onClick={() => setActiveTab('eur')}>
+                eur
+              </TabButton>
+            </Tabs>
+          </Container>
+        )}
+        <Container flexWrap="wrap">
+          {items.map((amount, i) => (
+            <Item flexBasis="31%" key={i}>
+              <SubscriptionItem amount={amount} currency={currency} type="common" />
+            </Item>
+          ))}
+          <Item flexBasis="31%">
+            <SubscriptionItem amount={null} currency={currency} type="custom" />
           </Item>
-        ))}
-        <Item flexBasis="31%">
-          <SubscriptionItem amount={null} currency={currency} type="custom" />
-        </Item>
-        <Item flexBasis="31%">
-          <SubscriptionItem amount={null} currency={currency} type="oneTime" />
-        </Item>
-      </Container>
-      <Container>
-        <Note color="light">
-          <LocaleText>* If you are subscribed, but want to cancel subscription</LocaleText>{' '}
-          <a href="#" rel="noreferrer" target="_blank">
-            <LocaleText>click here</LocaleText>
-          </a>
-        </Note>
-      </Container>
-    </Section>
+          <Item flexBasis="31%">
+            <SubscriptionItem amount={null} currency={currency} type="oneTime" />
+          </Item>
+        </Container>
+        <Container>
+          <Note color="light">
+            <LocaleText>* If you are subscribed, but want to cancel subscription</LocaleText>{' '}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScF3VX6Q1GctTWHBzCdKQllsTISdutgT-8KDU3OKySgRbHzBA/viewform"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <LocaleText>click here</LocaleText>
+            </a>
+          </Note>
+        </Container>
+      </Section>
+      <SubscriptionModal />
+    </SubscriptionModalProvider>
   );
 };
