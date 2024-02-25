@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { Button } from '../components';
+import { breakpoints } from '../helpers';
 import { translate } from '../locales';
 import { LocaleText } from '../renderer/LocaleText';
 import { usePageContext } from '../renderer/usePageContext';
@@ -35,6 +36,29 @@ const ModalContent = styled.div`
   }
 `;
 
+const ProceedButton = styled(Button)`
+  margin: 1rem;
+  background-image: linear-gradient(to bottom right, #121118 50%, #0d52ff 0);
+  &:hover {
+    color: #fff;
+  }
+  ${breakpoints.mobile} {
+    width: 98%;
+  }
+  ${breakpoints.desktop} {
+    width: auto;
+  }
+`;
+const CancelButton = styled(Button)`
+  margin: 1rem;
+  ${breakpoints.mobile} {
+    width: 98%;
+  }
+  ${breakpoints.desktop} {
+    width: auto;
+  }
+`;
+
 interface Props {
   currency: string;
   isVisible: boolean;
@@ -57,13 +81,12 @@ export const SubscriptionModal = ({ currency, isVisible, onConfirm, onCancel }: 
     <Modal isVisible={isVisible}>
       <ModalContent>
         <p>{message}</p>
-
-        <Button margin="0 1rem" onClick={onConfirm}>
+        <ProceedButton onClick={onConfirm}>
           <LocaleText>Proceed</LocaleText>
-        </Button>
-        <Button margin="0 1rem" onClick={onCancel}>
+        </ProceedButton>
+        <CancelButton onClick={onCancel}>
           <LocaleText>Cancel</LocaleText>
-        </Button>
+        </CancelButton>
       </ModalContent>
     </Modal>
   );
