@@ -314,7 +314,11 @@ export const Subscriptions = () => {
       <Container>
         <Note color="light">
           <LocaleText>* If you are subscribed, but want to cancel subscription</LocaleText>{' '}
-          <a href="#" rel="noreferrer" target="_blank">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScF3VX6Q1GctTWHBzCdKQllsTISdutgT-8KDU3OKySgRbHzBA/viewform"
+            rel="noreferrer"
+            target="_blank"
+          >
             <LocaleText>click here</LocaleText>
           </a>
         </Note>
