@@ -8,12 +8,15 @@ import { locales, translate } from '../locales';
 import { LocaleText } from '../renderer/LocaleText';
 import { usePageContext } from '../renderer/usePageContext';
 
+import { SubscriptionModal } from './SubscriptionModal';
+
 type Currency = 'usd' | 'eur' | 'uah';
 
 interface SubscriptionItem {
   type: 'common' | 'oneTime' | 'custom';
   amount: SubscriptionItem['type'] extends 'common' ? number : null | number;
   currency: Currency;
+  showDialog: (url: string) => void;
 }
 
 const amountItems: Record<Currency, number[]> = {
@@ -133,7 +136,7 @@ const StyledButtonLink = styled(ButtonLink)<{ isDisabled: boolean }>`
     `}
 `;
 
-const SubscriptionItem = ({ type, amount, currency }: SubscriptionItem) => {
+const SubscriptionItem = ({ type, amount, currency, showDialog }: SubscriptionItem) => {
   const { locale } = usePageContext();
   const [customAmount, setCustomAmount] = useState<string | undefined>(undefined);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -176,11 +179,19 @@ const SubscriptionItem = ({ type, amount, currency }: SubscriptionItem) => {
     return 'Custom';
   };
 
-  const handleClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
+  const handleClick: MouseEventHandler<HTMLAnchorElement> = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+  ) => {
     if (type !== 'common' && !isExpanded) {
+      setIsExpanded(true);
       e.preventDefault();
 
-      setIsExpanded(true);
+      return;
+    }
+
+    if (type !== 'oneTime') {
+      e.preventDefault();
+      showDialog(getHref());
     }
   };
 
@@ -228,6 +239,20 @@ export const Subscriptions = () => {
       : amountItems.uah;
 
   const currency = locale === locales.en ? activeTab : 'uah';
+  const [isDialogVisible, setIsVisible] = useState<boolean>(false);
+  const [targetUrl, setTargetUrl] = useState<string>('#');
+  const showDialog = (url: string) => {
+    setIsVisible(true);
+    setTargetUrl(url);
+  };
+  const onConfirm = () => {
+    window.location.href = targetUrl;
+  };
+
+  const onCancel = () => {
+    setIsVisible(false);
+    setTargetUrl('#');
+  };
 
   return (
     <Section background="blue" id="subscriptions">
@@ -253,16 +278,37 @@ export const Subscriptions = () => {
         </Container>
       )}
       <Container flexWrap="wrap">
+        <SubscriptionModal
+          currency={currency}
+          isVisible={isDialogVisible}
+          onCancel={onCancel}
+          onConfirm={onConfirm}
+        />
         {items.map((amount, i) => (
           <Item flexBasis="31%" key={i}>
-            <SubscriptionItem amount={amount} currency={currency} type="common" />
+            <SubscriptionItem
+              amount={amount}
+              currency={currency}
+              showDialog={showDialog}
+              type="common"
+            />
           </Item>
         ))}
         <Item flexBasis="31%">
-          <SubscriptionItem amount={null} currency={currency} type="custom" />
+          <SubscriptionItem
+            amount={null}
+            currency={currency}
+            showDialog={showDialog}
+            type="custom"
+          />
         </Item>
         <Item flexBasis="31%">
-          <SubscriptionItem amount={null} currency={currency} type="oneTime" />
+          <SubscriptionItem
+            amount={null}
+            currency={currency}
+            showDialog={showDialog}
+            type="oneTime"
+          />
         </Item>
       </Container>
       <Container>

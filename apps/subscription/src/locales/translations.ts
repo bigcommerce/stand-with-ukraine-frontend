@@ -101,6 +101,18 @@ export const translations: Record<string, Record<string, string>> = {
   subscribers: { 'uk-UA': 'донатера' },
   countries: { 'uk-UA': 'країн' },
   'monthly support': { 'uk-UA': 'щомісячної підтримки' },
+
+  'You will need to verify your card by confirming payment for 0 {currency} and once verified, you will be subscribed for the amount of donation you selected.':
+    {
+      'uk-UA':
+        'При підтвердженні платежу, необхідно підтвердити списання 0 {currency} для верифікації вашої картки. Після підтвердження, підписка на обрану вами суму буде оформлена.',
+    },
+  Proceed: {
+    'uk-UA': 'Продовжити',
+  },
+  Cancel: {
+    'uk-UA': 'Відмінити',
+  },
   'Subscription that saves lives': { 'uk-UA': 'Підтримка, що рятує життя' },
   'Monthly support would provide the ability to help systematically and quickly. However, we would appreciate one time donation as well':
     { 'uk-UA': 'Щомісячна підтримка дасть нам змогу допомагати регулярно і прогнозовано' },
