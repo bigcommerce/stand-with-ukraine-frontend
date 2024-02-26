@@ -18,22 +18,22 @@ export { render as onRenderHtml };
 
 const BASE_URL = `https://subscription.standwithukraineapp.com`;
 const metaTags = `
-    <meta name="title" content="Stand with Ukraine">
-    <meta name="description" content="Help Ukraine by adding an easy widget to your website that allows your visitors to easily donate via verified charities.">
+    <meta name="title" content="Stand with Ukraine subscription">
+    <meta name="description" content="Support BigCommerce colleagues defending Ukraine! Our colleagues from Kyiv office are defending Ukraine on a frontline. Let's help them to stay safe!">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="${BASE_URL}">
-    <meta property="og:title" content="Stand with Ukraine">
-    <meta property="og:description" content="Help Ukraine by adding an easy widget to your website that allows your visitors to easily donate via verified charities.">
-    <meta property="og:image" content="${BASE_URL}/assets/images/home.png">
+    <meta property="og:title" content="Stand with Ukraine subscription">
+    <meta property="og:description" content="Support BigCommerce colleagues defending Ukraine! Our colleagues from Kyiv office are defending Ukraine on a frontline. Let's help them to stay safe!">
+    <meta property="og:image" content="${BASE_URL}/assets/subscription/images/home.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="${BASE_URL}">
-    <meta property="twitter:title" content="Stand with Ukraine">
-    <meta property="twitter:description" content="Help Ukraine by adding an easy widget to your website that allows your visitors to easily donate via verified charities.">
-    <meta property="twitter:image" content="${BASE_URL}/assets/images/home.png">
+    <meta property="twitter:title" content="Stand with Ukraine subscription">
+    <meta property="twitter:description" content="Support BigCommerce colleagues defending Ukraine! Our colleagues from Kyiv office are defending Ukraine on a frontline. Let's help them to stay safe!">
+    <meta property="twitter:image" content="${BASE_URL}/assets/subscription/images/home.png">
 `;
 
 async function render(pageContext: PageContextServer) {
