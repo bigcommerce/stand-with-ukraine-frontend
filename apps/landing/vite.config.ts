@@ -6,6 +6,7 @@ import { ssr } from 'vike/plugin';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), svgLoader(), ssr({ prerender: true })],
+  base: '/landing',
   server: {
     proxy: {
       '/api': 'http://localhost:9000',

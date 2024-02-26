@@ -24,14 +24,14 @@ const metaTags = `
     <meta property="og:url" content="${BASE_URL}">
     <meta property="og:title" content="Stand with Ukraine">
     <meta property="og:description" content="Support BigCommerce colleagues defending Ukraine! Our colleagues from Kyiv office are defending Ukraine on a frontline. Let's help them to stay safe!">
-    <meta property="og:image" content="${BASE_URL}/assets/subscription/images/home.png">
+    <meta property="og:image" content="${BASE_URL}/landing/assets/subscription/images/home.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="${BASE_URL}">
     <meta property="twitter:title" content="Stand with Ukraine">
     <meta property="twitter:description" content="Support BigCommerce colleagues defending Ukraine! Our colleagues from Kyiv office are defending Ukraine on a frontline. Let's help them to stay safe!">
-    <meta property="twitter:image" content="${BASE_URL}/assets/subscription/images/home.png">
+    <meta property="twitter:image" content="${BASE_URL}/landing/assets/subscription/images/home.png">
 `;
 
 async function render(pageContext: PageContextServer) {
@@ -55,8 +55,8 @@ async function render(pageContext: PageContextServer) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="favicon.ico" />
-    <link rel="apple-touch-icon" href="logo192.png" />
+    <link rel="icon" href="${import.meta.env.BASE_URL}/favicon.ico" />
+    <link rel="apple-touch-icon" href="${import.meta.env.BASE_URL}/logo192.png" />
     ${dangerouslySkipEscape(sheet.getStyleTags())}
     ${dangerouslySkipEscape(`<style>${SwiperCss}${SwiperPaginationCss}</style>`)}
     ${dangerouslySkipEscape(`<style>${SwiperCss}${SwiperNavigationCss}</style>`)}
