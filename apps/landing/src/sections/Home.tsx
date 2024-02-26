@@ -1,10 +1,13 @@
 import { DetailedHTMLProps, ImgHTMLAttributes, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import HomeImagePlaceholderSrc from '../../public/assets/images/home-placeholder.webp';
-import HomeImageSrc from '../../public/assets/images/home.webp';
+import AndriiSrc from '../../public/assets/subscription/images/andrii.png';
+import DenisSrc from '../../public/assets/subscription/images/denis.png';
+import OstapSrc from '../../public/assets/subscription/images/ostap.png';
+import PetroSrc from '../../public/assets/subscription/images/petro.png';
 import { ButtonLink, Container, H1, Item, Paragraph, Section } from '../components';
 import { breakpoints } from '../helpers';
+import { LocaleText } from '../renderer/LocaleText';
 
 const StyledSection = styled(Section)`
   padding-top: 3rem !important;
@@ -16,11 +19,8 @@ const StyledSection = styled(Section)`
   }
 `;
 
-const HomeImage = styled.img`
-  max-height: 40rem;
-  width: auto;
-  height: auto;
-  max-width: 100%;
+const StyledImage = styled.img`
+  margin-bottom: 1rem;
 
   &.loading {
     filter: blur(10px);
@@ -31,6 +31,10 @@ const HomeImage = styled.img`
     filter: blur(0px);
     transition: filter 0.5s linear;
   }
+`;
+
+const StyledItem = styled(Item)`
+  flex-basis: calc(50% - 1.5rem);
 `;
 
 const ButtonsContainer = styled.div`
@@ -46,6 +50,12 @@ const ButtonsContainer = styled.div`
       flex-grow: 0;
     }
   }
+`;
+
+const Small = styled(Paragraph)`
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
 `;
 
 const waitForIdle = (cb: () => void) => {
@@ -64,7 +74,7 @@ const ProgressiveImg = ({
   ImgHTMLAttributes<HTMLImageElement>,
   HTMLImageElement
 >) => {
-  const [imgSrc, setImgSrc] = useState(placeholderSrc || src);
+  const [imgSrc, setImgSrc] = useState(placeholderSrc ?? src);
 
   useEffect(() => {
     waitForIdle(() => {
@@ -81,10 +91,10 @@ const ProgressiveImg = ({
   }, [src]);
 
   return (
-    <HomeImage
+    <StyledImage
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       {...{ src: imgSrc, ...(props as any) }}
-      alt={props.alt || ''}
+      alt={props.alt ?? ''}
       className={placeholderSrc && imgSrc === placeholderSrc ? 'loading' : 'loaded'}
     />
   );
@@ -94,26 +104,56 @@ export const Home = () => (
   <StyledSection background="primary" id="home">
     <Container alignItems="center" justifyContent="center">
       <Item flexBasis="50%">
-        <H1 color="light">Calling all businesses: Support Ukraine with your online store</H1>
+        <H1 color="light">
+          <LocaleText>Support BigCommerce colleagues defending Ukraine</LocaleText>
+        </H1>
         <Paragraph color="light" margin="0 0 3rem" size={2} weight={300}>
-          The Stand with Ukraine widget provides your site visitors verified and simple way to
-          donate to organizations in Ukraine
+          <LocaleText>
+            Our colleagues from Kyiv office are defending Ukraine on a frontline. Let's help them to
+            stay safe!
+          </LocaleText>
         </Paragraph>
         <ButtonsContainer>
-          <ButtonLink href="#add-widget" variant="light">
-            Add widget
+          <ButtonLink href="#subscriptions" variant="light">
+            <LocaleText>Donate</LocaleText>
           </ButtonLink>
-          <ButtonLink href="#how-it-works">How it works</ButtonLink>
         </ButtonsContainer>
       </Item>
       <Item flexBasis="50%">
-        <ProgressiveImg
-          alt="stand with ukraine"
-          height={400}
-          placeholderSrc={HomeImagePlaceholderSrc}
-          src={HomeImageSrc}
-          width={547}
-        />
+        <Container flexDirection="row" flexWrap="wrap">
+          <StyledItem>
+            <ProgressiveImg alt="Denis photo" src={DenisSrc} />
+            <Small color="light">
+              <LocaleText>
+                Denis Matveev. Product designer (MSF, Localization), officer in Ukraine army
+              </LocaleText>
+            </Small>
+          </StyledItem>
+          <StyledItem>
+            <ProgressiveImg alt="Andrii photo" src={AndriiSrc} />
+            <Small color="light">
+              <LocaleText>
+                Andrii Hurzhiy. Senior Engineer (MSF, Catalog), officer in Ukraine army
+              </LocaleText>
+            </Small>
+          </StyledItem>
+          <StyledItem>
+            <ProgressiveImg alt="Petro photo" src={PetroSrc} />
+            <Small color="light">
+              <LocaleText>
+                Petro Donin. Senior Engineer (Inventory), officer in Ukraine army
+              </LocaleText>
+            </Small>
+          </StyledItem>
+          <StyledItem>
+            <ProgressiveImg alt="Ostap photo" src={OstapSrc} />
+            <Small color="light">
+              <LocaleText>
+                Ostap Ivanishyn. Senior Engineer (Payments), officer in Ukraine army
+              </LocaleText>
+            </Small>
+          </StyledItem>
+        </Container>
       </Item>
     </Container>
   </StyledSection>

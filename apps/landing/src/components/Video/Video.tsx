@@ -103,7 +103,7 @@ export const Video = ({ sources: rawSources, poster }: VideoProps) => {
     () =>
       rawSources.map((source) => ({
         ...source,
-        url: `${import.meta.env.BASE_URL}/${source.url}`,
+        url: source.url,
       })),
     [rawSources],
   );
