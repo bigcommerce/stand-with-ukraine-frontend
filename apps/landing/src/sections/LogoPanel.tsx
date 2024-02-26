@@ -97,8 +97,8 @@ const LangLink = styled.a<{ isActive: boolean }>`
 `;
 
 const links = [
-  { href: `/`, locale: locales.en, content: 'EN' },
-  { href: `/${locales.ua}`, locale: locales.ua, content: 'UA' },
+  { href: `${import.meta.env.BASE_URL}/`, locale: locales.en, content: 'EN' },
+  { href: `${import.meta.env.BASE_URL}/${locales.ua}`, locale: locales.ua, content: 'UA' },
 ];
 
 export const LogoPanel = ({ isFixed = false }: Props) => {
