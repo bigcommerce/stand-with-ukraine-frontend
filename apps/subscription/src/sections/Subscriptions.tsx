@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 import {
   Button,
+  ButtonLink,
   Container,
   H2,
   H3,
@@ -31,11 +32,35 @@ export interface SubscriptionItem {
   currency: Currency;
 }
 
+export interface BaseSubscriptionItem {
+  title: string;
+  description?: string;
+  url: string;
+}
+
 const amountItems: Record<Currency, number[]> = {
   usd: [25, 50, 75, 100],
   eur: [25, 50, 75, 100],
   uah: [2000, 3000, 4000, 5000],
 };
+
+const usdItems: BaseSubscriptionItem[] = [
+  { title: '25 USD', description: 'per month', url: 'https://pay.fondy.eu/s/fMnXeFNi' },
+  { title: '50 USD', description: 'per month', url: 'https://pay.fondy.eu/s/JaJY6jTzVRu' },
+  { title: '75 USD', description: 'per month', url: 'https://pay.fondy.eu/s/QEW5xP' },
+  { title: '100 USD', description: 'per month', url: 'https://pay.fondy.eu/s/Fn9TS9Bwf2qLD' },
+  { title: 'Custom', description: 'per month', url: 'https://pay.fondy.eu/s/QWY431oLDuJ' },
+  { title: '1 time donation', url: 'https://pay.fondy.eu/s/0jCTyK' },
+];
+
+const eurItems: BaseSubscriptionItem[] = [
+  { title: '25 EUR', description: 'per month', url: 'https://pay.fondy.eu/s/BxiJkCmB9cceDpX' },
+  { title: '50 EUR', description: 'per month', url: 'https://pay.fondy.eu/s/k4o6lBt9PpeT6na' },
+  { title: '75 EUR', description: 'per month', url: 'https://pay.fondy.eu/s/v8BGL6vhdwB' },
+  { title: '100 EUR', description: 'per month', url: 'https://pay.fondy.eu/s/9fKHsjAM' },
+  { title: 'Custom', description: 'per month', url: 'https://pay.fondy.eu/s/9vsr' },
+  { title: '1 time donation', url: 'https://pay.fondy.eu/s/EUeK2h9ELybe' },
+];
 
 const StyledParagraph = styled(Paragraph)`
   margin-bottom: 3rem;
@@ -104,7 +129,7 @@ const StyledItem = styled.div<{ hasDescription: boolean }>`
     margin-bottom: 3rem;
   }
 
-  ${Button} {
+  ${Button}, ${ButtonLink} {
     max-width: 50rem;
     width: 100%;
   }
@@ -236,12 +261,7 @@ export const Subscriptions = () => {
   const { locale } = usePageContext();
   const [activeTab, setActiveTab] = useState<'usd' | 'eur'>('usd');
 
-  const items =
-    locale === locales.en
-      ? activeTab === 'usd'
-        ? amountItems.usd
-        : amountItems.eur
-      : amountItems.uah;
+  const interItems = activeTab === 'usd' ? usdItems : eurItems;
 
   const currency = locale === locales.en ? activeTab : 'uah';
 
@@ -269,19 +289,42 @@ export const Subscriptions = () => {
             </Tabs>
           </Container>
         )}
-        <Container flexWrap="wrap">
-          {items.map((amount, i) => (
-            <Item flexBasis="31%" key={i}>
-              <SubscriptionItem amount={amount} currency={currency} type="common" />
+        {locale !== locales.ua && (
+          <Container flexWrap="wrap">
+            {interItems.map(({ title, description, url }, key) => (
+              <Item flexBasis="31%" key={key}>
+                <StyledItem hasDescription={!!description} key={key}>
+                  <H3 color="light" margin={description ? '0' : '0 0 5rem'}>
+                    <LocaleText>{title}</LocaleText>
+                  </H3>
+                  {!!description && (
+                    <Paragraph color="light">
+                      <LocaleText>{description}</LocaleText>
+                    </Paragraph>
+                  )}
+                  <ButtonLink href={url} rel="noreferrer" target="_blank" variant="light">
+                    <LocaleText>Support</LocaleText>
+                  </ButtonLink>
+                </StyledItem>
+              </Item>
+            ))}
+          </Container>
+        )}
+        {locale === locales.ua && (
+          <Container flexWrap="wrap">
+            {amountItems.uah.map((amount, i) => (
+              <Item flexBasis="31%" key={i}>
+                <SubscriptionItem amount={amount} currency={currency} type="common" />
+              </Item>
+            ))}
+            <Item flexBasis="31%">
+              <SubscriptionItem amount={null} currency={currency} type="custom" />
             </Item>
-          ))}
-          <Item flexBasis="31%">
-            <SubscriptionItem amount={null} currency={currency} type="custom" />
-          </Item>
-          <Item flexBasis="31%">
-            <SubscriptionItem amount={null} currency={currency} type="oneTime" />
-          </Item>
-        </Container>
+            <Item flexBasis="31%">
+              <SubscriptionItem amount={null} currency={currency} type="oneTime" />
+            </Item>
+          </Container>
+        )}
         <Container>
           <Note color="light">
             <LocaleText>* If you are subscribed, but want to cancel subscription</LocaleText>{' '}
