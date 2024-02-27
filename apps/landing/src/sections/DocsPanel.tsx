@@ -25,11 +25,11 @@ interface DocLinks {
 
 const docLinks: DocLinks = {
   'en-US': {
-    href: '/assets/docs/Public offer to make a voluntary charitable donation.pdf',
+    href: '/assets/docs/landing/Public offer to make a voluntary charitable donation.pdf',
     content: 'Public offer to make a voluntary charitable donation',
   },
   'uk-UA': {
-    href: '/assets/docs/Публічна оферта про надання добровільної благодійної пожертви.pdf',
+    href: '/assets/docs/landing/Публічна оферта про надання добровільної благодійної пожертви.pdf',
     content: 'Публічна оферта про надання добровільної благодійної пожертви',
   },
 };
