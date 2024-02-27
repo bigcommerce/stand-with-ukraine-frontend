@@ -1,21 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { breakpoints } from '../helpers';
-
 export const SliderOverrides = createGlobalStyle`
     .swiper {
-        &.swiper-vertical {
-            height: 58rem;
-            
-            ${breakpoints.desktop} {
-                height: 41rem;
-            }
-        }
+        background-color: #edeff3;
     }
-    
-    .swiper-horizontal {
-        padding-bottom: 4rem !important;
-        
-        & > .swiper-pagination-bullets { bottom: 0 !important; }
+
+    .swiper-button-next, .swiper-button-prev {
+        color: #fff !important;
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: #fff !important;
     }
 `;

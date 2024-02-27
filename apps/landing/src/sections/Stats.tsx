@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { Container, H2, Section } from '../components';
 import { breakpoints } from '../helpers';
+import { LocaleText } from '../renderer/LocaleText';
 
 const StyledList = styled.ul`
   color: #fff;
@@ -11,6 +12,7 @@ const StyledList = styled.ul`
   justify-content: space-between;
   margin: 0;
   padding: 0;
+  width: 100%;
 
   strong {
     display: block;
@@ -45,21 +47,21 @@ const StyledList = styled.ul`
 export const Stats = () => (
   <Section background="dark" id="stats">
     <H2 color="light" margin="0 0 6rem" textAlign="center">
-      Why it is important
+      #TEAMONAMISSION
     </H2>
     <Container>
       <StyledList>
         <li>
-          <strong>{'>600 000'}</strong>
-          houses were destroyed
+          <strong>57</strong>
+          <LocaleText>subscribers</LocaleText>
         </li>
         <li>
-          <strong>{'>90%'}</strong>
-          of Ukrainians have electricity and water outages everyday
+          <strong>7</strong>
+          <LocaleText>countries</LocaleText>
         </li>
         <li>
-          <strong>{'>8 000 000'}</strong>
-          people had to leave their homes
+          <strong>{'>$5000'}</strong>
+          <LocaleText>monthly support</LocaleText>
         </li>
       </StyledList>
     </Container>

@@ -5,8 +5,6 @@ import SwiperPaginationCss from 'swiper/css/pagination?raw';
 import SwiperCss from 'swiper/css?raw';
 import { dangerouslySkipEscape, escapeInject } from 'vike/server';
 
-import HomeImagePlaceholderSrc from '../../public/assets/images/home-placeholder.webp';
-import HomeImageSrc from '../../public/assets/images/home.webp';
 import { langs } from '../locales';
 
 import { Fonts } from './fonts';
@@ -57,13 +55,11 @@ async function render(pageContext: PageContextServer) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preload" href="${HomeImagePlaceholderSrc}" as="image">
     <link rel="icon" href="favicon.ico" />
     <link rel="apple-touch-icon" href="logo192.png" />
     ${dangerouslySkipEscape(sheet.getStyleTags())}
     ${dangerouslySkipEscape(`<style>${SwiperCss}${SwiperPaginationCss}</style>`)}
     ${dangerouslySkipEscape(`<style>${SwiperCss}${SwiperNavigationCss}</style>`)}
-    <link rel="preload" href="${HomeImageSrc}" as="image">
     <title>${title}</title>
     ${dangerouslySkipEscape(metaTags)}
   </head>

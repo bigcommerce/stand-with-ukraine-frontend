@@ -1,35 +1,32 @@
-import { ConfigureWidgetProvider } from '../components/ConfigureWidget/ConfigureWidgetContext';
 import {
-  AddWidget,
-  Cases,
-  Charities,
   Contacts,
-  Faq,
+  HelpIsImportant,
   Home,
-  HowItWorks,
+  Impact,
   LogoPanel,
+  Needs,
   Stats,
-  Support,
-  Team,
+  Subscriptions,
 } from '../sections';
+import { DocsPanel } from '../sections/DocsPanel';
+import { Faq } from '../sections/Faq';
 
 export { Page };
 
 function Page() {
   return (
-    <ConfigureWidgetProvider>
+    <>
       <LogoPanel isFixed />
       <Home />
-      <HowItWorks />
+      <HelpIsImportant />
+      <Needs />
+      <Subscriptions />
+      <Impact />
       <Stats />
-      <Cases />
-      <AddWidget />
-      <Charities />
-      <Team />
-      <Support />
       <Faq />
       <Contacts />
       <LogoPanel />
-    </ConfigureWidgetProvider>
+      <DocsPanel />
+    </>
   );
 }

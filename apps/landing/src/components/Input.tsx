@@ -54,7 +54,7 @@ const StyledError = styled.div`
   padding: 0.5rem 0;
 `;
 
-const StyledContainer = styled.div`
+export const StyledContainer = styled.div`
   margin-bottom: 4rem;
   padding-top: 1rem;
   position: relative;
