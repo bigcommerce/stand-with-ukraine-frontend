@@ -467,12 +467,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@brillout/vite-plugin-server-entry@npm:^0.4.3":
-  version: 0.4.3
-  resolution: "@brillout/vite-plugin-server-entry@npm:0.4.3"
+"@brillout/vite-plugin-server-entry@npm:^0.4.4":
+  version: 0.4.4
+  resolution: "@brillout/vite-plugin-server-entry@npm:0.4.4"
   dependencies:
     "@brillout/import": ^0.2.3
-  checksum: 8972400794a100536b4badad274d439d29ed32ee9f1f3852f6f36a316ba7ac05f46355d58c049ffed05d79fa1cfa22e2c2b13c1343f8c23ece09302787e3d568
+  checksum: 86b341bc06f8de7d54f401f05208cc811e5ae8ab771b642a5840db851e292c3d55a71447cd6e21b7ba559ca10b811fed4968c297667e3c04fc0e3f03221e42e2
   languageName: node
   linkType: hard
 
@@ -5530,7 +5530,7 @@ __metadata:
     tsconfig: "workspace:^"
     typescript: ^5.3.3
     video.js: ^8.8.0
-    vike: ^0.4.160
+    vike: ^0.4.164
     vite: ^5.0.12
     vite-plugin-svgr: ^4.2.0
   languageName: unknown
@@ -8160,7 +8160,7 @@ __metadata:
     tsconfig: "workspace:^"
     typescript: ^5.3.3
     video.js: ^8.8.0
-    vike: ^0.4.160
+    vike: ^0.4.164
     vite: ^5.0.12
     vite-plugin-svgr: ^4.2.0
   languageName: unknown
@@ -8798,15 +8798,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vike@npm:^0.4.160":
-  version: 0.4.160
-  resolution: "vike@npm:0.4.160"
+"vike@npm:^0.4.164":
+  version: 0.4.164
+  resolution: "vike@npm:0.4.164"
   dependencies:
     "@brillout/import": ^0.2.3
     "@brillout/json-serializer": ^0.5.8
     "@brillout/picocolors": ^1.0.10
     "@brillout/require-shim": ^0.1.2
-    "@brillout/vite-plugin-server-entry": ^0.4.3
+    "@brillout/vite-plugin-server-entry": ^0.4.4
     acorn: ^8.0.0
     cac: ^6.0.0
     es-module-lexer: ^1.0.0
@@ -8822,7 +8822,7 @@ __metadata:
       optional: true
   bin:
     vike: node/cli/bin-entry.js
-  checksum: 18e62852d87c3486babfe983e2e7471ca5070e5f991397d71911f527b80eedfda1a30e6e3383e7d5b1117d4062eac4b3f5bf8cbe10aaf538ad37242a594b8f50
+  checksum: 140d0bf243ece9c0d2ead6aed6fcc3f3cca987d347e55f85afdafece61a30e610382dddb2e3e5bf5a14e61ffa388073b9de616e802ad7f44164dd927b4e4e8e7
   languageName: node
   linkType: hard
 
