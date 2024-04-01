@@ -27,7 +27,7 @@
     "styled-components": "^5.3.6",
     "tsconfig": "workspace:^",
     "typescript": "^5.3.3",
-    "vike": "^0.4.160",
+    "vike": "^0.4.168",
     "vite": "^5.0.12",
     "vite-plugin-svgr": "^4.2.0"
   }
