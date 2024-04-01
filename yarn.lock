@@ -6828,10 +6828,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:^10.19.3":
-  version: 10.19.3
-  resolution: "preact@npm:10.19.3"
-  checksum: cb4fcc801f7ff302b9706eb4bb4a36cc7cd96f3231ac28baeb3ea5caf6724372222121cb487f66af44a1312bf61dbe74825ce2fda98295d2108e7443c20b0e56
+"preact@npm:^10.20.1":
+  version: 10.20.1
+  resolution: "preact@npm:10.20.1"
+  checksum: af5ed9bdf44bfa5487479c09fa971a32902987f277c74d6244f9d9466ccd5c1efd3a0949e7dc2227177623878b1adafcc5c50cee6617a84f72d1cebe55ff76ba
   languageName: node
   linkType: hard
 
@@ -9095,7 +9095,7 @@ __metadata:
     "@vitest/coverage-istanbul": ^1.2.2
     images: ^3.2.4
     jsdom: ^24.0.0
-    preact: ^10.19.3
+    preact: ^10.20.1
     sass: ^1.70.0
     tsconfig: "*"
     typescript: ^5.3.3
