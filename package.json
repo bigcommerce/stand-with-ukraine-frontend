@@ -21,16 +21,16 @@
     ]
   },
   "devDependencies": {
-    "@bigcommerce/eslint-config": "^2.8.0",
+    "@bigcommerce/eslint-config": "^2.8.1",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@playwright/test": "^1.43.1",
     "@types/swiper": "^6.0.0",
-    "eslint": "^8.56.0",
+    "eslint": "^8.57.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "playwright-test-coverage": "^1.2.12",
-    "prettier": "^2.6.2",
+    "prettier": "^2.8.8",
     "turbo": "^1.13.2",
     "vitest-fetch-mock": "^0.2.2"
   },
