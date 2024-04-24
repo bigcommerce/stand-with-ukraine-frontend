@@ -13,8 +13,8 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@bigcommerce/big-design": "^0.38.2",
-    "@bigcommerce/big-design-theme": "^0.20.1",
+    "@bigcommerce/big-design": "^1.0.0",
+    "@bigcommerce/big-design-theme": "^1.0.0",
     "@reduxjs/toolkit": "^2.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -36,9 +36,9 @@
     "@vitest/coverage-istanbul": "^1.5.1",
     "jsdom": "^24.0.0",
     "tsconfig": "*",
-    "typescript": "~5.1.0",
+    "typescript": "~5.1.6",
     "vite": "^5.2.10",
-    "vite-plugin-istanbul": "^5.0.0",
+    "vite-plugin-istanbul": "^6.0.0",
     "vitest": "^1.5.1"
   }
 }
