@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { A11y, Autoplay, Navigation, Pagination } from 'swiper';
+import { A11y, Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Container, H2, Item, Paragraph, Section } from '../components';
