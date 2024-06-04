@@ -3,107 +3,30 @@ import styled, { css } from 'styled-components';
 
 import { Container, H1, Item, Paragraph, Section } from '../components';
 import { breakpoints } from '../helpers';
-import { LocaleText } from '../renderer/LocaleText';
-import { usePageContext } from '../renderer/usePageContext';
 
 interface QuestionProps {
   question: string;
   answer: string;
 }
 
-// Define types
-interface QUESTIONS {
-  [key: string]: Array<{
-    question: string;
-    answer: string;
-  }>;
-}
-
-const QUESTIONS: QUESTIONS = {
-  'en-US': [
-    {
-      question: 'What this initiative is about and who are we supporting?',
-      answer:
-        'This initiative is targeted to support our BigCommerce colleagues who are fighting for the freedom of Ukraine as a part of the Ukrainian Armed Forces.',
-    },
-    {
-      question: 'What is the target amount of donations we want to aim for?',
-      answer:
-        'Our goal is to be able to gather at least $6,000 every month to be able to provide constant support for our colleagues on a frontline.  We are planning to buy transport, protection and medical supplies on a regular basis.  We always aim for more, so the more donations we are able to collect the more help we will be able to provide.',
-    },
-    {
-      question: 'How long do we think this initiative would last?',
-      answer:
-        'The ability to subscribe for regular support will be active till 24.02.2025 with a possibility to be extended if needed. We are planning to support our colleagues as long as the war is going up to the victory day. Or up to the time when they are going to discontinue their service. Subscription is 100% optional and you can unsubscribe any time by reach out to us via contact us form or by clicking <a href="https://docs.google.com/forms/d/e/1FAIpQLScF3VX6Q1GctTWHBzCdKQllsTISdutgT-8KDU3OKySgRbHzBA/viewform">here</a>.',
-    },
-    {
-      question:
-        'In case if the amount of donations is more than the needs, how those funds are going to be used?',
-      answer:
-        'BigCommerce Ukraine is providing help not only to our colleagues defending Ukraine in the Armed Forces, but also to help in rebuilding civilian infrastructure damaged as a cause of russian aggression, as well as helping kids who suffered from this aggression.<br>' +
-        'In case there are any funds left on top of what we need to support our colleagues, those funds would be used to help in rebuilding civilian infrastructure and helping kids and families in need.',
-    },
-    {
-      question: 'How to track how the funds are being used?',
-      answer:
-        'We are posting monthly updates in internal #kyiv slack channel. Please join to be up to date with how your support is being used.',
-    },
-    {
-      question: 'Who can join this initiative and donate?',
-      answer:
-        'At this point we are opening up this donation options for all our colleagues at BigCommerce in Ukraine, US, UK, Mexico, Australia and EU.',
-    },
-    {
-      question: 'Can I make a one time payment directly to the charity org account?',
-      answer:
-        'Yes, you can make one time donation using the One time donation options near the subscription options or use the following bank account:<br>' +
-        'Charity Org “United Ukrainian Support”<br>' +
-        'IBAN: UA373052990000026009036803457<br>' +
-        'JSC CB "PRIVATBANK"<br>',
-    },
-  ],
-  'uk-UA': [
-    {
-      question: 'На кого націлений цей проект і куди підуть кошти?',
-      answer:
-        'Цей проект має на меті допомогу нашим колегам з компанії “БігКоммерс Україна”, які після 24 лютого 2022 року доєднались до захисту України в лавах Збройних Сил.',
-    },
-    {
-      question: 'Яка цільова сума збору?',
-      answer:
-        'Наша мета мати змогу швидко і прогрозовано закривати потреби наших колег, які захищають Україну в лавах ЗСУ. Для цієї мені нам потрібно мати змогу щомісячно збирати від 220 000 грн для швидкої закупівлі транспортних засобів, засобів РЕБ, дронів, засобів зв’язку, генераторів і медичних товарів. Цільова сума в 220 000 грн це мінімум, який дозволить покрити поточні потреби, при цьому ми не обмежуємось цією сумою і, за умови, збору більшої суми будемо розподіляти кошти на покриття додаткових потреб, наприклад щомісячних витрат з обслуговування авто, засобів зв’язку.',
-    },
-    {
-      question: 'Скільки часу триватиме підписка на донати?',
-      answer:
-        'Можливість підписатись на регулярну підтримку буде активною до 24.02.2025 з можливістю продовження строку дії в разі потреби. Ми плануємо підтримувати наших колег до тих пір, допоки це буде необхідно, тобто до закінчення війни або до їх звільнення з лав Збройних Сил України. Цей проект дає змогу допомоги на добровільній основі, тому відмовитись від підтримки можна в будь який момент відправивши запит через <a href="https://forms.gle/gENoxXGFx1EPNokR6">цю форму</a>.',
-    },
-    {
-      question: 'Що буде з залишками коштів, у разі якщо зібрана сума перевищує поточні потреби?',
-      answer:
-        'Компанія “БігКоммерс Україна” допомагає не тільки нашим колегам в складі Збройних Сил України, але також реалізовує інші благодійні ініціативи з допомоги у відбудові цивільної інфраструктури, а також щодо допомоги дітям, які постраждали від наслідків збройної агресії росіїї проти України. У разі, якщо на рахунку благодійного фонду буде надлишок коштів – ці кошти будуть витрачені на благодійні ініціативи з допомоги у відбудові цивільної інфраструктури або на допомогу дітям постраждалим від війни.',
-    },
-    {
-      question: 'Як отримати звіт про те, на що були витрачені кошти?',
-      answer:
-        'Ми публікуємо регулярні щомісячні звіти про усі купівлі у внутрішньому чаті компанії. Кожен бажаючий може долучитись до каналу #kyiv у внутрішньому мессенджері для перегляду детальної інформації щодо закупівель і зібраних коштів.',
-    },
-    {
-      question: 'Хто може долучитись до підтримки?',
-      answer:
-        'Наразі ми залучаємо до підтримки наших колег тільки співробітників компанії BigCommerce в Україні, Британії, США, Австралії, Мексиці та країнах ЄС.',
-    },
-    {
-      question: 'Чи можу я зробити одноразовий донат на реквізити фонду?',
-      answer:
-        'Так, одноразовий донат можна зробити скориставшись опцією поруч з підпискою або за реквізитами фонду:<br>БФ “ОБ’ЄДНАНА УКРАЇНСЬКА ПІДТРИМКА”<br />' +
-        'р/р: UA373052990000026009036803457 <br>' +
-        'АТ КБ "ПРИВАТБАНК" <br>' +
-        'МФО 305299 <br>' +
-        'ЄДРПОУ 44726193',
-    },
-  ],
-};
+const QUESTIONS = [
+  {
+    question: "I'm not seeing a widget / changes to the widget are not applied.",
+    answer:
+      "Hold shift+R to refresh the storefront page, new script often isn't loaded on a background even after a minute. If it didn’t help, please try to remove a widget and re-apply again. If it still does not work notify us via ”Get support”.",
+  },
+  {
+    question:
+      'Can I add a charity organization myself instead of choosing from the predefined list?',
+    answer:
+      'We have included the list of vetted charity organizations, confirmed with our team in Ukraine to make sure that the donation would get to the people in need. The list includes organizations that are providing only humanitarian help.',
+  },
+  {
+    question: 'Can I select page(s) to display the widget?',
+    answer:
+      'Selecting pages is not supported at this point, however you could select the location. By default widget is going to show up on the following pages: Home, Add Wishlist, Blog List, Blog Post, Brand Pages, All Brands Page, Cart, Category, Product Compare, Contact Form, Product, Search, All Wishlist, Wish List, 404 page.',
+  },
+];
 
 const StyledQuestion = styled.div`
   border-top: 1px solid #d1d7e0;
@@ -193,7 +116,7 @@ const Question = ({ question, answer }: QuestionProps) => {
       {isOpen && (
         <StyledAnswer>
           <Paragraph margin="0" weight={300}>
-            <div dangerouslySetInnerHTML={{ __html: answer }} />
+            {answer}
           </Paragraph>
         </StyledAnswer>
       )}
@@ -201,21 +124,17 @@ const Question = ({ question, answer }: QuestionProps) => {
   );
 };
 
-export const Faq = () => {
-  const { locale } = usePageContext();
-
-  return (
-    <Section id="faq">
-      <StyledH1 margin="0 0 6rem" textAlign="center">
-        <LocaleText>FAQ</LocaleText>
-      </StyledH1>
-      <Container>
-        <Item flexGrow={1}>
-          {(QUESTIONS[locale] || QUESTIONS.en).map((qa, key) => (
-            <Question key={key} {...qa} />
-          ))}
-        </Item>
-      </Container>
-    </Section>
-  );
-};
+export const Faq = () => (
+  <Section id="faq">
+    <StyledH1 margin="0 0 6rem" textAlign="center">
+      FAQ
+    </StyledH1>
+    <Container>
+      <Item flexGrow={1}>
+        {QUESTIONS.map((question, key) => (
+          <Question key={key} {...question} />
+        ))}
+      </Item>
+    </Container>
+  </Section>
+);
