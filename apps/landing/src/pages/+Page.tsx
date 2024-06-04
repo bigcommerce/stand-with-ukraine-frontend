@@ -26,7 +26,7 @@ function Page() {
       <AddWidget />
       <Charities />
       <Team />
-      <Support />
+      {/* <Support /> */}
       <Faq />
       <Contacts />
       <LogoPanel />
