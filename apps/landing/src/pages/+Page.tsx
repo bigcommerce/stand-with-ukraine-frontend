@@ -9,7 +9,6 @@ import {
   HowItWorks,
   LogoPanel,
   Stats,
-  Support,
   Team,
 } from '../sections';
 
@@ -26,7 +25,6 @@ function Page() {
       <AddWidget />
       <Charities />
       <Team />
-      {/* <Support /> */}
       <Faq />
       <Contacts />
       <LogoPanel />
