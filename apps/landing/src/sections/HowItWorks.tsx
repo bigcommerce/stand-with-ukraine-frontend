@@ -59,11 +59,11 @@ export const HowItWorks = () => (
           poster={VideoThumbnail}
           sources={[
             {
-              url: 'assets/videos/how-to/1080p.webm',
+              url: 'landing/assets/videos/how-to/1080p.webm',
               type: 'video/webm',
             },
             {
-              url: 'assets/videos/how-to/1080p.mp4',
+              url: 'landing/assets/videos/how-to/1080p.mp4',
               type: 'video/mp4',
             },
           ]}

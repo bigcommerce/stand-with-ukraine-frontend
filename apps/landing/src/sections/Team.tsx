@@ -99,11 +99,11 @@ export const Team = () => (
           poster={VideoThumbnail}
           sources={[
             {
-              url: 'assets/videos/team/1080p.webm',
+              url: 'landing/assets/videos/team/1080p.webm',
               type: 'video/webm',
             },
             {
-              url: 'assets/videos/team/1080p.mp4',
+              url: 'landing/assets/videos/team/1080p.mp4',
               type: 'video/mp4',
             },
           ]}
