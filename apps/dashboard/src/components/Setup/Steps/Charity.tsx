@@ -70,13 +70,13 @@ function SelectCharity({
   limitReached,
   donationLink,
 }: {
-  name: string;
-  description: string;
-  id: string;
-  selected: boolean;
-  limitReached: boolean;
-  logoProps: any;
-  donationLink: string;
+  readonly name: string;
+  readonly description: string;
+  readonly id: string;
+  readonly selected: boolean;
+  readonly limitReached: boolean;
+  readonly logoProps: any;
+  readonly donationLink: string;
 }) {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);

@@ -6,7 +6,7 @@ import { Item, Section } from '../components';
 import { breakpoints } from '../helpers';
 
 interface Props {
-  isFixed?: boolean;
+  readonly isFixed?: boolean;
 }
 
 const StyledSection = styled(Section)`

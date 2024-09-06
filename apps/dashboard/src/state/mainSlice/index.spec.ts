@@ -90,13 +90,13 @@ describe('counter reducer', () => {
   it('should handle increment', () => {
     const actual = mainReducer(initialState, nextStep());
 
-    expect(actual.step).toEqual(4);
+    expect(actual.step).toBe(4);
   });
 
   it('should handle decrement', () => {
     const actual = mainReducer(initialState, previousStep());
 
-    expect(actual.step).toEqual(2);
+    expect(actual.step).toBe(2);
   });
 });
 
@@ -115,6 +115,7 @@ describe('loadStore async action', () => {
 
   it('should handle load', async () => {
     await action(dispatch, getState, undefined);
+
     expect(global.fetch).toHaveBeenCalled();
   });
 });

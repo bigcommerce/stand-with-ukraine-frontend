@@ -11,8 +11,8 @@ function PageShell({
   pageContext,
   children,
 }: {
-  pageContext: PageContext;
-  children: React.ReactNode;
+  readonly pageContext: PageContext;
+  readonly children: React.ReactNode;
 }) {
   return (
     <StrictMode>

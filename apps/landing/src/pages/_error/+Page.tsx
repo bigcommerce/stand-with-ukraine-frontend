@@ -1,6 +1,6 @@
 export { Page };
 
-function Page({ is404, errorInfo }: { is404: boolean; errorInfo?: string }) {
+function Page({ is404, errorInfo }: { readonly is404: boolean; readonly errorInfo?: string }) {
   if (is404) {
     return (
       <>

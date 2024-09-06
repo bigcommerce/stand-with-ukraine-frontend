@@ -6,7 +6,7 @@ import { analytics } from '../../utils/analytics';
 
 import styles from './styles.module.scss';
 
-function Description({ description, id }: { description: string; id: string }) {
+function Description({ description, id }: { readonly description: string; readonly id: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSeeMoreClick = (e: h.JSX.TargetedMouseEvent<HTMLAnchorElement>) => {

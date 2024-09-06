@@ -87,9 +87,9 @@ function FooterButton({
   text,
   ...rest
 }: {
-  buttonState: { show: boolean; disabled: boolean };
-  onClick: () => void;
-  text: string;
+  readonly buttonState: { show: boolean; disabled: boolean };
+  readonly onClick: () => void;
+  readonly text: string;
 } & ButtonProps) {
   return buttonState.show ? (
     <Button disabled={buttonState.disabled} onClick={onClick} {...rest}>

@@ -12,8 +12,8 @@ function PageContextProvider({
   pageContext,
   children,
 }: {
-  pageContext: PageContext;
-  children: ReactNode;
+  readonly pageContext: PageContext;
+  readonly children: ReactNode;
 }) {
   return <Context.Provider value={pageContext}>{children}</Context.Provider>;
 }

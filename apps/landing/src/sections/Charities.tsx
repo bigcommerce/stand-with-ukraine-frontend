@@ -1,6 +1,7 @@
 import { Charity } from 'config/types';
 import styled from 'styled-components';
 import { A11y, Autoplay, Pagination } from 'swiper/modules';
+// eslint-disable-next-line import/no-unresolved
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import ArrowSVG from '../../public/assets/images/arrow.svg';

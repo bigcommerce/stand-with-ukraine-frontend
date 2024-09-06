@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 
 type Status = 'loading' | 'authenticated' | 'unauthenticated';
 
-export default function AuthProvider({ children }: { children: any }) {
+export default function AuthProvider({ children }: { readonly children: any }) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [localStateStatus, localStateSetStatus] = useState<Status>('loading');

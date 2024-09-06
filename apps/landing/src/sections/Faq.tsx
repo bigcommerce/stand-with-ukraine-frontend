@@ -5,8 +5,8 @@ import { Container, H1, Item, Paragraph, Section } from '../components';
 import { breakpoints } from '../helpers';
 
 interface QuestionProps {
-  question: string;
-  answer: string;
+  readonly question: string;
+  readonly answer: string;
 }
 
 const QUESTIONS = [

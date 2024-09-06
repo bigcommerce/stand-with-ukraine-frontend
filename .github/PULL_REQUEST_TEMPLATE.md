@@ -1,6 +1,7 @@
 Jira: [JIRA_TOKEN](https://bigcommercecloud.atlassian.net/browse/JIRA_TOKEN)
 
 ## What/Why?
+
 <!--
   A description about what this pull request implements and its purpose.
   Try to be detailed and describe any technical details to simplify the job
@@ -8,6 +9,7 @@ Jira: [JIRA_TOKEN](https://bigcommercecloud.atlassian.net/browse/JIRA_TOKEN)
 -->
 
 ## Rollout/Rollback
+
 <!--
 Detail how this change will be rolled out. Include reference to any
 experiments and how the success will be measured as the experiment is
@@ -20,6 +22,7 @@ back?
 -->
 
 ## Testing
+
 <!--
 Provide as much information as you can about how you tested and how another
 Engineer can test your change. Include screenshots, or test run output

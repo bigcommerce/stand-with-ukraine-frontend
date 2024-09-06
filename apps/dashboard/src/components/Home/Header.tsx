@@ -33,7 +33,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-export default function Header({ published }: { published: boolean }) {
+export default function Header({ published }: { readonly published: boolean }) {
   return (
     <Wrapper>
       <Title>

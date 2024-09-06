@@ -60,7 +60,7 @@ const ProgressiveImg = ({
   placeholderSrc,
   src,
   ...props
-}: { placeholderSrc?: string } & DetailedHTMLProps<
+}: { readonly placeholderSrc?: string } & DetailedHTMLProps<
   ImgHTMLAttributes<HTMLImageElement>,
   HTMLImageElement
 >) => {

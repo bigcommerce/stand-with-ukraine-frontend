@@ -43,10 +43,10 @@ function SelectWidgetPlacement({
   selected,
   image,
 }: {
-  label: string;
-  widgetPlacement: WidgetPlacement;
-  selected: WidgetPlacement;
-  image: any;
+  readonly label: string;
+  readonly widgetPlacement: WidgetPlacement;
+  readonly selected: WidgetPlacement;
+  readonly image: any;
 }) {
   const dispatch = useAppDispatch();
   const handleChange = useCallback(

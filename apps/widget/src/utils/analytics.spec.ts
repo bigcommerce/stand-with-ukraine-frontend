@@ -18,11 +18,11 @@ describe('Analytics', () => {
   });
 
   it(`should send events using 'universal' STORE_HASH when unset`, () => {
-    expect(fetchMock.mock.calls.length).toEqual(0);
+    expect(fetchMock.mock.calls).toHaveLength(0);
 
     analytics.trackModalStatus(true);
 
-    expect(fetchMock.mock.calls.length).toEqual(1);
-    expect(fetchMock.mock.lastCall?.[0]?.toString().includes('universal'));
+    expect(fetchMock.mock.calls).toHaveLength(1);
+    expect(fetchMock.mock.lastCall?.[0]?.toString().includes('universal')).toBe(true);
   });
 });

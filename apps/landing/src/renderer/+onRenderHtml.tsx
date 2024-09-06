@@ -1,6 +1,8 @@
 import { renderToString } from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
+// eslint-disable-next-line import/no-unresolved
 import SwiperPaginationCss from 'swiper/css/pagination?raw';
+// eslint-disable-next-line import/no-unresolved
 import SwiperCss from 'swiper/css?raw';
 import { dangerouslySkipEscape, escapeInject } from 'vike/server';
 
