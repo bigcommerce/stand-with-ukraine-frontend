@@ -43,7 +43,7 @@
     "test": "turbo run test",
     "coverage": "turbo run coverage",
     "clean": "turbo run clean && rm -rf node_modules",
-    "prettier-cmd": "prettier \"**/*.{ts,tsx,md,scss,css,yml,yaml}\"",
+    "prettier-cmd": "prettier \"**/*.{md,scss,css,yml,yaml}\"",
     "eslint-cmd": "eslint \"**/*.{ts,tsx}\"",
     "format": "yarn prettier-cmd --write && yarn eslint-cmd --fix",
     "merge-coverage": "./scripts/merge-coverage.sh",
