@@ -9,7 +9,7 @@ import { locales } from '../locales';
 import { usePageContext } from '../renderer/usePageContext';
 
 interface Props {
-  isFixed?: boolean;
+  readonly isFixed?: boolean;
 }
 
 const StyledSection = styled(Section)`

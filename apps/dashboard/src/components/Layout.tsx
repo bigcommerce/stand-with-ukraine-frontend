@@ -20,7 +20,7 @@ const LoadingBar = styled.div`
   width: 100%;
 `;
 
-export default function Layout({ children }: { children: any }) {
+export default function Layout({ children }: { readonly children: any }) {
   const loadingStatus = useAppSelector(selectLoadingStatus);
 
   return (

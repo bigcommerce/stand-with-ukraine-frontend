@@ -13,7 +13,7 @@ import Color from './Steps/Color';
 import Modal from './Steps/Modal';
 import Placement from './Steps/Placement';
 
-function StepContent({ currentStep }: { currentStep: number }) {
+function StepContent({ currentStep }: { readonly currentStep: number }) {
   switch (currentStep) {
     case 0:
       return <Color />;

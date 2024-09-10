@@ -55,7 +55,7 @@ const ContentWrapper = styled.div`
   }
 `;
 
-export default function Content({ published }: { published: boolean }) {
+export default function Content({ published }: { readonly published: boolean }) {
   return (
     <ContentWrapper>
       {!published && (

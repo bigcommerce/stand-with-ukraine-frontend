@@ -26,9 +26,9 @@ import {
 type Currency = 'usd' | 'eur' | 'uah';
 
 export interface SubscriptionItem {
-  type: 'common' | 'oneTime' | 'custom';
-  amount: SubscriptionItem['type'] extends 'common' ? number : null | number;
-  currency: Currency;
+  readonly type: 'common' | 'oneTime' | 'custom';
+  readonly amount: SubscriptionItem['type'] extends 'common' ? number : null | number;
+  readonly currency: Currency;
 }
 
 const amountItems: Record<Currency, number[]> = {

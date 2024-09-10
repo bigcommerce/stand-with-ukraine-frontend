@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { A11y, Autoplay, Pagination } from 'swiper/modules';
+// eslint-disable-next-line import/no-unresolved
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import VideoThumbnail from '../../public/assets/videos/team/thumbnail.webp';
@@ -27,9 +28,9 @@ const StyledH1 = styled(H1)`
 `;
 
 interface TeamMember {
-  photo: string;
-  name: string;
-  title: string;
+  readonly photo: string;
+  readonly name: string;
+  readonly title: string;
 }
 
 const TeamList: TeamMember[] = [

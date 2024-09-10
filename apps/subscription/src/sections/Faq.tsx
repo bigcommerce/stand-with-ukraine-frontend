@@ -7,8 +7,8 @@ import { LocaleText } from '../renderer/LocaleText';
 import { usePageContext } from '../renderer/usePageContext';
 
 interface QuestionProps {
-  question: string;
-  answer: string;
+  readonly question: string;
+  readonly answer: string;
 }
 
 // Define types

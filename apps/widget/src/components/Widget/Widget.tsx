@@ -32,7 +32,7 @@ function getButtonClassNames(status: WIDGET_STATUS) {
   return status === WIDGET_STATUS.ENABLED ? `${styles.button} ${styles.isOpen}` : styles.button;
 }
 
-function WidgetContent({ showText }: { showText: boolean }) {
+function WidgetContent({ showText }: { readonly showText: boolean }) {
   return showText ? (
     <div className={styles.content}>
       <p className={styles.title}>Help the people of Ukraine!</p>
@@ -47,7 +47,13 @@ function WidgetContent({ showText }: { showText: boolean }) {
 const DEFAULT_STATUS = (safeSessionStorage.getItem(STORAGE_KEYS.WIDGET) ??
   WIDGET_STATUS.ENABLED) as WIDGET_STATUS;
 
-export function Widget({ isModalOpen, onClick }: { isModalOpen: boolean; onClick: () => void }) {
+export function Widget({
+  isModalOpen,
+  onClick,
+}: {
+  readonly isModalOpen: boolean;
+  readonly onClick: () => void;
+}) {
   const [status, setStatus] = useState<WIDGET_STATUS>(DEFAULT_STATUS);
 
   const changeStatus = (newStatus: WIDGET_STATUS) => {

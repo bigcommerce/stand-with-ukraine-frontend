@@ -9,7 +9,7 @@ export const ConfigureWidgetContext = createContext<{
   setWidgetOpen: () => {},
 });
 
-export function ConfigureWidgetProvider({ children }: { children: ReactNode }) {
+export function ConfigureWidgetProvider({ children }: { readonly children: ReactNode }) {
   const [widgetOpen, setWidgetOpen] = useState(false);
 
   return (

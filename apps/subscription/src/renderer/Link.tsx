@@ -11,7 +11,7 @@ function Link({
   href,
   locale,
   ...props
-}: PropsWithChildren<AnchorHTMLAttributes<HTMLAnchorElement> & { locale?: string }>) {
+}: PropsWithChildren<AnchorHTMLAttributes<HTMLAnchorElement> & { readonly locale?: string }>) {
   const pageContext = usePageContext();
 
   const nextLocale = locale ?? pageContext.locale;

@@ -45,9 +45,9 @@ function SelectWidgetStyle({
   selected,
   image,
 }: {
-  widgetStyle: WidgetStyle;
-  selected: WidgetStyle;
-  image: any;
+  readonly widgetStyle: WidgetStyle;
+  readonly selected: WidgetStyle;
+  readonly image: any;
 }) {
   const dispatch = useAppDispatch();
   const handleChange = useCallback(

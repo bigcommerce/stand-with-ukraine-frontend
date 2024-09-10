@@ -2,8 +2,8 @@ import { InputHTMLAttributes, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 interface Props {
-  label: string;
-  error?: string;
+  readonly label: string;
+  readonly error?: string;
 }
 
 const StyledLabel = styled.label<{ isError: boolean; isSmall: boolean }>`

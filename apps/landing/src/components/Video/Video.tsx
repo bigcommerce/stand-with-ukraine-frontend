@@ -12,8 +12,8 @@ interface Source {
 }
 
 interface VideoProps {
-  sources: Source[];
-  poster: string;
+  readonly sources: Source[];
+  readonly poster: string;
 }
 
 const initialProps = {

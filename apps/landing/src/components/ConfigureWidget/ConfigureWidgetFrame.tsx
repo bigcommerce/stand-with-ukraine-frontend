@@ -64,7 +64,7 @@ function WidgetWrapper() {
   );
 }
 
-export default function ConfigureWidgetFrame({ children }: { children: ReactNode }) {
+export default function ConfigureWidgetFrame({ children }: { readonly children: ReactNode }) {
   return (
     <ConfigureWidgetContext.Consumer>
       {({ widgetOpen }) => (

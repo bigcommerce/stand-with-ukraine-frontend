@@ -139,7 +139,7 @@ const ActionContainer = styled.div`
 const SUPPORT_LINK =
   'https://docs.google.com/forms/d/e/1FAIpQLSdjibRgptwc7j_AMQ54qes93nfyxhXrzYSNnsmf2_7hs6gClw/viewform';
 
-export default function FAQ({ listType }: { listType: 'bigcommerce' | 'universal' }) {
+export default function FAQ({ listType }: { readonly listType: 'bigcommerce' | 'universal' }) {
   const [open, setOpen] = useState(false);
 
   return (

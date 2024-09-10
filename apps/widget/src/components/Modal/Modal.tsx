@@ -21,7 +21,13 @@ const getSelectedListOfCharities = () => {
   return CHARITIES;
 };
 
-export function Modal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+export function Modal({
+  isOpen,
+  onClose,
+}: {
+  readonly isOpen: boolean;
+  readonly onClose: () => void;
+}) {
   const handleContentClick = (e: h.JSX.TargetedMouseEvent<HTMLDivElement>) => e.stopPropagation();
 
   if (!isOpen) {
