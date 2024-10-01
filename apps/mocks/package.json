@@ -7,6 +7,6 @@
   },
   "dependencies": {
     "connect-api-mocker": "^1.11.0",
-    "express": "^4.19.2"
+    "express": "^4.21.0"
   }
 }
